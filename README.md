@@ -247,6 +247,25 @@ Cannot checkout repository ... pathspec ... did not match any file(s) known to g
 Use the exact URL above, including `.git`, the package subfolder, and the
 `#0.2.0` revision.
 
+### Console messages that are not install failures
+
+A clean install writes three kinds of message to the Console. None of them
+indicates a failed installation, and a manual walkthrough on Unity
+`6000.3.18f1` reached a full Test Runner pass with all three present.
+
+- `[Worker4] Could not generate preview image` errors. Unity emits these while
+  generating asset previews during import; they do not affect the imported
+  assets.
+- Warnings that `com.github-glitchenzo.nugetforunity` and `com.cysharp.r3`
+  were installed without a signature. Packages from registries other than
+  Unity's own are unsigned, so this is expected for the OpenUPM route.
+- A warning that Unity failed to import `Assets/NuGet.config` as a plug-in.
+  NuGetForUnity writes that file as configuration, not as a managed plug-in,
+  and the NuGet restore still completes.
+
+Compilation errors, package resolution errors, and Test Runner failures are
+not covered by this note and must be investigated.
+
 ## Documentation
 
 - [Installation and dependencies](Docs/Installation.md)
