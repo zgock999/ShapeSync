@@ -1,0 +1,29 @@
+{
+  "name": "zgock.ShapeSync.Spec22_3.Tests.EditMode.Vrm",
+  "rootNamespace": "zgock.ShapeSync.Spec22_3.Tests.EditMode.Vrm",
+  "references": [
+    "zgock.ShapeSync.Runtime",
+    "zgock.ShapeSync.Editor",
+    "zgock.ShapeSync.VrmIntegration.Runtime",
+    "zgock.ShapeSync.VrmIntegration.Editor",
+    "VRM10",
+    "UniHumanoid",
+    "SpringBoneJobs"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "SHAPESYNC_USE_UNIVRM"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

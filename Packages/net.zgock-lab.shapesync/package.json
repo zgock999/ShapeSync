@@ -1,0 +1,14 @@
+{
+    "name":  "net.zgock-lab.shapesync",
+    "version":  "0.2.0",
+    "displayName":  "ShapeSync",
+    "description":  "Figure and Outfit deformation tools for Unity.",
+    "unity":  "6000.0",
+    "license":  "MIT",
+    "author":  {
+                   "name":  "zgock999"
+               },
+    "dependencies":  {
+                         "com.cysharp.r3":  "1.3.1"
+                     }
+}

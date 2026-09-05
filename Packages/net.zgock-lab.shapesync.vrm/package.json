@@ -1,0 +1,16 @@
+{
+    "name":  "net.zgock-lab.shapesync.vrm",
+    "version":  "0.2.0",
+    "displayName":  "ShapeSync VRM Integration",
+    "description":  "VRM integration companion package for ShapeSync.",
+    "unity":  "6000.0",
+    "license":  "MIT",
+    "author":  {
+                   "name":  "zgock999"
+               },
+    "dependencies":  {
+                         "com.vrmc.gltf":  "0.131.1",
+                         "com.vrmc.vrm":  "0.131.1",
+                         "net.zgock-lab.shapesync":  "0.2.0"
+                     }
+}

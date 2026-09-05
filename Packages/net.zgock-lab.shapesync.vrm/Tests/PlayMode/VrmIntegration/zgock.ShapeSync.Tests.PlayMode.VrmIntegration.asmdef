@@ -1,0 +1,28 @@
+{
+  "name": "zgock.ShapeSync.Tests.PlayMode.VrmIntegration",
+  "rootNamespace": "zgock.ShapeSync.Tests.PlayMode.VrmIntegration",
+  "references": [
+    "zgock.ShapeSync.Runtime",
+    "zgock.ShapeSync.Tests.Shared",
+    "zgock.ShapeSync.VrmIntegration.Runtime",
+    "VRM10",
+    "UniHumanoid",
+    "UniGLTF.Utils",
+    "SpringBoneJobs"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [
+    "UNITY_INCLUDE_TESTS",
+    "SHAPESYNC_USE_UNIVRM"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

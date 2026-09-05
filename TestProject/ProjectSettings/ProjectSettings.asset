@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!129 &1
+PlayerSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 28
+  productGUID: 3e9f3a3cb85c4e56baf9d4e7d83af3cc
+  companyName: zgock999
+  productName: ShapeSync Slim Test
+  scriptingDefineSymbols: {}
+  apiCompatibilityLevelPerPlatform: {}
+  apiCompatibilityLevel: 6
+  activeInputHandler: 1
+  m_ActiveColorSpace: 1

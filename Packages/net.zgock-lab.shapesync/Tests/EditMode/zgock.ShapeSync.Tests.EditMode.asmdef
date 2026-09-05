@@ -1,0 +1,23 @@
+{
+  "name": "zgock.ShapeSync.Tests.EditMode",
+  "rootNamespace": "zgock.ShapeSync.Tests.EditMode",
+  "references": [
+    "zgock.ShapeSync.Runtime",
+    "zgock.ShapeSync.Editor",
+    "zgock.ShapeSync.Tests.Shared"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": false,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

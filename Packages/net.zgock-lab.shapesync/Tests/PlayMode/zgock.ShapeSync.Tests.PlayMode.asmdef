@@ -1,0 +1,15 @@
+{
+  "name": "zgock.ShapeSync.Tests.PlayMode",
+  "rootNamespace": "zgock.ShapeSync.Tests.PlayMode",
+  "references": ["zgock.ShapeSync.Runtime", "zgock.ShapeSync.Tests.Shared"],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": true,
+  "precompiledReferences": ["nunit.framework.dll"],
+  "autoReferenced": false,
+  "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+  "versionDefines": [],
+  "noEngineReferences": false,
+  "optionalUnityReferences": ["TestAssemblies"]
+}

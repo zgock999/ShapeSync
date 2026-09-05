@@ -1,0 +1,181 @@
+#pragma kernel KFill
+#pragma kernel KCopy
+#pragma kernel KAlphaOver
+#pragma kernel KPremultipliedAlphaOver
+#pragma kernel KAlpha
+#pragma kernel KAdd
+#pragma kernel KSubtract
+#pragma kernel KMultiply
+#pragma kernel KYuv
+#pragma kernel KResample
+#pragma kernel KNormalWeightedBlend
+#pragma kernel KIngest
+#pragma kernel KPublish
+#pragma kernel KColorize
+
+Texture2D<float4> _SourceA;
+Texture2D<float4> _SourceB;
+Texture2D<float4> _SourceC;
+RWTexture2D<float4> _Destination;
+uint _Width;
+uint _Height;
+int2 _SourceExtent;
+int2 _SourceAOffset;
+int2 _SourceBOffset;
+int2 _SourceCOffset;
+int2 _DestinationOffset;
+float4 _FillColor;
+float _Weight;
+float4 _Colorize;
+
+int2 Dst(uint2 p) { return int2(p) + _DestinationOffset; }
+float4 A(uint2 p) { return _SourceA.Load(int3(int2(p) + _SourceAOffset, 0)); }
+float4 B(uint2 p) { return _SourceB.Load(int3(int2(p) + _SourceBOffset, 0)); }
+float4 C(uint2 p) { return _SourceC.Load(int3(int2(p) + _SourceCOffset, 0)); }
+
+float4 SampleBilinearClamp(Texture2D<float4> source, float2 uv)
+{
+    float2 position = uv * (float2)_SourceExtent - 0.5;
+    int2 lower = int2(floor(position));
+    float2 fraction = frac(position);
+    int2 upper = lower + 1;
+    lower = clamp(lower, int2(0, 0), _SourceExtent - 1);
+    upper = clamp(upper, int2(0, 0), _SourceExtent - 1);
+    lower += _SourceAOffset;
+    upper += _SourceAOffset;
+    float4 x0 = lerp(source.Load(int3(lower.x, lower.y, 0)), source.Load(int3(upper.x, lower.y, 0)), fraction.x);
+    float4 x1 = lerp(source.Load(int3(lower.x, upper.y, 0)), source.Load(int3(upper.x, upper.y, 0)), fraction.x);
+    return lerp(x0, x1, fraction.y);
+}
+
+[numthreads(8, 8, 1)]
+void KFill(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = _FillColor;
+}
+
+[numthreads(8, 8, 1)]
+void KCopy(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = A(id.xy);
+}
+
+[numthreads(8, 8, 1)]
+void KAlphaOver(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float4 foreground = A(id.xy);
+    float4 background = B(id.xy);
+    float alpha = foreground.a + background.a * (1.0 - foreground.a);
+    float3 rgb = alpha < 1e-8 ? 0.0 : (foreground.rgb * foreground.a + background.rgb * background.a * (1.0 - foreground.a)) / alpha;
+    _Destination[Dst(id.xy)] = float4(rgb, alpha);
+}
+
+[numthreads(8, 8, 1)]
+void KPremultipliedAlphaOver(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float4 foreground = A(id.xy);
+    float4 background = B(id.xy);
+    float alpha = foreground.a + background.a * (1.0 - foreground.a);
+    float3 rgb = foreground.rgb + background.rgb * (1.0 - foreground.a);
+    _Destination[Dst(id.xy)] = float4(rgb, alpha);
+}
+
+[numthreads(8, 8, 1)]
+void KAlpha(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float4 source = A(id.xy);
+    float3 gray = B(id.xy).rgb;
+    _Destination[Dst(id.xy)] = float4(source.rgb, (gray.r + gray.g + gray.b) / 3.0);
+}
+
+[numthreads(8, 8, 1)]
+void KAdd(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = A(id.xy) + B(id.xy);
+}
+
+[numthreads(8, 8, 1)]
+void KSubtract(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = A(id.xy) - B(id.xy);
+}
+
+[numthreads(8, 8, 1)]
+void KMultiply(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = A(id.xy) * B(id.xy);
+}
+
+[numthreads(8, 8, 1)]
+void KYuv(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float y = A(id.xy).r;
+    float u = B(id.xy).r - 0.5;
+    float v = C(id.xy).r - 0.5;
+    float3 rgb = saturate(float3(y + 1.5748 * v, y - 0.1873 * u - 0.4681 * v, y + 1.8556 * u));
+    _Destination[Dst(id.xy)] = float4(rgb, 1.0);
+}
+
+float3 HueRgb(float hue)
+{
+    float3 phase = abs(frac(hue + float3(0.0, 0.666666667, 0.333333333)) * 6.0 - 3.0);
+    return saturate(phase - 1.0);
+}
+
+[numthreads(8, 8, 1)]
+void KColorize(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float4 source = A(id.xy);
+    // Rec.709 full-range forward coefficients paired with the inverse below.
+    float y = saturate(dot(source.rgb, float3(0.2126, 0.7152, 0.0722)) + _Colorize.z);
+    float3 hueRgb = HueRgb(_Colorize.x);
+    float hueY = dot(hueRgb, float3(0.2126, 0.7152, 0.0722));
+    float u = 0.5389 * (hueRgb.b - hueY) * _Colorize.y;
+    float v = 0.6350 * (hueRgb.r - hueY) * _Colorize.y;
+    float3 rgb = saturate(float3(y + 1.5748 * v, y - 0.1873 * u - 0.4681 * v, y + 1.8556 * u));
+    _Destination[Dst(id.xy)] = float4(rgb, source.a);
+}
+
+[numthreads(8, 8, 1)]
+void KResample(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float2 uv = (float2(id.xy) + 0.5) / float2(_Width, _Height);
+    _Destination[Dst(id.xy)] = SampleBilinearClamp(_SourceA, uv);
+}
+
+[numthreads(8, 8, 1)]
+void KNormalWeightedBlend(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float3 baseNormal = A(id.xy).rgb * 2.0 - 1.0;
+    float3 detailNormal = B(id.xy).rgb * 2.0 - 1.0;
+    float3 blended = (1.0 - _Weight) * baseNormal + _Weight * detailNormal;
+    float lengthSquared = dot(blended, blended);
+    float3 encoded = lengthSquared < 1e-8 ? float3(0.5, 0.5, 1.0) : normalize(blended) * 0.5 + 0.5;
+    _Destination[Dst(id.xy)] = float4(encoded, 1.0);
+}
+
+[numthreads(8, 8, 1)]
+void KIngest(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = A(id.xy);
+}
+
+[numthreads(8, 8, 1)]
+void KPublish(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = A(id.xy);
+}

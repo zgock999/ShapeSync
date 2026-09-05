@@ -1,0 +1,22 @@
+{
+  "name": "zgock.ShapeSync.VrmIntegration.Runtime",
+  "rootNamespace": "zgock.ShapeSync.VrmIntegration",
+  "references": [
+    "zgock.ShapeSync.Runtime",
+    "VRM10",
+    "UniHumanoid",
+    "UniGLTF.Utils",
+    "SpringBoneJobs"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [
+    "SHAPESYNC_USE_UNIVRM"
+  ],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

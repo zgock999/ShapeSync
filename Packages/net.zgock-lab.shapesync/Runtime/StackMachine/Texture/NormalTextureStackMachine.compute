@@ -1,0 +1,46 @@
+#pragma kernel KNormalBase
+#pragma kernel KNormalDeltaAdd
+#pragma kernel KNormalFinalize
+
+Texture2D<float4> _SourceA;
+Texture2D<float4> _SourceB;
+Texture2D<float4> _SourceC;
+RWTexture2D<float4> _Destination;
+uint _Width;
+uint _Height;
+int2 _SourceAOffset;
+int2 _SourceBOffset;
+int2 _SourceCOffset;
+int2 _DestinationOffset;
+float _Weight;
+
+int2 Dst(uint2 p) { return int2(p) + _DestinationOffset; }
+float4 A(uint2 p) { return _SourceA.Load(int3(int2(p) + _SourceAOffset, 0)); }
+float4 B(uint2 p) { return _SourceB.Load(int3(int2(p) + _SourceBOffset, 0)); }
+float4 C(uint2 p) { return _SourceC.Load(int3(int2(p) + _SourceCOffset, 0)); }
+float3 Decode(float3 encoded) { return encoded * 2.0 - 1.0; }
+
+[numthreads(8, 8, 1)]
+void KNormalBase(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    _Destination[Dst(id.xy)] = float4(Decode(A(id.xy).rgb), 1.0);
+}
+
+[numthreads(8, 8, 1)]
+void KNormalDeltaAdd(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float3 normalVector = A(id.xy).rgb + _Weight * (Decode(C(id.xy).rgb) - Decode(B(id.xy).rgb));
+    _Destination[Dst(id.xy)] = float4(normalVector, 1.0);
+}
+
+[numthreads(8, 8, 1)]
+void KNormalFinalize(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= _Width || id.y >= _Height) return;
+    float3 normalVector = A(id.xy).rgb;
+    float lengthSquared = dot(normalVector, normalVector);
+    float3 encoded = lengthSquared < 1e-8 ? float3(0.5, 0.5, 1.0) : normalize(normalVector) * 0.5 + 0.5;
+    _Destination[Dst(id.xy)] = float4(encoded, 1.0);
+}
