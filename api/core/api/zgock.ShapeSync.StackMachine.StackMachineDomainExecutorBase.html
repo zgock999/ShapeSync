@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class StackMachineDomainExecutorBase | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class StackMachineDomainExecutorBase | ShapeSync API Reference ">
+      
+      <meta name="description" content="Domain executor base with overridable cache policy and transaction lifecycle hooks.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase">
+
+
+
+  <h1 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase" class="text-break">
+Class StackMachineDomainExecutorBase  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.StackMachine.html">StackMachine</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Domain executor base with overridable cache policy and transaction lifecycle hooks.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class StackMachineDomainExecutorBase : IStackMachineDomainExecutor, IStackMachineDomainCompiler</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">StackMachineDomainExecutorBase</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainExecutor.html">IStackMachineDomainExecutor</a></div>
+      <div><a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainCompiler.html">IStackMachineDomainCompiler</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="zgock.ShapeSync.StackMachine.MeshExecutor.html">MeshExecutor</a></div>
+      <div><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutor.html">TextureExecutor</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_ExecutionMode_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.ExecutionMode*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_ExecutionMode" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.ExecutionMode">
+  ExecutionMode
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the domain-selected execution strategy.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract StackMachineDomainExecutionMode ExecutionMode { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDomainExecutionMode.html">StackMachineDomainExecutionMode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_ExecutionMode_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Selecting <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDomainExecutionMode.html#zgock_ShapeSync_StackMachine_StackMachineDomainExecutionMode_BytecodeTransaction">BytecodeTransaction</a> does not itself implement resource rollback; the domain executor owns that work.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_CanReusePlan_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.CanReusePlan*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_CanReusePlan_zgock_ShapeSync_StackMachine_StackMachinePlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.CanReusePlan(zgock.ShapeSync.StackMachine.StackMachinePlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.IStackMachineDomainPlan)">
+  CanReusePlan(StackMachinePlan, IStackMachineBindingContext, IStackMachineDomainPlan)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether a cached domain plan remains reusable for this context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool CanReusePlan(StackMachinePlan plan, IStackMachineBindingContext bindingContext, IStackMachineDomainPlan cachedPlan)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachinePlan.html">StackMachinePlan</a></dt>
+    <dd><p>Immutable common plan from which <code class="paramref">cachedPlan</code> was compiled.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>cachedPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Previously compiled immutable domain artifact.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the cached artifact may be executed for this context.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_CanReusePlan_zgock_ShapeSync_StackMachine_StackMachinePlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The default disables domain-plan reuse. Override only when the domain can prove that its binding context and artifact are still compatible.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnFailed_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnFailed*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnFailed_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnFailed(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult)">
+  OnFailed(IStackMachineDomainPlan, IStackMachineBindingContext, StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lifecycle hook raised after a domain execution failure and before rollback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnFailed(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact whose execution failed.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Current lifecycle result at <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineTransactionStage.html#zgock_ShapeSync_StackMachine_StackMachineTransactionStage_Failed">Failed</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnRollbackCompleted_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnRollbackCompleted*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnRollbackCompleted_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnRollbackCompleted(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult)">
+  OnRollbackCompleted(IStackMachineDomainPlan, IStackMachineBindingContext, StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lifecycle hook raised after successful domain rollback.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnRollbackCompleted(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact that was rolled back.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Current lifecycle result at <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineTransactionStage.html#zgock_ShapeSync_StackMachine_StackMachineTransactionStage_RollbackCompleted">RollbackCompleted</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnStarted_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnStarted*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnStarted_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnStarted(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult)">
+  OnStarted(IStackMachineDomainPlan, IStackMachineBindingContext, StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lifecycle hook raised before domain execution.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnStarted(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact about to execute.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Current lifecycle result at <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineTransactionStage.html#zgock_ShapeSync_StackMachine_StackMachineTransactionStage_Started">Started</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnSucceeded_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnSucceeded*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_OnSucceeded_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.OnSucceeded(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult)">
+  OnSucceeded(IStackMachineDomainPlan, IStackMachineBindingContext, StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lifecycle hook raised after successful domain execution.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnSucceeded(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact that completed.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Current lifecycle result at <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineTransactionStage.html#zgock_ShapeSync_StackMachine_StackMachineTransactionStage_Succeeded">Succeeded</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_RequiresReevaluation_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.RequiresReevaluation*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_RequiresReevaluation_zgock_ShapeSync_StackMachine_StackMachinePlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.RequiresReevaluation(zgock.ShapeSync.StackMachine.StackMachinePlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.IStackMachineDomainPlan)">
+  RequiresReevaluation(StackMachinePlan, IStackMachineBindingContext, IStackMachineDomainPlan)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether domain state requires a plan to be reevaluated.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool RequiresReevaluation(StackMachinePlan plan, IStackMachineBindingContext bindingContext, IStackMachineDomainPlan cachedPlan)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachinePlan.html">StackMachinePlan</a></dt>
+    <dd><p>Immutable common plan from which <code class="paramref">cachedPlan</code> was compiled.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>cachedPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Previously compiled immutable domain artifact.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the cached artifact must not be used without domain reevaluation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_RequiresReevaluation_zgock_ShapeSync_StackMachine_StackMachinePlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan__remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The default is the complement of <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.html#zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_CanReusePlan_zgock_ShapeSync_StackMachine_StackMachinePlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_">CanReusePlan(StackMachinePlan, IStackMachineBindingContext, IStackMachineDomainPlan)</a>. Override both methods only when the domain needs a different explicit policy.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryCompileDomainPlan_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryCompileDomainPlan*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryCompileDomainPlan_zgock_ShapeSync_StackMachine_StackMachinePlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryCompileDomainPlan(zgock.ShapeSync.StackMachine.StackMachinePlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.IStackMachineDomainPlan@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryCompileDomainPlan(StackMachinePlan, IStackMachineBindingContext, out IStackMachineDomainPlan, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compiles a validated common plan using a domain-owned binding context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract bool TryCompileDomainPlan(StackMachinePlan plan, IStackMachineBindingContext bindingContext, out IStackMachineDomainPlan domainPlan, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachinePlan.html">StackMachinePlan</a></dt>
+    <dd><p>Immutable common plan produced by <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineCompiler.html">StackMachineCompiler</a>.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Domain-owned resolver for the plan's logical bindings.</p>
+</dd>
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Receives an immutable domain artifact when compilation succeeds.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>Receives a structured common or domain diagnostic when compilation fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the plan and context can produce a domain artifact without side effects.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryExecute_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryExecute*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryExecute_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult__" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryExecute(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult@)">
+  TryExecute(IStackMachineDomainPlan, IStackMachineBindingContext, out StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Runs the domain plan, drives the common transaction lifecycle, and attempts rollback after failure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryExecute(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, out StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact to execute.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Receives lifecycle, diagnostic, and optional interpreter state.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when execution succeeds.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryExecuteDomainPlan_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryExecuteDomainPlan*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryExecuteDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryExecuteDomainPlan(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryExecuteDomainPlan(IStackMachineDomainPlan, IStackMachineBindingContext, StackMachineExecutionResult, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Executes domain-owned side effects for a compiled plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract bool TryExecuteDomainPlan(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, StackMachineExecutionResult result, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact to execute.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Mutable common lifecycle result for optional interpreter state.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>Receives the structured domain failure when execution fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when domain effects completed successfully.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryExecuteDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Override to perform the domain's actual work. Return a structured diagnostic instead of throwing for expected validation or execution failures. The base invokes rollback when this method returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryRollbackDomainPlan_" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryRollbackDomainPlan*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryRollbackDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.TryRollbackDomainPlan(zgock.ShapeSync.StackMachine.IStackMachineDomainPlan,zgock.ShapeSync.StackMachine.IStackMachineBindingContext,zgock.ShapeSync.StackMachine.StackMachineExecutionResult,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryRollbackDomainPlan(IStackMachineDomainPlan, IStackMachineBindingContext, StackMachineExecutionResult, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Rolls back domain-owned effects after a failed execution. The default has no rollback work.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool TryRollbackDomainPlan(IStackMachineDomainPlan domainPlan, IStackMachineBindingContext bindingContext, StackMachineExecutionResult result, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>domainPlan</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+    <dd><p>Immutable domain artifact whose execution failed.</p>
+</dd>
+    <dt><code>bindingContext</code> <a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+    <dd><p>Current domain-owned resolver context.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>Mutable common lifecycle result for rollback evidence.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>Receives a structured rollback failure diagnostic.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when rollback completed or no rollback work was required.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_StackMachineDomainExecutorBase_TryRollbackDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineDomainPlan_zgock_ShapeSync_StackMachine_IStackMachineBindingContext_zgock_ShapeSync_StackMachine_StackMachineExecutionResult_zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Override only for effects that the domain can safely reverse. Returning <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> leaves the result at <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineTransactionStage.html#zgock_ShapeSync_StackMachine_StackMachineTransactionStage_Failed">Failed</a> and may replace its diagnostic.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

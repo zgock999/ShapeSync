@@ -1,0 +1,1134 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: zgock.ShapeSync.VrmIntegration
+  name: zgock.ShapeSync.VrmIntegration
+  href: api/zgock.ShapeSync.VrmIntegration.html
+  commentId: N:zgock.ShapeSync.VrmIntegration
+  fullName: zgock.ShapeSync.VrmIntegration
+  nameWithType: zgock.ShapeSync.VrmIntegration
+- uid: zgock.ShapeSync.VrmIntegration.Editor
+  name: zgock.ShapeSync.VrmIntegration.Editor
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.html
+  commentId: N:zgock.ShapeSync.VrmIntegration.Editor
+  fullName: zgock.ShapeSync.VrmIntegration.Editor
+  nameWithType: zgock.ShapeSync.VrmIntegration.Editor
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage
+  name: HumanoidVrmAssetStage
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage
+  nameWithType: HumanoidVrmAssetStage
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetFolder
+  name: AssetFolder
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage_AssetFolder
+  commentId: P:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetFolder
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetFolder
+  nameWithType: HumanoidVrmAssetStage.AssetFolder
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetFolder*
+  name: AssetFolder
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage_AssetFolder_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetFolder
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetFolder
+  nameWithType: HumanoidVrmAssetStage.AssetFolder
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetPaths
+  name: AssetPaths
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage_AssetPaths
+  commentId: P:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetPaths
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetPaths
+  nameWithType: HumanoidVrmAssetStage.AssetPaths
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetPaths*
+  name: AssetPaths
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage_AssetPaths_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetPaths
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.AssetPaths
+  nameWithType: HumanoidVrmAssetStage.AssetPaths
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.IsComplete
+  name: IsComplete
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage_IsComplete
+  commentId: P:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.IsComplete
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.IsComplete
+  nameWithType: HumanoidVrmAssetStage.IsComplete
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.IsComplete*
+  name: IsComplete
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage_IsComplete_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.IsComplete
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.IsComplete
+  nameWithType: HumanoidVrmAssetStage.IsComplete
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager
+  name: HumanoidVrmAssetStager
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager
+  nameWithType: HumanoidVrmAssetStager
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder(System.String,System.String,System.String@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TryResolveAssetFolder(string, string, out string, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStager_TryResolveAssetFolder_System_String_System_String_System_String__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder(System.String,System.String,System.String@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TryResolveAssetFolder(String, String, String, StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder(string, string, out string, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder(String, String, String, zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: HumanoidVrmAssetStager.TryResolveAssetFolder(string, string, out string, out StackMachineDiagnostic)
+  nameWithType.vb: HumanoidVrmAssetStager.TryResolveAssetFolder(String, String, String, StackMachineDiagnostic)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder*
+  name: TryResolveAssetFolder
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStager_TryResolveAssetFolder_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryResolveAssetFolder
+  nameWithType: HumanoidVrmAssetStager.TryResolveAssetFolder
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage(System.String,System.String,System.String,zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult,zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TryStage(string, string, string, VrmTransportPhysicsResult, out HumanoidVrmAssetStage, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStager_TryStage_System_String_System_String_System_String_zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStage__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage(System.String,System.String,System.String,zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult,zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TryStage(String, String, String, VrmTransportPhysicsResult, HumanoidVrmAssetStage, StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage(string, string, string, zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult, out zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage(String, String, String, zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult, zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage, zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: HumanoidVrmAssetStager.TryStage(string, string, string, VrmTransportPhysicsResult, out HumanoidVrmAssetStage, out StackMachineDiagnostic)
+  nameWithType.vb: HumanoidVrmAssetStager.TryStage(String, String, String, VrmTransportPhysicsResult, HumanoidVrmAssetStage, StackMachineDiagnostic)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage*
+  name: TryStage
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmAssetStager_TryStage_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.TryStage
+  nameWithType: HumanoidVrmAssetStager.TryStage
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor
+  name: HumanoidVrmTransportExecutor
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor
+  nameWithType: HumanoidVrmTransportExecutor
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.ReleaseAssetOwnership(System.IDisposable)
+  name: ReleaseAssetOwnership(IDisposable)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_ReleaseAssetOwnership_System_IDisposable_
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.ReleaseAssetOwnership(System.IDisposable)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.ReleaseAssetOwnership(System.IDisposable)
+  nameWithType: HumanoidVrmTransportExecutor.ReleaseAssetOwnership(IDisposable)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.ReleaseAssetOwnership*
+  name: ReleaseAssetOwnership
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_ReleaseAssetOwnership_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.ReleaseAssetOwnership
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.ReleaseAssetOwnership
+  nameWithType: HumanoidVrmTransportExecutor.ReleaseAssetOwnership
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets(System.IDisposable,UnityEngine.GameObject,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TryFinalizeAssets(IDisposable, GameObject, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_TryFinalizeAssets_System_IDisposable_UnityEngine_GameObject_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets(System.IDisposable,UnityEngine.GameObject,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TryFinalizeAssets(IDisposable, GameObject, StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets(System.IDisposable, UnityEngine.GameObject, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets(System.IDisposable, UnityEngine.GameObject, zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: HumanoidVrmTransportExecutor.TryFinalizeAssets(IDisposable, GameObject, out StackMachineDiagnostic)
+  nameWithType.vb: HumanoidVrmTransportExecutor.TryFinalizeAssets(IDisposable, GameObject, StackMachineDiagnostic)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets*
+  name: TryFinalizeAssets
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_TryFinalizeAssets_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryFinalizeAssets
+  nameWithType: HumanoidVrmTransportExecutor.TryFinalizeAssets
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets(System.IDisposable,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String}@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TryStageAssets(IDisposable, string, string, string, out IReadOnlyList<string>, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_TryStageAssets_System_IDisposable_System_String_System_String_System_String_System_Collections_Generic_IReadOnlyList_System_String___zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets(System.IDisposable,System.String,System.String,System.String,System.Collections.Generic.IReadOnlyList{System.String}@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TryStageAssets(IDisposable, String, String, String, IReadOnlyList(Of String), StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets(System.IDisposable, string, string, string, out System.Collections.Generic.IReadOnlyList<string>, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets(System.IDisposable, String, String, String, System.Collections.Generic.IReadOnlyList(Of String), zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: HumanoidVrmTransportExecutor.TryStageAssets(IDisposable, string, string, string, out IReadOnlyList<string>, out StackMachineDiagnostic)
+  nameWithType.vb: HumanoidVrmTransportExecutor.TryStageAssets(IDisposable, String, String, String, IReadOnlyList(Of String), StackMachineDiagnostic)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets*
+  name: TryStageAssets
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_TryStageAssets_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryStageAssets
+  nameWithType: HumanoidVrmTransportExecutor.TryStageAssets
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport(UnityEngine.GameObject,UnityEngine.GameObject,zgock.ShapeSync.StackMachine.ShapeSyncDocument,zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmTransportProvenance,System.IDisposable@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TryTransport(GameObject, GameObject, ShapeSyncDocument, HumanoidVrmTransportProvenance, out IDisposable, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_TryTransport_UnityEngine_GameObject_UnityEngine_GameObject_zgock_ShapeSync_StackMachine_ShapeSyncDocument_zgock_ShapeSync_StackMachine_Humanoid_HumanoidVrmTransportProvenance_System_IDisposable__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport(UnityEngine.GameObject,UnityEngine.GameObject,zgock.ShapeSync.StackMachine.ShapeSyncDocument,zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmTransportProvenance,System.IDisposable@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TryTransport(GameObject, GameObject, ShapeSyncDocument, HumanoidVrmTransportProvenance, IDisposable, StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport(UnityEngine.GameObject, UnityEngine.GameObject, zgock.ShapeSync.StackMachine.ShapeSyncDocument, zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmTransportProvenance, out System.IDisposable, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport(UnityEngine.GameObject, UnityEngine.GameObject, zgock.ShapeSync.StackMachine.ShapeSyncDocument, zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmTransportProvenance, System.IDisposable, zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: HumanoidVrmTransportExecutor.TryTransport(GameObject, GameObject, ShapeSyncDocument, HumanoidVrmTransportProvenance, out IDisposable, out StackMachineDiagnostic)
+  nameWithType.vb: HumanoidVrmTransportExecutor.TryTransport(GameObject, GameObject, ShapeSyncDocument, HumanoidVrmTransportProvenance, IDisposable, StackMachineDiagnostic)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport*
+  name: TryTransport
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html#zgock_ShapeSync_VrmIntegration_Editor_HumanoidVrmTransportExecutor_TryTransport_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.TryTransport
+  nameWithType: HumanoidVrmTransportExecutor.TryTransport
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter
+  name: ShapeSyncVrmReferenceImporter
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter
+  nameWithType: ShapeSyncVrmReferenceImporter
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference(System.String,System.String,System.String,UnityEngine.GameObject,System.String@)
+  name: TryImportExpressionReference(string, string, string, GameObject, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportExpressionReference_System_String_System_String_System_String_UnityEngine_GameObject_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference(System.String,System.String,System.String,UnityEngine.GameObject,System.String@)
+  name.vb: TryImportExpressionReference(String, String, String, GameObject, String)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference(string, string, string, UnityEngine.GameObject, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference(String, String, String, UnityEngine.GameObject, String)
+  nameWithType: ShapeSyncVrmReferenceImporter.TryImportExpressionReference(string, string, string, GameObject, out string)
+  nameWithType.vb: ShapeSyncVrmReferenceImporter.TryImportExpressionReference(String, String, String, GameObject, String)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference*
+  name: TryImportExpressionReference
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportExpressionReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference
+  nameWithType: ShapeSyncVrmReferenceImporter.TryImportExpressionReference
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(System.String,System.String,UnityEngine.GameObject,System.String@)
+  name: TryImportFigurePhysicsReference(string, string, GameObject, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportFigurePhysicsReference_System_String_System_String_UnityEngine_GameObject_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(System.String,System.String,UnityEngine.GameObject,System.String@)
+  name.vb: TryImportFigurePhysicsReference(String, String, GameObject, String)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(string, string, UnityEngine.GameObject, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(String, String, UnityEngine.GameObject, String)
+  nameWithType: ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(string, string, GameObject, out string)
+  nameWithType.vb: ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(String, String, GameObject, String)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference*
+  name: TryImportFigurePhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportFigurePhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference
+  nameWithType: ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(System.String,System.String,UnityEngine.GameObject,System.String@)
+  name: TryImportMeshOutfitPhysicsReference(string, string, GameObject, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportMeshOutfitPhysicsReference_System_String_System_String_UnityEngine_GameObject_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(System.String,System.String,UnityEngine.GameObject,System.String@)
+  name.vb: TryImportMeshOutfitPhysicsReference(String, String, GameObject, String)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(string, string, UnityEngine.GameObject, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(String, String, UnityEngine.GameObject, String)
+  nameWithType: ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(string, string, GameObject, out string)
+  nameWithType.vb: ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(String, String, GameObject, String)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference*
+  name: TryImportMeshOutfitPhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportMeshOutfitPhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference
+  nameWithType: ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(System.String,System.String,System.String,System.String@)
+  name: TryRemoveFigureExpressionReference(string, string, string, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigureExpressionReference_System_String_System_String_System_String_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(System.String,System.String,System.String,System.String@)
+  name.vb: TryRemoveFigureExpressionReference(String, String, String, String)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(string, string, string, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(String, String, String, String)
+  nameWithType: ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(string, string, string, out string)
+  nameWithType.vb: ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(String, String, String, String)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference*
+  name: TryRemoveFigureExpressionReference
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigureExpressionReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference
+  nameWithType: ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(System.String,System.String,System.String@)
+  name: TryRemoveFigurePhysicsReference(string, string, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigurePhysicsReference_System_String_System_String_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(System.String,System.String,System.String@)
+  name.vb: TryRemoveFigurePhysicsReference(String, String, String)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(string, string, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(String, String, String)
+  nameWithType: ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(string, string, out string)
+  nameWithType.vb: ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(String, String, String)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference*
+  name: TryRemoveFigurePhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigurePhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference
+  nameWithType: ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(System.String,System.String,System.String@)
+  name: TryRemoveMeshOutfitPhysicsReference(string, string, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveMeshOutfitPhysicsReference_System_String_System_String_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(System.String,System.String,System.String@)
+  name.vb: TryRemoveMeshOutfitPhysicsReference(String, String, String)
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(string, string, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(String, String, String)
+  nameWithType: ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(string, string, out string)
+  nameWithType.vb: ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(String, String, String)
+- uid: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference*
+  name: TryRemoveMeshOutfitPhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html#zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveMeshOutfitPhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference
+  nameWithType: ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData
+  name: ShapeSyncOutfitSpringBoneData
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData
+  nameWithType: ShapeSyncOutfitSpringBoneData
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.ColliderGroups
+  name: ColliderGroups
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.html#zgock_ShapeSync_VrmIntegration_ShapeSyncOutfitSpringBoneData_ColliderGroups
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.ColliderGroups
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.ColliderGroups
+  nameWithType: ShapeSyncOutfitSpringBoneData.ColliderGroups
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.SpringColliderGroupNames
+  name: SpringColliderGroupNames
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.html#zgock_ShapeSync_VrmIntegration_ShapeSyncOutfitSpringBoneData_SpringColliderGroupNames
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.SpringColliderGroupNames
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.SpringColliderGroupNames
+  nameWithType: ShapeSyncOutfitSpringBoneData.SpringColliderGroupNames
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.Springs
+  name: Springs
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.html#zgock_ShapeSync_VrmIntegration_ShapeSyncOutfitSpringBoneData_Springs
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.Springs
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.Springs
+  nameWithType: ShapeSyncOutfitSpringBoneData.Springs
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry
+  name: ShapeSyncPhysicsTransportEntry
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry
+  nameWithType: ShapeSyncPhysicsTransportEntry
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.colliderGroupIndex
+  name: colliderGroupIndex
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportEntry_colliderGroupIndex
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.colliderGroupIndex
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.colliderGroupIndex
+  nameWithType: ShapeSyncPhysicsTransportEntry.colliderGroupIndex
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.sourceKey
+  name: sourceKey
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportEntry_sourceKey
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.sourceKey
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.sourceKey
+  nameWithType: ShapeSyncPhysicsTransportEntry.sourceKey
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.springIndex
+  name: springIndex
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportEntry_springIndex
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.springIndex
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.springIndex
+  nameWithType: ShapeSyncPhysicsTransportEntry.springIndex
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker
+  name: ShapeSyncPhysicsTransportMarker
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker
+  nameWithType: ShapeSyncPhysicsTransportMarker
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.runId
+  name: runId
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportMarker_runId
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.runId
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.runId
+  nameWithType: ShapeSyncPhysicsTransportMarker.runId
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourceComponentOrdinal
+  name: sourceComponentOrdinal
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportMarker_sourceComponentOrdinal
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourceComponentOrdinal
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourceComponentOrdinal
+  nameWithType: ShapeSyncPhysicsTransportMarker.sourceComponentOrdinal
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourcePath
+  name: sourcePath
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportMarker_sourcePath
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourcePath
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourcePath
+  nameWithType: ShapeSyncPhysicsTransportMarker.sourcePath
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourceType
+  name: sourceType
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportMarker_sourceType
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourceType
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.sourceType
+  nameWithType: ShapeSyncPhysicsTransportMarker.sourceType
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState
+  name: ShapeSyncPhysicsTransportState
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState
+  nameWithType: ShapeSyncPhysicsTransportState
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.entries
+  name: entries
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportState_entries
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.entries
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.entries
+  nameWithType: ShapeSyncPhysicsTransportState.entries
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.ownedColliderGroups
+  name: ownedColliderGroups
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportState_ownedColliderGroups
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.ownedColliderGroups
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.ownedColliderGroups
+  nameWithType: ShapeSyncPhysicsTransportState.ownedColliderGroups
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.ownedSprings
+  name: ownedSprings
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportState_ownedSprings
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.ownedSprings
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.ownedSprings
+  nameWithType: ShapeSyncPhysicsTransportState.ownedSprings
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.runId
+  name: runId
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportState_runId
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.runId
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.runId
+  nameWithType: ShapeSyncPhysicsTransportState.runId
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.sourceRootName
+  name: sourceRootName
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html#zgock_ShapeSync_VrmIntegration_ShapeSyncPhysicsTransportState_sourceRootName
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.sourceRootName
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.sourceRootName
+  nameWithType: ShapeSyncPhysicsTransportState.sourceRootName
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry
+  name: ShapeSyncVrmDatabaseRegistry
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry
+  nameWithType: ShapeSyncVrmDatabaseRegistry
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.DefaultGenerationVrmPath
+  name: DefaultGenerationVrmPath
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_DefaultGenerationVrmPath
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.DefaultGenerationVrmPath
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.DefaultGenerationVrmPath
+  nameWithType: ShapeSyncVrmDatabaseRegistry.DefaultGenerationVrmPath
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureId
+  name: FeatureId
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FeatureId
+  commentId: F:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureId
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureId
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FeatureId
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker
+  name: FeatureMarker
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FeatureMarker
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FeatureMarker
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker*
+  name: FeatureMarker
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FeatureMarker_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FeatureMarker
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference
+  name: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+  name: FigureName
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_FigureName
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName*
+  name: FigureName
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_FigureName_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.FigureName
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+  name: OwnedAssets
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_OwnedAssets
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets*
+  name: OwnedAssets
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_OwnedAssets_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnedAssets
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+  name: OwnerPrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_OwnerPrefab
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab*
+  name: OwnerPrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_OwnerPrefab_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.OwnerPrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+  name: ReferencePrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_ReferencePrefab
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab*
+  name: ReferencePrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_ReferencePrefab_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ReferencePrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+  name: ShapeKey
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_ShapeKey
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey*
+  name: ShapeKey
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReference_ShapeKey_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.ShapeKey
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+  name: FigureExpressionReferences
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReferences
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences*
+  name: FigureExpressionReferences
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReferences_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference
+  name: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+  name: FigureName
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_FigureName
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName*
+  name: FigureName
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_FigureName_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.FigureName
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+  name: OwnedAssets
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_OwnedAssets
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets*
+  name: OwnedAssets
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_OwnedAssets_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnedAssets
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+  name: OwnerPrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_OwnerPrefab
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab*
+  name: OwnerPrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_OwnerPrefab_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.OwnerPrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+  name: ReferencePrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_ReferencePrefab
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab*
+  name: ReferencePrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReference_ReferencePrefab_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.ReferencePrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+  name: FigurePhysicsReferences
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReferences
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences*
+  name: FigurePhysicsReferences
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReferences_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+  nameWithType: ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+  name: GenerationVrmPath
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_GenerationVrmPath
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+  nameWithType: ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath*
+  name: GenerationVrmPath
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_GenerationVrmPath_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+  nameWithType: ShapeSyncVrmDatabaseRegistry.GenerationVrmPath
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+  name: HasValidFeatureMarker
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_HasValidFeatureMarker
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+  nameWithType: ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker*
+  name: HasValidFeatureMarker
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_HasValidFeatureMarker_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+  nameWithType: ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference
+  name: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+  name: OutfitIdentity
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_OutfitIdentity
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity*
+  name: OutfitIdentity
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_OutfitIdentity_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OutfitIdentity
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+  name: OwnedAssets
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_OwnedAssets
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets*
+  name: OwnedAssets
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_OwnedAssets_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnedAssets
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+  name: OwnerPrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_OwnerPrefab
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab*
+  name: OwnerPrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_OwnerPrefab_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.OwnerPrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+  name: ReferencePrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_ReferencePrefab
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab*
+  name: ReferencePrefab
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReference_ReferencePrefab_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.ReferencePrefab
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+  name: MeshOutfitPhysicsReferences
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReferences
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences*
+  name: MeshOutfitPhysicsReferences
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReferences_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+  nameWithType: ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker(zgock.ShapeSync.ShapeSyncDatabaseOptionalFeatureMarker)
+  name: SetFeatureMarker(ShapeSyncDatabaseOptionalFeatureMarker)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_SetFeatureMarker_zgock_ShapeSync_ShapeSyncDatabaseOptionalFeatureMarker_
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker(zgock.ShapeSync.ShapeSyncDatabaseOptionalFeatureMarker)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker(zgock.ShapeSync.ShapeSyncDatabaseOptionalFeatureMarker)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.SetFeatureMarker(ShapeSyncDatabaseOptionalFeatureMarker)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker*
+  name: SetFeatureMarker
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_SetFeatureMarker_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker
+  nameWithType: ShapeSyncVrmDatabaseRegistry.SetFeatureMarker
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(System.String,System.String,UnityEngine.GameObject@)
+  name: TryRemoveFigureExpressionReference(string, string, out GameObject)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigureExpressionReference_System_String_System_String_UnityEngine_GameObject__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(System.String,System.String,UnityEngine.GameObject@)
+  name.vb: TryRemoveFigureExpressionReference(String, String, GameObject)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(string, string, out UnityEngine.GameObject)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(String, String, UnityEngine.GameObject)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(string, string, out GameObject)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(String, String, GameObject)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference*
+  name: TryRemoveFigureExpressionReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigureExpressionReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(System.String,UnityEngine.GameObject@)
+  name: TryRemoveFigurePhysicsReference(string, out GameObject)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigurePhysicsReference_System_String_UnityEngine_GameObject__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(System.String,UnityEngine.GameObject@)
+  name.vb: TryRemoveFigurePhysicsReference(String, GameObject)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(string, out UnityEngine.GameObject)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(String, UnityEngine.GameObject)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(string, out GameObject)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(String, GameObject)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference*
+  name: TryRemoveFigurePhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigurePhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(System.String,UnityEngine.GameObject@)
+  name: TryRemoveMeshOutfitPhysicsReference(string, out GameObject)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveMeshOutfitPhysicsReference_System_String_UnityEngine_GameObject__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(System.String,UnityEngine.GameObject@)
+  name.vb: TryRemoveMeshOutfitPhysicsReference(String, GameObject)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(string, out UnityEngine.GameObject)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(String, UnityEngine.GameObject)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(string, out GameObject)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(String, GameObject)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference*
+  name: TryRemoveMeshOutfitPhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveMeshOutfitPhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(System.String,System.String@)
+  name: TrySetGenerationVrmPath(string, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TrySetGenerationVrmPath_System_String_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(System.String,System.String@)
+  name.vb: TrySetGenerationVrmPath(String, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(string, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(String, String)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(string, out string)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(String, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath*
+  name: TrySetGenerationVrmPath
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TrySetGenerationVrmPath_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(System.String,System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)
+  name: TryUpsertFigureExpressionReference(string, string, GameObject, GameObject, IReadOnlyList<Object>, out GameObject, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigureExpressionReference_System_String_System_String_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_Object__UnityEngine_GameObject__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(System.String,System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)
+  name.vb: TryUpsertFigureExpressionReference(String, String, GameObject, GameObject, IReadOnlyList(Of Object), GameObject, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(string, string, UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList<UnityEngine.Object>, out UnityEngine.GameObject, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(String, String, UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList(Of UnityEngine.Object), UnityEngine.GameObject, String)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(string, string, GameObject, GameObject, IReadOnlyList<Object>, out GameObject, out string)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(String, String, GameObject, GameObject, IReadOnlyList(Of Object), GameObject, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference*
+  name: TryUpsertFigureExpressionReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigureExpressionReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)
+  name: TryUpsertFigurePhysicsReference(string, GameObject, GameObject, IReadOnlyList<Object>, out GameObject, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigurePhysicsReference_System_String_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_Object__UnityEngine_GameObject__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)
+  name.vb: TryUpsertFigurePhysicsReference(String, GameObject, GameObject, IReadOnlyList(Of Object), GameObject, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(string, UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList<UnityEngine.Object>, out UnityEngine.GameObject, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(String, UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList(Of UnityEngine.Object), UnityEngine.GameObject, String)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(string, GameObject, GameObject, IReadOnlyList<Object>, out GameObject, out string)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(String, GameObject, GameObject, IReadOnlyList(Of Object), GameObject, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference*
+  name: TryUpsertFigurePhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigurePhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)
+  name: TryUpsertMeshOutfitPhysicsReference(string, GameObject, GameObject, IReadOnlyList<Object>, out GameObject, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertMeshOutfitPhysicsReference_System_String_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_Object__UnityEngine_GameObject__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)
+  name.vb: TryUpsertMeshOutfitPhysicsReference(String, GameObject, GameObject, IReadOnlyList(Of Object), GameObject, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(string, UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList<UnityEngine.Object>, out UnityEngine.GameObject, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(String, UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList(Of UnityEngine.Object), UnityEngine.GameObject, String)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(string, GameObject, GameObject, IReadOnlyList<Object>, out GameObject, out string)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(String, GameObject, GameObject, IReadOnlyList(Of Object), GameObject, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference*
+  name: TryUpsertMeshOutfitPhysicsReference
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertMeshOutfitPhysicsReference_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(System.String,System.String@)
+  name: TryValidateGenerationVrmPath(string, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryValidateGenerationVrmPath_System_String_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(System.String,System.String@)
+  name.vb: TryValidateGenerationVrmPath(String, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(string, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(String, String)
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(string, out string)
+  nameWithType.vb: ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(String, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath*
+  name: TryValidateGenerationVrmPath
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryValidateGenerationVrmPath_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath
+  nameWithType: ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility
+  name: ShapeSyncVrmInstanceUtility
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility
+  nameWithType: ShapeSyncVrmInstanceUtility
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance(UnityEngine.GameObject,UnityEngine.Animator,UniVRM10.Vrm10Instance@,System.String@)
+  name: TryGetOrCreateFigureInstance(GameObject, Animator, out Vrm10Instance, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmInstanceUtility_TryGetOrCreateFigureInstance_UnityEngine_GameObject_UnityEngine_Animator_UniVRM10_Vrm10Instance__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance(UnityEngine.GameObject,UnityEngine.Animator,UniVRM10.Vrm10Instance@,System.String@)
+  name.vb: TryGetOrCreateFigureInstance(GameObject, Animator, Vrm10Instance, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance(UnityEngine.GameObject, UnityEngine.Animator, out UniVRM10.Vrm10Instance, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance(UnityEngine.GameObject, UnityEngine.Animator, UniVRM10.Vrm10Instance, String)
+  nameWithType: ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance(GameObject, Animator, out Vrm10Instance, out string)
+  nameWithType.vb: ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance(GameObject, Animator, Vrm10Instance, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance*
+  name: TryGetOrCreateFigureInstance
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmInstanceUtility_TryGetOrCreateFigureInstance_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance
+  nameWithType: ShapeSyncVrmInstanceUtility.TryGetOrCreateFigureInstance
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter
+  name: ShapeSyncVrmIntegrationAdapter
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter
+  nameWithType: ShapeSyncVrmIntegrationAdapter
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.EnsureRegistered
+  name: EnsureRegistered()
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_EnsureRegistered
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.EnsureRegistered
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.EnsureRegistered()
+  nameWithType: ShapeSyncVrmIntegrationAdapter.EnsureRegistered()
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.EnsureRegistered*
+  name: EnsureRegistered
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_EnsureRegistered_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.EnsureRegistered
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.EnsureRegistered
+  nameWithType: ShapeSyncVrmIntegrationAdapter.EnsureRegistered
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmAttachRequest,zgock.ShapeSync.IShapeSyncOptionalVrmAttachment@,System.String@)
+  name: TryAttachOutfitPhysics(ShapeSyncOptionalVrmAttachRequest, out IShapeSyncOptionalVrmAttachment, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TryAttachOutfitPhysics_zgock_ShapeSync_ShapeSyncOptionalVrmAttachRequest_zgock_ShapeSync_IShapeSyncOptionalVrmAttachment__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmAttachRequest,zgock.ShapeSync.IShapeSyncOptionalVrmAttachment@,System.String@)
+  name.vb: TryAttachOutfitPhysics(ShapeSyncOptionalVrmAttachRequest, IShapeSyncOptionalVrmAttachment, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmAttachRequest, out zgock.ShapeSync.IShapeSyncOptionalVrmAttachment, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmAttachRequest, zgock.ShapeSync.IShapeSyncOptionalVrmAttachment, String)
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics(ShapeSyncOptionalVrmAttachRequest, out IShapeSyncOptionalVrmAttachment, out string)
+  nameWithType.vb: ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics(ShapeSyncOptionalVrmAttachRequest, IShapeSyncOptionalVrmAttachment, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics*
+  name: TryAttachOutfitPhysics
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TryAttachOutfitPhysics_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(System.String,System.Single)
+  name: TrySetExpressionWeight(string, float)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TrySetExpressionWeight_System_String_System_Single_
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(System.String,System.Single)
+  name.vb: TrySetExpressionWeight(String, Single)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(string, float)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(String, Single)
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(string, float)
+  nameWithType.vb: ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(String, Single)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight*
+  name: TrySetExpressionWeight
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TrySetExpressionWeight_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmDryRunRequest,System.String@)
+  name: TryValidateOutfitPhysics(ShapeSyncOptionalVrmDryRunRequest, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TryValidateOutfitPhysics_zgock_ShapeSync_ShapeSyncOptionalVrmDryRunRequest_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmDryRunRequest,System.String@)
+  name.vb: TryValidateOutfitPhysics(ShapeSyncOptionalVrmDryRunRequest, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmDryRunRequest, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmDryRunRequest, String)
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics(ShapeSyncOptionalVrmDryRunRequest, out string)
+  nameWithType.vb: ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics(ShapeSyncOptionalVrmDryRunRequest, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics*
+  name: TryValidateOutfitPhysics
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TryValidateOutfitPhysics_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TryValidateOutfitPhysics
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment
+  name: ShapeSyncVrmSpringBoneAttachment
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment
+  nameWithType: ShapeSyncVrmSpringBoneAttachment
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Dispose
+  name: Dispose()
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_Dispose
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Dispose
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Dispose()
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.Dispose()
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Dispose*
+  name: Dispose
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_Dispose_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Dispose
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Dispose
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.Dispose
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.ReconstructOnce
+  name: ReconstructOnce()
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_ReconstructOnce
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.ReconstructOnce
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.ReconstructOnce()
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.ReconstructOnce()
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.ReconstructOnce*
+  name: ReconstructOnce
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_ReconstructOnce_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.ReconstructOnce
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.ReconstructOnce
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.ReconstructOnce
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Rollback
+  name: Rollback()
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_Rollback
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Rollback
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Rollback()
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.Rollback()
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Rollback*
+  name: Rollback
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_Rollback_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Rollback
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.Rollback
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.Rollback
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+  name: RuntimeSourceCleanupRoots
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_RuntimeSourceCleanupRoots
+  commentId: P:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots*
+  name: RuntimeSourceCleanupRoots
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_RuntimeSourceCleanupRoots_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(System.Collections.Generic.IReadOnlyList{UniVRM10.VRM10SpringBoneColliderGroup},System.Collections.Generic.IReadOnlyList{UniVRM10.Vrm10InstanceSpringBone.Spring},System.Collections.Generic.IReadOnlyList{System.Collections.Generic.List{System.String}},UnityEngine.Transform,UniVRM10.Vrm10Instance,System.Func{UnityEngine.Transform,UnityEngine.Transform},zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment@,System.String@)
+  name: TryCreate(IReadOnlyList<VRM10SpringBoneColliderGroup>, IReadOnlyList<Spring>, IReadOnlyList<List<string>>, Transform, Vrm10Instance, Func<Transform, Transform>, out ShapeSyncVrmSpringBoneAttachment, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_TryCreate_System_Collections_Generic_IReadOnlyList_UniVRM10_VRM10SpringBoneColliderGroup__System_Collections_Generic_IReadOnlyList_UniVRM10_Vrm10InstanceSpringBone_Spring__System_Collections_Generic_IReadOnlyList_System_Collections_Generic_List_System_String___UnityEngine_Transform_UniVRM10_Vrm10Instance_System_Func_UnityEngine_Transform_UnityEngine_Transform__zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(System.Collections.Generic.IReadOnlyList{UniVRM10.VRM10SpringBoneColliderGroup},System.Collections.Generic.IReadOnlyList{UniVRM10.Vrm10InstanceSpringBone.Spring},System.Collections.Generic.IReadOnlyList{System.Collections.Generic.List{System.String}},UnityEngine.Transform,UniVRM10.Vrm10Instance,System.Func{UnityEngine.Transform,UnityEngine.Transform},zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment@,System.String@)
+  name.vb: TryCreate(IReadOnlyList(Of VRM10SpringBoneColliderGroup), IReadOnlyList(Of Spring), IReadOnlyList(Of List(Of String)), Transform, Vrm10Instance, Func(Of Transform, Transform), ShapeSyncVrmSpringBoneAttachment, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(System.Collections.Generic.IReadOnlyList<UniVRM10.VRM10SpringBoneColliderGroup>, System.Collections.Generic.IReadOnlyList<UniVRM10.Vrm10InstanceSpringBone.Spring>, System.Collections.Generic.IReadOnlyList<System.Collections.Generic.List<string>>, UnityEngine.Transform, UniVRM10.Vrm10Instance, System.Func<UnityEngine.Transform, UnityEngine.Transform>, out zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(System.Collections.Generic.IReadOnlyList(Of UniVRM10.VRM10SpringBoneColliderGroup), System.Collections.Generic.IReadOnlyList(Of UniVRM10.Vrm10InstanceSpringBone.Spring), System.Collections.Generic.IReadOnlyList(Of System.Collections.Generic.List(Of String)), UnityEngine.Transform, UniVRM10.Vrm10Instance, System.Func(Of UnityEngine.Transform, UnityEngine.Transform), zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment, String)
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.TryCreate(IReadOnlyList<VRM10SpringBoneColliderGroup>, IReadOnlyList<Vrm10InstanceSpringBone.Spring>, IReadOnlyList<List<string>>, Transform, Vrm10Instance, Func<Transform, Transform>, out ShapeSyncVrmSpringBoneAttachment, out string)
+  nameWithType.vb: ShapeSyncVrmSpringBoneAttachment.TryCreate(IReadOnlyList(Of VRM10SpringBoneColliderGroup), IReadOnlyList(Of Vrm10InstanceSpringBone.Spring), IReadOnlyList(Of List(Of String)), Transform, Vrm10Instance, Func(Of Transform, Transform), ShapeSyncVrmSpringBoneAttachment, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(UniVRM10.Vrm10Instance,UniVRM10.Vrm10Instance,System.Func{UnityEngine.Transform,UnityEngine.Transform},zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment@,System.String@)
+  name: TryCreate(Vrm10Instance, Vrm10Instance, Func<Transform, Transform>, out ShapeSyncVrmSpringBoneAttachment, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_TryCreate_UniVRM10_Vrm10Instance_UniVRM10_Vrm10Instance_System_Func_UnityEngine_Transform_UnityEngine_Transform__zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment__System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(UniVRM10.Vrm10Instance,UniVRM10.Vrm10Instance,System.Func{UnityEngine.Transform,UnityEngine.Transform},zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment@,System.String@)
+  name.vb: TryCreate(Vrm10Instance, Vrm10Instance, Func(Of Transform, Transform), ShapeSyncVrmSpringBoneAttachment, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(UniVRM10.Vrm10Instance, UniVRM10.Vrm10Instance, System.Func<UnityEngine.Transform, UnityEngine.Transform>, out zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(UniVRM10.Vrm10Instance, UniVRM10.Vrm10Instance, System.Func(Of UnityEngine.Transform, UnityEngine.Transform), zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment, String)
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.TryCreate(Vrm10Instance, Vrm10Instance, Func<Transform, Transform>, out ShapeSyncVrmSpringBoneAttachment, out string)
+  nameWithType.vb: ShapeSyncVrmSpringBoneAttachment.TryCreate(Vrm10Instance, Vrm10Instance, Func(Of Transform, Transform), ShapeSyncVrmSpringBoneAttachment, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate*
+  name: TryCreate
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_TryCreate_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.TryCreate
+- uid: zgock.ShapeSync.VrmIntegration.VrmIntegrationService
+  name: VrmIntegrationService
+  href: api/zgock.ShapeSync.VrmIntegration.VrmIntegrationService.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.VrmIntegrationService
+  fullName: zgock.ShapeSync.VrmIntegration.VrmIntegrationService
+  nameWithType: VrmIntegrationService
+- uid: zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics(zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest,zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TransportPhysics(VrmTransportPhysicsRequest, out VrmTransportPhysicsResult, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.VrmIntegration.VrmIntegrationService.html#zgock_ShapeSync_VrmIntegration_VrmIntegrationService_TransportPhysics_zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics(zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest,zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TransportPhysics(VrmTransportPhysicsRequest, VrmTransportPhysicsResult, StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics(zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest, out zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics(zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest, zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult, zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: VrmIntegrationService.TransportPhysics(VrmTransportPhysicsRequest, out VrmTransportPhysicsResult, out StackMachineDiagnostic)
+  nameWithType.vb: VrmIntegrationService.TransportPhysics(VrmTransportPhysicsRequest, VrmTransportPhysicsResult, StackMachineDiagnostic)
+- uid: zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics*
+  name: TransportPhysics
+  href: api/zgock.ShapeSync.VrmIntegration.VrmIntegrationService.html#zgock_ShapeSync_VrmIntegration_VrmIntegrationService_TransportPhysics_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics
+  nameWithType: VrmIntegrationService.TransportPhysics
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest
+  name: VrmTransportPhysicsRequest
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest
+  nameWithType: VrmTransportPhysicsRequest
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.#ctor(UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.GameObject})
+  name: VrmTransportPhysicsRequest(GameObject, GameObject, IReadOnlyList<GameObject>)
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest__ctor_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_GameObject__
+  commentId: M:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.#ctor(UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.GameObject})
+  name.vb: New(GameObject, GameObject, IReadOnlyList(Of GameObject))
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.VrmTransportPhysicsRequest(UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList<UnityEngine.GameObject>)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.New(UnityEngine.GameObject, UnityEngine.GameObject, System.Collections.Generic.IReadOnlyList(Of UnityEngine.GameObject))
+  nameWithType: VrmTransportPhysicsRequest.VrmTransportPhysicsRequest(GameObject, GameObject, IReadOnlyList<GameObject>)
+  nameWithType.vb: VrmTransportPhysicsRequest.New(GameObject, GameObject, IReadOnlyList(Of GameObject))
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.#ctor*
+  name: VrmTransportPhysicsRequest
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest__ctor_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.VrmTransportPhysicsRequest
+  fullName.vb: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.New
+  nameWithType: VrmTransportPhysicsRequest.VrmTransportPhysicsRequest
+  nameWithType.vb: VrmTransportPhysicsRequest.New
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+  name: AttachedOutfitSourceRoots
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_AttachedOutfitSourceRoots
+  commentId: P:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+  nameWithType: VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.AttachedOutfitSourceRoots*
+  name: AttachedOutfitSourceRoots
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_AttachedOutfitSourceRoots_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+  nameWithType: VrmTransportPhysicsRequest.AttachedOutfitSourceRoots
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.CandidateRoot
+  name: CandidateRoot
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_CandidateRoot
+  commentId: P:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.CandidateRoot
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.CandidateRoot
+  nameWithType: VrmTransportPhysicsRequest.CandidateRoot
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.CandidateRoot*
+  name: CandidateRoot
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_CandidateRoot_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.CandidateRoot
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.CandidateRoot
+  nameWithType: VrmTransportPhysicsRequest.CandidateRoot
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.FigureSourceRoot
+  name: FigureSourceRoot
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_FigureSourceRoot
+  commentId: P:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.FigureSourceRoot
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.FigureSourceRoot
+  nameWithType: VrmTransportPhysicsRequest.FigureSourceRoot
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.FigureSourceRoot*
+  name: FigureSourceRoot
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsRequest_FigureSourceRoot_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.FigureSourceRoot
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.FigureSourceRoot
+  nameWithType: VrmTransportPhysicsRequest.FigureSourceRoot
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult
+  name: VrmTransportPhysicsResult
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html
+  commentId: T:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult
+  nameWithType: VrmTransportPhysicsResult
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Dispose
+  name: Dispose()
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Dispose
+  commentId: M:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Dispose
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Dispose()
+  nameWithType: VrmTransportPhysicsResult.Dispose()
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Dispose*
+  name: Dispose
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Dispose_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Dispose
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Dispose
+  nameWithType: VrmTransportPhysicsResult.Dispose
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Expressions
+  name: Expressions
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Expressions
+  commentId: P:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Expressions
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Expressions
+  nameWithType: VrmTransportPhysicsResult.Expressions
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Expressions*
+  name: Expressions
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Expressions_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Expressions
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Expressions
+  nameWithType: VrmTransportPhysicsResult.Expressions
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Instance
+  name: Instance
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Instance
+  commentId: P:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Instance
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Instance
+  nameWithType: VrmTransportPhysicsResult.Instance
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Instance*
+  name: Instance
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Instance_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Instance
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Instance
+  nameWithType: VrmTransportPhysicsResult.Instance
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership
+  name: ReleaseAssetOwnership()
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_ReleaseAssetOwnership
+  commentId: M:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership()
+  nameWithType: VrmTransportPhysicsResult.ReleaseAssetOwnership()
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership*
+  name: ReleaseAssetOwnership
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_ReleaseAssetOwnership_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership
+  nameWithType: VrmTransportPhysicsResult.ReleaseAssetOwnership
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Vrm
+  name: Vrm
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Vrm
+  commentId: P:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Vrm
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Vrm
+  nameWithType: VrmTransportPhysicsResult.Vrm
+- uid: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Vrm*
+  name: Vrm
+  href: api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html#zgock_ShapeSync_VrmIntegration_VrmTransportPhysicsResult_Vrm_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Vrm
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.Vrm
+  nameWithType: VrmTransportPhysicsResult.Vrm

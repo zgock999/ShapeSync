@@ -1,0 +1,9 @@
+/*
+ * ShapeSync API pages document members declared by ShapeSync assemblies.
+ * UnityEngine and UnityEditor inherited-member lists are intentionally hidden:
+ * DocFX has no Unity API xref map, and unresolved overloads can otherwise link
+ * to a parameter type such as System.String rather than the Unity method.
+ */
+.inheritedMembers {
+    display: none;
+}

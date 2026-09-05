@@ -1,0 +1,335 @@
+{
+  "source_base_path": "D:/Unity/ShapeSync/Docs/Docfx",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "obj/vrm-api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStage.yml\" sourcestartlinenumber=\"1\">Persistent VRM asset paths produced from one in-memory 17.5 result.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmAssetStager.yml\" sourcestartlinenumber=\"1\">UniVRM Editor-only persistence backend. It never creates or destroys the unpublished candidate.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.HumanoidVrmTransportExecutor.yml\" sourcestartlinenumber=\"1\">Concrete optional UniVRM bridge for the Spec17.6 controller.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.yml\" sourcestartlinenumber=\"1\">Imports one Reference VRM into a Database transaction. The source\nPrefab and its VRM graph are never modified.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.Editor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.Editor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.Editor",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncOutfitSpringBoneData.yml\" sourcestartlinenumber=\"1\">Spring Bone graph for an Outfit that intentionally has no Vrm10Instance/Humanoid.\nOutfitAttacher consumes this data and attaches it to the Figure Vrm10Instance.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportEntry.yml\" sourcestartlinenumber=\"1\">One transported physics entry, retaining the source and destination transform relationship.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportMarker.yml\" sourcestartlinenumber=\"1\">Serialized marker placed on VRM physics transport output so the companion can identify its owned objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncPhysicsTransportState.yml\" sourcestartlinenumber=\"1\">Tracks SpringBone components owned by one debug metadata transport run.\nThis must remain a dedicated MonoBehaviour script so generated Prefabs\nretain a resolvable script GUID when metadata output is enabled.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.yml\" sourcestartlinenumber=\"1\">Describes one Database-owned Base or FBM Expression Reference relation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.yml\" sourcestartlinenumber=\"1\">Describes one Database-owned Figure Physics Reference relation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.yml\" sourcestartlinenumber=\"1\">Describes one Database-owned Mesh Outfit Physics Reference relation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.yml\" sourcestartlinenumber=\"1\">Database-owned VRM definitions.  This registry is deliberately separate\nfrom <xref href=\"zgock.ShapeSync.ShapeSyncDatabaseRegistry\" data-throw-if-not-resolved=\"false\"></xref> so Core Runtime never needs\nto reference UniVRM types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmInstanceUtility.yml\" sourcestartlinenumber=\"1\">UniVRM companion helpers for resolving VRM10 instances without exposing UniVRM types to Core.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.yml\" sourcestartlinenumber=\"1\">Optional UniVRM physics integration for a Figure root.\nRegisters with the figure lifecycle without using a global singleton.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.yml\" sourcestartlinenumber=\"1\">One Outfit's Spring Bone entries attached to a Figure Vrm10Instance.\nThe handle is intentionally runtime-only: source Outfit objects are destroyed after attach.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.VrmIntegrationService.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.VrmIntegrationService.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.VrmIntegrationService",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.VrmIntegrationService.yml\" sourcestartlinenumber=\"1\">Optional Runtime-only VRM compiler service. It never creates assets or uses Editor APIs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest.yml\" sourcestartlinenumber=\"1\">Immutable source roles accepted by the single <xref href=\"zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics(zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest%2czgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult%40%2czgock.ShapeSync.StackMachine.StackMachineDiagnostic%40)\" data-throw-if-not-resolved=\"false\"></xref> entry point.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult",
+      "Summary": "<p sourcefile=\"obj/vrm-api/zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.yml\" sourcestartlinenumber=\"1\">Owns the in-memory UniVRM assets created by <xref href=\"zgock.ShapeSync.VrmIntegration.VrmIntegrationService.TransportPhysics(zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsRequest%2czgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult%40%2czgock.ShapeSync.StackMachine.StackMachineDiagnostic%40)\" data-throw-if-not-resolved=\"false\"></xref>.\nCall <xref href=\"zgock.ShapeSync.VrmIntegration.VrmTransportPhysicsResult.ReleaseAssetOwnership\" data-throw-if-not-resolved=\"false\"></xref> only after a publisher has made every object persistent.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/vrm-api/zgock.ShapeSync.VrmIntegration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.VrmIntegration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.VrmIntegration",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "vrm/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "vrm/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "vrm/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "vrm/toc.html"
+        },
+        ".json": {
+          "relative_path": "vrm/toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

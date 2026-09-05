@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MaterialAttacher | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MaterialAttacher | ShapeSync API Reference ">
+      
+      <meta name="description" content="Relays one-entry Material transactions to a co-located .">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.Materials.MaterialAttacher">
+
+
+
+  <h1 id="zgock_ShapeSync_Materials_MaterialAttacher" data-uid="zgock.ShapeSync.Materials.MaterialAttacher" class="text-break">
+Class MaterialAttacher  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.Materials.html">Materials</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Relays one-entry Material transactions to a co-located <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxy.html">MaterialProxy</a>.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DisallowMultipleComponent]
+public sealed class MaterialAttacher : MonoBehaviour</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">Component</span></div>
+      <div><span class="xref">Behaviour</span></div>
+      <div><span class="xref">MonoBehaviour</span></div>
+      <div><span class="xref">MaterialAttacher</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">MonoBehaviour.IsInvoking()</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.CancelInvoke()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.Invoke(string, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.InvokeRepeating(string, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.CancelInvoke(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.IsInvoking(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine_Auto(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StopCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopCoroutine(Coroutine)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StopCoroutine(string)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopAllCoroutines()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">MonoBehaviour.print(object)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.destroyCancellationToken</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.useGUILayout</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didStart</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didAwake</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.runInEditMode</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.enabled</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.isActiveAndEnabled</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponent(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.TryGetComponent(Type, out Component)</a>
+    </div>
+    <div>
+      <span class="xref">Component.TryGetComponent&lt;T&gt;(out T)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.GetComponent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponentsInChildren&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type, List&lt;Component&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponents&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponents&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentIndex()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.CompareTag(string)</a>
+    </div>
+    <div>
+      <span class="xref">Component.CompareTag(TagHandle)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <span class="xref">Component.transform</span>
+    </div>
+    <div>
+      <span class="xref">Component.transformHandle</span>
+    </div>
+    <div>
+      <span class="xref">Component.gameObject</span>
+    </div>
+    <div>
+      <span class="xref">Component.tag</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetEntityId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetInstanceID()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetHashCode()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Scene)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Destroy(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyImmediate(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DontDestroyOnLoad(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyObject(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="zgock_ShapeSync_Materials_MaterialAttacher_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This component does not clone, read back, copy, or retain delivery textures. A successful commit transfers delivery ownership into the Proxy.</p>
+</div>
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_Proxy_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.Proxy*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_Proxy" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.Proxy">
+  Proxy
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the co-located Material Proxy served by this Attacher.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MaterialProxy Proxy { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.Materials.MaterialProxy.html">MaterialProxy</a></dt>
+    <dd><p>A Proxy on the same <span class="xref">UnityEngine.GameObject</span>, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialAttacher_Proxy_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Changing this value releases every retained delivery and does not restore the previous Proxy.</p>
+</div>
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_TryApply_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryApply*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_TryApply_System_String_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_StackMachine_TextureDelivery_zgock_ShapeSync_Materials_MaterialAttacherResult__" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryApply(System.String,zgock.ShapeSync.Materials.MaterialProxySemanticValues,zgock.ShapeSync.StackMachine.TextureDelivery,zgock.ShapeSync.Materials.MaterialAttacherResult@)">
+  TryApply(string, MaterialProxySemanticValues, TextureDelivery, out MaterialAttacherResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transfers delivery candidates into one co-located Proxy entry without cloning their Textures.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryApply(string entryName, MaterialProxySemanticValues values, TextureDelivery baseColorDelivery, out MaterialAttacherResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Proxy entry to update.</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd><p>The semantic values, whose texture references must match the supplied deliveries.</p>
+</dd>
+    <dt><code>baseColorDelivery</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureDelivery.html">TextureDelivery</a></dt>
+    <dd><p>The owned BaseColor delivery, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> when BaseColor is not requested.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherResult.html">MaterialAttacherResult</a></dt>
+    <dd><p>The overall operation outcome.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Proxy accepted the request, including a partial semantic application; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialAttacher_TryApply_System_String_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_StackMachine_TextureDelivery_zgock_ShapeSync_Materials_MaterialAttacherResult___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This entry point performs DryRun then plan Commit. Ownership of a non-null BaseColor candidate transfers at invocation, including when the request is rejected.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_TryCommit_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryCommit*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_TryCommit_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan_zgock_ShapeSync_StackMachine_TextureDelivery_zgock_ShapeSync_Materials_MaterialAttacherResult__" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryCommit(zgock.ShapeSync.Materials.MaterialAttacherDryRunPlan,zgock.ShapeSync.StackMachine.TextureDelivery,zgock.ShapeSync.Materials.MaterialAttacherResult@)">
+  TryCommit(MaterialAttacherDryRunPlan, TextureDelivery, out MaterialAttacherResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Receives delivery candidates and commits a previously validated Attacher plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryCommit(MaterialAttacherDryRunPlan plan, TextureDelivery baseColorDelivery, out MaterialAttacherResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherDryRunPlan.html">MaterialAttacherDryRunPlan</a></dt>
+    <dd><p>A plan returned by this Attacher's <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacher.html#zgock_ShapeSync_Materials_MaterialAttacher_TryDryRun_System_String_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__">TryDryRun(string, MaterialProxySemanticValues, out MaterialAttacherDryRunPlan, out MaterialProxyDiagnostic)</a> method.</p>
+</dd>
+    <dt><code>baseColorDelivery</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureDelivery.html">TextureDelivery</a></dt>
+    <dd><p>The owned BaseColor delivery, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> when BaseColor is not requested.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherResult.html">MaterialAttacherResult</a></dt>
+    <dd><p>The overall operation outcome.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Proxy accepted the plan, including a partial semantic application; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialAttacher_TryCommit_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan_zgock_ShapeSync_StackMachine_TextureDelivery_zgock_ShapeSync_Materials_MaterialAttacherResult___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Ownership of non-null candidate deliveries transfers at invocation. A rejected plan releases those candidates; a successful applied semantic retains its delivery in the Proxy.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_TryCommitReset_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryCommitReset*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_TryCommitReset_zgock_ShapeSync_Materials_MaterialAttacherResetDryRunPlan_zgock_ShapeSync_Materials_MaterialAttacherResult__" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryCommitReset(zgock.ShapeSync.Materials.MaterialAttacherResetDryRunPlan,zgock.ShapeSync.Materials.MaterialAttacherResult@)">
+  TryCommitReset(MaterialAttacherResetDryRunPlan, out MaterialAttacherResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Commits a previously validated entry-local Proxy reset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryCommitReset(MaterialAttacherResetDryRunPlan plan, out MaterialAttacherResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherResetDryRunPlan.html">MaterialAttacherResetDryRunPlan</a></dt>
+    <dd><p>A plan returned by <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacher.html#zgock_ShapeSync_Materials_MaterialAttacher_TryDryRunReset_System_String_zgock_ShapeSync_Materials_MaterialAttacherResetDryRunPlan__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__">TryDryRunReset(string, out MaterialAttacherResetDryRunPlan, out MaterialProxyDiagnostic)</a>.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherResult.html">MaterialAttacherResult</a></dt>
+    <dd><p>The reset outcome and any Proxy diagnostic.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when reset completed.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_TryDryRun_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryDryRun*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_TryDryRun_System_String_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryDryRun(System.String,zgock.ShapeSync.Materials.MaterialProxySemanticValues,zgock.ShapeSync.Materials.MaterialAttacherDryRunPlan@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryDryRun(string, MaterialProxySemanticValues, out MaterialAttacherDryRunPlan, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates a co-located Proxy request without receiving deliveries or changing Material state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryDryRun(string entryName, MaterialProxySemanticValues values, out MaterialAttacherDryRunPlan plan, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Proxy entry to update.</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd><p>The semantic values to validate.</p>
+</dd>
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherDryRunPlan.html">MaterialAttacherDryRunPlan</a></dt>
+    <dd><p>The transient plan to pass unchanged to <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacher.html#zgock_ShapeSync_Materials_MaterialAttacher_TryCommit_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan_zgock_ShapeSync_StackMachine_TextureDelivery_zgock_ShapeSync_Materials_MaterialAttacherResult__">TryCommit(MaterialAttacherDryRunPlan, TextureDelivery, out MaterialAttacherResult)</a>.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The warning or hard failure diagnostic.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when a plan was created; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialAttacher_TryDryRun_System_String_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The caller temporarily retains <code class="paramref">plan</code> and passes it to <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacher.html#zgock_ShapeSync_Materials_MaterialAttacher_TryCommit_zgock_ShapeSync_Materials_MaterialAttacherDryRunPlan_zgock_ShapeSync_StackMachine_TextureDelivery_zgock_ShapeSync_Materials_MaterialAttacherResult__">TryCommit(MaterialAttacherDryRunPlan, TextureDelivery, out MaterialAttacherResult)</a> or discards it. The Attacher does not retain the plan.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_TryDryRunReset_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryDryRunReset*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_TryDryRunReset_System_String_zgock_ShapeSync_Materials_MaterialAttacherResetDryRunPlan__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryDryRunReset(System.String,zgock.ShapeSync.Materials.MaterialAttacherResetDryRunPlan@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryDryRunReset(string, out MaterialAttacherResetDryRunPlan, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates an entry-local Proxy reset without mutating its Material.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryDryRunReset(string entryName, out MaterialAttacherResetDryRunPlan plan, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Proxy entry to reset.</p>
+</dd>
+    <dt><code>plan</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherResetDryRunPlan.html">MaterialAttacherResetDryRunPlan</a></dt>
+    <dd><p>The transient plan to pass unchanged to <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacher.html#zgock_ShapeSync_Materials_MaterialAttacher_TryCommitReset_zgock_ShapeSync_Materials_MaterialAttacherResetDryRunPlan_zgock_ShapeSync_Materials_MaterialAttacherResult__">TryCommitReset(MaterialAttacherResetDryRunPlan, out MaterialAttacherResult)</a>.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The validation failure diagnostic.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when a reset plan was created.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialAttacher_TryRestore_" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryRestore*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialAttacher_TryRestore_System_String_zgock_ShapeSync_Materials_MaterialAttacherResult__" data-uid="zgock.ShapeSync.Materials.MaterialAttacher.TryRestore(System.String,zgock.ShapeSync.Materials.MaterialAttacherResult@)">
+  TryRestore(string, out MaterialAttacherResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Relays restoration of one Proxy entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryRestore(string entryName, out MaterialAttacherResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Proxy entry to restore.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialAttacherResult.html">MaterialAttacherResult</a></dt>
+    <dd><p>The restore outcome and any Proxy diagnostic.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Proxy restore completed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialAttacher_TryRestore_System_String_zgock_ShapeSync_Materials_MaterialAttacherResult___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The Proxy owns the runtime delivery and releases it only when its own restoration succeeds.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

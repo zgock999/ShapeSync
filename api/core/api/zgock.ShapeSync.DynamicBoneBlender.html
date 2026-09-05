@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DynamicBoneBlender | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DynamicBoneBlender | ShapeSync API Reference ">
+      
+      <meta name="description" content="Figure runtime controller that applies FBM/PBM weights to mesh BlendShapes, bindposes, Avatar, and bone pose data.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.DynamicBoneBlender">
+
+
+
+  <h1 id="zgock_ShapeSync_DynamicBoneBlender" data-uid="zgock.ShapeSync.DynamicBoneBlender" class="text-break">
+Class DynamicBoneBlender  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Figure runtime controller that applies FBM/PBM weights to mesh BlendShapes, bindposes, Avatar, and bone pose data.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DefaultExecutionOrder(10000)]
+public class DynamicBoneBlender : MonoBehaviour</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">Component</span></div>
+      <div><span class="xref">Behaviour</span></div>
+      <div><span class="xref">MonoBehaviour</span></div>
+      <div><span class="xref">DynamicBoneBlender</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">MonoBehaviour.IsInvoking()</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.CancelInvoke()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.Invoke(string, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.InvokeRepeating(string, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.CancelInvoke(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.IsInvoking(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine_Auto(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StopCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopCoroutine(Coroutine)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StopCoroutine(string)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopAllCoroutines()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">MonoBehaviour.print(object)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.destroyCancellationToken</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.useGUILayout</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didStart</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didAwake</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.runInEditMode</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.enabled</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.isActiveAndEnabled</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponent(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.TryGetComponent(Type, out Component)</a>
+    </div>
+    <div>
+      <span class="xref">Component.TryGetComponent&lt;T&gt;(out T)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.GetComponent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponentsInChildren&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type, List&lt;Component&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponents&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponents&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentIndex()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.CompareTag(string)</a>
+    </div>
+    <div>
+      <span class="xref">Component.CompareTag(TagHandle)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <span class="xref">Component.transform</span>
+    </div>
+    <div>
+      <span class="xref">Component.transformHandle</span>
+    </div>
+    <div>
+      <span class="xref">Component.gameObject</span>
+    </div>
+    <div>
+      <span class="xref">Component.tag</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetEntityId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetInstanceID()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetHashCode()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Scene)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Destroy(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyImmediate(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DontDestroyOnLoad(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyObject(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_BaseAvatar_" data-uid="zgock.ShapeSync.DynamicBoneBlender.BaseAvatar*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_BaseAvatar" data-uid="zgock.ShapeSync.DynamicBoneBlender.BaseAvatar">
+  BaseAvatar
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the immutable base Avatar used by FBM skeletal interpolation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Avatar BaseAvatar { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Avatar</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_BaseRegistry_" data-uid="zgock.ShapeSync.DynamicBoneBlender.BaseRegistry*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_BaseRegistry" data-uid="zgock.ShapeSync.DynamicBoneBlender.BaseRegistry">
+  BaseRegistry
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the immutable base bone registry used by FBM non-humanoid pose interpolation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CharacterBoneRegistry BaseRegistry { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.CharacterBoneRegistry.html">CharacterBoneRegistry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_BlendWeight_" data-uid="zgock.ShapeSync.DynamicBoneBlender.BlendWeight*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_BlendWeight" data-uid="zgock.ShapeSync.DynamicBoneBlender.BlendWeight">
+  BlendWeight
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float BlendWeight { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_BlendWeightChanged_" data-uid="zgock.ShapeSync.DynamicBoneBlender.BlendWeightChanged*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_BlendWeightChanged" data-uid="zgock.ShapeSync.DynamicBoneBlender.BlendWeightChanged">
+  BlendWeightChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Observable&lt;float&gt; BlendWeightChanged { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Observable</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_CurrentFbmWeightSnapshot_" data-uid="zgock.ShapeSync.DynamicBoneBlender.CurrentFbmWeightSnapshot*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_CurrentFbmWeightSnapshot" data-uid="zgock.ShapeSync.DynamicBoneBlender.CurrentFbmWeightSnapshot">
+  CurrentFbmWeightSnapshot
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the latest complete raw non-PBM weight snapshot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;FbmWeightChange&gt; CurrentFbmWeightSnapshot { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.FbmWeightChange.html">FbmWeightChange</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_CurrentIndexedFbmWeights_" data-uid="zgock.ShapeSync.DynamicBoneBlender.CurrentIndexedFbmWeights*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_CurrentIndexedFbmWeights" data-uid="zgock.ShapeSync.DynamicBoneBlender.CurrentIndexedFbmWeights">
+  CurrentIndexedFbmWeights
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;float&gt; CurrentIndexedFbmWeights { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_CurrentTargetWeights_" data-uid="zgock.ShapeSync.DynamicBoneBlender.CurrentTargetWeights*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_CurrentTargetWeights" data-uid="zgock.ShapeSync.DynamicBoneBlender.CurrentTargetWeights">
+  CurrentTargetWeights
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;float&gt; CurrentTargetWeights { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_DynamicMorphAdapter_" data-uid="zgock.ShapeSync.DynamicBoneBlender.DynamicMorphAdapter*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_DynamicMorphAdapter" data-uid="zgock.ShapeSync.DynamicBoneBlender.DynamicMorphAdapter">
+  DynamicMorphAdapter
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DynamicMorphAdapter DynamicMorphAdapter { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.DynamicMorphAdapter.html">DynamicMorphAdapter</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_FbmWeightChanged_" data-uid="zgock.ShapeSync.DynamicBoneBlender.FbmWeightChanged*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_FbmWeightChanged" data-uid="zgock.ShapeSync.DynamicBoneBlender.FbmWeightChanged">
+  FbmWeightChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Observable&lt;FbmWeightChange&gt; FbmWeightChanged { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Observable</span>&lt;<a class="xref" href="zgock.ShapeSync.FbmWeightChange.html">FbmWeightChange</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_FbmWeightSnapshotChanged_" data-uid="zgock.ShapeSync.DynamicBoneBlender.FbmWeightSnapshotChanged*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_FbmWeightSnapshotChanged" data-uid="zgock.ShapeSync.DynamicBoneBlender.FbmWeightSnapshotChanged">
+  FbmWeightSnapshotChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Observes complete raw non-PBM weight snapshots after a DDB weight mutation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Observable&lt;FbmWeightChange[]&gt; FbmWeightSnapshotChanged { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Observable</span>&lt;<a class="xref" href="zgock.ShapeSync.FbmWeightChange.html">FbmWeightChange</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_IndexedFbmWeightsChanged_" data-uid="zgock.ShapeSync.DynamicBoneBlender.IndexedFbmWeightsChanged*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_IndexedFbmWeightsChanged" data-uid="zgock.ShapeSync.DynamicBoneBlender.IndexedFbmWeightsChanged">
+  IndexedFbmWeightsChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Observable&lt;float[]&gt; IndexedFbmWeightsChanged { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Observable</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_LastAnimatorDiagnostic_" data-uid="zgock.ShapeSync.DynamicBoneBlender.LastAnimatorDiagnostic*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_LastAnimatorDiagnostic" data-uid="zgock.ShapeSync.DynamicBoneBlender.LastAnimatorDiagnostic">
+  LastAnimatorDiagnostic
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the latest Animator resolution or Avatar build-root diagnostic, if any.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StackMachineDiagnostic LastAnimatorDiagnostic { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_TargetSkinnedMeshRenderer_" data-uid="zgock.ShapeSync.DynamicBoneBlender.TargetSkinnedMeshRenderer*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_TargetSkinnedMeshRenderer" data-uid="zgock.ShapeSync.DynamicBoneBlender.TargetSkinnedMeshRenderer">
+  TargetSkinnedMeshRenderer
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SkinnedMeshRenderer TargetSkinnedMeshRenderer { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">SkinnedMeshRenderer</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_TargetWeightsChanged_" data-uid="zgock.ShapeSync.DynamicBoneBlender.TargetWeightsChanged*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_TargetWeightsChanged" data-uid="zgock.ShapeSync.DynamicBoneBlender.TargetWeightsChanged">
+  TargetWeightsChanged
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Observable&lt;float[]&gt; TargetWeightsChanged { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Observable</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>[]&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_Targets_" data-uid="zgock.ShapeSync.DynamicBoneBlender.Targets*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_Targets" data-uid="zgock.ShapeSync.DynamicBoneBlender.Targets">
+  Targets
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;DynamicBoneBlendTarget&gt; Targets { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.DynamicBoneBlendTarget.html">DynamicBoneBlendTarget</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_ConfigureForFigure_" data-uid="zgock.ShapeSync.DynamicBoneBlender.ConfigureForFigure*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_ConfigureForFigure_UnityEngine_SkinnedMeshRenderer_UnityEngine_Animator_UnityEngine_Avatar_zgock_ShapeSync_CharacterBoneRegistry_System_Collections_Generic_IList_zgock_ShapeSync_DynamicBoneBlendTarget__" data-uid="zgock.ShapeSync.DynamicBoneBlender.ConfigureForFigure(UnityEngine.SkinnedMeshRenderer,UnityEngine.Animator,UnityEngine.Avatar,zgock.ShapeSync.CharacterBoneRegistry,System.Collections.Generic.IList{zgock.ShapeSync.DynamicBoneBlendTarget})">
+  ConfigureForFigure(SkinnedMeshRenderer, Animator, Avatar, CharacterBoneRegistry, IList&lt;DynamicBoneBlendTarget&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Configures the Figure Builder references for a created Figure prefab.
+The supplied immutable assets are used to initialize runtime caches once in Start.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ConfigureForFigure(SkinnedMeshRenderer renderer, Animator animator, Avatar avatar, CharacterBoneRegistry registry, IList&lt;DynamicBoneBlendTarget&gt; configuredTargets)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>renderer</code> <span class="xref">SkinnedMeshRenderer</span></dt>
+    <dd></dd>
+    <dt><code>animator</code> <span class="xref">Animator</span></dt>
+    <dd></dd>
+    <dt><code>avatar</code> <span class="xref">Avatar</span></dt>
+    <dd></dd>
+    <dt><code>registry</code> <a class="xref" href="zgock.ShapeSync.CharacterBoneRegistry.html">CharacterBoneRegistry</a></dt>
+    <dd></dd>
+    <dt><code>configuredTargets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="zgock.ShapeSync.DynamicBoneBlendTarget.html">DynamicBoneBlendTarget</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_EnsureTarget_" data-uid="zgock.ShapeSync.DynamicBoneBlender.EnsureTarget*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_EnsureTarget_System_String_UnityEngine_Avatar_zgock_ShapeSync_CharacterBoneRegistry_" data-uid="zgock.ShapeSync.DynamicBoneBlender.EnsureTarget(System.String,UnityEngine.Avatar,zgock.ShapeSync.CharacterBoneRegistry)">
+  EnsureTarget(string, Avatar, CharacterBoneRegistry)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ensures a target entry required by PBM Baker. The supplied avatar and registry
+are associated with the target name as Figure Builder target data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void EnsureTarget(string blendName, Avatar targetAvatar, CharacterBoneRegistry targetRegistry)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>blendName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>targetAvatar</code> <span class="xref">Avatar</span></dt>
+    <dd></dd>
+    <dt><code>targetRegistry</code> <a class="xref" href="zgock.ShapeSync.CharacterBoneRegistry.html">CharacterBoneRegistry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_ReapplyFigureMorphWeightsAfterMeshReplacement_" data-uid="zgock.ShapeSync.DynamicBoneBlender.ReapplyFigureMorphWeightsAfterMeshReplacement*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_ReapplyFigureMorphWeightsAfterMeshReplacement_UnityEngine_Mesh_" data-uid="zgock.ShapeSync.DynamicBoneBlender.ReapplyFigureMorphWeightsAfterMeshReplacement(UnityEngine.Mesh)">
+  ReapplyFigureMorphWeightsAfterMeshReplacement(Mesh)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ReapplyFigureMorphWeightsAfterMeshReplacement(Mesh mesh)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>mesh</code> <span class="xref">Mesh</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_SetAttachedOutfitRegistrySets_" data-uid="zgock.ShapeSync.DynamicBoneBlender.SetAttachedOutfitRegistrySets*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_SetAttachedOutfitRegistrySets_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_AttachedOutfitRegistrySet__" data-uid="zgock.ShapeSync.DynamicBoneBlender.SetAttachedOutfitRegistrySets(System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.AttachedOutfitRegistrySet})">
+  SetAttachedOutfitRegistrySets(IReadOnlyList&lt;AttachedOutfitRegistrySet&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetAttachedOutfitRegistrySets(IReadOnlyList&lt;AttachedOutfitRegistrySet&gt; attachedOutfits)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>attachedOutfits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.AttachedOutfitRegistrySet.html">AttachedOutfitRegistrySet</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_SetPbmDifferenceTarget_" data-uid="zgock.ShapeSync.DynamicBoneBlender.SetPbmDifferenceTarget*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_SetPbmDifferenceTarget_System_String_System_String_UnityEngine_Avatar_zgock_ShapeSync_CharacterBoneRegistry_" data-uid="zgock.ShapeSync.DynamicBoneBlender.SetPbmDifferenceTarget(System.String,System.String,UnityEngine.Avatar,zgock.ShapeSync.CharacterBoneRegistry)">
+  SetPbmDifferenceTarget(string, string, Avatar, CharacterBoneRegistry)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Registers the absolute FBM+PBM bone target under its PBM owner.  Names
+are used only here/editor cache construction; runtime application uses
+resolved target-index pairs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetPbmDifferenceTarget(string pbmBlendName, string fbmBlendName, Avatar targetAvatar, CharacterBoneRegistry targetRegistry)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pbmBlendName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>fbmBlendName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>targetAvatar</code> <span class="xref">Avatar</span></dt>
+    <dd></dd>
+    <dt><code>targetRegistry</code> <a class="xref" href="zgock.ShapeSync.CharacterBoneRegistry.html">CharacterBoneRegistry</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_TryValidateFbmHumanoidBoneCorrectionProfiles_" data-uid="zgock.ShapeSync.DynamicBoneBlender.TryValidateFbmHumanoidBoneCorrectionProfiles*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_TryValidateFbmHumanoidBoneCorrectionProfiles_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile__System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_AttachedOutfitRegistrySet__System_String__" data-uid="zgock.ShapeSync.DynamicBoneBlender.TryValidateFbmHumanoidBoneCorrectionProfiles(System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile},System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.AttachedOutfitRegistrySet},System.String@)">
+  TryValidateFbmHumanoidBoneCorrectionProfiles(IReadOnlyList&lt;ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile&gt;, IReadOnlyList&lt;AttachedOutfitRegistrySet&gt;, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryValidateFbmHumanoidBoneCorrectionProfiles(IReadOnlyList&lt;ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile&gt; profiles, IReadOnlyList&lt;AttachedOutfitRegistrySet&gt; attachedOutfits, out string error)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>profiles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile.html">ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>attachedOutfits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.AttachedOutfitRegistrySet.html">AttachedOutfitRegistrySet</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>error</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_DynamicBoneBlender_TryValidateHumanoidBoneCorrectionProfile_" data-uid="zgock.ShapeSync.DynamicBoneBlender.TryValidateHumanoidBoneCorrectionProfile*"></a>
+
+  <h3 id="zgock_ShapeSync_DynamicBoneBlender_TryValidateHumanoidBoneCorrectionProfile_zgock_ShapeSync_ShapeSyncHumanoidBoneCorrectionProfile_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_AttachedOutfitRegistrySet__System_String__" data-uid="zgock.ShapeSync.DynamicBoneBlender.TryValidateHumanoidBoneCorrectionProfile(zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile,System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.AttachedOutfitRegistrySet},System.String@)">
+  TryValidateHumanoidBoneCorrectionProfile(ShapeSyncHumanoidBoneCorrectionProfile, IReadOnlyList&lt;AttachedOutfitRegistrySet&gt;, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryValidateHumanoidBoneCorrectionProfile(ShapeSyncHumanoidBoneCorrectionProfile profile, IReadOnlyList&lt;AttachedOutfitRegistrySet&gt; attachedOutfits, out string error)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>profile</code> <a class="xref" href="zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile.html">ShapeSyncHumanoidBoneCorrectionProfile</a></dt>
+    <dd></dd>
+    <dt><code>attachedOutfits</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.AttachedOutfitRegistrySet.html">AttachedOutfitRegistrySet</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>error</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

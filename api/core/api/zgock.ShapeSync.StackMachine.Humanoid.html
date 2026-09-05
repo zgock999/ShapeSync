@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace zgock.ShapeSync.StackMachine.Humanoid | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace zgock.ShapeSync.StackMachine.Humanoid | ShapeSync API Reference ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.StackMachine.Humanoid">
+
+  <h1 id="zgock_ShapeSync_StackMachine_Humanoid" data-uid="zgock.ShapeSync.StackMachine.Humanoid" class="text-break">Namespace zgock.ShapeSync.StackMachine.Humanoid</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactLease.html">HotBakeArtifactLease</a></dt>
+      <dd><p>One retained artifact-set reference. Disposing it never destroys spawned GameObjects.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSceneScope.html">HotBakeArtifactSceneScope</a></dt>
+      <dd><p>Connects one artifact set to its owner, TSM host, and Figure topology lifetime.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSet.html">HotBakeArtifactSet</a></dt>
+      <dd><p>Scene-scoped owned resources produced by one successful Hot Bake and shared by later spawns.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeBuildDriver.html">HotBakeBuildDriver</a></dt>
+      <dd><p>Runtime-only admission and lifetime owner for one Hot Bake compiler operation.
+Later HotBake components own this driver and must dispose it during teardown.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.html">HotBakeComponentBase</a></dt>
+      <dd><p>Shared Startup/API compile admission and lifetime for the three Hot Bake components.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeFigure.html">HotBakeFigure</a></dt>
+      <dd><p>Single-spawn Hot Bake component that binds its child skeleton to an ancestor Animator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeSpawnPrimitive.html">HotBakeSpawnPrimitive</a></dt>
+      <dd><p>Creates caller-owned Pure Humanoid instances from one scene-local Hot Bake artifact.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeSpawner.html">HotBakeSpawner</a></dt>
+      <dd><p>Component owner for one bake and N caller-selected spawn targets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildOperation.html">HumanoidBuildOperation</a></dt>
+      <dd><p>Caller-driven build handle. It owns all unhanded compiler candidate and backend payload escrow.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildResult.html">HumanoidBuildResult</a></dt>
+      <dd><p>Successful in-memory result handed to the Editor UI or a future HotBake caller.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidCompiler.html">HumanoidCompiler</a></dt>
+      <dd><p>UnityEditor-independent compiler that sequences backend Mesh and Material execution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialBuildEscrow-1.html">HumanoidMaterialBuildEscrow&lt;TTextureCompletion&gt;</a></dt>
+      <dd><p>Core-owned pure payload escrow. It owns taken Texture completions until a caller receives or disposes it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialBuildMachine-1.html">HumanoidMaterialBuildMachine&lt;TTextureCompletion&gt;</a></dt>
+      <dd><p>Owns backend-independent Material recipe execution. Derived backends provide only EditMode or PlayMode Texture execution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialLogicalCollector.html">HumanoidMaterialLogicalCollector</a></dt>
+      <dd><p>Collects Figure and Material-scope Outfit sources without proxy commits, cloning, or scene mutation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialLogicalPlan.html">HumanoidMaterialLogicalPlan</a></dt>
+      <dd><p>Detached compiler input for Material recipe execution; it owns no Material or Texture result.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialTargetPlan.html">HumanoidMaterialTargetPlan</a></dt>
+      <dd><p>One Figure or Outfit target-local Material plan with immutable entry sources.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialTexturePlanBuilder.html">HumanoidMaterialTexturePlanBuilder</a></dt>
+      <dd><p>Builds one execution-free BaseColor Texture plan from a compiler Material block.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBcpResolver.html">HumanoidMeshBcpResolver</a></dt>
+      <dd><p>Resolves Outfit BCP base/FBM profiles without mutating a source Animator or Transform.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBlendShapeUtility.html">HumanoidMeshBlendShapeUtility</a></dt>
+      <dd><p>UnityEngine-only BlendShape operations shared by EditMode compilation and future runtime bake backends.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBoneTable.html">HumanoidMeshBoneTable</a></dt>
+      <dd><p>Final Figure-relative bone table and bindposes for compiler-owned Mesh remapping.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBuildEscrow-1.html">HumanoidMeshBuildEscrow&lt;TNormal&gt;</a></dt>
+      <dd><p>Core-owned result escrow plus backend-owned Normal completions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBuildMachine-1.html">HumanoidMeshBuildMachine&lt;TNormal&gt;</a></dt>
+      <dd><p>Owns the backend-independent Humanoid Mesh phase order. Derived backends provide only Normal TSM execution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshCombiner.html">HumanoidMeshCombiner</a></dt>
+      <dd><p>Combines final-table-remapped Mesh candidates without using renderer state or runtime transactions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshExpressionVariantBaker.html">HumanoidMeshExpressionVariantBaker</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshExtraBoneMergeResult.html">HumanoidMeshExtraBoneMergeResult</a></dt>
+      <dd><p>Detached Extra Bone merge mapping retained for later Outfit Mesh bone remapping.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshExtraBoneMerger.html">HumanoidMeshExtraBoneMerger</a></dt>
+      <dd><p>Recreates OutfitAttacher's retained Extra Bone hierarchy rule inside the compiler-owned skeleton only.
+It never attaches an Outfit, mutates a source, or reuses the runtime transaction route.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshFbmBakeResult.html">HumanoidMeshFbmBakeResult</a></dt>
+      <dd><p>Temporary Mesh escrow produced by the FBM bake phase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshFbmBaker.html">HumanoidMeshFbmBaker</a></dt>
+      <dd><p>Bakes the compiler's FBM_SET snapshot into detached Mesh copies and removes the consumed FBM frames.
+Runtime DynamicBoneBlender, OutfitAttacher and renderer state are intentionally never touched.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshFigureFbmSkeletonResolver.html">HumanoidMeshFigureFbmSkeletonResolver</a></dt>
+      <dd><p>Applies the Figure FBM skeletal pose using DDB authoring data without executing DynamicBoneBlender.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshFinalBlendShapeNormalizer.html">HumanoidMeshFinalBlendShapeNormalizer</a></dt>
+      <dd><p>Normalizes the destination Pure Humanoid Mesh after source merge.
+It clears every destination BlendShape before registering only final output
+shapes, so no legacy or compiler-temporary removal path can be missed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshFinalMeshBuilder.html">HumanoidMeshFinalMeshBuilder</a></dt>
+      <dd><p>Builds the single unpublished final Mesh after all logical Mesh phases have completed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshLogicalCollector.html">HumanoidMeshLogicalCollector</a></dt>
+      <dd><p>Resolves the Editor-only, read-only source records required by the EditMode Mesh backend.
+It does not instantiate Outfits, modify the Figure, create Meshes, dispatch Textures, or start a transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshLogicalPlan.html">HumanoidMeshLogicalPlan</a></dt>
+      <dd><p>Detached logical result consumed by later EditMode Mesh finalization steps.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshNormalSource.html">HumanoidMeshNormalSource</a></dt>
+      <dd><p>One detached Mesh-owned Normal input selected for a Figure or ATTACH Outfit Proxy entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshNormalStubBuilder.html">HumanoidMeshNormalStubBuilder</a></dt>
+      <dd><p>Builds detached Normal Texture stubs from compiler-owned Mesh source snapshots.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshPbmBoneChangeClassifier.html">HumanoidMeshPbmBoneChangeClassifier</a></dt>
+      <dd><p>Classifies whether one PBM changes data that a Pure Humanoid BlendShape cannot represent.
+This mirrors the read-only target and difference-registry inputs consumed by
+<a class="xref" href="zgock.ShapeSync.DynamicBoneBlender.html">DynamicBoneBlender</a>; it neither executes nor mutates that runtime component.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshPbmVariantBaker.html">HumanoidMeshPbmVariantBaker</a></dt>
+      <dd><p>Builds one PCM-adjusted PBM absolute target from read-only Figure authoring data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshPcmBaker.html">HumanoidMeshPcmBaker</a></dt>
+      <dd><p>Bakes attached Outfit PCM base and FBM frames directly into the temporary Figure Mesh.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshSkeletonBuilder.html">HumanoidMeshSkeletonBuilder</a></dt>
+      <dd><p>Builds an unpublished local humanoid hierarchy without changing the Figure source hierarchy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshSkeletonEscrow.html">HumanoidMeshSkeletonEscrow</a></dt>
+      <dd><p>Compiler-owned local humanoid hierarchy used only for BCP, bindpose, and later Avatar finalization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshSkinningRemapper.html">HumanoidMeshSkinningRemapper</a></dt>
+      <dd><p>Produces a compiler-owned Mesh whose skinning indices address the final Figure bone table.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshVariantFinalizer.html">HumanoidMeshVariantFinalizer</a></dt>
+      <dd><p>Replaces compiler-only Figure BlendShapes with resolved PBM and VRM expected shapes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshVrmTransportProvenance.html">HumanoidMeshVrmTransportProvenance</a></dt>
+      <dd><p>UnityEditor-independent ATTACH logical-name carrier emitted by completed Mesh lower.
+It owns only copied logical names; 17.6 resolves those names through the same detached Mesh binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidOwnedTexture.html">HumanoidOwnedTexture</a></dt>
+      <dd><p>Owns one in-memory Texture completion until a build result or terminal cleanup disposes it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidPureHumanoidNormalizer.html">HumanoidPureHumanoidNormalizer</a></dt>
+      <dd><p>Removes ShapeSync and registered optional-package components from an unpublished candidate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidResolvedHumanoidCarrier.html">HumanoidResolvedHumanoidCarrier</a></dt>
+      <dd><p>Promotes the Mesh Core skeleton escrow into the one resolved Pure Humanoid carrier.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidResolvedHumanoidCarrierOperation.html">HumanoidResolvedHumanoidCarrierOperation</a></dt>
+      <dd><p>Explicit completion barrier for deferred Runtime candidate cleanup.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmPhysicsTransportProvider.html">HumanoidVrmPhysicsTransportProvider</a></dt>
+      <dd><p>Runtime registration seam for the UniVRM companion assembly.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmTransportProvenance.html">HumanoidVrmTransportProvenance</a></dt>
+      <dd><p>Operation-owned VRM source-role carrier handed to the 17.6 publisher after a successful build.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidVrmTransportSourceResolver.html">HumanoidVrmTransportSourceResolver</a></dt>
+      <dd><p>Resolves Mesh-lower ATTACH logical names to the original Document Outfit source roles without referencing UniVRM or UnityEditor.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HybridHotBakeFigure.html">HybridHotBakeFigure</a></dt>
+      <dd><p>Builds the initial and latest committed <a class="xref" href="zgock.ShapeSync.ShapeDirector.html">ShapeDirector</a> state.  Startup
+schedules one warm bake after Director runtime-state construction; later commits use a
+short quiet window, and <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HybridHotBakeFigure.html#zgock_ShapeSync_StackMachine_Humanoid_HybridHotBakeFigure_Compile_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__">Compile(out StackMachineDiagnostic)</a> remains the explicit trigger.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.InMemoryHumanoidMesh.html">InMemoryHumanoidMesh</a></dt>
+      <dd><p>Owns the final in-memory Mesh, candidate Materials, and computed Texture completions after a successful build.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.MaterialBuildPayload.html">MaterialBuildPayload</a></dt>
+      <dd><p>One pure Material semantic payload returned by a backend after its Material phase succeeds.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.MaterialStackMachineCorePlan.html">MaterialStackMachineCorePlan</a></dt>
+      <dd><p>Immutable, execution-free Material recipe artifact shared by the runtime carrier and Humanoid Compiler backends.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.MeshBuildPayload.html">MeshBuildPayload</a></dt>
+      <dd><p>One detached final Mesh payload returned by a backend after its Mesh phase succeeds.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.PlayModeHumanoidBuildBackend.html">PlayModeHumanoidBuildBackend</a></dt>
+      <dd><p>PlayMode concrete backend for <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidCompiler.html">HumanoidCompiler</a>.  It owns only runtime
+execution handles and unpublished carrier escrow; compiler sequencing remains shared.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.PlayModeHumanoidMaterialPayloadBuilder.html">PlayModeHumanoidMaterialPayloadBuilder</a></dt>
+      <dd><p>Converts PlayMode Texture deliveries to the compiler's owned Material semantic payload.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.PlayModeHumanoidMaterialStackMachine.html">PlayModeHumanoidMaterialStackMachine</a></dt>
+      <dd><p>PlayMode adapter for shared Humanoid Material execution; it owns only Texture queue handles.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.PlayModeHumanoidMeshStackMachine.html">PlayModeHumanoidMeshStackMachine</a></dt>
+      <dd><p>PlayMode adapter for shared Humanoid Mesh execution; it owns only Normal Texture queue handles.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildComputedNormal.html">HumanoidBuildComputedNormal</a></dt>
+      <dd><p>One owned computed Normal texture produced by the Mesh phase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildMaterialSlot.html">HumanoidBuildMaterialSlot</a></dt>
+      <dd><p>One final Mesh material slot together with its immutable source and adapter identity.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildSource.html">HumanoidBuildSource</a></dt>
+      <dd><p>Detached Figure and ShapeSync document input accepted by <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidCompiler.html">HumanoidCompiler</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildSourceNormal.html">HumanoidBuildSourceNormal</a></dt>
+      <dd><p>One non-owned source Normal texture selected by the Mesh NORMAL semantic.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialBuildPayload-1.html">HumanoidMaterialBuildPayload&lt;TTextureCompletion&gt;</a></dt>
+      <dd><p>One pure Material semantic payload. The generic completion remains in-memory until its receiver disposes it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialEntrySource.html">HumanoidMaterialEntrySource</a></dt>
+      <dd><p>Read-only source selected for one compiler MaterialId.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialSemanticPayload.html">HumanoidMaterialSemanticPayload</a></dt>
+      <dd><p>Pure Material semantic values keyed by one <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialSemanticPayload.html#zgock_ShapeSync_StackMachine_Humanoid_HumanoidMaterialSemanticPayload_MaterialId">MaterialId</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBcpDelta.html">HumanoidMeshBcpDelta</a></dt>
+      <dd><p>One compiler-resolved BCP delta for the output-owned humanoid skeleton.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshCombineSource.html">HumanoidMeshCombineSource</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshFbmBakedSource.html">HumanoidMeshFbmBakedSource</a></dt>
+      <dd><p>One compiler-owned, FBM-baked temporary Mesh source.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshMaterialSlot.html">HumanoidMeshMaterialSlot</a></dt>
+      <dd><p>One final Mesh submesh's source semantic adapter identity.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshNormalTargetSource.html">HumanoidMeshNormalTargetSource</a></dt>
+      <dd><p>One immutable non-Base Normal texture source for an EditMode Mesh owner entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshNormalTextureRegistration.html">HumanoidMeshNormalTextureRegistration</a></dt>
+      <dd><p>One recipe-resolved source Normal texture keyed by the final MaterialId.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshSource.html">HumanoidMeshSource</a></dt>
+      <dd><p>Read-only physical source resolved for the Figure or one ATTACH Outfit candidate.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.IHumanoidBuildBackend.html">IHumanoidBuildBackend</a></dt>
+      <dd><p>Cross-assembly execution seam implemented by Editor and future HotBake backends.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.IHumanoidVrmPhysicsSpawnInitializer.html">IHumanoidVrmPhysicsSpawnInitializer</a></dt>
+      <dd><p>Optional runtime boundary that reconstructs one spawned VRM graph from its retained Hot Bake template.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.IHumanoidVrmPhysicsTransporter.html">IHumanoidVrmPhysicsTransporter</a></dt>
+      <dd><p>Optional runtime transport boundary that exposes no UniVRM type to Core Runtime.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildOperationStatus.html">HumanoidBuildOperationStatus</a></dt>
+      <dd><p>Reports the caller-visible lifecycle state of <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildOperation.html">HumanoidBuildOperation</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildPhaseStatus.html">HumanoidBuildPhaseStatus</a></dt>
+      <dd><p>Reports the terminal or pending state of a Humanoid build phase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildProgressPhase.html">HumanoidBuildProgressPhase</a></dt>
+      <dd><p>Reports the read-only high-level phase used by an Editor or HotBake caller for progress display.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMaterialBuildStatus.html">HumanoidMaterialBuildStatus</a></dt>
+      <dd><p>Lifecycle state shared by every Humanoid Material build backend.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidMeshBuildStatus.html">HumanoidMeshBuildStatus</a></dt>
+      <dd><p>Lifecycle state shared by every Humanoid Mesh build backend.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidResolvedHumanoidCarrierStatus.html">HumanoidResolvedHumanoidCarrierStatus</a></dt>
+      <dd><p>Lifecycle state of a resolved Humanoid candidate promotion.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HybridHotBakeFigureMode.html">HybridHotBakeFigureMode</a></dt>
+      <dd><p>Requested display mode of a <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HybridHotBakeFigure.html">HybridHotBakeFigure</a>.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

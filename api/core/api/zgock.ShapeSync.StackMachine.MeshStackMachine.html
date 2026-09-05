@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MeshStackMachine | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MeshStackMachine | ShapeSync API Reference ">
+      
+      <meta name="description" content="Figure component and the sole public ingress for Mesh StackMachine recipes.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine">
+
+
+
+  <h1 id="zgock_ShapeSync_StackMachine_MeshStackMachine" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine" class="text-break">
+Class MeshStackMachine  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.StackMachine.html">StackMachine</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Figure component and the sole public ingress for Mesh StackMachine recipes.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[DisallowMultipleComponent]
+public sealed class MeshStackMachine : MonoBehaviour</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">Component</span></div>
+      <div><span class="xref">Behaviour</span></div>
+      <div><span class="xref">MonoBehaviour</span></div>
+      <div><span class="xref">MeshStackMachine</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">MonoBehaviour.IsInvoking()</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.CancelInvoke()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.Invoke(string, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.InvokeRepeating(string, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.CancelInvoke(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.IsInvoking(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine_Auto(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StopCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopCoroutine(Coroutine)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StopCoroutine(string)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopAllCoroutines()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">MonoBehaviour.print(object)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.destroyCancellationToken</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.useGUILayout</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didStart</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didAwake</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.runInEditMode</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.enabled</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.isActiveAndEnabled</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponent(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.TryGetComponent(Type, out Component)</a>
+    </div>
+    <div>
+      <span class="xref">Component.TryGetComponent&lt;T&gt;(out T)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.GetComponent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponentsInChildren&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type, List&lt;Component&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponents&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponents&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentIndex()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.CompareTag(string)</a>
+    </div>
+    <div>
+      <span class="xref">Component.CompareTag(TagHandle)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <span class="xref">Component.transform</span>
+    </div>
+    <div>
+      <span class="xref">Component.transformHandle</span>
+    </div>
+    <div>
+      <span class="xref">Component.gameObject</span>
+    </div>
+    <div>
+      <span class="xref">Component.tag</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetEntityId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetInstanceID()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetHashCode()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Scene)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Destroy(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyImmediate(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DontDestroyOnLoad(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyObject(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="zgock_ShapeSync_StackMachine_MeshStackMachine_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Mesh transaction ownership remains in this component. When a Normal recipe requires Texture execution, it resolves the active
+scene Host through <a class="xref" href="zgock.ShapeSync.StackMachine.TextureStaticMachineFactory.html">TextureStaticMachineFactory</a> and passes that explicit Host to the low-level Texture executor.</p>
+</div>
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryAcceptRecipePayload_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryAcceptRecipePayload*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryAcceptRecipePayload_zgock_ShapeSync_StackMachine_ShapeSyncDocument_zgock_ShapeSync_StackMachine_StackMachineExecutionResult__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryAcceptRecipePayload(zgock.ShapeSync.StackMachine.ShapeSyncDocument,zgock.ShapeSync.StackMachine.StackMachineExecutionResult@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryAcceptRecipePayload(ShapeSyncDocument, out StackMachineExecutionResult, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Accepts one Spec15.3 Mesh payload using its shared document binding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryAcceptRecipePayload(ShapeSyncDocument payload, out StackMachineExecutionResult result, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>payload</code> <a class="xref" href="zgock.ShapeSync.StackMachine.ShapeSyncDocument.html">ShapeSyncDocument</a></dt>
+    <dd><p>The Figure-owned full document or a target-local payload.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>The Mesh execution result when the Mesh domain is non-empty.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>A structured configuration or execution rejection.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when an empty payload no-ops or the Mesh transaction succeeds.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryBuildNormalRecipe_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryBuildNormalRecipe*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryBuildNormalRecipe_System_String_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_Materials_NormalTargetWeight__zgock_ShapeSync_StackMachine_TextureRecipeStub__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryBuildNormalRecipe(System.String,System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.Materials.NormalTargetWeight},zgock.ShapeSync.StackMachine.TextureRecipeStub@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryBuildNormalRecipe(string, IReadOnlyList&lt;NormalTargetWeight&gt;, out TextureRecipeStub, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds one Normal Texture recipe from the Mesh-owned Base and target texture dictionary and current DDB snapshot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryBuildNormalRecipe(string entryName, IReadOnlyList&lt;NormalTargetWeight&gt; snapshot, out TextureRecipeStub stub, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The configured Proxy entry name.</p>
+</dd>
+    <dt><code>snapshot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.NormalTargetWeight.html">NormalTargetWeight</a>&gt;</dt>
+    <dd><p>The latest raw non-PBM DDB weight snapshot.</p>
+</dd>
+    <dt><code>stub</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureRecipeStub.html">TextureRecipeStub</a></dt>
+    <dd><p>The detached Texture StackMachine recipe on success.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>The structured rejection diagnostic on failure.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the binding and its texture dictionary produce a valid recipe.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryEnsureReady_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryEnsureReady*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryEnsureReady_zgock_ShapeSync_StackMachine_MeshBinding_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryEnsureReady(zgock.ShapeSync.StackMachine.MeshBinding,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryEnsureReady(MeshBinding, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ensures this Machine is ready for a Spec15.3 document Mesh binding.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryEnsureReady(MeshBinding binding, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>binding</code> <a class="xref" href="zgock.ShapeSync.StackMachine.MeshBinding.html">MeshBinding</a></dt>
+    <dd><p>The shared Mesh binding that the Machine must resolve.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>A structured readiness or configuration failure.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the document binding has a valid Figure-local context.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryEnsureReady_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryEnsureReady*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryEnsureReady_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryEnsureReady(zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryEnsureReady(out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Ensures the legacy Figure-local Mesh route has constructed its binding context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryEnsureReady(out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>A structured readiness failure.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when this Machine is ready for its configured route.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryExecute_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryExecute*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryExecute_System_String_zgock_ShapeSync_StackMachine_StackMachineExecutionResult__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryExecute(System.String,zgock.ShapeSync.StackMachine.StackMachineExecutionResult@)">
+  TryExecute(string, out StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compiles and executes Mesh recipe source using this Figure's binding template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryExecute(string wordSource, out StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>wordSource</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Canonical Forth source containing Mesh words and logical bindings.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>The execution lifecycle and diagnostic result.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the transaction commits successfully.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryExecute_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryExecute*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryExecute_zgock_ShapeSync_StackMachine_MeshRecipeAsset_zgock_ShapeSync_StackMachine_StackMachineExecutionResult__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryExecute(zgock.ShapeSync.StackMachine.MeshRecipeAsset,zgock.ShapeSync.StackMachine.StackMachineExecutionResult@)">
+  TryExecute(MeshRecipeAsset, out StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deserializes, compiles, and executes a Mesh recipe carrier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryExecute(MeshRecipeAsset asset, out StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>asset</code> <a class="xref" href="zgock.ShapeSync.StackMachine.MeshRecipeAsset.html">MeshRecipeAsset</a></dt>
+    <dd><p>The serialized Mesh recipe carrier.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>The execution lifecycle and diagnostic result.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the transaction commits successfully.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryExecute_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryExecute*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryExecute_zgock_ShapeSync_StackMachine_MeshRecipeDocument_zgock_ShapeSync_StackMachine_StackMachineExecutionResult__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryExecute(zgock.ShapeSync.StackMachine.MeshRecipeDocument,zgock.ShapeSync.StackMachine.StackMachineExecutionResult@)">
+  TryExecute(MeshRecipeDocument, out StackMachineExecutionResult)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compiles and executes an already materialized Mesh recipe document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryExecute(MeshRecipeDocument document, out StackMachineExecutionResult result)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>document</code> <a class="xref" href="zgock.ShapeSync.StackMachine.MeshRecipeDocument.html">MeshRecipeDocument</a></dt>
+    <dd><p>The document to validate and execute.</p>
+</dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+    <dd><p>The execution lifecycle and diagnostic result.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the transaction commits successfully.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryGetNormalTemplate_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryGetNormalTemplate*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TryGetNormalTemplate_System_String_zgock_ShapeSync_StackMachine_NormalRecipeTemplate__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TryGetNormalTemplate(System.String,zgock.ShapeSync.StackMachine.NormalRecipeTemplate@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryGetNormalTemplate(string, out NormalRecipeTemplate, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resolves the latest Mesh-owned Normal template registered for one logical Normal entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetNormalTemplate(string entryName, out NormalRecipeTemplate template, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Proxy entry name requesting construction.</p>
+</dd>
+    <dt><code>template</code> <a class="xref" href="zgock.ShapeSync.StackMachine.NormalRecipeTemplate.html">NormalRecipeTemplate</a></dt>
+    <dd><p>The registered detached template.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>A structured failure when no template is registered.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the entry has a registered template.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TrySubmitNormal_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TrySubmitNormal*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TrySubmitNormal_System_String_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_Materials_NormalTargetWeight__zgock_ShapeSync_StackMachine_TextureExecutionOriginKey_zgock_ShapeSync_StackMachine_TextureExecutionHandle__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TrySubmitNormal(System.String,System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.Materials.NormalTargetWeight},zgock.ShapeSync.StackMachine.TextureExecutionOriginKey,zgock.ShapeSync.StackMachine.TextureExecutionHandle@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TrySubmitNormal(string, IReadOnlyList&lt;NormalTargetWeight&gt;, TextureExecutionOriginKey, out TextureExecutionHandle, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds and queues one Normal-entry recipe without retained Texture halls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySubmitNormal(string entryName, IReadOnlyList&lt;NormalTargetWeight&gt; snapshot, TextureExecutionOriginKey origin, out TextureExecutionHandle handle, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>snapshot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.NormalTargetWeight.html">NormalTargetWeight</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>origin</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOriginKey.html">TextureExecutionOriginKey</a></dt>
+    <dd></dd>
+    <dt><code>handle</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionHandle.html">TextureExecutionHandle</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_MeshStackMachine_TrySubmitNormal_" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TrySubmitNormal*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_MeshStackMachine_TrySubmitNormal_System_String_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_Materials_NormalTargetWeight__zgock_ShapeSync_StackMachine_TextureExecutionOriginKey_zgock_ShapeSync_StackMachine_TextureExecutionOptions_zgock_ShapeSync_StackMachine_TextureExecutionHandle__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.MeshStackMachine.TrySubmitNormal(System.String,System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.Materials.NormalTargetWeight},zgock.ShapeSync.StackMachine.TextureExecutionOriginKey,zgock.ShapeSync.StackMachine.TextureExecutionOptions,zgock.ShapeSync.StackMachine.TextureExecutionHandle@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TrySubmitNormal(string, IReadOnlyList&lt;NormalTargetWeight&gt;, TextureExecutionOriginKey, TextureExecutionOptions, out TextureExecutionHandle, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds and queues one Normal-entry recipe on the scene Texture StackMachine host.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySubmitNormal(string entryName, IReadOnlyList&lt;NormalTargetWeight&gt; snapshot, TextureExecutionOriginKey origin, TextureExecutionOptions options, out TextureExecutionHandle handle, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>entryName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The configured Proxy entry name.</p>
+</dd>
+    <dt><code>snapshot</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.NormalTargetWeight.html">NormalTargetWeight</a>&gt;</dt>
+    <dd><p>The latest raw non-PBM DDB weight snapshot.</p>
+</dd>
+    <dt><code>origin</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOriginKey.html">TextureExecutionOriginKey</a></dt>
+    <dd><p>The host-issued origin token retained by this logical Normal request series for stale-result control.</p>
+</dd>
+    <dt><code>options</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOptions.html">TextureExecutionOptions</a></dt>
+    <dd></dd>
+    <dt><code>handle</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionHandle.html">TextureExecutionHandle</a></dt>
+    <dd><p>The queued Texture execution handle on success.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>The structured rejection diagnostic on failure.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the recipe was accepted by the Texture StackMachine host.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

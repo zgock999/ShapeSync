@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MaterialShaderAdapter | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MaterialShaderAdapter | ShapeSync API Reference ">
+      
+      <meta name="description" content="Explicit, shader-specific mapping from Material Proxy semantics to public Material properties.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter">
+
+
+
+  <h1 id="zgock_ShapeSync_Materials_MaterialShaderAdapter" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter" class="text-break">
+Class MaterialShaderAdapter  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.Materials.html">Materials</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Explicit, shader-specific mapping from Material Proxy semantics to public Material properties.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class MaterialShaderAdapter : ScriptableObject</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">ScriptableObject</span></div>
+      <div><span class="xref">MaterialShaderAdapter</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="zgock.ShapeSync.Materials.MToon10MaterialShaderAdapter.html">MToon10MaterialShaderAdapter</a></div>
+      <div><a class="xref" href="zgock.ShapeSync.Materials.UrpLitMaterialShaderAdapter.html">UrpLitMaterialShaderAdapter</a></div>
+      <div><a class="xref" href="zgock.ShapeSync.Materials.UrpUnlitMaterialShaderAdapter.html">UrpUnlitMaterialShaderAdapter</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">ScriptableObject.SetDirty()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">ScriptableObject.CreateInstance(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">ScriptableObject.CreateInstance(Type)</a>
+    </div>
+    <div>
+      <span class="xref">ScriptableObject.CreateInstance&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetEntityId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetInstanceID()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetHashCode()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Scene)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Destroy(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyImmediate(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DontDestroyOnLoad(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyObject(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_AssignmentTemplates_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.AssignmentTemplates*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_AssignmentTemplates" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.AssignmentTemplates">
+  AssignmentTemplates
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the serialized explicit property mappings owned by this adapter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;MaterialPropertyBindingTemplate&gt; AssignmentTemplates { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyBindingTemplate.html">MaterialPropertyBindingTemplate</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_ExpectedShaderName_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.ExpectedShaderName*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_ExpectedShaderName" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.ExpectedShaderName">
+  ExpectedShaderName
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the exact shader name supported by this adapter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract string ExpectedShaderName { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_AddTextureAndTransform_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.AddTextureAndTransform*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_AddTextureAndTransform_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyBindingTemplate__System_String_zgock_ShapeSync_Materials_MaterialPropertyValueSource_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.AddTextureAndTransform(System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyBindingTemplate},System.String,zgock.ShapeSync.Materials.MaterialPropertyValueSource)">
+  AddTextureAndTransform(List&lt;MaterialPropertyBindingTemplate&gt;, string, MaterialPropertyValueSource)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a texture mapping and, for a base-color texture, its shared UV scale and offset mappings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static void AddTextureAndTransform(List&lt;MaterialPropertyBindingTemplate&gt; destination, string propertyName, MaterialPropertyValueSource textureSource)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyBindingTemplate.html">MaterialPropertyBindingTemplate</a>&gt;</dt>
+    <dd><p>The template buffer to append to.</p>
+</dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The explicit shader texture property name.</p>
+</dd>
+    <dt><code>textureSource</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyValueSource.html">MaterialPropertyValueSource</a></dt>
+    <dd><p>The semantic texture source for the mapping.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_BuildDefaultTemplates_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.BuildDefaultTemplates*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_BuildDefaultTemplates_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyBindingTemplate__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.BuildDefaultTemplates(System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyBindingTemplate})">
+  BuildDefaultTemplates(List&lt;MaterialPropertyBindingTemplate&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds the default explicit property mappings for a concrete adapter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected abstract void BuildDefaultTemplates(List&lt;MaterialPropertyBindingTemplate&gt; destination)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyBindingTemplate.html">MaterialPropertyBindingTemplate</a>&gt;</dt>
+    <dd><p>The caller-owned buffer that receives the default mappings.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_OnEnable_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.OnEnable*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_OnEnable" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.OnEnable">
+  OnEnable()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes default mappings when the adapter is enabled.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnEnable()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_Supports_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.Supports*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_Supports_zgock_ShapeSync_Materials_MaterialProxySemantic_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.Supports(zgock.ShapeSync.Materials.MaterialProxySemantic)">
+  Supports(MaterialProxySemantic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether this adapter maps the specified semantic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Supports(MaterialProxySemantic semantic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>semantic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemantic.html">MaterialProxySemantic</a></dt>
+    <dd><p>The semantic to query.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the semantic has an explicit mapping.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryAppendComputedAssignments_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryAppendComputedAssignments*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryAppendComputedAssignments_zgock_ShapeSync_Materials_MaterialProxySemanticValues_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyAssignment__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryAppendComputedAssignments(zgock.ShapeSync.Materials.MaterialProxySemanticValues,System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyAssignment},zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryAppendComputedAssignments(MaterialProxySemanticValues, List&lt;MaterialPropertyAssignment&gt;, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Appends adapter-specific computed write assignments after the template mappings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool TryAppendComputedAssignments(MaterialProxySemanticValues values, List&lt;MaterialPropertyAssignment&gt; destination, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd><p>The source semantic values.</p>
+</dd>
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyAssignment.html">MaterialPropertyAssignment</a>&gt;</dt>
+    <dd><p>The caller-owned write-plan buffer to append to.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The failure diagnostic, if computation fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when computed assignments were appended; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryAppendComputedReadCommands_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryAppendComputedReadCommands*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryAppendComputedReadCommands_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyReadCommand__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryAppendComputedReadCommands(System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyReadCommand},zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryAppendComputedReadCommands(List&lt;MaterialPropertyReadCommand&gt;, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Appends adapter-specific computed read commands after the template mappings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool TryAppendComputedReadCommands(List&lt;MaterialPropertyReadCommand&gt; destination, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyReadCommand.html">MaterialPropertyReadCommand</a>&gt;</dt>
+    <dd><p>The caller-owned read-plan buffer to append to.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The failure diagnostic, if computation fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when computed read commands were appended; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryAppendPublishTextureProperties_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryAppendPublishTextureProperties*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryAppendPublishTextureProperties_zgock_ShapeSync_Materials_MaterialProxySemantic_System_Collections_Generic_List_System_String__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryAppendPublishTextureProperties(zgock.ShapeSync.Materials.MaterialProxySemantic,System.Collections.Generic.List{System.String},zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryAppendPublishTextureProperties(MaterialProxySemantic, List&lt;string&gt;, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Appends adapter-specific texture properties that receive a semantic during Compiler artifact publish.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool TryAppendPublishTextureProperties(MaterialProxySemantic semantic, List&lt;string&gt; destination, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>semantic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemantic.html">MaterialProxySemantic</a></dt>
+    <dd></dd>
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryApplyComputedReadValues_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryApplyComputedReadValues*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryApplyComputedReadValues_UnityEngine_Material_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyReadCommand__zgock_ShapeSync_Materials_MaterialProxySemanticValues__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryApplyComputedReadValues(UnityEngine.Material,System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyReadCommand},zgock.ShapeSync.Materials.MaterialProxySemanticValues@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryApplyComputedReadValues(Material, List&lt;MaterialPropertyReadCommand&gt;, ref MaterialProxySemanticValues, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Applies adapter-specific computed semantic values after template read commands have executed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual bool TryApplyComputedReadValues(Material material, List&lt;MaterialPropertyReadCommand&gt; readPlan, ref MaterialProxySemanticValues values, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd><p>The Material being read.</p>
+</dd>
+    <dt><code>readPlan</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyReadCommand.html">MaterialPropertyReadCommand</a>&gt;</dt>
+    <dd><p>The complete explicit read plan.</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd><p>The semantic values to augment.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The failure diagnostic, if computation fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when computed values were applied; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryApplyInMemory_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryApplyInMemory*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryApplyInMemory_UnityEngine_Material_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_Materials_MaterialShaderAdapterApplyResult__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryApplyInMemory(UnityEngine.Material,zgock.ShapeSync.Materials.MaterialProxySemanticValues,zgock.ShapeSync.Materials.MaterialShaderAdapterApplyResult@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryApplyInMemory(Material, MaterialProxySemanticValues, out MaterialShaderAdapterApplyResult, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Applies requested semantics directly to a detached in-memory Material clone.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryApplyInMemory(Material material, MaterialProxySemanticValues values, out MaterialShaderAdapterApplyResult result, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd></dd>
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialShaderAdapterApplyResult.html">MaterialShaderAdapterApplyResult</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryApplyInMemory_UnityEngine_Material_zgock_ShapeSync_Materials_MaterialProxySemanticValues_zgock_ShapeSync_Materials_MaterialShaderAdapterApplyResult__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Unsupported semantics are successful no-ops reported as <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnosticCode.html#zgock_ShapeSync_Materials_MaterialProxyDiagnosticCode_SemanticUnsupported">SemanticUnsupported</a>. Shader mismatch and missing mapped properties reject before mutation.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryBuildReadPlan_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryBuildReadPlan*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryBuildReadPlan_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyReadCommand__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryBuildReadPlan(System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyReadCommand},zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryBuildReadPlan(List&lt;MaterialPropertyReadCommand&gt;, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds atomic read commands for every explicit adapter mapping.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryBuildReadPlan(List&lt;MaterialPropertyReadCommand&gt; destination, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyReadCommand.html">MaterialPropertyReadCommand</a>&gt;</dt>
+    <dd><p>The caller-owned buffer that receives the read commands.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The failure diagnostic, if compilation fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the plan was built; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryBuildWritePlan_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryBuildWritePlan*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryBuildWritePlan_zgock_ShapeSync_Materials_MaterialProxySemanticValues_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyAssignment__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryBuildWritePlan(zgock.ShapeSync.Materials.MaterialProxySemanticValues,System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyAssignment},zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryBuildWritePlan(MaterialProxySemanticValues, List&lt;MaterialPropertyAssignment&gt;, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Builds atomic write assignments for the enabled semantic values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryBuildWritePlan(MaterialProxySemanticValues values, List&lt;MaterialPropertyAssignment&gt; destination, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd><p>The semantic values and apply flags to compile.</p>
+</dd>
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyAssignment.html">MaterialPropertyAssignment</a>&gt;</dt>
+    <dd><p>The caller-owned buffer that receives the assignments.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The failure diagnostic, if compilation fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the plan was built; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryCreateInMemoryClone_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryCreateInMemoryClone*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryCreateInMemoryClone_UnityEngine_Material_UnityEngine_Material__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryCreateInMemoryClone(UnityEngine.Material,UnityEngine.Material@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryCreateInMemoryClone(Material, out Material, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a detached in-memory Material clone for the Compiler without touching a renderer, Proxy, or asset.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryCreateInMemoryClone(Material source, out Material clone, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>clone</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryCreateInMemoryClone_UnityEngine_Material_UnityEngine_Material__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The source shader must exactly match this adapter. The clone explicitly preserves the shader and all source properties.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetAtlasBaseColorTransform_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetAtlasBaseColorTransform*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetAtlasBaseColorTransform_UnityEngine_Material_System_String__UnityEngine_Vector2__UnityEngine_Vector2__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetAtlasBaseColorTransform(UnityEngine.Material,System.String@,UnityEngine.Vector2@,UnityEngine.Vector2@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryGetAtlasBaseColorTransform(Material, out string, out Vector2, out Vector2, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the adapter-owned BaseColor texture transform that Atlas must normalize.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryGetAtlasBaseColorTransform(Material material, out string propertyName, out Vector2 scale, out Vector2 offset, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>scale</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+    <dt><code>offset</code> <span class="xref">Vector2</span></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetAtlasBaseColorTransform_UnityEngine_Material_System_String__UnityEngine_Vector2__UnityEngine_Vector2__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Derived adapters override this for shaders whose BaseColor property is not <code>_MainTex</code>.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetEffectiveNeutralTexture_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetEffectiveNeutralTexture*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetEffectiveNeutralTexture_UnityEngine_Material_System_String_UnityEngine_Texture_System_Boolean__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetEffectiveNeutralTexture(UnityEngine.Material,System.String,UnityEngine.Texture,System.Boolean@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryGetEffectiveNeutralTexture(Material, string, Texture, out bool, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Determines whether an adapter-mapped texture is semantically neutral for the current Material.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryGetEffectiveNeutralTexture(Material material, string propertyName, Texture texture, out bool isNeutral, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd></dd>
+    <dt><code>isNeutral</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetEffectiveNeutralTexture_UnityEngine_Material_System_String_UnityEngine_Texture_System_Boolean__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The adapter first evaluates current Material state in its override and uses content inspection only when state does not decide the result. The property name is deliberately generic so future Emission, Occlusion, and MatCap semantics can use the same query.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetEffectiveNonOwnedUv0Texture_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetEffectiveNonOwnedUv0Texture*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetEffectiveNonOwnedUv0Texture_UnityEngine_Material_System_String__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetEffectiveNonOwnedUv0Texture(UnityEngine.Material,System.String@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryGetEffectiveNonOwnedUv0Texture(Material, out string, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Finds an effective UV0-sampled texture property not owned by this adapter for Atlas validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool TryGetEffectiveNonOwnedUv0Texture(Material material, out string propertyName, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetEffectiveNonOwnedUv0Texture_UnityEngine_Material_System_String__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The base adapter declares none. Shader-specific adapters override this query when such a property is effective for the current material.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetPublishTextureProperties_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetPublishTextureProperties*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetPublishTextureProperties_zgock_ShapeSync_Materials_MaterialProxySemantic_System_Collections_Generic_List_System_String__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryGetPublishTextureProperties(zgock.ShapeSync.Materials.MaterialProxySemantic,System.Collections.Generic.List{System.String},zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryGetPublishTextureProperties(MaterialProxySemantic, List&lt;string&gt;, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lists every shader texture property that receives one semantic when a Compiler result is published.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryGetPublishTextureProperties(MaterialProxySemantic semantic, List&lt;string&gt; destination, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>semantic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemantic.html">MaterialProxySemantic</a></dt>
+    <dd></dd>
+    <dt><code>destination</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryGetPublishTextureProperties_zgock_ShapeSync_Materials_MaterialProxySemantic_System_Collections_Generic_List_System_String__zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>This includes adapter-specific computed mappings, which are not necessarily represented by serialized assignment templates.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryMatchNeutralTextureContent_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryMatchNeutralTextureContent*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryMatchNeutralTextureContent_UnityEngine_Texture_UnityEngine_Color_System_Boolean__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryMatchNeutralTextureContent(UnityEngine.Texture,UnityEngine.Color,System.Boolean@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryMatchNeutralTextureContent(Texture, Color, out bool, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compares RGB content with an adapter-owned neutral value using the shared quantization tolerance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected static bool TryMatchNeutralTextureContent(Texture texture, Color expected, out bool isNeutral, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>texture</code> <span class="xref">Texture</span></dt>
+    <dd></dd>
+    <dt><code>expected</code> <span class="xref">Color</span></dt>
+    <dd></dd>
+    <dt><code>isNeutral</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryReadValues_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryReadValues*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryReadValues_UnityEngine_Material_System_Collections_Generic_List_zgock_ShapeSync_Materials_MaterialPropertyReadCommand__zgock_ShapeSync_Materials_MaterialProxySemanticValues__zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryReadValues(UnityEngine.Material,System.Collections.Generic.List{zgock.ShapeSync.Materials.MaterialPropertyReadCommand},zgock.ShapeSync.Materials.MaterialProxySemanticValues@,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryReadValues(Material, List&lt;MaterialPropertyReadCommand&gt;, out MaterialProxySemanticValues, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads semantic values from a Material using a previously built explicit read plan.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryReadValues(Material material, List&lt;MaterialPropertyReadCommand&gt; readPlan, out MaterialProxySemanticValues values, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd><p>The Material to read without modifying it.</p>
+</dd>
+    <dt><code>readPlan</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.Materials.MaterialPropertyReadCommand.html">MaterialPropertyReadCommand</a>&gt;</dt>
+    <dd><p>The explicit read commands to execute.</p>
+</dd>
+    <dt><code>values</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxySemanticValues.html">MaterialProxySemanticValues</a></dt>
+    <dd><p>The values read from the Material.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd><p>The failure diagnostic, if reading fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when values were read; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryValidateMaterial_" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryValidateMaterial*"></a>
+
+  <h3 id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryValidateMaterial_UnityEngine_Material_zgock_ShapeSync_Materials_MaterialProxyDiagnostic__" data-uid="zgock.ShapeSync.Materials.MaterialShaderAdapter.TryValidateMaterial(UnityEngine.Material,zgock.ShapeSync.Materials.MaterialProxyDiagnostic@)">
+  TryValidateMaterial(Material, out MaterialProxyDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates that a material is compatible with this adapter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool TryValidateMaterial(Material material, out MaterialProxyDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>material</code> <span class="xref">Material</span></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.Materials.MaterialProxyDiagnostic.html">MaterialProxyDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_Materials_MaterialShaderAdapter_TryValidateMaterial_UnityEngine_Material_zgock_ShapeSync_Materials_MaterialProxyDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Derived adapters use this before evaluating shader-specific Atlas semantics.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

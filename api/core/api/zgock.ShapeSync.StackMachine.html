@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace zgock.ShapeSync.StackMachine | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace zgock.ShapeSync.StackMachine | ShapeSync API Reference ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.StackMachine">
+
+  <h1 id="zgock_ShapeSync_StackMachine" data-uid="zgock.ShapeSync.StackMachine" class="text-break">Namespace zgock.ShapeSync.StackMachine</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerCandidatePages.html">AtlasBakerCandidatePages</a></dt>
+      <dd><p>Owns the named semantic Atlas pages attached to a successful in-memory Humanoid candidate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerExecutionOperation.html">AtlasBakerExecutionOperation</a></dt>
+      <dd><p>Shared caller-pumped execution lifecycle for the logical result of <a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerOperation.html">AtlasBakerOperation</a>.
+It never selects a Texture recipe partition, polls itself, mutates candidate Mesh/Material state, or publishes assets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerExecutionResult.html">AtlasBakerExecutionResult</a></dt>
+      <dd><p>Owns untaken executed Atlas pages until the next compiler phase accepts or disposes them.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerMaterialInput.html">AtlasBakerMaterialInput</a></dt>
+      <dd><p>One final candidate material's actual Atlas texture inputs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerOperation.html">AtlasBakerOperation</a></dt>
+      <dd><p>UnityEditor-independent, caller-pumped Atlas Baker Core operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPageCompletion.html">AtlasBakerPageCompletion</a></dt>
+      <dd><p>Owns one executed Atlas page until its receiver disposes it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPageOperation.html">AtlasBakerPageOperation</a></dt>
+      <dd><p>One immutable page-local FILL_OUT or PLACE operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPagePlan.html">AtlasBakerPagePlan</a></dt>
+      <dd><p>One actual semantic Atlas page and its ordered, backend-partition-neutral operation sequence.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPageRecipeBuilder.html">AtlasBakerPageRecipeBuilder</a></dt>
+      <dd><p>Builds the one-recipe PlayMode / EditMode lowering selected for one logical Atlas page.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPageRecipePartition.html">AtlasBakerPageRecipePartition</a></dt>
+      <dd><p>One backend-owned cumulative recipe segment for a logical Atlas page.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPageRecipePartitioner.html">AtlasBakerPageRecipePartitioner</a></dt>
+      <dd><p>Partitions one logical page using the same empty-grid capacity model as <a class="xref" href="zgock.ShapeSync.StackMachine.AtlasFeasibility.html">AtlasFeasibility</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerReconciliation.html">AtlasBakerReconciliation</a></dt>
+      <dd><p>One informational result of comparing Schema entries with final candidate material inputs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerResult.html">AtlasBakerResult</a></dt>
+      <dd><p>Successful detached Core result handed to the selected TSM backend adapter.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasCandidateApplicator.html">AtlasCandidateApplicator</a></dt>
+      <dd><p>Applies completed in-memory Atlas pages to an already cloned Humanoid candidate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasFeasibility.html">AtlasFeasibility</a></dt>
+      <dd><p>Evaluates exact Atlas recipe capacity and actual page budget without inspecting live grid occupancy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasFeasibilityPage.html">AtlasFeasibilityPage</a></dt>
+      <dd><p>Reports the capacity of one actual Atlas semantic page without prescribing its backend partition.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasFeasibilityResult.html">AtlasFeasibilityResult</a></dt>
+      <dd><p>Reports exact backend recipe capacity for actual source textures on a GPU capability snapshot.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasFeasibilitySource.html">AtlasFeasibilitySource</a></dt>
+      <dd><p>One actual source texture that the Baker intends to place into a semantic Atlas page.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasLayoutCell.html">AtlasLayoutCell</a></dt>
+      <dd><p>Describes one solved Atlas cell rectangle in texels.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasLayoutOracle.html">AtlasLayoutOracle</a></dt>
+      <dd><p>Solves deterministic Atlas page normalization and first-fit cell placement.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasLayoutResult.html">AtlasLayoutResult</a></dt>
+      <dd><p>Detached deterministic layout derived from one validated Atlas Schema document.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasMaterialId.html">AtlasMaterialId</a></dt>
+      <dd><p>Serializable MaterialId representation used by Atlas authoring assets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasMeshValidator.html">AtlasMeshValidator</a></dt>
+      <dd><p>Validates Phase-0 Atlas mesh invariants without mutating source assets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasMeshValidator.Target.html">AtlasMeshValidator.Target</a></dt>
+      <dd><p>Describes the owner and stable material key of one Atlas validation target.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasPackingAlgorithm.html">AtlasPackingAlgorithm</a></dt>
+      <dd><p>Names the deterministic placement implementation declared by an Atlas Schema.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSchema.html">AtlasSchema</a></dt>
+      <dd><p>Serialized Phase-0 Atlas authoring carrier.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSchemaDocument.html">AtlasSchemaDocument</a></dt>
+      <dd><p>Detached user-input document copied from an <a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSchema.html">AtlasSchema</a> asset.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSchemaEntry.html">AtlasSchemaEntry</a></dt>
+      <dd><p>One user-authored Atlas assignment for a MaterialProxy entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSchemaValidation.html">AtlasSchemaValidation</a></dt>
+      <dd><p>Validates Atlas Schema user input without solving layout or accessing UnityEditor.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSchemaVersion.html">AtlasSchemaVersion</a></dt>
+      <dd><p>Identifies the supported serialized Atlas Schema format.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSemanticPage.html">AtlasSemanticPage</a></dt>
+      <dd><p>Describes one potential semantic layout shared by a derived page group; it is never serialized into an Atlas Schema.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasSourceMaterialIdentity.html">AtlasSourceMaterialIdentity</a></dt>
+      <dd><p>Maps one schema entry to the source Material identity observed during validation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasUvTransform.html">AtlasUvTransform</a></dt>
+      <dd><p>Pure Phase-0 Atlas UV transform shared by the Baker and Oracle Layer 2.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasValidationIdentity.html">AtlasValidationIdentity</a></dt>
+      <dd><p>Describes the authoring inputs observed when an Atlas Schema was validated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasValidationIdentityDifference.html">AtlasValidationIdentityDifference</a></dt>
+      <dd><p>One ordinal comparison difference between Schema validation provenance and a current build input.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialBinding.html">MaterialBinding</a></dt>
+      <dd><p>Shared Material texture source binding referenced by one or more ShapeSync documents.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialBindingContext.html">MaterialBindingContext</a></dt>
+      <dd><p>Non-persistent route from a logical <code>MATERIAL</code> word to the identically named co-located Attacher entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialRecipeDocument.html">MaterialRecipeDocument</a></dt>
+      <dd><p>Detached version-2 Texture StackMachine recipe document.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachine.html">MaterialStackMachine</a></dt>
+      <dd><p>Material-domain orchestrator that escrows all Texture results before invoking existing one-entry Material Attacher transactions.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachineBlock.html">MaterialStackMachineBlock</a></dt>
+      <dd><p>One immutable logical Material block compiled before any Texture execution or Material mutation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachineDispatchOperation.html">MaterialStackMachineDispatchOperation</a></dt>
+      <dd><p>Observes a fixed set of Material target operations without owning them.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachineOperation.html">MaterialStackMachineOperation</a></dt>
+      <dd><p>Owns one in-flight Material StackMachine request until all Texture recipes, DryRuns, and entry commits complete.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachineParser.html">MaterialStackMachineParser</a></dt>
+      <dd><p>Parses the closed Material StackMachine grammar without touching Texture, Attacher, Proxy, or scene state.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachinePlan.html">MaterialStackMachinePlan</a></dt>
+      <dd><p>Immutable Material-domain transaction plan containing all blocks before escrow begins.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachineResult.html">MaterialStackMachineResult</a></dt>
+      <dd><p>Terminal result of a Material StackMachine request.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialTargetCompletion.html">MaterialTargetCompletion</a></dt>
+      <dd><p>Read-only terminal outcome for one Figure or Outfit Material target.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialTargetScopeParser.html">MaterialTargetScopeParser</a></dt>
+      <dd><p>Splits flat Spec15.3 <code>FIGURE</code> and <code>$registryId OUTFIT</code> scopes into target-local Material sources.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialTargetSource.html">MaterialTargetSource</a></dt>
+      <dd><p>One Figure or attached-Outfit target-local Material source subset.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialTextureBindingEntry.html">MaterialTextureBindingEntry</a></dt>
+      <dd><p>Logical Material texture declaration stored by <a class="xref" href="zgock.ShapeSync.StackMachine.MaterialBinding.html">MaterialBinding</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshBinding.html">MeshBinding</a></dt>
+      <dd><p>Shared physical Mesh source binding referenced by one or more ShapeSync documents.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshBindingContext.html">MeshBindingContext</a></dt>
+      <dd><p>Non-serialized Figure-local resolution of Mesh recipe logical names.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshBindingTemplate.html">MeshBindingTemplate</a></dt>
+      <dd><p>Figure-local logical binding template. Its dictionaries are built once by MeshStackMachine.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshExecutionPlan.html">MeshExecutionPlan</a></dt>
+      <dd><p>Immutable Mesh-domain execution artifact compiled from common StackMachine bytecode.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshExecutor.html">MeshExecutor</a></dt>
+      <dd><p>Mesh bytecode transaction executor. It stages all effects until the final commit boundary.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshMorphBindingEntry.html">MeshMorphBindingEntry</a></dt>
+      <dd><p>Logical Mesh morph declaration stored by <a class="xref" href="zgock.ShapeSync.StackMachine.MeshBinding.html">MeshBinding</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshNormalBlockParser.html">MeshNormalBlockParser</a></dt>
+      <dd><p>Extracts Mesh-owned <code>NORMAL / ENDNORMAL</code> declarations before common Mesh bytecode compilation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshNormalOwnerBindingEntry.html">MeshNormalOwnerBindingEntry</a></dt>
+      <dd><p>Normal texture declarations owned by the Figure or one Outfit RegistryId.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshNormalTargetBindingEntry.html">MeshNormalTargetBindingEntry</a></dt>
+      <dd><p>Normal textures associated with one Base or non-PBM FBM target.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshNormalTextureBindingEntry.html">MeshNormalTextureBindingEntry</a></dt>
+      <dd><p>One Normal texture selected for an entry within a Mesh Normal owner and target.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshOutfitBindingEntry.html">MeshOutfitBindingEntry</a></dt>
+      <dd><p>Logical Outfit declaration stored by <a class="xref" href="zgock.ShapeSync.StackMachine.MeshBinding.html">MeshBinding</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshRecipeAsset.html">MeshRecipeAsset</a></dt>
+      <dd><p>Serialization-only Mesh recipe carrier. It deliberately owns no Figure or binding references.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshRecipeDocument.html">MeshRecipeDocument</a></dt>
+      <dd><p>Base Mesh-domain recipe document. Applications may derive it to validate application metadata.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshStackMachine.html">MeshStackMachine</a></dt>
+      <dd><p>Figure component and the sole public ingress for Mesh StackMachine recipes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshStackMachineCorePlan.html">MeshStackMachineCorePlan</a></dt>
+      <dd><p>Immutable, execution-free Mesh recipe artifact shared by runtime and EditMode backends.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshWordSet.html">MeshWordSet</a></dt>
+      <dd><p>Registers the closed Mesh StackMachine word set and validates its runtime evaluation boundary.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MorphEntry.html">MorphEntry</a></dt>
+      <dd><p>Maps one recipe logical morph word to a DDB blend target name.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.NormalRecipeExpander.html">NormalRecipeExpander</a></dt>
+      <dd><p>Expands a Mesh-owned Normal template into one non-persistent Texture StackMachine stub.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.NormalRecipeTemplate.html">NormalRecipeTemplate</a></dt>
+      <dd><p>Detached Mesh-owned template for one logical Normal binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.NormalTargetSource.html">NormalTargetSource</a></dt>
+      <dd><p>Resolved Mesh-owned source map for one non-PBM Normal target.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.NormalTargetTextureEntry.html">NormalTargetTextureEntry</a></dt>
+      <dd><p>All Normal textures contributed by one target dictionary entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.NormalTextureEntry.html">NormalTextureEntry</a></dt>
+      <dd><p>One target-unit Normal texture selected for one logical Normal binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.OutfitEntry.html">OutfitEntry</a></dt>
+      <dd><p>Maps one recipe logical Outfit word to a ShapeSync Outfit prefab root.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.PlayModeAtlasBakerPageExecutor.html">PlayModeAtlasBakerPageExecutor</a></dt>
+      <dd><p>PlayMode Atlas page executor backed by one explicit scene-local Texture StackMachine host.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.RecipeAttacher.html">RecipeAttacher</a></dt>
+      <dd><p>Figure bootstrap component that applies a ShapeSync document in Mesh then Material order.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.ShapeSyncDocument.html">ShapeSyncDocument</a></dt>
+      <dd><p>Serializable ShapeSync authoring document that composes detached Mesh and Material recipes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.ShapeSyncDocumentAsset.html">ShapeSyncDocumentAsset</a></dt>
+      <dd><p>Serialized carrier that stores one ShapeSync document for Figure assignment and sharing.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineBindingDeclaration.html">StackMachineBindingDeclaration</a></dt>
+      <dd><p>Serializable declaration of one logical recipe binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineBindingLookup.html">StackMachineBindingLookup</a></dt>
+      <dd><p>Non-serialized lookup constructed from a recipe binding template at initialization time.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineCompiler.html">StackMachineCompiler</a></dt>
+      <dd><p>Tokenizes, validates, and compiles recipe source into an immutable common plan.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+      <dd><p>Structured failure information shared by the common foundation and domain executors.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDomainExecutorBase.html">StackMachineDomainExecutorBase</a></dt>
+      <dd><p>Domain executor base with overridable cache policy and transaction lifecycle hooks.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionContext.html">StackMachineExecutionContext</a></dt>
+      <dd><p>Mutable data-stack view supplied only while a domain word is evaluated.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineExecutionResult.html">StackMachineExecutionResult</a></dt>
+      <dd><p>Common execution result and transaction lifecycle record.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachinePlan.html">StackMachinePlan</a></dt>
+      <dd><p>Immutable common bytecode plan. Domain compilers may derive their own execution artifacts from it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachinePlanBuilder.html">StackMachinePlanBuilder</a></dt>
+      <dd><p>Target-patching construction seam for a later user-word/control-flow compiler. Spec12 does not
+emit branch syntax, but later domains can patch instruction targets without replacing Plan.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineProvenance.html">StackMachineProvenance</a></dt>
+      <dd><p>Serializable provenance metadata for a recipe document.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineRecipeAsset.html">StackMachineRecipeAsset</a></dt>
+      <dd><p>Default ScriptableObject carrier for a common StackMachine recipe.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineRecipeDocument.html">StackMachineRecipeDocument</a></dt>
+      <dd><p>Serializable, Unity-object-free representation of common recipe content.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineRecipeSerialization.html">StackMachineRecipeSerialization</a></dt>
+      <dd><p>Validates and serializes common recipe documents without retaining Unity object references.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineRecipeSerializationBase.html">StackMachineRecipeSerializationBase</a></dt>
+      <dd><p>ScriptableObject carrier for a recipe document and any domain-owned serialized fields.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineSourceMapEntry.html">StackMachineSourceMapEntry</a></dt>
+      <dd><p>Maps a recipe token index to its source offset for domain diagnostics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineStubMachine.html">StackMachineStubMachine</a></dt>
+      <dd><p>Minimal pure-word interpreter used to verify the common Forth subset foundation.
+It deliberately does not resolve bindings or provide domain words.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineStubWordSet.html">StackMachineStubWordSet</a></dt>
+      <dd><p>The pure Spec12 stub deliberately contributes no domain words. The empty override is
+intentional evidence that the stub executes only the Core built-in word set.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineWordRegistry.html">StackMachineWordRegistry</a></dt>
+      <dd><p>Explicit registry for core-adjacent domain word declarations.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineWordSetBase.html">StackMachineWordSetBase</a></dt>
+      <dd><p>Explicit composition seam for a known domain assembly. This is not a discovery or plugin API:
+the caller decides which word sets are applied. Every domain, including a no-op test stub,
+must declare its registration intent by overriding <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineWordSetBase.html#zgock_ShapeSync_StackMachine_StackMachineWordSetBase_RegisterWords_zgock_ShapeSync_StackMachine_StackMachineWordRegistry_">RegisterWords(StackMachineWordRegistry)</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineWordSignature.html">StackMachineWordSignature</a></dt>
+      <dd><p>Immutable declared data-stack effect for a domain word.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureBindingContext.html">TextureBindingContext</a></dt>
+      <dd><p>Compile-time lookup for a validated <a class="xref" href="zgock.ShapeSync.StackMachine.TextureRecipeStub.html">TextureRecipeStub</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureBindingEntry.html">TextureBindingEntry</a></dt>
+      <dd><p>Describes one non-persistent logical Texture StackMachine binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureBindingTemplate.html">TextureBindingTemplate</a></dt>
+      <dd><p>ScriptableObject authoring template for non-persistent Texture StackMachine bindings.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureColorLiteralNormalizer.html">TextureColorLiteralNormalizer</a></dt>
+      <dd><p>Normalizes Texture-domain <code>#RRGGBBAA</code> literals before common compilation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureDelivery.html">TextureDelivery</a></dt>
+      <dd><p>Owns one exact-edge Texture StackMachine output until it is disposed by its consumer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureDispatchPlan.html">TextureDispatchPlan</a></dt>
+      <dd><p>Immutable Texture-domain artifact derived from a validated common StackMachine plan.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureDispatchRecord.html">TextureDispatchRecord</a></dt>
+      <dd><p>Immutable operation record that contains resolved logical names, rectangles, and scalar values.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionHandle.html">TextureExecutionHandle</a></dt>
+      <dd><p>Represents one queued Texture execution until its GPU fence completes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOptions.html">TextureExecutionOptions</a></dt>
+      <dd><p>Optional caller-owned source lease settings for one Texture execution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionPlan.html">TextureExecutionPlan</a></dt>
+      <dd><p>Immutable, execution-free Texture compilation artifact shared by PlayMode and EditMode backends.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionResult.html">TextureExecutionResult</a></dt>
+      <dd><p>Terminal Texture execution state with a single-transfer delivery seam.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutor.html">TextureExecutor</a></dt>
+      <dd><p>Fully compiled executor that validates a Texture recipe and queues it on one scene-local host.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureGpuCapabilityProbe.html">TextureGpuCapabilityProbe</a></dt>
+      <dd><p>Performs narrow Phase0 texture capability probing and fixed-grid selection.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureHallAllocator.html">TextureHallAllocator</a></dt>
+      <dd><p>Fixed-grid, edge-aligned 2D first-fit allocator for Texture StackMachine halls.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureOutputLease.html">TextureOutputLease</a></dt>
+      <dd><p>Caller-owned retained GPU output hall for cumulative Texture recipes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TexturePlanCompiler.html">TexturePlanCompiler</a></dt>
+      <dd><p>Compiles a common plan into Texture-domain operations without allocating GPU resources.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureRecipeStub.html">TextureRecipeStub</a></dt>
+      <dd><p>Non-persistent runtime input for the Spec14.2 Texture StackMachine.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureSourceLease.html">TextureSourceLease</a></dt>
+      <dd><p>Caller-owned retained GPU source halls for one unchanged set of Texture bindings.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html">TextureStackMachineHost</a></dt>
+      <dd><p>Scene-local owner of the fixed Texture StackMachine grid, GPU queue, and Compute programs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStaticMachineFactory.html">TextureStaticMachineFactory</a></dt>
+      <dd><p>Resolves the one Texture StackMachine Host for the active scene.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStaticMachineFactorySettings.html">TextureStaticMachineFactorySettings</a></dt>
+      <dd><p>Project-owned explicit configuration for the Texture StackMachine Factory.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureTemplateEntry.html">TextureTemplateEntry</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureWordSet.html">TextureWordSet</a></dt>
+      <dd><p>Registers the fixed Spec14.2 Texture StackMachine word set.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialBindingContext.Binding.html">MaterialBindingContext.Binding</a></dt>
+      <dd><p>One resolved Material logical route.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialId.html">MaterialId</a></dt>
+      <dd><p>Stable cross-domain key for one Figure or Outfit MaterialProxy entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshBindingContext.MorphBinding.html">MeshBindingContext.MorphBinding</a></dt>
+      <dd><p>Resolved logical morph binding exposed by a Figure-local Mesh context.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshBindingContext.NormalEntry.html">MeshBindingContext.NormalEntry</a></dt>
+      <dd><p>Resolved logical Normal entry exposed by a Figure-local Mesh context.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshBindingContext.OutfitBinding.html">MeshBindingContext.OutfitBinding</a></dt>
+      <dd><p>Resolved logical Outfit binding exposed by a Figure-local Mesh context.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshCoreBinding.html">MeshCoreBinding</a></dt>
+      <dd><p>Describes one detached logical Mesh binding without a runtime Figure component reference.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshCoreOperation.html">MeshCoreOperation</a></dt>
+      <dd><p>One immutable logical Mesh operation lowered from a Mesh recipe.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineCallFrame.html">StackMachineCallFrame</a></dt>
+      <dd><p>Return-stack frame used by <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineOp.html#zgock_ShapeSync_StackMachine_StackMachineOp_Call">Call</a> and <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineOp.html#zgock_ShapeSync_StackMachine_StackMachineOp_Exit">Exit</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineInstruction.html">StackMachineInstruction</a></dt>
+      <dd><p>Immutable instruction in a validated common plan.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineValue.html">StackMachineValue</a></dt>
+      <dd><p>Tagged scalar or opaque handle stored on the StackMachine data stack.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureBinding.html">TextureBinding</a></dt>
+      <dd><p>Resolved non-persistent Texture binding exposed only to the Texture domain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureDispatchExtent.html">TextureDispatchExtent</a></dt>
+      <dd><p>Immutable dispatch extent in texels.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureDispatchRectangle.html">TextureDispatchRectangle</a></dt>
+      <dd><p>Immutable zero-based logical rectangle in texels.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOriginKey.html">TextureExecutionOriginKey</a></dt>
+      <dd><p>Host-issued opaque token used to coalesce unsubmitted requests from one Texture consumer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureGpuCapability.html">TextureGpuCapability</a></dt>
+      <dd><p>Immutable Phase0 GPU capability and fixed-grid budget snapshot.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureHallAllocation.html">TextureHallAllocation</a></dt>
+      <dd><p>Immutable reservation of one rectangular hall inside the fixed grid.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.IAtlasBakerPageExecutor.html">IAtlasBakerPageExecutor</a></dt>
+      <dd><p>Backend seam for one caller-driven Atlas page execution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.IShapeSyncDocument.html">IShapeSyncDocument</a></dt>
+      <dd><p>Read-only composite source supplied to ShapeSync Mesh and Material StackMachines.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineBindingContext.html">IStackMachineBindingContext</a></dt>
+      <dd><p>Marker seam for a domain-owned logical binding resolver. Core never exposes Unity objects through it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainCompiler.html">IStackMachineDomainCompiler</a></dt>
+      <dd><p>Compiles a common immutable plan into an immutable artifact owned by one domain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainExecutor.html">IStackMachineDomainExecutor</a></dt>
+      <dd><p>Domain compiler and executor contract, including cache and reevaluation policy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.IStackMachineDomainPlan.html">IStackMachineDomainPlan</a></dt>
+      <dd><p>Domain-owned execution seam. Core passes only an immutable validated plan and never chooses
+whether the domain interprets it, executes it transactionally as bytecode, or compiles it.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerExecutionStatus.html">AtlasBakerExecutionStatus</a></dt>
+      <dd><p>Reports the caller-visible state of an Atlas page execution operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerOperationStatus.html">AtlasBakerOperationStatus</a></dt>
+      <dd><p>Reports the caller-visible state of an Atlas Baker Core operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerPageOperationKind.html">AtlasBakerPageOperationKind</a></dt>
+      <dd><p>Identifies one page-local operation that an Atlas TSM backend must execute.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasBakerReconciliationSeverity.html">AtlasBakerReconciliationSeverity</a></dt>
+      <dd><p>Classifies a non-terminal Schema reconciliation observation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasTextureSemantic.html">AtlasTextureSemantic</a></dt>
+      <dd><p>Names one potential texture semantic layout for an Atlas page group.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.AtlasValidationIdentityDifferenceKind.html">AtlasValidationIdentityDifferenceKind</a></dt>
+      <dd><p>Identifies the first validation provenance field that differs from a current build input.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MaterialStackMachineResultCode.html">MaterialStackMachineResultCode</a></dt>
+      <dd><p>Terminal outcome of one Material StackMachine orchestration request.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshCoreBindingKind.html">MeshCoreBindingKind</a></dt>
+      <dd><p>Identifies the detached semantic of one Mesh recipe binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.MeshCoreOperationKind.html">MeshCoreOperationKind</a></dt>
+      <dd><p>Identifies one execution-free logical Mesh operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineBindingKind.html">StackMachineBindingKind</a></dt>
+      <dd><p>Declares whether a logical recipe binding resolves to a resource or domain-owned value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnosticCode.html">StackMachineDiagnosticCode</a></dt>
+      <dd><p>Classifies a compile, validation, or execution diagnostic.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDomainExecutionMode.html">StackMachineDomainExecutionMode</a></dt>
+      <dd><p>Identifies the execution strategy selected by a domain executor.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineOp.html">StackMachineOp</a></dt>
+      <dd><p>Identifies an immutable common-plan instruction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineTransactionStage.html">StackMachineTransactionStage</a></dt>
+      <dd><p>Describes the common lifecycle state of a domain transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineValueTag.html">StackMachineValueTag</a></dt>
+      <dd><p>Identifies the opaque payload interpretation of a data-stack value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureBindingKind.html">TextureBindingKind</a></dt>
+      <dd><p>Classifies a Texture StackMachine logical binding.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureDispatchOperation.html">TextureDispatchOperation</a></dt>
+      <dd><p>Identifies one fully compiled Texture StackMachine operation.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

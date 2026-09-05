@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class HotBakeComponentBase | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class HotBakeComponentBase | ShapeSync API Reference ">
+      
+      <meta name="description" content="Shared Startup/API compile admission and lifetime for the three Hot Bake components.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase">
+
+
+
+  <h1 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase" class="text-break">
+Class HotBakeComponentBase  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.StackMachine.html">StackMachine</a>.<a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.html">Humanoid</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Shared Startup/API compile admission and lifetime for the three Hot Bake components.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class HotBakeComponentBase : MonoBehaviour</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">Component</span></div>
+      <div><span class="xref">Behaviour</span></div>
+      <div><span class="xref">MonoBehaviour</span></div>
+      <div><span class="xref">HotBakeComponentBase</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeSpawner.html">HotBakeSpawner</a></div>
+      <div><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HybridHotBakeFigure.html">HybridHotBakeFigure</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">MonoBehaviour.IsInvoking()</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.CancelInvoke()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.Invoke(string, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.InvokeRepeating(string, float, float)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.CancelInvoke(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.IsInvoking(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StartCoroutine(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StartCoroutine_Auto(IEnumerator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerator">MonoBehaviour.StopCoroutine(IEnumerator)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopCoroutine(Coroutine)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">MonoBehaviour.StopCoroutine(string)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.StopAllCoroutines()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">MonoBehaviour.print(object)</a>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.destroyCancellationToken</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.useGUILayout</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didStart</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.didAwake</span>
+    </div>
+    <div>
+      <span class="xref">MonoBehaviour.runInEditMode</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.enabled</span>
+    </div>
+    <div>
+      <span class="xref">Behaviour.isActiveAndEnabled</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponent(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.TryGetComponent(Type, out Component)</a>
+    </div>
+    <div>
+      <span class="xref">Component.TryGetComponent&lt;T&gt;(out T)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.GetComponent(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInChildren(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInChildren&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInChildren&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponentsInChildren&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponentsInParent(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Component.GetComponentsInParent&lt;T&gt;(bool, List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentsInParent&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Component.GetComponents(Type, List&lt;Component&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">Component.GetComponents&lt;T&gt;(List&lt;T&gt;)</a>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponents&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Component.GetComponentIndex()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.CompareTag(string)</a>
+    </div>
+    <div>
+      <span class="xref">Component.CompareTag(TagHandle)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessageUpwards(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.SendMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object, SendMessageOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">Component.BroadcastMessage(string, SendMessageOptions)</a>
+    </div>
+    <div>
+      <span class="xref">Component.transform</span>
+    </div>
+    <div>
+      <span class="xref">Component.transformHandle</span>
+    </div>
+    <div>
+      <span class="xref">Component.gameObject</span>
+    </div>
+    <div>
+      <span class="xref">Component.tag</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetEntityId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetInstanceID()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetHashCode()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Scene)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Destroy(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyImmediate(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DontDestroyOnLoad(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyObject(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ArtifactSet_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ArtifactSet*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ArtifactSet" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ArtifactSet">
+  ArtifactSet
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the scene-scoped artifact set promoted by this component's completed transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HotBakeArtifactSet ArtifactSet { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSet.html">HotBakeArtifactSet</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Atlas_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Atlas*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Atlas" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Atlas">
+  Atlas
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the optional Atlas Schema input for this component-owned transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Object Atlas { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">Object</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Document_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Document*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Document" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Document">
+  Document
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the detached document asset used by Startup and explicit Compile admission.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShapeSyncDocumentAsset Document { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.ShapeSyncDocumentAsset.html">ShapeSyncDocumentAsset</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Driver_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Driver*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Driver" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Driver">
+  Driver
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the driver owned by the current transaction for derived component orchestration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected HotBakeBuildDriver Driver { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeBuildDriver.html">HotBakeBuildDriver</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_FigurePrefab_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.FigurePrefab*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_FigurePrefab" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.FigurePrefab">
+  FigurePrefab
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the source Figure Prefab used by Startup and explicit Compile admission.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GameObject FigurePrefab { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">GameObject</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_IsCompileActive_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.IsCompileActive*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_IsCompileActive" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.IsCompileActive">
+  IsCompileActive
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets whether this component currently owns a compile transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCompileActive { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_IsPhysicsTransportEnabled_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.IsPhysicsTransportEnabled*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_IsPhysicsTransportEnabled" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.IsPhysicsTransportEnabled">
+  IsPhysicsTransportEnabled
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets whether the current build configuration requests optional VRM physics transport.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool IsPhysicsTransportEnabled { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_LastDiagnostic_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.LastDiagnostic*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_LastDiagnostic" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.LastDiagnostic">
+  LastDiagnostic
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the latest structured component admission, execution, or lifecycle diagnostic.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StackMachineDiagnostic LastDiagnostic { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_MaterialHost_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.MaterialHost*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_MaterialHost" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.MaterialHost">
+  MaterialHost
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the MATERIAL-phase Texture StackMachine Host.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextureStackMachineHost MaterialHost { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html">TextureStackMachineHost</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_MaterialHost_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Changing either explicit host invalidates both cached resolved hosts; the next admission resolves the common-host contract again.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_NormalHost_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.NormalHost*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_NormalHost" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.NormalHost">
+  NormalHost
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets the NORMAL-phase Texture StackMachine Host.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextureStackMachineHost NormalHost { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html">TextureStackMachineHost</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_NormalHost_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Changing either explicit host invalidates both cached resolved hosts; the next admission resolves the common-host contract again.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_PhysicsTransport_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.PhysicsTransport*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_PhysicsTransport" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.PhysicsTransport">
+  PhysicsTransport
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets whether a completed transaction transports optional VRM physics before artifact promotion.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool PhysicsTransport { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_RequireAtlas_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.RequireAtlas*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_RequireAtlas" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.RequireAtlas">
+  RequireAtlas
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets whether Compile rejects when no Atlas input is configured.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool RequireAtlas { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ResolvedMaterialHost_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ResolvedMaterialHost*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ResolvedMaterialHost" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ResolvedMaterialHost">
+  ResolvedMaterialHost
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the resolved MATERIAL-phase host for the current or next admitted Hot Bake transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected TextureStackMachineHost ResolvedMaterialHost { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html">TextureStackMachineHost</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ResolvedNormalHost_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ResolvedNormalHost*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ResolvedNormalHost" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ResolvedNormalHost">
+  ResolvedNormalHost
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the resolved NORMAL-phase host for the current or next admitted Hot Bake transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected TextureStackMachineHost ResolvedNormalHost { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html">TextureStackMachineHost</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ScopeHost_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ScopeHost*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_ScopeHost" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.ScopeHost">
+  ScopeHost
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the resolved scene host used by the component's artifact scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected TextureStackMachineHost ScopeHost { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html">TextureStackMachineHost</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_BeginRuntimeDocumentCompile_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.BeginRuntimeDocumentCompile*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_BeginRuntimeDocumentCompile_zgock_ShapeSync_StackMachine_ShapeSyncDocument_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.BeginRuntimeDocumentCompile(zgock.ShapeSync.StackMachine.ShapeSyncDocument,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  BeginRuntimeDocumentCompile(ShapeSyncDocument, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begins one component-owned transaction from a detached runtime document.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool BeginRuntimeDocumentCompile(ShapeSyncDocument runtimeDocument, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>runtimeDocument</code> <a class="xref" href="zgock.ShapeSync.StackMachine.ShapeSyncDocument.html">ShapeSyncDocument</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_BeginRuntimeDocumentCompile_zgock_ShapeSync_StackMachine_ShapeSyncDocument_zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Hybrid Hot Bake uses this for the current committed ShapeDirector state; Startup/API asset admission remains unchanged for Spawner and Figure.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_CancelCompile_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.CancelCompile*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_CancelCompile" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.CancelCompile">
+  CancelCompile()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Cancels the component-owned transaction without adding a new compile trigger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void CancelCompile()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Compile_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Compile*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Compile_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Compile(zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  Compile(out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Begins one explicit Hot Bake transaction from the current serialized inputs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual bool Compile(out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>A structured input, host-resolution, or transaction-admission diagnostic on failure.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the component accepted the new transaction.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Compile_zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Use this public trigger for late input arrival, retry, and explicit re-bake. It never overlaps an already owned transaction.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_DisposeDriver_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.DisposeDriver*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_DisposeDriver" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.DisposeDriver">
+  DisposeDriver()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Releases a terminal driver after the derived component completed or rejected artifact handoff.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void DisposeDriver()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_InvalidateArtifactSet_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.InvalidateArtifactSet*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_InvalidateArtifactSet" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.InvalidateArtifactSet">
+  InvalidateArtifactSet()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Releases the current promoted artifact without adding a compile trigger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void InvalidateArtifactSet()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_OnDestroy_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.OnDestroy*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_OnDestroy" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.OnDestroy">
+  OnDestroy()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Releases the component-owned transaction and promoted artifact during teardown.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnDestroy()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_OnDestroy_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Derived components must release their own scene-scope state before or after this hook, then call <code>base.OnDestroy()</code> exactly once.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_PumpAndCommitCompile_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.PumpAndCommitCompile*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_PumpAndCommitCompile_zgock_ShapeSync_StackMachine_Humanoid_HotBakeArtifactSceneScope_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.PumpAndCommitCompile(zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSceneScope,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  PumpAndCommitCompile(HotBakeArtifactSceneScope, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pumps the current transaction and promotes its successful result into the supplied
+scene scope. Optional VRM physics is transported immediately before promotion when
+that feature is enabled; Core-only builds remain free of optional-package types.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected HumanoidBuildOperationStatus PumpAndCommitCompile(HotBakeArtifactSceneScope scope, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>scope</code> <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSceneScope.html">HotBakeArtifactSceneScope</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildOperationStatus.html">HumanoidBuildOperationStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_PumpCompile_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.PumpCompile*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_PumpCompile_zgock_ShapeSync_StackMachine_Humanoid_HumanoidBuildResult__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.PumpCompile(zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildResult@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  PumpCompile(out HumanoidBuildResult, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Pumps the single API/Startup-started transaction; derived components own successful artifact handoff.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected HumanoidBuildOperationStatus PumpCompile(out HumanoidBuildResult result, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildResult.html">HumanoidBuildResult</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildOperationStatus.html">HumanoidBuildOperationStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_SetLastDiagnostic_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.SetLastDiagnostic*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_SetLastDiagnostic_zgock_ShapeSync_StackMachine_StackMachineDiagnostic_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.SetLastDiagnostic(zgock.ShapeSync.StackMachine.StackMachineDiagnostic)">
+  SetLastDiagnostic(StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Records one component-lifecycle diagnostic for derived component owners.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void SetLastDiagnostic(StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Start_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Start*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Start" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.Start">
+  Start()
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Admits a Startup compile only when the serialized input contract is complete.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Start()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Start_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Derived components that override this hook must call <code>base.Start()</code> after their
+scene scope is ready. Startup admission is intentionally non-fatal: callers can use
+<a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.html#zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_Compile_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__">Compile(out StackMachineDiagnostic)</a> after late input assignment.</p>
+</div>
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_TryCommitInspectedResult_" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.TryCommitInspectedResult*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_TryCommitInspectedResult_zgock_ShapeSync_StackMachine_Humanoid_HumanoidBuildResult_zgock_ShapeSync_StackMachine_Humanoid_HotBakeArtifactSceneScope_zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.StackMachine.Humanoid.HotBakeComponentBase.TryCommitInspectedResult(zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildResult,zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSceneScope,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryCommitInspectedResult(HumanoidBuildResult, HotBakeArtifactSceneScope, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Promotes a derived component's already-inspected successful result into its scene scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool TryCommitInspectedResult(HumanoidBuildResult result, HotBakeArtifactSceneScope scope, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>result</code> <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HumanoidBuildResult.html">HumanoidBuildResult</a></dt>
+    <dd></dd>
+    <dt><code>scope</code> <a class="xref" href="zgock.ShapeSync.StackMachine.Humanoid.HotBakeArtifactSceneScope.html">HotBakeArtifactSceneScope</a></dt>
+    <dd></dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_Humanoid_HotBakeComponentBase_TryCommitInspectedResult_zgock_ShapeSync_StackMachine_Humanoid_HumanoidBuildResult_zgock_ShapeSync_StackMachine_Humanoid_HotBakeArtifactSceneScope_zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The caller must dispose the result and driver after this call. Hybrid uses this seam to validate and rebind the candidate before ownership transfer.</p>
+</div>
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

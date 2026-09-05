@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ShapeSyncVrmDatabaseRegistry | ShapeSync VRM Companion API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ShapeSyncVrmDatabaseRegistry | ShapeSync VRM Companion API Reference ">
+      
+      <meta name="description" content="Database-owned VRM definitions.  This registry is deliberately separate from  so Core Runtime never needs to reference UniVRM types.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry">
+
+
+
+  <h1 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry" class="text-break">
+Class ShapeSyncVrmDatabaseRegistry  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.VrmIntegration.html">VrmIntegration</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.VrmIntegration.Runtime.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Database-owned VRM definitions.  This registry is deliberately separate
+from <span class="xref">zgock.ShapeSync.ShapeSyncDatabaseRegistry</span> so Core Runtime never needs
+to reference UniVRM types.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class ShapeSyncVrmDatabaseRegistry : ScriptableObject</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Object</span></div>
+      <div><span class="xref">ScriptableObject</span></div>
+      <div><span class="xref">ShapeSyncVrmDatabaseRegistry</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">ScriptableObject.SetDirty()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">ScriptableObject.CreateInstance(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">ScriptableObject.CreateInstance(Type)</a>
+    </div>
+    <div>
+      <span class="xref">ScriptableObject.CreateInstance&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetEntityId()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetInstanceID()</span>
+    </div>
+    <div>
+      <span class="xref">Object.GetHashCode()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object.Equals(object)</a>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.InstantiateAsync&lt;T&gt;(T, Transform, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, Vector3, Quaternion, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Transform, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">Object.InstantiateAsync&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, Vector3, Quaternion, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">Object.InstantiateAsync&lt;T&gt;(T, int, ReadOnlySpan&lt;Vector3&gt;, ReadOnlySpan&lt;Quaternion&gt;, InstantiateParameters, CancellationToken)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Scene)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, InstantiateParameters)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate(Object, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate(Object, Transform, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Vector3, Quaternion, Transform)</span>
+    </div>
+    <div>
+      <span class="xref">Object.Instantiate&lt;T&gt;(T, Transform)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.Instantiate&lt;T&gt;(T, Transform, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.Destroy(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.Destroy(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.DestroyImmediate(Object, bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyImmediate(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsByType(Type, FindObjectsInactive, FindObjectsSortMode)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DontDestroyOnLoad(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">Object.DestroyObject(Object, float)</a>
+    </div>
+    <div>
+      <span class="xref">Object.DestroyObject(Object)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindSceneObjectsOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeIncludingAssets(Type)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectsOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectsByType&lt;T&gt;(FindObjectsInactive, FindObjectsSortMode)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindObjectOfType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">Object.FindObjectOfType&lt;T&gt;(bool)</a>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;()</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindFirstObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <span class="xref">Object.FindAnyObjectByType&lt;T&gt;(FindObjectsInactive)</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectsOfTypeAll(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindObjectOfType(Type, bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindFirstObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Object.FindAnyObjectByType(Type, FindObjectsInactive)</a>
+    </div>
+    <div>
+      <span class="xref">Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">Object.name</span>
+    </div>
+    <div>
+      <span class="xref">Object.hideFlags</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_DefaultGenerationVrmPath" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.DefaultGenerationVrmPath">
+  DefaultGenerationVrmPath
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Default VRM asset output folder relative to the selected Generate root.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string DefaultGenerationVrmPath = &quot;VRM/&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FeatureId" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureId">
+  FeatureId
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stable optional feature marker used by Core Database admission.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public const string FeatureId = &quot;VRM&quot;</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FeatureMarker_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FeatureMarker" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FeatureMarker">
+  FeatureMarker
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the Core marker which proves that this Database contains VRM data.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ShapeSyncDatabaseOptionalFeatureMarker FeatureMarker { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">ShapeSyncDatabaseOptionalFeatureMarker</span></dt>
+    <dd><p>The Database-local VRM feature marker, or <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a> before VRM registration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReferences_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigureExpressionReferences" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReferences">
+  FigureExpressionReferences
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets all Figure Base/FBM Expression Reference rows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;ShapeSyncVrmDatabaseRegistry.FigureExpressionReference&gt; FigureExpressionReferences { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html">ShapeSyncVrmDatabaseRegistry</a>.<a class="xref" href="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigureExpressionReference.html">FigureExpressionReference</a>&gt;</dt>
+    <dd><p>The serialized Expression Reference relations.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReferences_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_FigurePhysicsReferences" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReferences">
+  FigurePhysicsReferences
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets all Figure Physics Reference rows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference&gt; FigurePhysicsReferences { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html">ShapeSyncVrmDatabaseRegistry</a>.<a class="xref" href="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.FigurePhysicsReference.html">FigurePhysicsReference</a>&gt;</dt>
+    <dd><p>The serialized Figure Physics Reference relations.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_GenerationVrmPath_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_GenerationVrmPath" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.GenerationVrmPath">
+  GenerationVrmPath
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the VRM asset output folder relative to the selected Generate root.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GenerationVrmPath { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The normalized relative output folder, including its trailing separator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_HasValidFeatureMarker_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_HasValidFeatureMarker" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.HasValidFeatureMarker">
+  HasValidFeatureMarker
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets whether the registry carries the expected Core feature marker.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasValidFeatureMarker { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the VRM feature marker is present and valid.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReferences_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_MeshOutfitPhysicsReferences" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReferences">
+  MeshOutfitPhysicsReferences
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets all Mesh Outfit Physics Reference rows.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference&gt; MeshOutfitPhysicsReferences { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.html">ShapeSyncVrmDatabaseRegistry</a>.<a class="xref" href="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.MeshOutfitPhysicsReference.html">MeshOutfitPhysicsReference</a>&gt;</dt>
+    <dd><p>The serialized Mesh Outfit Physics Reference relations.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_SetFeatureMarker_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_SetFeatureMarker_zgock_ShapeSync_ShapeSyncDatabaseOptionalFeatureMarker_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.SetFeatureMarker(zgock.ShapeSync.ShapeSyncDatabaseOptionalFeatureMarker)">
+  SetFeatureMarker(ShapeSyncDatabaseOptionalFeatureMarker)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Assigns the Core marker during the same Database transaction as this registry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SetFeatureMarker(ShapeSyncDatabaseOptionalFeatureMarker marker)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>marker</code> <span class="xref">ShapeSyncDatabaseOptionalFeatureMarker</span></dt>
+    <dd><p>The VRM feature marker to assign.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentexception">ArgumentException</a></dt>
+    <dd><p>Thrown when <code class="paramref">marker</code> is null or identifies another feature.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigureExpressionReference_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigureExpressionReference_System_String_System_String_UnityEngine_GameObject__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigureExpressionReference(System.String,System.String,UnityEngine.GameObject@)">
+  TryRemoveFigureExpressionReference(string, string, out GameObject)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes an Expression Reference relation and returns its old child tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryRemoveFigureExpressionReference(string figureName, string shapeKey, out GameObject removedPrefab)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>shapeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Base shape key or FBM identity.</p>
+</dd>
+    <dt><code>removedPrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>Receives the removed Database-owned Reference VRM prefab.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when a matching relation is removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigurePhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveFigurePhysicsReference_System_String_UnityEngine_GameObject__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveFigurePhysicsReference(System.String,UnityEngine.GameObject@)">
+  TryRemoveFigurePhysicsReference(string, out GameObject)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a Figure Physics relation and returns its old child tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryRemoveFigurePhysicsReference(string figureName, out GameObject removedPrefab)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>removedPrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>Receives the removed Database-owned Reference VRM prefab.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when a matching relation is removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveMeshOutfitPhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryRemoveMeshOutfitPhysicsReference_System_String_UnityEngine_GameObject__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryRemoveMeshOutfitPhysicsReference(System.String,UnityEngine.GameObject@)">
+  TryRemoveMeshOutfitPhysicsReference(string, out GameObject)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a Mesh Outfit Physics relation and returns its old child tree.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryRemoveMeshOutfitPhysicsReference(string outfitIdentity, out GameObject removedPrefab)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>outfitIdentity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Mesh Outfit identity.</p>
+</dd>
+    <dt><code>removedPrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>Receives the removed Database-owned Reference VRM prefab.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when a matching relation is removed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TrySetGenerationVrmPath_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TrySetGenerationVrmPath_System_String_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TrySetGenerationVrmPath(System.String,System.String@)">
+  TrySetGenerationVrmPath(string, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets and validates the VRM asset output folder for Generate.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TrySetGenerationVrmPath(string value, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The relative folder below the selected Generate root.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a validation diagnostic when <code class="paramref">value</code> is invalid.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the normalized path is stored; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigureExpressionReference_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigureExpressionReference_System_String_System_String_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_Object__UnityEngine_GameObject__System_String__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigureExpressionReference(System.String,System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)">
+  TryUpsertFigureExpressionReference(string, string, GameObject, GameObject, IReadOnlyList&lt;Object&gt;, out GameObject, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Upserts one Figure Base/FBM Expression Reference relation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryUpsertFigureExpressionReference(string figureName, string shapeKey, GameObject owner, GameObject prefab, IReadOnlyList&lt;Object&gt; ownedAssets, out GameObject replacedPrefab, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>shapeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Base shape key or FBM identity.</p>
+</dd>
+    <dt><code>owner</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The explicit canonical Figure or FBM owner.</p>
+</dd>
+    <dt><code>prefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The Database-owned cloned Reference VRM prefab.</p>
+</dd>
+    <dt><code>ownedAssets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<span class="xref">Object</span>&gt;</dt>
+    <dd><p>The Database-owned VRM sub-assets for the relation.</p>
+</dd>
+    <dt><code>replacedPrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>Receives the previous Reference VRM prefab when an existing relation is replaced.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a validation diagnostic when the relation is rejected.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the relation is inserted or replaced; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigurePhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertFigurePhysicsReference_System_String_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_Object__UnityEngine_GameObject__System_String__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertFigurePhysicsReference(System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)">
+  TryUpsertFigurePhysicsReference(string, GameObject, GameObject, IReadOnlyList&lt;Object&gt;, out GameObject, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Upserts the single Figure Physics Reference relation for one Figure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryUpsertFigurePhysicsReference(string figureName, GameObject owner, GameObject prefab, IReadOnlyList&lt;Object&gt; ownedAssets, out GameObject replacedPrefab, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>owner</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The explicit canonical Figure Base owner.</p>
+</dd>
+    <dt><code>prefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The Database-owned cloned Figure Physics Reference prefab.</p>
+</dd>
+    <dt><code>ownedAssets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<span class="xref">Object</span>&gt;</dt>
+    <dd><p>The Database-owned VRM sub-assets for the relation; Mesh assets are not allowed.</p>
+</dd>
+    <dt><code>replacedPrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>Receives the previous Reference VRM prefab when an existing relation is replaced.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a validation diagnostic when the relation is rejected.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the relation is inserted or replaced; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertMeshOutfitPhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryUpsertMeshOutfitPhysicsReference_System_String_UnityEngine_GameObject_UnityEngine_GameObject_System_Collections_Generic_IReadOnlyList_UnityEngine_Object__UnityEngine_GameObject__System_String__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryUpsertMeshOutfitPhysicsReference(System.String,UnityEngine.GameObject,UnityEngine.GameObject,System.Collections.Generic.IReadOnlyList{UnityEngine.Object},UnityEngine.GameObject@,System.String@)">
+  TryUpsertMeshOutfitPhysicsReference(string, GameObject, GameObject, IReadOnlyList&lt;Object&gt;, out GameObject, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Upserts the single Mesh Outfit Physics Reference relation for one Outfit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool TryUpsertMeshOutfitPhysicsReference(string outfitIdentity, GameObject owner, GameObject prefab, IReadOnlyList&lt;Object&gt; ownedAssets, out GameObject replacedPrefab, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>outfitIdentity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Mesh Outfit identity.</p>
+</dd>
+    <dt><code>owner</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The explicit canonical Mesh Outfit Base owner.</p>
+</dd>
+    <dt><code>prefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The Database-owned cloned Mesh Outfit Physics Reference prefab.</p>
+</dd>
+    <dt><code>ownedAssets</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<span class="xref">Object</span>&gt;</dt>
+    <dd><p>The Database-owned VRM sub-assets for the relation; Mesh assets are not allowed.</p>
+</dd>
+    <dt><code>replacedPrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>Receives the previous Reference VRM prefab when an existing relation is replaced.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a validation diagnostic when the relation is rejected.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the relation is inserted or replaced; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryValidateGenerationVrmPath_" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_ShapeSyncVrmDatabaseRegistry_TryValidateGenerationVrmPath_System_String_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.ShapeSyncVrmDatabaseRegistry.TryValidateGenerationVrmPath(System.String,System.String@)">
+  TryValidateGenerationVrmPath(string, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validates a VRM output folder relative to the selected Generate root.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryValidateGenerationVrmPath(string value, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The candidate relative folder path.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a stable validation diagnostic when the path is invalid.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when <code class="paramref">value</code> is a valid relative folder; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

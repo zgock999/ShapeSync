@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace zgock.ShapeSync.Editor | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace zgock.ShapeSync.Editor | ShapeSync API Reference ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.Editor">
+
+  <h1 id="zgock_ShapeSync_Editor" data-uid="zgock.ShapeSync.Editor" class="text-break">Namespace zgock.ShapeSync.Editor</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.BindposeTestMeshGeneratorWindow.html">BindposeTestMeshGeneratorWindow</a></dt>
+      <dd><p>Generates diagnostic meshes for bindpose validation workflows.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.BlendShapeBakeUtility.html">BlendShapeBakeUtility</a></dt>
+      <dd><p>Provides editor-only utilities for baking and inspecting BlendShape data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.BonePoseUtility.html">BonePoseUtility</a></dt>
+      <dd><p>Captures and applies serialized local bone pose data in editor workflows.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.DynamicBoneBlendTargetDrawer.html">DynamicBoneBlendTargetDrawer</a></dt>
+      <dd><p>Draws a serialized dynamic bone BlendShape target in the Inspector.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.EditModeAtlasBakerPageExecutor.html">EditModeAtlasBakerPageExecutor</a></dt>
+      <dd><p>EditMode Atlas page executor. It deliberately lowers one Core page into one Texture recipe;
+thus EditMode selects partition count one without making that choice part of the Core contract.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.EditModeMeshBuildResult.html">EditModeMeshBuildResult</a></dt>
+      <dd><p>Single-take final Mesh handoff.  It owns the complete compiler escrow until the upper Compiler
+either transfers the in-memory result to its next phase or disposes it on abort / cancel.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.EditModeMeshPayloadBuilder.html">EditModeMeshPayloadBuilder</a></dt>
+      <dd><p>Maps TSM-owned Normal completions onto Core-resolved Material slots.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ExternalTransferWindow.html">ExternalTransferWindow</a></dt>
+      <dd><p>Transfers compatible ShapeSync data from an external source asset.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.FbmBodyPrefabWindow.html">FbmBodyPrefabWindow</a></dt>
+      <dd><p>Exports an FBM body prefab from a selected ShapeSync Figure.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.HumanoidCompilerWindow.html">HumanoidCompilerWindow</a></dt>
+      <dd><p>Editor UI that drives one caller-owned Pure Humanoid build and publishes only after build success.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.HumanoidPublishPathValidator.html">HumanoidPublishPathValidator</a></dt>
+      <dd><p>Validates Editor publish paths without creating assets or folders.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.HumanoidPureHumanoidComponentStripper.html">HumanoidPureHumanoidComponentStripper</a></dt>
+      <dd><p>Normalizes the unpublished output clone into a Pure Humanoid before publish work begins.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.HumanoidVrmTransportExecutorProvider.html">HumanoidVrmTransportExecutorProvider</a></dt>
+      <dd><p>Editor-assembly registration seam for the optional UniVRM executor.
+The main Editor UI asks this provider only when VRM transport is selected;
+VrmIntegration.Editor registers the concrete implementation on domain load.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.MeshUtilityWindow.html">MeshUtilityWindow</a></dt>
+      <dd><p>Provides ShapeSync mesh merge, separation, and diagnostic editor workflows.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.NormalMapBakeWindow.html">NormalMapBakeWindow</a></dt>
+      <dd><p>Bakes an editor-only tangent-space normal-map test texture from one submesh's area-weighted geometric normals.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.OutfitAttacherEditor.html">OutfitAttacherEditor</a></dt>
+      <dd><p>Custom Inspector for configuring an <a class="xref" href="zgock.ShapeSync.OutfitAttacher.html">OutfitAttacher</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ProfileControlledMorphProjection.html">ProfileControlledMorphProjection</a></dt>
+      <dd><p>Projects Profile Controlled Morph deformation data in editor tooling.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseAsset.html">ShapeSyncDatabaseAsset</a></dt>
+      <dd><p>Typed asset access for the root component of a ShapeSync Database Prefab.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseCanonicalAssetResolver.html">ShapeSyncDatabaseCanonicalAssetResolver</a></dt>
+      <dd><p>Resolves the already-admitted Figure / Mesh Outfit Base owner used by an
+optional integration.  This is an Editor-only bridge over Core authoring
+data; it does not inspect asset names or search the AssetDatabase.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.html">ShapeSyncDatabaseOptionalRegistryProvider</a></dt>
+      <dd><p>Optional Database admission seam.  The core Editor assembly owns the
+seam; an optional integration registers the concrete validator without
+creating a reverse assembly reference.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalUiProvider.html">ShapeSyncDatabaseOptionalUiProvider</a></dt>
+      <dd><p>Optional Database UI seam. Core owns the callbacks so the Database window
+can remain UniVRM-free; an optional integration supplies its own rows and
+persistence behavior after domain reload.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseTransaction.html">ShapeSyncDatabaseTransaction</a></dt>
+      <dd><p>Performs authoring structural changes through Prefab contents rather than Undo.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseTransaction.EditContext.html">ShapeSyncDatabaseTransaction.EditContext</a></dt>
+      <dd><p>Provides controlled sub-asset operations during one Database transaction.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseValidator.html">ShapeSyncDatabaseValidator</a></dt>
+      <dd><p>Non-mutating whole-Database validator for declared authoring relations.
+It reports every localized defect in deterministic order and never performs Generate.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseWindow.html">ShapeSyncDatabaseWindow</a></dt>
+      <dd><p>Provides the authoring-only shell for the ShapeSync Database editor.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncFigureImport.html">ShapeSyncFigureImport</a></dt>
+      <dd><p>Admission boundary for a persistent Humanoid source; it never clones, merges, or edits assets.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncFigureImportAdmission.html">ShapeSyncFigureImportAdmission</a></dt>
+      <dd><p>Validated, source-only facts accepted by the Figure import admission boundary.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncFigureMeshMerger.html">ShapeSyncFigureMeshMerger</a></dt>
+      <dd><p>Editor-only boundary that reuses Mesh Utility's exact skinned-mesh merge implementation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncFigureMeshMerger.Result.html">ShapeSyncFigureMeshMerger.Result</a></dt>
+      <dd><p>Owns an unsaved merged clone and its in-memory Mesh until transferred or disposed.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.SkinnedMeshMergerWindow.html">SkinnedMeshMergerWindow</a></dt>
+      <dd><p>Merges compatible skinned meshes for ShapeSync authoring workflows.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.SkinnedMeshSeparatorWindow.html">SkinnedMeshSeparatorWindow</a></dt>
+      <dd><p>Separates selected geometry from a skinned mesh into a new asset.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.SkinningDiagnosticsWindow.html">SkinningDiagnosticsWindow</a></dt>
+      <dd><p>Inspects skinning, bindpose, and bone mapping diagnostics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.SurfaceProjectorWindow.html">SurfaceProjectorWindow</a></dt>
+      <dd><p>Projects source surface data onto a compatible target mesh.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.TextureCompletion.html">TextureCompletion</a></dt>
+      <dd><p>Owns one in-memory linear RGBAHalf completion until its receiver disposes it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.TextureEditModeStackMachine.html">TextureEditModeStackMachine</a></dt>
+      <dd><p>Editor-only, caller-driven concrete executor for a shared <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionPlan.html">TextureExecutionPlan</a>.
+This class owns only its submitted dispatch and temporary GPU textures. It does not publish assets,
+perform GPU readback, register an Editor update callback, or own compiler rollback.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.UniversalExpressionProxyEditor.html">UniversalExpressionProxyEditor</a></dt>
+      <dd><p>Custom Inspector for configuring a <a class="xref" href="zgock.ShapeSync.UniversalExpressionProxy.html">UniversalExpressionProxy</a>.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.EditModeMeshNormalPayload.html">EditModeMeshNormalPayload</a></dt>
+      <dd><p>One Mesh-semantic Normal completion keyed by the Core MaterialId.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ProfileControlledMorphProjection.Result.html">ProfileControlledMorphProjection.Result</a></dt>
+      <dd><p>Immutable output metrics and vertex deltas from a surface projection operation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ProfileControlledMorphProjection.Settings.html">ProfileControlledMorphProjection.Settings</a></dt>
+      <dd><p>Immutable parameters controlling one surface projection operation.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.IHumanoidVrmTransportExecutor.html">IHumanoidVrmTransportExecutor</a></dt>
+      <dd><p>Optional UniVRM Editor-assembly seam. The main ShapeSync Editor assembly never references UniVRM types.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.TextureEditModeExecutionStatus.html">TextureEditModeExecutionStatus</a></dt>
+      <dd><p>Represents the terminal state of one caller-driven EditMode Texture execution.</p>
+</dd>
+    </dl>
+    <h3 id="delegates">
+Delegates
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.VrmGenerateDelegate.html">ShapeSyncDatabaseOptionalRegistryProvider.VrmGenerateDelegate</a></dt>
+      <dd><p>Core-safe Generate callback supplied by an optional integration.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.VrmGenerateFinalizeDelegate.html">ShapeSyncDatabaseOptionalRegistryProvider.VrmGenerateFinalizeDelegate</a></dt>
+      <dd><p>Core-safe final Generate callback supplied by an optional integration.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

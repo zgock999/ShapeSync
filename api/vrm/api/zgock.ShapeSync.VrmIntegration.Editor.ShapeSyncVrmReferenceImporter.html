@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ShapeSyncVrmReferenceImporter | ShapeSync VRM Companion API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ShapeSyncVrmReferenceImporter | ShapeSync VRM Companion API Reference ">
+      
+      <meta name="description" content="Imports one Reference VRM into a Database transaction. The source Prefab and its VRM graph are never modified.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter">
+
+
+
+  <h1 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter" class="text-break">
+Class ShapeSyncVrmReferenceImporter  
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="zgock.html">zgock</a>.<a class="xref" href="zgock.ShapeSync.html">ShapeSync</a>.<a class="xref" href="zgock.ShapeSync.VrmIntegration.html">VrmIntegration</a>.<a class="xref" href="zgock.ShapeSync.VrmIntegration.Editor.html">Editor</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>zgock.ShapeSync.VrmIntegration.Editor.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Imports one Reference VRM into a Database transaction. The source
+Prefab and its VRM graph are never modified.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ShapeSyncVrmReferenceImporter</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ShapeSyncVrmReferenceImporter</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportExpressionReference_" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportExpressionReference_System_String_System_String_System_String_UnityEngine_GameObject_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportExpressionReference(System.String,System.String,System.String,UnityEngine.GameObject,System.String@)">
+  TryImportExpressionReference(string, string, string, GameObject, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Imports the Base/FBM Expression Reference row for one Figure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryImportExpressionReference(string databaseAssetPath, string figureName, string shapeKey, GameObject sourcePrefab, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseAssetPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The project-relative Database Prefab path.</p>
+</dd>
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>shapeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Base shape key or FBM identity.</p>
+</dd>
+    <dt><code>sourcePrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The source VRM Prefab to clone into the Database.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a diagnostic when import is rejected or fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Reference is committed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportFigurePhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportFigurePhysicsReference_System_String_System_String_UnityEngine_GameObject_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportFigurePhysicsReference(System.String,System.String,UnityEngine.GameObject,System.String@)">
+  TryImportFigurePhysicsReference(string, string, GameObject, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Imports the Figure Physics Reference row for one Figure.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryImportFigurePhysicsReference(string databaseAssetPath, string figureName, GameObject sourcePrefab, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseAssetPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The project-relative Database Prefab path.</p>
+</dd>
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>sourcePrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The source VRM Prefab to clone into the Database.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a diagnostic when import is rejected or fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Reference is committed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportMeshOutfitPhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryImportMeshOutfitPhysicsReference_System_String_System_String_UnityEngine_GameObject_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(System.String,System.String,UnityEngine.GameObject,System.String@)">
+  TryImportMeshOutfitPhysicsReference(string, string, GameObject, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Imports the Physics Reference row for one Mesh Outfit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryImportMeshOutfitPhysicsReference(string databaseAssetPath, string outfitIdentity, GameObject sourcePrefab, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseAssetPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The project-relative Database Prefab path.</p>
+</dd>
+    <dt><code>outfitIdentity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Mesh Outfit identity.</p>
+</dd>
+    <dt><code>sourcePrefab</code> <span class="xref">GameObject</span></dt>
+    <dd><p>The source VRM Prefab to clone into the Database.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a diagnostic when import is rejected or fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Reference is committed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigureExpressionReference_" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigureExpressionReference_System_String_System_String_System_String_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigureExpressionReference(System.String,System.String,System.String,System.String@)">
+  TryRemoveFigureExpressionReference(string, string, string, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the Figure Base/FBM Expression Reference row from a Database transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryRemoveFigureExpressionReference(string databaseAssetPath, string figureName, string shapeKey, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseAssetPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The project-relative Database Prefab path.</p>
+</dd>
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>shapeKey</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The Base shape key or FBM identity.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a diagnostic when removal is rejected or fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Reference is removed and the transaction is committed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigurePhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveFigurePhysicsReference_System_String_System_String_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveFigurePhysicsReference(System.String,System.String,System.String@)">
+  TryRemoveFigurePhysicsReference(string, string, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the Figure Physics Reference row from a Database transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryRemoveFigurePhysicsReference(string databaseAssetPath, string figureName, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseAssetPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The project-relative Database Prefab path.</p>
+</dd>
+    <dt><code>figureName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Figure identity.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a diagnostic when removal is rejected or fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Reference is removed and the transaction is committed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveMeshOutfitPhysicsReference_" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference*"></a>
+
+  <h3 id="zgock_ShapeSync_VrmIntegration_Editor_ShapeSyncVrmReferenceImporter_TryRemoveMeshOutfitPhysicsReference_System_String_System_String_System_String__" data-uid="zgock.ShapeSync.VrmIntegration.Editor.ShapeSyncVrmReferenceImporter.TryRemoveMeshOutfitPhysicsReference(System.String,System.String,System.String@)">
+  TryRemoveMeshOutfitPhysicsReference(string, string, out string)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes the Mesh Outfit Physics Reference row from a Database transaction.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryRemoveMeshOutfitPhysicsReference(string databaseAssetPath, string outfitIdentity, out string diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseAssetPath</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The project-relative Database Prefab path.</p>
+</dd>
+    <dt><code>outfitIdentity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The logical Mesh Outfit identity.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Receives a diagnostic when removal is rejected or fails.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the Reference is removed and the transaction is committed; otherwise, <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Namespace zgock.ShapeSync | ShapeSync API Reference </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Namespace zgock.ShapeSync | ShapeSync API Reference ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="zgock.ShapeSync">
+
+  <h1 id="zgock_ShapeSync" data-uid="zgock.ShapeSync" class="text-break">Namespace zgock.ShapeSync</h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+
+    <h3 id="classes">
+Classes
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.AttachedOutfitRegistrySet.html">AttachedOutfitRegistrySet</a></dt>
+      <dd><p>Runtime record for one attached Outfit and the registry identity used to detach or replace it.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.BlendShapeReservedPrefixes.html">BlendShapeReservedPrefixes</a></dt>
+      <dd><p>Defines the reserved BlendShape name prefixes shared by ShapeSync Runtime,
+Editor, VRM Integration, and tests.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.BonePoseData.html">BonePoseData</a></dt>
+      <dd><p>Serialized local-pose and optional bindpose data for one named skeleton bone.
+CharacterBoneRegistry stores these records for Figure and Outfit authoring.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.CharacterBoneRegistry.html">CharacterBoneRegistry</a></dt>
+      <dd><p>Immutable authoring data that maps an FBM target to its bone poses and bindposes.
+Runtime consumers use the recorded poses; they do not derive behavior from the optional name metadata.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ColorEntry.html">ColorEntry</a></dt>
+      <dd><p>One proxy-wide Material color contribution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.DynamicBoneBlendTarget.html">DynamicBoneBlendTarget</a></dt>
+      <dd><p>Serializable FBM or PBM target definition used by <a class="xref" href="zgock.ShapeSync.DynamicBoneBlender.html">DynamicBoneBlender</a>.
+It associates a BlendShape name with the Avatar and bone registry required to apply its skeletal state.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.DynamicBoneBlender.html">DynamicBoneBlender</a></dt>
+      <dd><p>Figure runtime controller that applies FBM/PBM weights to mesh BlendShapes, bindposes, Avatar, and bone pose data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.DynamicBonePbmDifferenceTarget.html">DynamicBonePbmDifferenceTarget</a></dt>
+      <dd><p>Absolute FBM-plus-PBM skeletal target owned by one PBM entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.DynamicMorphAdapter.html">DynamicMorphAdapter</a></dt>
+      <dd><p>Runtime owner for Plugable PCM slot allocation and payload mesh replacement on a Figure renderer.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.DynamicMorphAdapter.PreparedPcmAttach.html">DynamicMorphAdapter.PreparedPcmAttach</a></dt>
+      <dd><p>Prepared, uncommitted PCM attachment state used to preserve transactional attach semantics.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.DynamicMorphAdapter.SlotSchema.html">DynamicMorphAdapter.SlotSchema</a></dt>
+      <dd><p>Serialized layout of reserved PCM slots and the normal FBM names that index each slot group.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.FigureMorphSyncCoordinator.html">FigureMorphSyncCoordinator</a></dt>
+      <dd><p>Owns the fixed post-PCM-mesh-replacement write order for a Figure.
+BlendShape indices are invariant, so this coordinator only reapplies cached values;
+it never asks DDB or UEP to rebuild their caches.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.HairShape.html">HairShape</a></dt>
+      <dd><p>Runtime shape that contributes hair entries.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.HairShapeTemplate.html">HairShapeTemplate</a></dt>
+      <dd><p>Authoring source for a runtime Hair shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.HumanoidBoneCorrectionProfileApplicator.html">HumanoidBoneCorrectionProfileApplicator</a></dt>
+      <dd><p>Applies a BC Profile to an Editor-owned humanoid rig for static authoring.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MaterialEntry.html">MaterialEntry</a></dt>
+      <dd><p>Base physical contribution addressed to a Material StackMachine proxy entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MeshEntry.html">MeshEntry</a></dt>
+      <dd><p>Physical Mesh attach or detach contribution.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MeshGeometrySignature.html">MeshGeometrySignature</a></dt>
+      <dd><p>Computes the authoring-time geometry signature used to verify that a PCM payload matches its Figure mesh.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MeshMaskEntry.html">MeshMaskEntry</a></dt>
+      <dd><p>One Figure Material Proxy mask owned by a MeshEntry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MorphShape.html">MorphShape</a></dt>
+      <dd><p>Runtime shape that requests FBM morph values.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MorphShapeTemplate.html">MorphShapeTemplate</a></dt>
+      <dd><p>Authoring source for a runtime Morph shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitAttacher.html">OutfitAttacher</a></dt>
+      <dd><p>Figure-side runtime component that attaches, detaches, and keeps Outfit renderers synchronized with FBM changes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitShape.html">OutfitShape</a></dt>
+      <dd><p>Runtime shape that contributes outfit entries.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitShapeTemplate.html">OutfitShapeTemplate</a></dt>
+      <dd><p>Authoring source for a runtime Outfit shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitSkinnedMeshBinding.html">OutfitSkinnedMeshBinding</a></dt>
+      <dd><p>Runtime-owned binding that clones and updates one attached Outfit renderer's mesh and bindposes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitSkinningFbmBindposes.html">OutfitSkinningFbmBindposes</a></dt>
+      <dd><p>Bindpose set for one normal FBM variant of an Outfit renderer.
+PBM targets are represented by their owning Outfit data rather than this list.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitSkinningProfile.html">OutfitSkinningProfile</a></dt>
+      <dd><p>Authoring profile used to align an attached Outfit renderer to the Figure skinning space.
+It records base and normal-FBM bindposes without changing the source Outfit mesh at runtime.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitSkinningRendererProfile.html">OutfitSkinningRendererProfile</a></dt>
+      <dd><p>Skinning data for one renderer under an Outfit root, addressed by its relative transform path.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.PartsShape.html">PartsShape</a></dt>
+      <dd><p>Base runtime shape for skin, hair, and outfit parts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ProfileControlledMorphAsset.html">ProfileControlledMorphAsset</a></dt>
+      <dd><p>Serialized Plugable PCM payload for one Outfit, containing the base and normal-FBM correction frames.
+The payload is owned by the optional attachment workflow and does not require UniVRM.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ProfileControlledMorphBinding.html">ProfileControlledMorphBinding</a></dt>
+      <dd><p>Transactional runtime binding between an Outfit PCM payload and a Figure renderer or DynamicMorphAdapter.
+Use the factory methods and commit/rollback lifecycle instead of constructing bindings directly.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SerializedHairShape.html">SerializedHairShape</a></dt>
+      <dd><p>Serialized value record for one runtime Hair shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SerializedMorphShape.html">SerializedMorphShape</a></dt>
+      <dd><p>Serialized value record for one runtime Morph shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SerializedOutfitShape.html">SerializedOutfitShape</a></dt>
+      <dd><p>Serialized value record for one runtime Outfit shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SerializedPartsShape.html">SerializedPartsShape</a></dt>
+      <dd><p>Common serialized value record for one runtime parts-based Shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SerializedSkinShape.html">SerializedSkinShape</a></dt>
+      <dd><p>Serialized value record for one runtime Skin shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeDeserializer.html">ShapeDeserializer</a></dt>
+      <dd><p>Component base for deserializers owned by the Figure hosting <a class="xref" href="zgock.ShapeSync.ShapeDirector.html">ShapeDirector</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeDirector.html">ShapeDirector</a></dt>
+      <dd><p>Owns logical runtime Shapes and dispatches compiled Figure transactions to co-located StackMachines.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeDocument.html">ShapeDocument</a></dt>
+      <dd><p>ScriptableObject carrier for serialized Shape Director state and recovery recipes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeDocumentDeserializer.html">ShapeDocumentDeserializer</a></dt>
+      <dd><p>Standard Figure component that deserializes runtime Shapes from a <a class="xref" href="zgock.ShapeSync.ShapeDocument.html">ShapeDocument</a> carrier.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeDocumentSerializer.html">ShapeDocumentSerializer</a></dt>
+      <dd><p>Standard Figure component that serializes runtime Shapes into a <a class="xref" href="zgock.ShapeSync.ShapeDocument.html">ShapeDocument</a> carrier.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeEntry.html">ShapeEntry</a></dt>
+      <dd><p>Base class for a physical contribution made by a parts-based shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSerializer.html">ShapeSerializer</a></dt>
+      <dd><p>Component base for serializers owned by the Figure hosting <a class="xref" href="zgock.ShapeSync.ShapeDirector.html">ShapeDirector</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncAnimatorResolver.html">ShapeSyncAnimatorResolver</a></dt>
+      <dd><p>Resolves the Animator that drives a ShapeSync runtime component from its own hierarchy.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabase.html">ShapeSyncDatabase</a></dt>
+      <dd><p>Authoring-only root component for one ShapeSync Database Prefab.
+Generated runtime Figures must not retain this component.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseDiagnostic.html">ShapeSyncDatabaseDiagnostic</a></dt>
+      <dd><p>Structured, authoring-only Database diagnostic.  It is deliberately independent of
+UnityEditor so the same admission seam can be used by Registry and Editor validation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseOptionalFeatureMarker.html">ShapeSyncDatabaseOptionalFeatureMarker</a></dt>
+      <dd><p>Database-local marker for an optional authoring feature.</p>
+<p>The marker deliberately contains no optional-package type.  It remains
+loadable when the package that owns the feature is absent, allowing the
+Database admission layer to reject a destructive open before Unity has a
+chance to round-trip the missing scripts.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.html">ShapeSyncDatabaseRegistry</a></dt>
+      <dd><p>Authoring-only Database sub-asset containing Figure, Outfit, Material, Texture, Normal, and Shape declarations.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.BaseFigureEntry.html">ShapeSyncDatabaseRegistry.BaseFigureEntry</a></dt>
+      <dd><p>Identifies the canonical Base Figure stored by a Database.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncEntryMerge.html">ShapeSyncEntryMerge</a></dt>
+      <dd><p>Directly partitions resolved physical Shapes into Mesh and Material compiler inputs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncFigureImportRecord.html">ShapeSyncFigureImportRecord</a></dt>
+      <dd><p>Authoring-only serialized carrier for one imported intermediate Humanoid; it has no runtime behaviour.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncHumanoidBoneCorrection.html">ShapeSyncHumanoidBoneCorrection</a></dt>
+      <dd><p>Local Humanoid transform correction for one bone, expressed as position, rotation, and scale deltas.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile.html">ShapeSyncHumanoidBoneCorrectionProfile</a></dt>
+      <dd><p>Reusable authoring asset that describes the Humanoid pose correction required by an Outfit.
+Builders consume it when baking target meshes and Outfit bindposes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncMaterialRecipeCompiler.html">ShapeSyncMaterialRecipeCompiler</a></dt>
+      <dd><p>Builds detached Material StackMachine source from sorted Material entries.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncMergedEntry.html">ShapeSyncMergedEntry</a></dt>
+      <dd><p>Compiler-local context retained for one physical Shape entry.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncMeshRecipeCompiler.html">ShapeSyncMeshRecipeCompiler</a></dt>
+      <dd><p>Builds a detached Mesh StackMachine source from current and desired physical Shapes.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncOptionalVrmIntegrationRegistry.html">ShapeSyncOptionalVrmIntegrationRegistry</a></dt>
+      <dd><p>Per-Figure registry that lets Core discover an optional VRM companion without a direct assembly reference.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncOutfit.html">ShapeSyncOutfit</a></dt>
+      <dd><p>Serialized Outfit descriptor consumed by <a class="xref" href="zgock.ShapeSync.OutfitAttacher.html">OutfitAttacher</a>.
+It owns registry identity, skinning data, BC Profiles, and optional Plugable PCM metadata.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncOutfitFbmExtraBoneRegistry.html">ShapeSyncOutfitFbmExtraBoneRegistry</a></dt>
+      <dd><p>Maps one normal FBM name to the Outfit extra-bone registry required for that variant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile.html">ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile</a></dt>
+      <dd><p>Maps one normal FBM name to its optional Humanoid bone correction profile.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncPhysicsRootMetadata.html">ShapeSyncPhysicsRootMetadata</a></dt>
+      <dd><p>Non-blocking provenance data used to correlate Physics transfers.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncShape.html">ShapeSyncShape</a></dt>
+      <dd><p>Runtime logical shape selected by a Shape Director.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncShapeResolver.html">ShapeSyncShapeResolver</a></dt>
+      <dd><p>Pure exclusion resolver that converts requested runtime Shapes into physical composition order.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncShapeTemplate.html">ShapeSyncShapeTemplate</a></dt>
+      <dd><p>ScriptableObject authoring source for one Shape Director runtime shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SkinShape.html">SkinShape</a></dt>
+      <dd><p>Runtime shape that contributes skin entries.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.SkinShapeTemplate.html">SkinShapeTemplate</a></dt>
+      <dd><p>Authoring source for a runtime Skin shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.TextureEntry.html">TextureEntry</a></dt>
+      <dd><p>One Texture source-over contribution and optional mask/colorization data.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.UniversalExpressionEntry.html">UniversalExpressionEntry</a></dt>
+      <dd><p>Serialized Figure expression entry that drives one BlendShape and optional MCM bindings.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.UniversalExpressionProxy.html">UniversalExpressionProxy</a></dt>
+      <dd><p>Figure runtime component that applies authored expressions and forwards logical expression values to optional VRM integration.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.UvsetEntry.html">UvsetEntry</a></dt>
+      <dd><p>One proxy-wide Material UV transform contribution.</p>
+</dd>
+    </dl>
+    <h3 id="structs">
+Structs
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ExpressionMcmBinding.html">ExpressionMcmBinding</a></dt>
+      <dd><p>Runtime-resolved binding between one expression and one MCM BlendShape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.FbmWeightChange.html">FbmWeightChange</a></dt>
+      <dd><p>Immutable FBM weight notification emitted by <a class="xref" href="zgock.ShapeSync.DynamicBoneBlender.html">DynamicBoneBlender</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.MorphValue.html">MorphValue</a></dt>
+      <dd><p>One logical morph target and its requested value.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitAttacherDryRunCommand.html">OutfitAttacherDryRunCommand</a></dt>
+      <dd><p>One side-effect-free Outfit operation submitted to <a class="xref" href="zgock.ShapeSync.OutfitAttacher.html#zgock_ShapeSync_OutfitAttacher_TryDryRun_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_OutfitAttacherDryRunCommand__zgock_ShapeSync_OutfitAttacherDryRunResult__">TryDryRun(IReadOnlyList&lt;OutfitAttacherDryRunCommand&gt;, out OutfitAttacherDryRunResult)</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.OutfitAttacherDryRunResult.html">OutfitAttacherDryRunResult</a></dt>
+      <dd><p>Structured outcome of a side-effect-free Outfit operation dry-run.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncOptionalVrmAttachRequest.html">ShapeSyncOptionalVrmAttachRequest</a></dt>
+      <dd><p>Core-only data supplied to an optional VRM physics attachment operation.
+It deliberately exposes no UniVRM types.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncOptionalVrmDryRunRequest.html">ShapeSyncOptionalVrmDryRunRequest</a></dt>
+      <dd><p>Core-only read-only request for optional VRM Outfit capability validation.</p>
+</dd>
+    </dl>
+    <h3 id="interfaces">
+Interfaces
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.IShapeDeserializer.html">IShapeDeserializer</a></dt>
+      <dd><p>Deserializes an implementation-defined file name into a runtime Shape list.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.IShapeDocumentSourceDeserializer.html">IShapeDocumentSourceDeserializer</a></dt>
+      <dd><p>Optional capability for decoding a standard in-memory <a class="xref" href="zgock.ShapeSync.ShapeDocument.html">ShapeDocument</a> source.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.IShapeSerializer.html">IShapeSerializer</a></dt>
+      <dd><p>Serializes a runtime Shape list to an implementation-defined file name.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.html">IShapeSyncOptionalVrmAttachment</a></dt>
+      <dd><p>Optional VRM attachment lifecycle used by the Core without referencing UniVRM types.
+The companion integration owns the implementation so Core remains independently compilable.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.IShapeSyncOptionalVrmIntegration.html">IShapeSyncOptionalVrmIntegration</a></dt>
+      <dd><p>Core-facing optional VRM integration contract implemented only by the UniVRM companion assembly.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.html">IShapeSyncOptionalVrmIntegrationDryRun</a></dt>
+      <dd><p>Optional read-only VRM capability check used by transactional Outfit dry-runs.</p>
+</dd>
+    </dl>
+    <h3 id="enums">
+Enums
+</h3>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseDiagnosticCode.html">ShapeSyncDatabaseDiagnosticCode</a></dt>
+      <dd><p>Stable authoring validation code emitted by the Database validator.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseEntityKind.html">ShapeSyncDatabaseEntityKind</a></dt>
+      <dd><p>Identifies the Database-owned entity at which an authoring diagnostic is localized.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.FigureAxisKind.html">ShapeSyncDatabaseRegistry.FigureAxisKind</a></dt>
+      <dd><p>Classifies one Figure deformation axis without changing its canonical name.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.OutfitCollectionKind.html">ShapeSyncDatabaseRegistry.OutfitCollectionKind</a></dt>
+      <dd><p>One Mesh Outfit's unified authoring declaration for BCP and PCM input.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.OutfitKind.html">ShapeSyncDatabaseRegistry.OutfitKind</a></dt>
+      <dd><p>Classifies an authoring-only Outfit entity.  Mesh and Material outfits share identity rules but not payload.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.OutfitMaterialClassification.html">ShapeSyncDatabaseRegistry.OutfitMaterialClassification</a></dt>
+      <dd><p>Classifies one source Material for a Mesh Outfit.  Only Include later creates logical resources.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.ShapeEntryKind.html">ShapeSyncDatabaseRegistry.ShapeEntryKind</a></dt>
+      <dd><p>Classifies an ordered authoring entry in a parts-based Shape.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.ShapeKind.html">ShapeSyncDatabaseRegistry.ShapeKind</a></dt>
+      <dd><p>Classifies a concrete Shape authoring record without changing the Spec16 runtime schema.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRegistry.TextureResourceOwnerScope.html">ShapeSyncDatabaseRegistry.TextureResourceOwnerScope</a></dt>
+      <dd><p>Classifies the authoring source which owns a Texture resource aggregation group.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="zgock.ShapeSync.ShapeSyncDatabaseRelationKind.html">ShapeSyncDatabaseRelationKind</a></dt>
+      <dd><p>Identifies the declared relation that is invalid or incomplete.</p>
+</dd>
+    </dl>
+
+
+</article>
+
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
