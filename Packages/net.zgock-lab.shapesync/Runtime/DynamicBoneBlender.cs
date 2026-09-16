@@ -2115,6 +2115,13 @@ namespace zgock.ShapeSync
             for (int i = 0; i < snapshots.Length; i++)
             {
                 AnimatorParameterSnapshot snapshot = snapshots[i];
+                // Spec15 Overhaul 2 §13: curve-controlled parameters belong to the Animator's own
+                // evaluation. Writing them back through a setter emits a Unity warning, so restore
+                // only parameters the Animator is not driving by curve.
+                if (animator.IsParameterControlledByCurve(snapshot.nameHash))
+                {
+                    continue;
+                }
                 switch (snapshot.type)
                 {
                     case AnimatorControllerParameterType.Float:

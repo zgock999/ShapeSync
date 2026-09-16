@@ -811,6 +811,7 @@ namespace zgock.ShapeSync
             { diagnostic = "Morph Shape does not accept Tags."; return false; }
             if (!TryValidateShapeTags(tags, out diagnostic)) return false;
             shapes.Add(new ShapeEntry(shapeId, shapeName, kind, priority, tags));
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -909,6 +910,61 @@ namespace zgock.ShapeSync
             }
             diagnostic = null;
             return true;
+        }
+
+        // Aligns every Morph Shape's morph values with the current figure axis set.
+        private void FollowMorphShapeAxes()
+        {
+            var axisNames = new List<string>();
+            var seenAxisNames = new HashSet<string>(StringComparer.Ordinal);
+            foreach (FigureAxisEntry axis in figureAxes)
+            {
+                if (axis == null || string.IsNullOrWhiteSpace(axis.Name)) continue;
+                if (!seenAxisNames.Add(axis.Name)) continue;
+                axisNames.Add(axis.Name);
+            }
+            foreach (ShapeEntry shape in shapes)
+            {
+                if (shape == null) continue;
+                if (shape.Kind != ShapeKind.Morph) continue;
+                var existingValues = new Dictionary<string, float>(StringComparer.Ordinal);
+                foreach (MorphValue value in shape.Morphs)
+                {
+                    if (value.Target == null) continue;
+                    if (!existingValues.ContainsKey(value.Target)) existingValues[value.Target] = value.Value;
+                }
+                var next = new List<MorphValue>();
+                foreach (string axisName in axisNames)
+                {
+                    float value = 0f;
+                    if (existingValues.ContainsKey(axisName)) value = existingValues[axisName];
+                    next.Add(new MorphValue { Target = axisName, Value = value });
+                }
+                shape.SetMorphs(next);
+            }
+        }
+
+        // Renames the morph values of every Morph Shape that target currentName.
+        private void RenameMorphShapeAxisTarget(string currentName, string replacementName)
+        {
+            if (string.Equals(currentName, replacementName, StringComparison.Ordinal)) return;
+            foreach (ShapeEntry shape in shapes)
+            {
+                if (shape == null) continue;
+                if (shape.Kind != ShapeKind.Morph) continue;
+                bool replaced = false;
+                var next = new List<MorphValue>();
+                foreach (MorphValue value in shape.Morphs)
+                {
+                    if (string.Equals(value.Target, currentName, StringComparison.Ordinal))
+                    {
+                        next.Add(new MorphValue { Target = replacementName, Value = value.Value });
+                        replaced = true;
+                    }
+                    else next.Add(value);
+                }
+                if (replaced) shape.SetMorphs(next);
+            }
         }
 
         internal bool TrySetShapePartMeshOutfit(string shapeId, int index, string outfitIdentity, out string diagnostic)
@@ -1345,6 +1401,7 @@ namespace zgock.ShapeSync
                     && !textureResources.Any(entry => entry != null && entry.Texture == texture))
                 .Distinct()
                 .ToArray();
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -1359,6 +1416,7 @@ namespace zgock.ShapeSync
             removedFigures = target.Figures.Where(binding => binding != null && binding.Figure != null)
                 .Select(binding => binding.Figure).Distinct().ToArray();
             figureAxes.Remove(target);
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -1382,6 +1440,8 @@ namespace zgock.ShapeSync
             }
             target.Rename(replacementName);
             foreach (AxisFigureEntry binding in target.Figures) binding.Figure.name = GetPbmFigureName(binding.FbmName, replacementName);
+            RenameMorphShapeAxisTarget(currentName, replacementName);
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -1402,6 +1462,7 @@ namespace zgock.ShapeSync
             { diagnostic = "PBM replacement requires one staged Base Figure and one staged Figure for every FBM."; return false; }
             replacementIndex = figureAxes.IndexOf(target);
             removedFigures = target.Figures.Where(binding => binding?.Figure != null).Select(binding => binding.Figure).ToArray();
+            RenameMorphShapeAxisTarget(currentName, replacementName);
             figureAxes.Remove(target);
             return true;
         }
@@ -1417,6 +1478,7 @@ namespace zgock.ShapeSync
             { diagnostic = "PBM replacement bindings are invalid."; return false; }
             figureAxes.Insert(Mathf.Clamp(replacementIndex, 0, figureAxes.Count), new FigureAxisEntry(replacementName, FigureAxisKind.Pbm,
                 bindings.Select(binding => new AxisFigureEntry(binding.SourceFbmName, binding.Figure))));
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -1455,6 +1517,8 @@ namespace zgock.ShapeSync
             foreach (NormalEntry normal in normalEntries.Where(entry => entry != null && entry.ShapeKey == currentName))
                 normal.RenameShapeKey(replacementName);
 
+            RenameMorphShapeAxisTarget(currentName, replacementName);
+
             string[] importedResourceNames = textureResources.Where(entry => IsFbmImportedTextureResource(entry, currentName))
                 .Select(entry => entry.LogicalName).ToArray();
             Texture[] importedTextures = textureResources.Where(entry => IsFbmImportedTextureResource(entry, currentName))
@@ -1484,6 +1548,7 @@ namespace zgock.ShapeSync
                 new[] { new AxisFigureEntry(replacementName, replacementFigure) }, importMaterialsAndTextures);
             figureAxes.Insert(Mathf.Clamp(replacementIndex, 0, figureAxes.Count), replacement);
             fbmAxesFinalized = true;
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -1532,6 +1597,8 @@ namespace zgock.ShapeSync
             // reference together with the Material Entry resource table.
             foreach (NormalEntry normal in normalEntries)
                 if (normal != null && resourceRenames.TryGetValue(normal.TextureResourceName, out string nextName)) normal.RenameTextureResourceName(nextName);
+            RenameMorphShapeAxisTarget(currentName, replacementName);
+            FollowMorphShapeAxes();
             return true;
         }
 
@@ -2073,6 +2140,7 @@ namespace zgock.ShapeSync
                 figureAxes.Add(new FigureAxisEntry(admissions[i].Name, admissions[i].Kind, entries, admissions[i].ImportAllMaterialsAndTextures));
             }
             if (includesFbm) fbmAxesFinalized = true;
+            FollowMorphShapeAxes();
             return true;
         }
 

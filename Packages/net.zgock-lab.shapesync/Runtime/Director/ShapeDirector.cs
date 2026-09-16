@@ -28,6 +28,7 @@ namespace zgock.ShapeSync
         public List<ShapeSyncShapeTemplate> TemplateList = new List<ShapeSyncShapeTemplate>();
         [SerializeField] private bool autoCompile = true;
         [SerializeField] private bool abortOnOutfitMaterialFailure;
+        [SerializeField] private int outfitPriorityCutoff = -1;
         [SerializeField] private MeshBinding meshBinding;
         [SerializeField] private MaterialBinding materialBinding;
         [SerializeField] private ShapeSerializer serializer;
@@ -40,6 +41,7 @@ namespace zgock.ShapeSync
         private TransactionPhase transactionPhase;
         private List<ShapeSyncShape> pendingDesiredPhysical;
         private bool recoveryRequestedOnEnable;
+        private bool pendingCutoffRecompile;
         private string lastMeshSource = string.Empty;
         private string lastMaterialSource = string.Empty;
         private StackMachineDiagnostic lastTransactionDiagnostic;
@@ -49,10 +51,14 @@ namespace zgock.ShapeSync
         public IReadOnlyList<ShapeSyncShape> RuntimeShapes => runtimeShapes;
         internal string LastMeshSource => lastMeshSource;
         internal string LastMaterialSource => lastMaterialSource;
+        /// <summary>Gets the committed physical composition order for test observation.</summary>
+        internal IReadOnlyList<ShapeSyncShape> CurrentPhysicalShapes => currentPhysicalShapes;
         /// <summary>Gets or sets whether successful C/U/D requests immediately issue a compile transaction.</summary>
         public bool AutoCompile { get => autoCompile; set => autoCompile = value; }
         /// <summary>Gets or sets the Outfit Material failure policy used by the later transaction phase.</summary>
         public bool AbortOnOutfitMaterialFailure { get => abortOnOutfitMaterialFailure; set => abortOnOutfitMaterialFailure = value; }
+        /// <summary>Gets or sets the inclusive Outfit priority ceiling; Outfits above it are ignored. A negative value disables the cutoff.</summary>
+        public int OutfitPriorityCutoff { get => outfitPriorityCutoff; set => SetOutfitPriorityCutoff(value); }
         /// <summary>Gets the latest unrecovered transaction or recovery diagnostic, if one occurred.</summary>
         public StackMachineDiagnostic LastTransactionDiagnostic => lastTransactionDiagnostic;
         /// <summary>Gets the configured or co-located Figure serializer component.</summary>
@@ -224,7 +230,7 @@ namespace zgock.ShapeSync
             runtimeShapes.Clear();
             for (int i = 0; i < shapes.Count; i++) runtimeShapes.Add(shapes[i].Clone());
             if (!autoCompile) return true;
-            bool accepted = TryDispatchLoadedDocument(shapes, payload, out diagnostic);
+            bool accepted = TryDispatchLoadedDocumentWithCutoff(shapes, payload, out diagnostic);
             if (!accepted) lastTransactionDiagnostic = diagnostic;
             return accepted;
         }
@@ -239,7 +245,7 @@ namespace zgock.ShapeSync
                 documentDeserializer.LastLoadedDocument != null &&
                 ShapeSyncDocument.TryCreateSnapshot(documentDeserializer.LastLoadedDocument, out ShapeSyncDocument snapshot, out _))
             {
-                return TryDispatchLoadedDocument(shapes, snapshot, out _);
+                return TryDispatchLoadedDocumentWithCutoff(shapes, snapshot, out _);
             }
             return TryCompile(out _);
         }
@@ -276,7 +282,7 @@ namespace zgock.ShapeSync
                 diagnostic = StackMachineDiagnostic.CreateDomain("director", "TransactionInFlight", "Shape Director cannot start a second transaction before the current Material phase completes.");
                 return false;
             }
-            if (!ShapeSyncShapeResolver.TryResolve(runtimeShapes, out List<ShapeSyncShape> desiredPhysical, out diagnostic) ||
+            if (!ShapeSyncShapeResolver.TryResolve(runtimeShapes, outfitPriorityCutoff, out List<ShapeSyncShape> desiredPhysical, out diagnostic) ||
                 !ShapeSyncEntryMerge.TryMerge(currentPhysicalShapes, out List<ShapeSyncMergedEntry> currentMesh, out List<ShapeSyncMergedEntry> currentMaterial, out diagnostic) ||
                 !ShapeSyncEntryMerge.TryMerge(desiredPhysical, out List<ShapeSyncMergedEntry> desiredMesh, out List<ShapeSyncMergedEntry> desiredMaterial, out diagnostic) ||
                 !ShapeSyncMeshRecipeCompiler.TryCompile(currentPhysicalShapes, desiredPhysical, out string meshSource, out diagnostic) ||
@@ -326,12 +332,33 @@ namespace zgock.ShapeSync
 
         private bool TryAutoCompile(out StackMachineDiagnostic diagnostic) { diagnostic = null; return !autoCompile || TryCompile(out diagnostic); }
 
+        private void SetOutfitPriorityCutoff(int value)
+        {
+            if (outfitPriorityCutoff == value) return;
+            outfitPriorityCutoff = value;
+            if (autoCompile) TryCompile(out _);
+        }
+
         private bool TryRejectRuntimeMutation(out StackMachineDiagnostic diagnostic)
         {
             diagnostic = runtimeMutationBlocked
                 ? StackMachineDiagnostic.CreateDomain("director", "DirectorRunModeMutationRejected", "Shape Director runtime Shape changes are rejected while Hybrid Hot Bake Run Mode is active.")
                 : null;
             return diagnostic != null;
+        }
+
+        private bool TryDispatchLoadedDocumentWithCutoff(IReadOnlyList<ShapeSyncShape> loadedShapes, ShapeSyncDocument payload, out StackMachineDiagnostic diagnostic)
+        {
+            if (!TryDispatchLoadedDocument(loadedShapes, payload, out diagnostic)) return false;
+            RequestCutoffRecompileAfterLoad();
+            return true;
+        }
+
+        private void RequestCutoffRecompileAfterLoad()
+        {
+            if (outfitPriorityCutoff < 0) return;
+            if (transactionInFlight) { pendingCutoffRecompile = true; return; }
+            TryCompile(out _);
         }
 
         private bool TryDispatchLoadedDocument(IReadOnlyList<ShapeSyncShape> loadedShapes, ShapeSyncDocument payload, out StackMachineDiagnostic diagnostic)
@@ -481,6 +508,7 @@ namespace zgock.ShapeSync
             }
             if (figureFailed || (abortOnOutfitMaterialFailure && failedOutfits.Count != 0))
             {
+                pendingCutoffRecompile = false;
                 TryStartRecovery();
                 return;
             }
@@ -490,6 +518,11 @@ namespace zgock.ShapeSync
             transactionPhase = TransactionPhase.None;
             pendingDesiredPhysical = null;
             recoveryRequestedOnEnable = false;
+            if (pendingCutoffRecompile)
+            {
+                pendingCutoffRecompile = false;
+                if (outfitPriorityCutoff >= 0) TryCompile(out _);
+            }
         }
 
         private void CompleteRecovery(MaterialStackMachineDispatchOperation operation)
@@ -508,6 +541,7 @@ namespace zgock.ShapeSync
             transactionInFlight = false;
             transactionPhase = TransactionPhase.None;
             pendingDesiredPhysical = null;
+            pendingCutoffRecompile = false;
         }
 
         private bool TryStartRecovery()

@@ -52,6 +52,10 @@ namespace zgock.ShapeSync.StackMachine
         private readonly HashSet<int> activeIds = new HashSet<int>();
         private readonly int roomsPerAxis;
         private int nextId = 1;
+        private ulong version;
+
+        /// <summary>Gets the mutation version. Incremented by every successful reserve or release on a real allocator; used only for equality checks.</summary>
+        internal ulong Version => version;
 
         /// <summary>Creates an allocator for one fixed square grid edge.</summary>
         /// <param name="gridEdge">Phase0 square edge of the host-owned grid.</param>
@@ -86,6 +90,7 @@ namespace zgock.ShapeSync.StackMachine
                     SetOccupied(x, y, roomWidth, roomHeight, true);
                     allocation = new TextureHallAllocation(nextId++, x, y, roomWidth, roomHeight, width, height);
                     activeIds.Add(allocation.Id);
+                    version = unchecked(version + 1);
                     return true;
                 }
             }
@@ -103,6 +108,7 @@ namespace zgock.ShapeSync.StackMachine
                     if (!occupied[y * roomsPerAxis + x]) return false;
             SetOccupied(allocation.RoomX, allocation.RoomY, allocation.RoomWidth, allocation.RoomHeight, false);
             activeIds.Remove(allocation.Id);
+            version = unchecked(version + 1);
             return true;
         }
 
@@ -114,6 +120,34 @@ namespace zgock.ShapeSync.StackMachine
             Array.Copy(occupied, simulation.occupied, occupied.Length);
             simulation.OccupiedRoomCount = OccupiedRoomCount;
             for (int i = 0; i < widths.Count; i++) if (!simulation.TryReserve(widths[i], heights[i], out _)) return false;
+            return true;
+        }
+
+        /// <summary>Creates an independent simulation allocator duplicating this allocator's grid dimensions and occupancy bitmap. Simulation ids and versions never flow back to the real allocator.</summary>
+        /// <returns>A fresh simulation allocator holding a copy of the current occupancy.</returns>
+        internal TextureHallAllocator CreateOccupancySnapshot()
+        {
+            var simulation = new TextureHallAllocator(GridEdge);
+            Array.Copy(occupied, simulation.occupied, occupied.Length);
+            simulation.OccupiedRoomCount = OccupiedRoomCount;
+            return simulation;
+        }
+
+        /// <summary>Simulation-only: occupies the same room rectangle as an existing borrowed allocation when it is fully free. Fixed occupancy updates the bitmap and count only; the real hall id is not registered and never released inside a simulation.</summary>
+        /// <param name="hall">A borrowed allocation to place at its fixed position.</param>
+        /// <returns><see langword="true"/> when the fixed rectangle is entirely free and was occupied; otherwise <see langword="false"/> without changing the simulation.</returns>
+        internal bool TryOccupyFixed(TextureHallAllocation hall)
+        {
+            if (!hall.IsValid) return false;
+            if (!TextureGpuCapabilityProbe.IsPhase0Edge(hall.Width) || !TextureGpuCapabilityProbe.IsPhase0Edge(hall.Height)) return false;
+            if (hall.RoomWidth != hall.Width / RoomEdge) return false;
+            if (hall.RoomHeight != hall.Height / RoomEdge) return false;
+            if (hall.RoomX < 0 || hall.RoomY < 0) return false;
+            if (hall.RoomWidth > roomsPerAxis || hall.RoomHeight > roomsPerAxis ||
+                hall.RoomX > roomsPerAxis - hall.RoomWidth ||
+                hall.RoomY > roomsPerAxis - hall.RoomHeight) return false;
+            if (!IsFree(hall.RoomX, hall.RoomY, hall.RoomWidth, hall.RoomHeight)) return false;
+            SetOccupied(hall.RoomX, hall.RoomY, hall.RoomWidth, hall.RoomHeight, true);
             return true;
         }
 

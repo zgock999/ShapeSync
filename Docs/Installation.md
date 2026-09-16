@@ -105,10 +105,10 @@ Manager. Perform these steps in order:
 6. In Package Manager, choose **Add package from git URL** and add:
 
    ```text
-   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.0
+   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.1
    ```
 
-   The `?path=` subfolder must precede the `#0.2.0` revision.
+   The `?path=` subfolder must precede the `#0.2.1` revision.
 7. Let Unity compile. Core is ready when the
    `zgock.ShapeSync.Runtime` and `zgock.ShapeSync.Editor` assemblies compile
    without UniVRM installed.
@@ -150,7 +150,7 @@ com.vrmc.vrm 0.131.1
 Then choose **Add package from git URL** and add:
 
 ```text
-https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.0
+https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.1
 ```
 
 Finally add the scripting define symbol below in **Project Settings > Player >
@@ -226,7 +226,7 @@ Follow their own license and distribution terms when adding them to a project.
 
 ## Package URL notes
 
-The two ShapeSync URLs use the same lockstep `0.2.0` tag. The Core URL
+The two ShapeSync URLs use the same lockstep `0.2.1` tag. The Core URL
 must be installed before the companion because the companion declares Core as a
 package dependency. The `?path=` component selects a package subfolder in the
 repository and must appear before the `#revision` component.

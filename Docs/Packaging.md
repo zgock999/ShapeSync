@@ -104,7 +104,7 @@ $coreUrl = "https://github.com/$packageRepository.git?path=Packages/net.zgock-la
 $companionUrl = "https://github.com/$packageRepository.git?path=Packages/net.zgock-lab.shapesync.vrm#$gitRevision"
 ```
 
-Spec24 applied values: `packageRepository = zgock999/ShapeSync`, `repositoryDirectory = ShapeSync`, `packageVersion = 0.2.0`, `gitRevision = 0.2.0`. These are the current application values,
+Release 0.2.1 applied values: `packageRepository = zgock999/ShapeSync`, `repositoryDirectory = ShapeSync`, `packageVersion = 0.2.1`, `gitRevision = 0.2.1`. These are the current application values,
 not fixed requirements of this reusable process; a later release replaces them
 at the parameter line above.
 
@@ -155,6 +155,31 @@ Record each lane's total, passed, failed, skipped, and inconclusive counts,
 the resolved package lock, and whether the final Core-only result matches the
 initial result. Known batchmode-only exceptions must be named explicitly and
 must not hide compilation, package-resolution, or inconclusive failures.
+
+### 5.1 Remote clean-consumer verification
+
+The local Slim matrix above proves the generated release tree, but a release
+acceptance check must also prove the public Git URL. Create a new consumer (or
+copy only the source portion of `TestProject/`, excluding `Library/`, `Temp/`,
+`Obj/`, `Logs/`, `UserSettings/`, and `Assets/Packages/`) outside the design
+repository's package folders. Replace the local `file:` entries with the
+public tag-pinned URLs:
+
+```text
+https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#<tag>
+https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#<tag>
+```
+
+Restore the consumer-side NuGet `R3` closure before opening Unity, then let
+Unity regenerate `Packages/packages-lock.json`. Verify that the two ShapeSync
+entries have `source: git`, the requested tag in `version`, and the resolved
+commit hash. Run the minimum-version default API once to capture a structured
+unsupported-API result when applicable, then run the Slim lanes on an
+async-compute-capable API. Do not pass `-nographics`: the Texture StackMachine
+requires a real graphics device. Record the Unity version, actual graphics
+device/API, NuGet payload, package lock, compile errors, and all three lane
+results. This remote check is separate from the generated-tree matrix and is
+the required evidence for a public tag-pinned Git URL install.
 
 ## 6. Assemble the complete package repository tree
 
@@ -212,6 +237,7 @@ Prepare the public staging tree with this layout:
 <pages-stage>/
   index.md
   CC0Animation.unitypackage
+  favicon.ico         generated from Docs/Public/images/favicon.png for the Pages root
   ja/                  13 Japanese chapters, index.md, and images/
   en/                  13 English chapters, index.md, and images/
   api/                 generated Core and VRM API reference
@@ -227,13 +253,20 @@ execution results, or the workspace directory as a whole.
 Copy the corresponding `Docs/Public/{ja,en}/images/` tree independently for
 each language, even when current bytes are identical.
 
+Convert `Docs/Public/images/favicon.png` to a 64x64 `favicon.ico` and copy it to
+the Pages staging root. The root ICO is served at `/favicon.ico`, which browsers
+request by default; do not introduce a Jekyll layout only to add an HTML icon
+link unless a later Spec explicitly requires PNG-specific rendering.
+
 The root `index.md` is the integrated entry point. It links to `./ja/`,
-`./en/`, `./api/`, and `./CC0Animation.unitypackage`. When a language page
-links to the root-level package, use `../CC0Animation.unitypackage` after the
-language tree has been placed below `/ja/` or `/en/`. This is the public-layout
-transformation rule; it does not modify canonical content. Likewise,
-language-local chapter links are published with the
-`.html` extension while the canonical files remain `.md`.
+`./en/`, `./api/`, and `./CC0Animation.unitypackage`. The canonical language
+trees are already written for this deployed layout: links from `ja/` or `en/`
+to the root-level package use `../CC0Animation.unitypackage`, and
+language-local chapter links remain `.md` (for example, `./initialvrm.md`).
+Copy the canonical Markdown files verbatim into the `gh-pages` staging tree;
+do not apply a second public-layout transformation. GitHub Pages' relative
+links processing renders these `.md` references as the corresponding `.html`
+URLs at publication time.
 
 Generate the API site using `Docs/ApiReferenceBuild.md`, then copy the
 generated site into the staging `/api/` directory. Generated DocFX output is

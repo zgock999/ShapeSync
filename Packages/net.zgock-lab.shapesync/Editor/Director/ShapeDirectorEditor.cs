@@ -15,6 +15,7 @@ namespace zgock.ShapeSync.Editor
         private SerializedProperty templateList;
         private SerializedProperty autoCompile;
         private SerializedProperty abortOnOutfitMaterialFailure;
+        private SerializedProperty outfitPriorityCutoff;
         private SerializedProperty meshBinding;
         private SerializedProperty materialBinding;
         private SerializedProperty serializer;
@@ -28,6 +29,7 @@ namespace zgock.ShapeSync.Editor
             templateList = serializedObject.FindProperty("TemplateList");
             autoCompile = serializedObject.FindProperty("autoCompile");
             abortOnOutfitMaterialFailure = serializedObject.FindProperty("abortOnOutfitMaterialFailure");
+            outfitPriorityCutoff = serializedObject.FindProperty("outfitPriorityCutoff");
             meshBinding = serializedObject.FindProperty("meshBinding");
             materialBinding = serializedObject.FindProperty("materialBinding");
             serializer = serializedObject.FindProperty("serializer");
@@ -38,17 +40,21 @@ namespace zgock.ShapeSync.Editor
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
+            int cutoffBefore = ((ShapeDirector)target).OutfitPriorityCutoff;
             EditorGUILayout.LabelField("Template Input", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(templateList, new GUIContent("Template List"), true);
             EditorGUILayout.HelpBox("Template List is inspector input only. Its edits do not change Runtime Shapes until Sync.", MessageType.Info);
             EditorGUILayout.PropertyField(autoCompile, new GUIContent("Auto Compile"));
             EditorGUILayout.PropertyField(abortOnOutfitMaterialFailure, new GUIContent("Abort on Outfit Material Failure"));
+            EditorGUILayout.PropertyField(outfitPriorityCutoff, new GUIContent("Outfit Priority Cutoff"));
             EditorGUILayout.PropertyField(meshBinding);
             EditorGUILayout.PropertyField(materialBinding);
             EditorGUILayout.PropertyField(serializer, new GUIContent("Serializer"));
             EditorGUILayout.PropertyField(deserializer, new GUIContent("Deserializer"));
             EditorGUILayout.HelpBox("When these references are empty, Save and Load use ShapeSerializer / ShapeDeserializer components on this Figure. The standard ShapeDocument Serializer creates its first carrier asset when Save is pressed.", MessageType.Info);
-            serializedObject.ApplyModifiedProperties();
+            bool changed = serializedObject.ApplyModifiedProperties();
+            if (changed && ((ShapeDirector)target).OutfitPriorityCutoff != cutoffBefore)
+                Report(((ShapeDirector)target).TryCompile(out var cutoffDiagnostic), cutoffDiagnostic == null ? "Outfit Priority Cutoff applied." : cutoffDiagnostic.message);
 
             ShapeDirector director = (ShapeDirector)target;
             EditorGUILayout.Space();

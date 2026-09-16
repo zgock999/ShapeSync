@@ -271,7 +271,7 @@ namespace zgock.ShapeSync.StackMachine
                 {
                     if (!TryExecuteDocumentBinding(target.Source, payload.MaterialBinding, out MaterialStackMachineOperation figureOperation, out StackMachineDiagnostic figureDiagnostic))
                     {
-                        Debug.LogWarning("Material StackMachine skipped Figure target. " + FormatDiagnostic(figureDiagnostic), this);
+                        Debug.LogWarning("Material StackMachine skipped Figure target " + gameObject.name + " (instanceID=" + gameObject.GetInstanceID() + "). " + FormatDiagnostic(figureDiagnostic), this);
                         continue;
                     }
                     operation = figureOperation;
@@ -317,7 +317,7 @@ namespace zgock.ShapeSync.StackMachine
                 if (target.OutfitRegistryId == null)
                 {
                     if (TryExecuteDocumentBinding(target.Source, payload.MaterialBinding, out MaterialStackMachineOperation child, out StackMachineDiagnostic childDiagnostic)) operation.Observe(i, registryId, child);
-                    else { Debug.LogWarning("Material StackMachine skipped Figure target. " + FormatDiagnostic(childDiagnostic), this); operation.Reject(i, registryId, childDiagnostic); }
+                    else { Debug.LogWarning("Material StackMachine skipped Figure target " + gameObject.name + " (instanceID=" + gameObject.GetInstanceID() + "). " + FormatDiagnostic(childDiagnostic), this); operation.Reject(i, registryId, childDiagnostic); }
                     continue;
                 }
                 OutfitAttacher outfitAttacher = GetComponent<OutfitAttacher>();
@@ -599,7 +599,7 @@ namespace zgock.ShapeSync.StackMachine
 
         private static string FormatDiagnostic(StackMachineDiagnostic diagnostic)
         {
-            return diagnostic == null ? "No structured diagnostic was returned." : diagnostic.domainCode + ": " + diagnostic.message;
+            return StackMachineDiagnostic.Format(diagnostic, "No structured diagnostic was returned.");
         }
     }
 }

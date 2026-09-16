@@ -10,6 +10,8 @@ namespace zgock.ShapeSync
     /// <summary>Pure exclusion resolver that converts requested runtime Shapes into physical composition order.</summary>
     public static class ShapeSyncShapeResolver
     {
+        private const int DisabledOutfitPriorityCutoff = -1;
+
         private sealed class RequestedShapeComparer : IComparer<ShapeSyncShape>
         {
             internal static readonly RequestedShapeComparer Instance = new RequestedShapeComparer();
@@ -38,6 +40,19 @@ namespace zgock.ShapeSync
         /// <param name="diagnostic">A structured reject when Director cannot resolve its own input unambiguously.</param>
         /// <returns><see langword="true"/> when physical order was resolved.</returns>
         public static bool TryResolve(IReadOnlyList<ShapeSyncShape> requestedShapes, out List<ShapeSyncShape> physicalShapes, out StackMachineDiagnostic diagnostic)
+            => TryResolve(requestedShapes, DisabledOutfitPriorityCutoff, out physicalShapes, out diagnostic);
+
+        /// <summary>Resolves tag exclusion and returns physical composition order, ignoring Outfits above the supplied priority cutoff.</summary>
+        /// <param name="requestedShapes">The current logical Shape list.</param>
+        /// <param name="outfitPriorityCutoff">The inclusive Outfit priority ceiling; a negative value disables the cutoff.</param>
+        /// <param name="physicalShapes">The retained Shapes in physical composition order.</param>
+        /// <param name="diagnostic">A structured reject when Director cannot resolve its own input unambiguously.</param>
+        /// <returns><see langword="true"/> when physical order was resolved.</returns>
+        public static bool TryResolve(
+            IReadOnlyList<ShapeSyncShape> requestedShapes,
+            int outfitPriorityCutoff,
+            out List<ShapeSyncShape> physicalShapes,
+            out StackMachineDiagnostic diagnostic)
         {
             physicalShapes = new List<ShapeSyncShape>();
             diagnostic = null;
@@ -63,6 +78,11 @@ namespace zgock.ShapeSync
                     return false;
                 }
                 requested.Add(shape);
+            }
+
+            if (outfitPriorityCutoff >= 0)
+            {
+                requested.RemoveAll(shape => shape is OutfitShape && shape.Priority > outfitPriorityCutoff);
             }
 
             requested.Sort(RequestedShapeComparer.Instance);

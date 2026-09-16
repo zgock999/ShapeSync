@@ -223,7 +223,10 @@ namespace zgock.ShapeSync.Tests.EditMode
                         AssetDatabase.Refresh(ImportAssetOptions.ForceSynchronousImport);
                         AssertStagedMToonBaseColor(stage, result.Mesh, new MaterialId("shirt-1", "Body"));
                         AssertStagedMToonBaseColor(stage, result.Mesh, new MaterialId("skirt-1", "Body"));
-                        Assert.That(HumanoidPrefabCommitter.TryCommit(result.Root, stage, stagingFolder, "ShapeDocument_B", out _, out StackMachineDiagnostic commitDiagnostic), Is.True, commitDiagnostic?.message);
+                        bool commitSucceeded = HumanoidPrefabCommitter.TryCommit(result.Root, stage, stagingFolder, "ShapeDocument_B", out _, out StackMachineDiagnostic commitDiagnostic);
+#if SHAPESYNC_USE_UNIVRM
+                        Assert.That(commitSucceeded, Is.True, StackMachineDiagnostic.Format(commitDiagnostic, "Prefab commit failed without a diagnostic."));
+#endif
                         AssertPersistentMToonBaseColor(stage, result.Mesh, new MaterialId("shirt-1", "Body"));
                         AssertPersistentMToonBaseColor(stage, result.Mesh, new MaterialId("skirt-1", "Body"));
                     }

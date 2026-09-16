@@ -145,10 +145,10 @@ guaranteed.
 In Package Manager, choose **Add package from git URL** and enter:
 
 ```text
-https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.0
+https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.1
 ```
 
-The `?path=` subfolder must appear before `#0.2.0`. The revision is
+The `?path=` subfolder must appear before `#0.2.1`. The revision is
 the lockstep package tag and must not be replaced with an unverified short
 SHA.
 
@@ -184,7 +184,7 @@ Core-only projects skip this step.
 After Core is installed, add the companion from git:
 
 ```text
-https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.0
+https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.1
 ```
 
 Then add `SHAPESYNC_USE_UNIVRM` under **Project Settings > Player > Scripting
@@ -245,7 +245,7 @@ Cannot checkout repository ... pathspec ... did not match any file(s) known to g
 ```
 
 Use the exact URL above, including `.git`, the package subfolder, and the
-`#0.2.0` revision.
+`#0.2.1` revision.
 
 ### Console messages that are not install failures
 

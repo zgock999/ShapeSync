@@ -1,6 +1,6 @@
 {
     "name":  "net.zgock-lab.shapesync",
-    "version":  "0.2.0",
+    "version":  "0.2.1",
     "displayName":  "ShapeSync",
     "description":  "Figure and Outfit deformation tools for Unity.",
     "unity":  "6000.0",

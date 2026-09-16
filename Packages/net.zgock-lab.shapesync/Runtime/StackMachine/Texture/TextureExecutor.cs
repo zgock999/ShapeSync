@@ -77,6 +77,16 @@ namespace zgock.ShapeSync.StackMachine
             callback?.Invoke(owned);
         }
 
+        // Detaches the raw texture for the retirement pump without invoking the public handoff notification.
+        internal RenderTexture DetachForRetirement()
+        {
+            RenderTexture detached = Texture as RenderTexture;
+            Texture = null;
+            release = null;
+            handoff = null;
+            return detached;
+        }
+
         /// <summary>Marks the delivery as caller-owned after its result carrier transfers it.</summary>
         /// <remarks>The creating host still releases it on host destruction, but it no longer consumes transient admission budget.</remarks>
         internal void MarkHandedOff()
@@ -147,16 +157,30 @@ namespace zgock.ShapeSync.StackMachine
         internal bool Matches(TextureDispatchPlan plan, TextureBindingContext context)
         {
             if (!IsValid || plan == null || context == null || bindings.Count != plan.ReadSourceNames.Count) return false;
-            foreach (string logicalName in plan.ReadSourceNames)
+            for (int i = 0; i < plan.ReadSourceNames.Count; i++)
             {
+                string logicalName = plan.ReadSourceNames[i];
                 if (!context.TryGetBinding(logicalName, out TextureBinding binding) || binding.Kind != TextureBindingKind.SourceTexture || !TryResolve(logicalName, binding.SourceTexture, out _)) return false;
             }
             return true;
         }
 
+        /// <summary>Gets whether a pending validation probe may acquire a use from this lease without side effects.</summary>
+        internal bool CanAcquire => IsValid && !releaseRequested;
+
+        // Read-only release-request flag for the host teardown unreturned-count check only.
+        internal bool IsReleaseRequested => releaseRequested;
+
+        /// <summary>Appends this lease's bound halls to the placement-validation list without clearing it.</summary>
+        internal void CopyHallsTo(List<TextureHallAllocation> target)
+        {
+            if (!IsValid) return;
+            foreach (Binding binding in bindings.Values) target.Add(binding.Hall);
+        }
+
         internal bool TryAcquire()
         {
-            if (!IsValid || releaseRequested) return false;
+            if (!CanAcquire) return false;
             useCount++;
             return true;
         }
@@ -226,9 +250,14 @@ namespace zgock.ShapeSync.StackMachine
             return true;
         }
 
+        internal bool CanAcquire(int width, int height) => IsValid && !releaseRequested && hall.Width == width && hall.Height == height;
+
+        // Read-only release-request flag for the host teardown unreturned-count check only.
+        internal bool IsReleaseRequested => releaseRequested;
+
         internal bool TryAcquire(int width, int height)
         {
-            if (!IsValid || releaseRequested || hall.Width != width || hall.Height != height) return false;
+            if (!CanAcquire(width, height)) return false;
             useCount++;
             return true;
         }
@@ -248,6 +277,15 @@ namespace zgock.ShapeSync.StackMachine
         {
             if (!ReferenceEquals(host, owner)) return;
             owner.TryReleaseHall(hall);
+            host = null;
+            hall = default;
+            useCount = 0;
+            releaseRequested = true;
+        }
+
+        // Logically invalidates the lease without a physical hall release; the hall owner settles through teardown.
+        internal void InvalidateFromHost()
+        {
             host = null;
             hall = default;
             useCount = 0;
@@ -302,6 +340,12 @@ namespace zgock.ShapeSync.StackMachine
         /// <summary>Transfers newly retained source halls once to the caller.</summary>
         /// <param name="value">Transferred source lease on success; otherwise <see langword="null"/>.</param>
         /// <returns><see langword="true"/> when this execution created an unclaimed source lease.</returns>
+        /// <remarks>
+        /// Spec15 borrow-reuse contract: only halls this execution newly ingested are transferred. When this execution
+        /// ran on a borrowed <see cref="TextureExecutionOptions.SourceLease"/>, no new lease is created and this method
+        /// returns <see langword="false"/>; no two leases may own the same physical hall, so the caller keeps the lease
+        /// it already held and consumers must not replace it with a returned one.
+        /// </remarks>
         public bool TryTakeSourceLease(out TextureSourceLease value)
         {
             value = sourceLease;
@@ -329,10 +373,24 @@ namespace zgock.ShapeSync.StackMachine
         }
     }
 
+    /// <summary>Lifecycle status of one queued Texture execution request.</summary>
+    public enum TextureExecutionStatus
+    {
+        /// <summary>The request was accepted and waits in its origin queue.</summary>
+        Queued,
+        /// <summary>The request waits in the FIFO because live placement cannot fit it right now.</summary>
+        WaitingForHalls,
+        /// <summary>The request was submitted to the GPU and awaits its fence.</summary>
+        Submitted,
+        /// <summary>The request reached a terminal state; <see cref="TextureExecutionHandle.Succeeded"/> distinguishes success.</summary>
+        Completed
+    }
+
     /// <summary>Represents one queued Texture execution until its GPU fence completes.</summary>
     public sealed class TextureExecutionHandle : IDisposable
     {
         private bool completed;
+        private bool notificationRaised;
         private StackMachineDiagnostic diagnostic;
         private Action<TextureExecutionHandle> cancel;
 
@@ -346,25 +404,64 @@ namespace zgock.ShapeSync.StackMachine
         public StackMachineDiagnostic Diagnostic => diagnostic;
         /// <summary>Gets the terminal result after success. Dispose it when its delivery is not taken.</summary>
         public TextureExecutionResult Result { get; private set; }
+        /// <summary>Gets the queue lifecycle status of this request.</summary>
+        public TextureExecutionStatus Status { get; private set; }
+        /// <summary>Gets the waiting diagnostic while <see cref="Status"/> is <see cref="TextureExecutionStatus.WaitingForHalls"/>; otherwise <see langword="null"/>.</summary>
+        /// <remarks>The scheduler drives waiting from internal enum/numeric state; mutating the returned diagnostic never changes a decision.</remarks>
+        public StackMachineDiagnostic WaitingDiagnostic { get; private set; }
+
+        internal void SetWaiting(StackMachineDiagnostic value)
+        {
+            if (completed) return;
+            Status = TextureExecutionStatus.WaitingForHalls;
+            WaitingDiagnostic = value;
+        }
+
+        internal void MarkSubmitted()
+        {
+            if (completed) return;
+            Status = TextureExecutionStatus.Submitted;
+            WaitingDiagnostic = null;
+        }
 
         internal void CompleteGpuFence(TextureDelivery delivery, TextureSourceLease sourceLease, TextureOutputLease outputLease)
         {
             if (completed) return;
-            completed = true;
-            cancel = null;
-            Succeeded = true;
-            Result = new TextureExecutionResult(delivery, sourceLease, outputLease);
-            Completed?.Invoke(this);
+            if (!TrySetTerminalState(true, null, new TextureExecutionResult(delivery, sourceLease, outputLease))) return;
+            RaiseCompleted();
         }
 
         internal void CompleteFailure(StackMachineDiagnostic value)
         {
-            if (completed) return;
+            if (!TrySetTerminalState(false, value, null)) return;
+            RaiseCompleted();
+        }
+
+        // Terminal finalization without the event; the host queues the notification for the next safe flush boundary.
+        internal bool TrySetTerminalState(bool succeeded, StackMachineDiagnostic diagnostic, TextureExecutionResult result)
+        {
+            if (completed) return false;
             completed = true;
+            Status = TextureExecutionStatus.Completed;
+            WaitingDiagnostic = null;
+            Succeeded = succeeded;
+            this.diagnostic = diagnostic;
+            Result = result;
             cancel = null;
-            Succeeded = false;
-            diagnostic = value;
-            Completed?.Invoke(this);
+            return true;
+        }
+
+        internal void RaiseCompleted()
+        {
+            if (!completed || notificationRaised) return;
+            notificationRaised = true;
+            Delegate[] subscribers = Completed?.GetInvocationList();
+            if (subscribers == null) return;
+            foreach (Action<TextureExecutionHandle> subscriber in subscribers)
+            {
+                try { subscriber(this); }
+                catch (Exception exception) { Debug.LogException(exception); }
+            }
         }
 
         /// <summary>Releases an unclaimed successful delivery owned by this handle.</summary>
@@ -418,9 +515,14 @@ namespace zgock.ShapeSync.StackMachine
         public bool TryExecute(TextureRecipeStub stub, TextureExecutionOriginKey origin, TextureExecutionOptions options, out TextureExecutionHandle handle, out StackMachineDiagnostic diagnostic)
         {
             handle = null;
-            if (host == null)
+            if (ReferenceEquals(host, null))
             {
                 diagnostic = StackMachineDiagnostic.CreateDomain("texture", "HostRequired", "TextureExecutor requires a TextureStackMachineHost.");
+                return false;
+            }
+            if (host == null)
+            {
+                diagnostic = StackMachineDiagnostic.CreateDomain("texture", "HostDestroyed", "TextureStackMachineHost was destroyed.");
                 return false;
             }
             if (!origin.IsValid)
@@ -443,15 +545,24 @@ namespace zgock.ShapeSync.StackMachine
             executionOrigin = origin;
             executionHandle = new TextureExecutionHandle();
             executionOptions = options;
-            bool accepted = base.TryExecute(plan.DispatchPlan, plan.BindingContext, out StackMachineExecutionResult executionResult);
-            handle = executionHandle;
-            executionHandle = null;
-            executionOrigin = default;
-            executionOptions = null;
-            if (accepted) return true;
-            diagnostic = executionResult.Diagnostic;
-            handle = null;
-            return false;
+            TextureExecutionHandle executionHandleLocal = executionHandle;
+            bool accepted;
+            StackMachineDiagnostic executionDiagnostic;
+            try
+            {
+                accepted = base.TryExecute(plan.DispatchPlan, plan.BindingContext, out StackMachineExecutionResult executionResult);
+                executionDiagnostic = executionResult.Diagnostic;
+            }
+            finally
+            {
+                executionHandle = null;
+                executionOrigin = default;
+                executionOptions = null;
+            }
+            handle = accepted ? executionHandleLocal : null;
+            diagnostic = accepted ? null : executionDiagnostic;
+            host.FlushNotifications();
+            return accepted;
         }
 
         /// <summary>Queues one already compiled Texture plan without recompiling its recipe.</summary>
@@ -459,9 +570,14 @@ namespace zgock.ShapeSync.StackMachine
         public bool TryExecute(TextureExecutionPlan plan, TextureExecutionOriginKey origin, TextureExecutionOptions options, out TextureExecutionHandle handle, out StackMachineDiagnostic diagnostic)
         {
             handle = null;
-            if (host == null)
+            if (ReferenceEquals(host, null))
             {
                 diagnostic = StackMachineDiagnostic.CreateDomain("texture", "HostRequired", "TextureExecutor requires a TextureStackMachineHost.");
+                return false;
+            }
+            if (host == null)
+            {
+                diagnostic = StackMachineDiagnostic.CreateDomain("texture", "HostDestroyed", "TextureStackMachineHost was destroyed.");
                 return false;
             }
             if (plan == null)
@@ -486,13 +602,16 @@ namespace zgock.ShapeSync.StackMachine
                 return false;
             }
             handle = new TextureExecutionHandle();
-            if (host.TryEnqueue(plan.DispatchPlan, plan.BindingContext, origin, handle, options, out diagnostic))
+            try
             {
-                handle.SetCancellation(host.Cancel);
-                return true;
+                bool accepted = host.TryEnqueue(plan.DispatchPlan, plan.BindingContext, origin, handle, options, out diagnostic);
+                if (!accepted) handle = null;
+                return accepted;
             }
-            handle = null;
-            return false;
+            finally
+            {
+                host.FlushNotifications();
+            }
         }
 
         /// <inheritdoc />
@@ -518,7 +637,6 @@ namespace zgock.ShapeSync.StackMachine
                 return false;
             }
             if (!host.TryEnqueue(texturePlan, context, executionOrigin, executionHandle, executionOptions, out diagnostic)) return false;
-            executionHandle.SetCancellation(host.Cancel);
             return true;
         }
     }

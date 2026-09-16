@@ -186,7 +186,7 @@
       "dependencies": {
         "com.vrmc.gltf": "0.131.1",
         "com.vrmc.vrm": "0.131.1",
-        "net.zgock-lab.shapesync": "0.2.0"
+        "net.zgock-lab.shapesync": "0.2.1"
       }
     },
     "com.unity.modules.animation": {

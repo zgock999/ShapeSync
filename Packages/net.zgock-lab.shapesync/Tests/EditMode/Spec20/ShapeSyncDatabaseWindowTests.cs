@@ -847,7 +847,11 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
                 Assert.That(window.ShapeMorphDraftForTest.Single().Value, Is.Zero, "A newly discovered Figure axis must be represented by an explicit zero draft.");
                 Assert.That(window.TrySetShapeMorphDraftForTest("Smile", 0f), Is.True);
                 Assert.That(window.ShapeMorphDraftForTest.Single().Value, Is.Zero);
-                Assert.That(database.Registry.Shapes.Single().Morphs, Is.Empty, "Slider draft must not write the Database before footer Save.");
+                Assert.That(database.Registry.Shapes.Single().Morphs.Select(value => value.Target), Is.EqualTo(new[] { "Smile" }));
+                Assert.That(database.Registry.Shapes.Single().Morphs.Single().Value, Is.Zero);
+                Assert.That(window.TrySetShapeMorphDraftForTest("Smile", 0.25f), Is.True);
+                Assert.That(database.Registry.Shapes.Single().Morphs.Single().Value, Is.Zero, "Slider draft must not write the Database before footer Save.");
+                Assert.That(window.TrySetShapeMorphDraftForTest("Smile", 0f), Is.True);
                 Assert.That(window.TrySaveSelectedShapeDraftForTest(out string saveDiagnostic), Is.True, saveDiagnostic);
                 Assert.That(ShapeSyncDatabaseAsset.TryOpen(AssetDatabase.GetAssetPath(database), out ShapeSyncDatabase reopened, out string openDiagnostic), Is.True, openDiagnostic);
                 MorphValue saved = reopened.Registry.Shapes.Single().Morphs.Single();
@@ -5810,9 +5814,9 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
             try
             {
                 Assert.That(window.TrySetDatabase(database, out string bindDiagnostic), Is.True, bindDiagnostic);
+                Assert.That(window.Database.Registry.TryAddShape("morph-id", "Morph", ShapeSyncDatabaseRegistry.ShapeKind.Morph, 0, Array.Empty<string>(), out string shapeDiagnostic), Is.True, shapeDiagnostic);
                 AddRegistryItem(window.Database.Registry, "figureAxes", new ShapeSyncDatabaseRegistry.FigureAxisEntry(
                     "Smile", ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm));
-                Assert.That(window.Database.Registry.TryAddShape("morph-id", "Morph", ShapeSyncDatabaseRegistry.ShapeKind.Morph, 0, Array.Empty<string>(), out string shapeDiagnostic), Is.True, shapeDiagnostic);
                 ShapeSyncFigureGenerator.BeforePersistForTests = (_, __) => generatorReached = true;
                 Assert.That(window.TryGenerateForTest(generatedRoot, out string generateDiagnostic), Is.False);
                 StringAssert.Contains("RelationMissing", generateDiagnostic);
@@ -5928,7 +5932,6 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
             {
                 Assert.That(contents.Registry.TrySetShapeTags(new[] { "Tag" }, out string tagDiagnostic), Is.True, tagDiagnostic);
                 Assert.That(contents.Registry.TryAddShape("morph-id", "Generated Morph", ShapeSyncDatabaseRegistry.ShapeKind.Morph, 99, Array.Empty<string>(), out string shapeDiagnostic), Is.True, shapeDiagnostic);
-                contents.Registry.Shapes.Single(shape => shape.ShapeId == "morph-id").SetMorphs(new[] { new MorphValue { Target = "Explicit Zero", Value = 0f } });
                 Assert.That(contents.Registry.TryAddShape("skin-id", "Generated Skin", ShapeSyncDatabaseRegistry.ShapeKind.Skin, 2, new[] { "Tag" }, out string skinDiagnostic), Is.True, skinDiagnostic);
                 Assert.That(contents.Registry.TryAddShape("hair-id", "Generated Hair", ShapeSyncDatabaseRegistry.ShapeKind.Hair, 3, new[] { "Tag" }, out string hairDiagnostic), Is.True, hairDiagnostic);
                 Assert.That(contents.Registry.TryAddShape("outfit-id", "Generated Outfit", ShapeSyncDatabaseRegistry.ShapeKind.Outfit, 4, new[] { "Tag" }, out string outfitDiagnostic), Is.True, outfitDiagnostic);
@@ -5943,6 +5946,7 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
                 Assert.That(contents.Registry.TrySetShapePartMaterialTarget("hair-id", 1, "mesh-outfit", "body", out string colorTargetDiagnostic), Is.True, colorTargetDiagnostic);
                 Assert.That(contents.Registry.TrySetShapePartMaterialTarget("hair-id", 2, "mesh-outfit", "body", out string uvTargetDiagnostic), Is.True, uvTargetDiagnostic);
                 Assert.That(contents.Registry.TrySetShapePartUv("hair-id", 2, 2f, 3f, .25f, -.5f, out string uvDiagnostic), Is.True, uvDiagnostic);
+                contents.Registry.Shapes.Single(shape => shape.ShapeId == "morph-id").SetMorphs(new[] { new MorphValue { Target = "Explicit Zero", Value = 0f } });
             }, out string transactionDiagnostic), Is.True, transactionDiagnostic);
 
             Assert.That(ShapeSyncShapeGenerator.TryGenerate(database, Root, out string generateDiagnostic), Is.True, generateDiagnostic);

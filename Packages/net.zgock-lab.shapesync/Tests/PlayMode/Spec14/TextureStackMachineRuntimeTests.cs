@@ -52,15 +52,33 @@ namespace zgock.ShapeSync.Tests.PlayMode
             {
                 int edge = host.Capability.FixedGridEdge;
                 Assert.That(host.TryReserveHall(edge, edge, out TextureHallAllocation reservation, out StackMachineDiagnostic reserveDiagnostic), Is.True, reserveDiagnostic?.message);
+                bool reservationReleased = false;
                 try
                 {
-                    Assert.That(new TextureExecutor(host).TryExecute(FillStub(Color.red), host.CreateOrigin(), out TextureExecutionHandle handle, out StackMachineDiagnostic diagnostic), Is.False);
-                    Assert.That(handle, Is.Null);
-                    Assert.That(diagnostic, Is.Not.Null);
-                    Assert.That(diagnostic.domainCode, Is.EqualTo("HallReservationFailed"));
-                    Assert.That(host.PendingRequestCount, Is.Zero, "A rejected enqueue must not retain a pending request.");
+                    Assert.That(host.TryReserveHall(128, 128, out _, out StackMachineDiagnostic immediateFailure), Is.False);
+                    Assert.That(immediateFailure, Is.Not.Null);
+                    Assert.That(immediateFailure.domainCode, Is.EqualTo("HallReservationFailed"));
+
+                    Assert.That(new TextureExecutor(host).TryExecute(FillStub(Color.red), host.CreateOrigin(), out TextureExecutionHandle handle, out StackMachineDiagnostic diagnostic), Is.True, diagnostic?.message);
+                    Assert.That(handle, Is.Not.Null);
+                    yield return null;
+                    Assert.That(handle.Status, Is.EqualTo(TextureExecutionStatus.WaitingForHalls));
+                    Assert.That(handle.Diagnostic, Is.Null, "waiting is non-terminal");
+                    Assert.That(handle.WaitingDiagnostic, Is.Not.Null);
+                    Assert.That(handle.WaitingDiagnostic.domainCode, Is.EqualTo("WaitingForHalls"));
+                    Assert.That(host.PendingRequestCount, Is.EqualTo(1), "a blocked head remains pending");
+
+                    Assert.That(host.TryReleaseHall(reservation), Is.True);
+                    reservationReleased = true;
+                    double completionDeadline = Time.realtimeSinceStartupAsDouble + 30.0;
+                    while (!handle.IsCompleted && Time.realtimeSinceStartupAsDouble < completionDeadline)
+                        yield return null;
+                    Assert.That(handle.IsCompleted, Is.True, "Spec14 hall-wait acceptance did not complete within 30 seconds.");
+                    Assert.That(handle.Succeeded, Is.True, handle.Diagnostic?.message);
+                    Assert.That(handle.Result.TryTakeDelivery(out TextureDelivery delivery), Is.True);
+                    delivery.Dispose();
                 }
-                finally { Assert.That(host.TryReleaseHall(reservation), Is.True); }
+                finally { if (!reservationReleased) host.TryReleaseHall(reservation); }
             }
             finally { Object.Destroy(root); }
             yield break;

@@ -261,14 +261,32 @@ namespace zgock.ShapeSync.Tests.PlayMode
             {
                 var executor = new TextureExecutor(host);
                 Assert.That(executor.TryExecute(CreateCopyStub(red), host.CreateOrigin(), new TextureExecutionOptions(retainSourceLease: true), out TextureExecutionHandle initial, out StackMachineDiagnostic initialDiagnostic), Is.True, initialDiagnostic?.message);
-                yield return Wait(initial);
+                double initialDeadline = Time.realtimeSinceStartupAsDouble + 30.0;
+                while (!initial.IsCompleted && Time.realtimeSinceStartupAsDouble < initialDeadline)
+                    yield return null;
+                Assert.That(initial.IsCompleted, Is.True, "Spec19 initial request did not complete within 30 seconds.");
+                Assert.That(initial.Succeeded, Is.True, initial.Diagnostic?.message);
                 Assert.That(initial.Result.TryTakeDelivery(out TextureDelivery initialDelivery), Is.True);
                 initialDelivery.Dispose();
                 Assert.That(initial.Result.TryTakeSourceLease(out sourceLease), Is.True);
 
-                Assert.That(executor.TryExecute(CreateOutputOnlyStub(host.Capability.FixedGridEdge), host.CreateOrigin(), out _, out StackMachineDiagnostic conflict), Is.False);
-                Assert.That(conflict.domainCode, Is.EqualTo("HallReservationFailed"));
-                Assert.That(conflict.detail, Does.Contain("retainedSourceLeases=1"));
+                Assert.That(executor.TryExecute(CreateOutputOnlyStub(host.Capability.FixedGridEdge), host.CreateOrigin(), out TextureExecutionHandle conflict, out StackMachineDiagnostic enqueueDiagnostic), Is.True, enqueueDiagnostic?.message);
+                yield return null;
+                Assert.That(conflict.Status, Is.EqualTo(TextureExecutionStatus.WaitingForHalls));
+                Assert.That(conflict.Diagnostic, Is.Null, "waiting is non-terminal");
+                Assert.That(conflict.WaitingDiagnostic, Is.Not.Null);
+                Assert.That(conflict.WaitingDiagnostic.domainCode, Is.EqualTo("WaitingForHalls"));
+                Assert.That(conflict.WaitingDiagnostic.detail, Does.Contain("retainedSourceLeases=1"));
+
+                sourceLease.Dispose();
+                sourceLease = null;
+                double completionDeadline = Time.realtimeSinceStartupAsDouble + 30.0;
+                while (!conflict.IsCompleted && Time.realtimeSinceStartupAsDouble < completionDeadline)
+                    yield return null;
+                Assert.That(conflict.IsCompleted, Is.True, "Spec19 lease-wait acceptance did not complete within 30 seconds.");
+                Assert.That(conflict.Succeeded, Is.True, conflict.Diagnostic?.message);
+                Assert.That(conflict.Result.TryTakeDelivery(out TextureDelivery conflictDelivery), Is.True);
+                conflictDelivery.Dispose();
             }
             finally
             {
