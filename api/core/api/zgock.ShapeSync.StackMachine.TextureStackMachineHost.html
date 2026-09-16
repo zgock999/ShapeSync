@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TextureStackMachineHost | ShapeSync API Reference ">
       
-      <meta name="description" content="Scene-local owner of the fixed Texture StackMachine grid, GPU queue, and Compute programs.">
+      <meta name="description" content="Prepared-path initialization and the Disable/Enable lifecycle (Spec15-2 &#167;8.4, &#167;12.5, &#167;13.1, &#167;13.3). The entry checks run in the fixed &#167;8.4 order; the uninitialized path copies the existing kernel/probe/grid generation and adds the &#167;13.3 standby pump, setting initialized/acceptingRequests only at the very end. Disable detaches every pending request into a local batch first, keeps the real GPU resources, notifies Destroying once per cycle, and ends through the prepared flush. Enable defers to the flush&#39;s resume rule while the ending batch is closing. The existing TryInitialize/OnDisable entrypoints stay on the old path until 06-26.">
       <link rel="icon" href="../favicon.ico">
       <link rel="stylesheet" href="../public/docfx.min.css">
       <link rel="stylesheet" href="../public/main.css">
@@ -97,7 +97,13 @@ Class TextureStackMachineHost
   <dl><dt>Assembly</dt><dd>zgock.ShapeSync.Runtime.dll</dd></dl>
   </div>
 
-  <div class="markdown summary"><p>Scene-local owner of the fixed Texture StackMachine grid, GPU queue, and Compute programs.</p>
+  <div class="markdown summary"><p>Prepared-path initialization and the Disable/Enable lifecycle (Spec15-2 §8.4, §12.5, §13.1, §13.3). The
+entry checks run in the fixed §8.4 order; the uninitialized path copies the existing kernel/probe/grid
+generation and adds the §13.3 standby pump, setting initialized/acceptingRequests only at the very end.
+Disable detaches every pending request into a local batch first, keeps the real GPU resources, notifies
+Destroying once per cycle, and ends through the prepared flush. Enable defers to the flush's resume rule
+while the ending batch is closing. The existing TryInitialize/OnDisable entrypoints stay on the old path
+until 06-26.</p>
 </div>
   <div class="markdown conceptual"></div>
 
@@ -548,8 +554,7 @@ Class TextureStackMachineHost
 
 
   <h2 id="zgock_ShapeSync_StackMachine_TextureStackMachineHost_remarks">Remarks</h2>
-  <div class="markdown level0 remarks"><p><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStaticMachineFactory.html">TextureStaticMachineFactory</a> resolves this component for Texture callers but never owns its Grid, hall allocation,
-request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity scene and is neither persistent nor a global service.</p>
+  <div class="markdown level0 remarks"><p><a class="xref" href="zgock.ShapeSync.StackMachine.TextureStaticMachineFactory.html">TextureStaticMachineFactory</a> resolves this component for Texture callers but never owns its state.</p>
 </div>
 
 
@@ -564,8 +569,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the validated capability snapshot after initialization.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -596,8 +600,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the explicitly assigned Compute program.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -628,8 +631,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the host-owned random-write grid.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -660,8 +662,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the number of host-tracked deliveries that have been handed to a caller and are excluded from transient admission budget.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -692,8 +693,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets whether GPU work is currently submitted and awaiting a fence.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -724,8 +724,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets whether the host owns a validated fixed grid.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -756,8 +755,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets GPU bytes currently charged to transient delivery admission, excluding caller-handed-off deliveries.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -788,8 +786,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the optional dedicated Compute program used only by Normal vector operations.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -820,8 +817,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the number of caller-owned retained output leases that still occupy grid halls.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -852,8 +848,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the number of caller-owned retained source leases that still occupy grid halls.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -884,8 +879,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Gets the number of requests awaiting the single GPU submit slot.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -920,8 +914,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Issues one opaque origin token owned by this scene-local host.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -932,8 +925,7 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOriginKey.html">TextureExecutionOriginKey</a></dt>
-    <dd><p>A new host-issued origin token.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -942,12 +934,6 @@ request queue, delivery, or disposal lifecycle. A Host is scoped to its Unity sc
 
 
 
-  <h4 class="section" id="zgock_ShapeSync_StackMachine_TextureStackMachineHost_CreateOrigin_remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>Callers retain the returned token for one logical request series and pass it again when a newer
-unsubmitted request is intended to replace the previous request. Tokens do not require explicit release;
-host teardown invalidates their owner identity. The sequence is deliberately host-local and is never exposed
-as a caller-construction API.</p>
-</div>
 
 
 
@@ -959,8 +945,7 @@ as a caller-construction API.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Assigns the explicitly selected Compute program before initialization.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -970,18 +955,15 @@ as a caller-construction API.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>value</code> <span class="xref">ComputeShader</span></dt>
-    <dd><p>Compute program that exposes the fixed Texture StackMachine kernel set.</p>
-</dd>
+    <dd></dd>
     <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
-    <dd><p>Assignment diagnostic on failure; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the program was assigned before initialization.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1001,8 +983,7 @@ as a caller-construction API.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Assigns the dedicated Normal-vector Compute program.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1012,18 +993,15 @@ as a caller-construction API.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>value</code> <span class="xref">ComputeShader</span></dt>
-    <dd><p>Program exposing <code>KNormalBase</code>, <code>KNormalDeltaAdd</code>, and <code>KNormalFinalize</code>.</p>
-</dd>
+    <dd></dd>
     <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
-    <dd><p>Assignment diagnostic on failure; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the program is accepted.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1043,8 +1021,7 @@ as a caller-construction API.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Probes the device and creates the fixed random-write grid exactly once.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1054,15 +1031,13 @@ as a caller-construction API.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
-    <dd><p>Capability or allocation diagnostic on failure; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the fixed grid is ready for queued work.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1082,8 +1057,7 @@ as a caller-construction API.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Releases a grid hall reservation owned by this host.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1093,15 +1067,13 @@ as a caller-construction API.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>allocation</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureHallAllocation.html">TextureHallAllocation</a></dt>
-    <dd><p>Allocation previously returned by <a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html#zgock_ShapeSync_StackMachine_TextureStackMachineHost_TryReserveHall_System_Int32_System_Int32_zgock_ShapeSync_StackMachine_TextureHallAllocation__zgock_ShapeSync_StackMachine_StackMachineDiagnostic__">TryReserveHall(int, int, out TextureHallAllocation, out StackMachineDiagnostic)</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when the reservation belonged to this initialized host and was released.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1121,8 +1093,7 @@ as a caller-construction API.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Reserves a rectangular hall from the fixed grid after successful initialization.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1132,24 +1103,19 @@ as a caller-construction API.</p>
   <h4 class="section">Parameters</h4>
   <dl class="parameters">
     <dt><code>width</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Requested supported width in texels.</p>
-</dd>
+    <dd></dd>
     <dt><code>height</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
-    <dd><p>Requested supported height in texels.</p>
-</dd>
+    <dd></dd>
     <dt><code>allocation</code> <a class="xref" href="zgock.ShapeSync.StackMachine.TextureHallAllocation.html">TextureHallAllocation</a></dt>
-    <dd><p>Host-owned hall allocation on success; otherwise the default value.</p>
-</dd>
+    <dd></dd>
     <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
-    <dd><p>Reservation diagnostic on failure; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
-</dd>
+    <dd></dd>
   </dl>
 
   <h4 class="section">Returns</h4>
   <dl class="parameters">
     <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
-    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when a compatible hall was reserved; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> and <code class="paramref">diagnostic</code> explains the rejection.</p>
-</dd>
+    <dd></dd>
   </dl>
 
 
@@ -1158,9 +1124,6 @@ as a caller-construction API.</p>
 
 
 
-  <h4 class="section" id="zgock_ShapeSync_StackMachine_TextureStackMachineHost_TryReserveHall_System_Int32_System_Int32_zgock_ShapeSync_StackMachine_TextureHallAllocation__zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>The returned allocation is owned by this host and must be released through <a class="xref" href="zgock.ShapeSync.StackMachine.TextureStackMachineHost.html#zgock_ShapeSync_StackMachine_TextureStackMachineHost_TryReleaseHall_zgock_ShapeSync_StackMachine_TextureHallAllocation_">TryReleaseHall(TextureHallAllocation)</a>.</p>
-</div>
 
 
 
@@ -1172,8 +1135,7 @@ as a caller-construction API.</p>
   
   </h3>
 
-  <div class="markdown level1 summary"><p>Validates current live-grid capacity for one compiled request without reserving halls or enqueueing GPU work.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
 
   <div class="codewrapper">
@@ -1202,9 +1164,6 @@ as a caller-construction API.</p>
 
 
 
-  <h4 class="section" id="zgock_ShapeSync_StackMachine_TextureStackMachineHost_TryValidateAdmission_zgock_ShapeSync_StackMachine_TextureExecutionPlan_System_Boolean_zgock_ShapeSync_StackMachine_StackMachineDiagnostic___remarks">Remarks</h4>
-  <div class="markdown level1 remarks"><p>This is an admission check only. A later enqueue may still reject when another consumer occupies the grid first.</p>
-</div>
 
 
 

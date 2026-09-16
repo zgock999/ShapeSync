@@ -141,11 +141,11 @@ Git の URL を指定して、ShapeSync の本体パッケージをインスト�
 2. 左上の「**+**」ボタンから **Add package from git URL...** を選択します。
 3. 以下の URL をそのままコピー＆ペーストして **Add** をクリックします。
    ```text
-   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.0
+   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.1
    ```
 
 > [!WARNING]
-> URL 内の `?path=Packages/net.zgock-lab.shapesync` は必ず `#0.2.0` より前に記述してください。順序が異なると Git の取得エラー（pathspec error）が発生します。
+> URL 内の `?path=Packages/net.zgock-lab.shapesync` は必ず `#0.2.1` より前に記述してください。順序が異なると Git の取得エラー（pathspec error）が発生します。
 
 ![Git URL からの ShapeSync Core パッケージ追加画面](./images/23.2-1/step5_shapesync_core_git_url.png)
 *▲図 1-5: Package Manager での Git URL からの ShapeSync Core 追加*
@@ -184,7 +184,7 @@ VRM 連携用の拡張パッケージを追加し、連携スイッチを有効�
 
 1. **Window > Package Manager** の **Add package from git URL...** から以下を追加します。
    ```text
-   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.0
+   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.1
    ```
 2. **Edit > Project Settings > Player > Other Settings** を開きます。
 3. **Scripting Define Symbols** に `SHAPESYNC_USE_UNIVRM` を追加して **Apply** をクリックします。
@@ -243,7 +243,7 @@ ShapeSync のテクスチャ変形エンジン（Texture StackMachine）は、GP
 ### Q4. Git の URL 指定でエラーが出る
 * **症状**: `Cannot checkout repository ... pathspec ... did not match any file(s) known to git` というエラーが出る。
 * **原因**: Git URL の書式が間違っています。
-* **解決策**: `?path=Packages/net.zgock-lab.shapesync` を `#0.2.0` の前に記述しているか確認してください。
+* **解決策**: `?path=Packages/net.zgock-lab.shapesync` を `#0.2.1` の前に記述しているか確認してください。
 
 ---
 

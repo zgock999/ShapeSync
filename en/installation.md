@@ -141,11 +141,11 @@ Install the main ShapeSync package by specifying the Git URL.
 2. Click the "**+**" button in the upper left corner and select **Add package from git URL...**.
 3. Copy and paste the following URL exactly as it is and click **Add**:
    ```text
-   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.0
+   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync#0.2.1
    ```
 
 > [!WARNING]
-> In the URL, `?path=Packages/net.zgock-lab.shapesync` must be placed before `#0.2.0`. If the order is different, a Git fetch error (pathspec error) will occur.
+> In the URL, `?path=Packages/net.zgock-lab.shapesync` must be placed before `#0.2.1`. If the order is different, a Git fetch error (pathspec error) will occur.
 
 ![Adding ShapeSync Core package from Git URL](./images/23.2-1/step5_shapesync_core_git_url.png)
 *▲Figure 1-5: Adding ShapeSync Core from Git URL in Package Manager*
@@ -184,7 +184,7 @@ Add the extension package for VRM integration and enable the integration flag.
 
 1. From **Add package from git URL...** in **Window > Package Manager**, add the following:
    ```text
-   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.0
+   https://github.com/zgock999/ShapeSync.git?path=Packages/net.zgock-lab.shapesync.vrm#0.2.1
    ```
 2. Open **Edit > Project Settings > Player > Other Settings**.
 3. Add `SHAPESYNC_USE_UNIVRM` to **Scripting Define Symbols** and click **Apply**.
@@ -243,7 +243,7 @@ This note is based on the following descriptions in the public documentation `RE
 ### Q4. Error occurs with Git URL specification
 * **Symptom**: An error `Cannot checkout repository ... pathspec ... did not match any file(s) known to git` occurs.
 * **Cause**: The Git URL format is incorrect.
-* **Solution**: Verify that `?path=Packages/net.zgock-lab.shapesync` is placed before `#0.2.0`.
+* **Solution**: Verify that `?path=Packages/net.zgock-lab.shapesync` is placed before `#0.2.1`.
 
 ---
 

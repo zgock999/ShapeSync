@@ -7186,6 +7186,19 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.ShapeDirector.LastTransactionDiagnostic
   nameWithType: ShapeDirector.LastTransactionDiagnostic
+- uid: zgock.ShapeSync.ShapeDirector.OutfitPriorityCutoff
+  name: OutfitPriorityCutoff
+  href: api/zgock.ShapeSync.ShapeDirector.html#zgock_ShapeSync_ShapeDirector_OutfitPriorityCutoff
+  commentId: P:zgock.ShapeSync.ShapeDirector.OutfitPriorityCutoff
+  fullName: zgock.ShapeSync.ShapeDirector.OutfitPriorityCutoff
+  nameWithType: ShapeDirector.OutfitPriorityCutoff
+- uid: zgock.ShapeSync.ShapeDirector.OutfitPriorityCutoff*
+  name: OutfitPriorityCutoff
+  href: api/zgock.ShapeSync.ShapeDirector.html#zgock_ShapeSync_ShapeDirector_OutfitPriorityCutoff_
+  commentId: Overload:zgock.ShapeSync.ShapeDirector.OutfitPriorityCutoff
+  isSpec: "True"
+  fullName: zgock.ShapeSync.ShapeDirector.OutfitPriorityCutoff
+  nameWithType: ShapeDirector.OutfitPriorityCutoff
 - uid: zgock.ShapeSync.ShapeDirector.RuntimeShapes
   name: RuntimeShapes
   href: api/zgock.ShapeSync.ShapeDirector.html#zgock_ShapeSync_ShapeDirector_RuntimeShapes
@@ -8976,6 +8989,15 @@ references:
   fullName.vb: zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve(System.Collections.Generic.IReadOnlyList(Of zgock.ShapeSync.ShapeSyncShape), System.Collections.Generic.List(Of zgock.ShapeSync.ShapeSyncShape), zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
   nameWithType: ShapeSyncShapeResolver.TryResolve(IReadOnlyList<ShapeSyncShape>, out List<ShapeSyncShape>, out StackMachineDiagnostic)
   nameWithType.vb: ShapeSyncShapeResolver.TryResolve(IReadOnlyList(Of ShapeSyncShape), List(Of ShapeSyncShape), StackMachineDiagnostic)
+- uid: zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve(System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.ShapeSyncShape},System.Int32,System.Collections.Generic.List{zgock.ShapeSync.ShapeSyncShape}@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name: TryResolve(IReadOnlyList<ShapeSyncShape>, int, out List<ShapeSyncShape>, out StackMachineDiagnostic)
+  href: api/zgock.ShapeSync.ShapeSyncShapeResolver.html#zgock_ShapeSync_ShapeSyncShapeResolver_TryResolve_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_ShapeSyncShape__System_Int32_System_Collections_Generic_List_zgock_ShapeSync_ShapeSyncShape___zgock_ShapeSync_StackMachine_StackMachineDiagnostic__
+  commentId: M:zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve(System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.ShapeSyncShape},System.Int32,System.Collections.Generic.List{zgock.ShapeSync.ShapeSyncShape}@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)
+  name.vb: TryResolve(IReadOnlyList(Of ShapeSyncShape), Integer, List(Of ShapeSyncShape), StackMachineDiagnostic)
+  fullName: zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve(System.Collections.Generic.IReadOnlyList<zgock.ShapeSync.ShapeSyncShape>, int, out System.Collections.Generic.List<zgock.ShapeSync.ShapeSyncShape>, out zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  fullName.vb: zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve(System.Collections.Generic.IReadOnlyList(Of zgock.ShapeSync.ShapeSyncShape), Integer, System.Collections.Generic.List(Of zgock.ShapeSync.ShapeSyncShape), zgock.ShapeSync.StackMachine.StackMachineDiagnostic)
+  nameWithType: ShapeSyncShapeResolver.TryResolve(IReadOnlyList<ShapeSyncShape>, int, out List<ShapeSyncShape>, out StackMachineDiagnostic)
+  nameWithType.vb: ShapeSyncShapeResolver.TryResolve(IReadOnlyList(Of ShapeSyncShape), Integer, List(Of ShapeSyncShape), StackMachineDiagnostic)
 - uid: zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve*
   name: TryResolve
   href: api/zgock.ShapeSync.ShapeSyncShapeResolver.html#zgock_ShapeSync_ShapeSyncShapeResolver_TryResolve_
@@ -22580,6 +22602,19 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Result
   nameWithType: TextureExecutionHandle.Result
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status
+  name: Status
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionHandle.html#zgock_ShapeSync_StackMachine_TextureExecutionHandle_Status
+  commentId: P:zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status
+  nameWithType: TextureExecutionHandle.Status
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status*
+  name: Status
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionHandle.html#zgock_ShapeSync_StackMachine_TextureExecutionHandle_Status_
+  commentId: Overload:zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status
+  isSpec: "True"
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status
+  nameWithType: TextureExecutionHandle.Status
 - uid: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Succeeded
   name: Succeeded
   href: api/zgock.ShapeSync.StackMachine.TextureExecutionHandle.html#zgock_ShapeSync_StackMachine_TextureExecutionHandle_Succeeded
@@ -22593,6 +22628,19 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.StackMachine.TextureExecutionHandle.Succeeded
   nameWithType: TextureExecutionHandle.Succeeded
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic
+  name: WaitingDiagnostic
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionHandle.html#zgock_ShapeSync_StackMachine_TextureExecutionHandle_WaitingDiagnostic
+  commentId: P:zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic
+  nameWithType: TextureExecutionHandle.WaitingDiagnostic
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic*
+  name: WaitingDiagnostic
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionHandle.html#zgock_ShapeSync_StackMachine_TextureExecutionHandle_WaitingDiagnostic_
+  commentId: Overload:zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic
+  isSpec: "True"
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic
+  nameWithType: TextureExecutionHandle.WaitingDiagnostic
 - uid: zgock.ShapeSync.StackMachine.TextureExecutionOptions
   name: TextureExecutionOptions
   href: api/zgock.ShapeSync.StackMachine.TextureExecutionOptions.html
@@ -22890,6 +22938,36 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.StackMachine.TextureExecutionResult.TryTakeSourceLease
   nameWithType: TextureExecutionResult.TryTakeSourceLease
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionStatus
+  name: TextureExecutionStatus
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.html
+  commentId: T:zgock.ShapeSync.StackMachine.TextureExecutionStatus
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionStatus
+  nameWithType: TextureExecutionStatus
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionStatus.Completed
+  name: Completed
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.html#zgock_ShapeSync_StackMachine_TextureExecutionStatus_Completed
+  commentId: F:zgock.ShapeSync.StackMachine.TextureExecutionStatus.Completed
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionStatus.Completed
+  nameWithType: TextureExecutionStatus.Completed
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionStatus.Queued
+  name: Queued
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.html#zgock_ShapeSync_StackMachine_TextureExecutionStatus_Queued
+  commentId: F:zgock.ShapeSync.StackMachine.TextureExecutionStatus.Queued
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionStatus.Queued
+  nameWithType: TextureExecutionStatus.Queued
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionStatus.Submitted
+  name: Submitted
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.html#zgock_ShapeSync_StackMachine_TextureExecutionStatus_Submitted
+  commentId: F:zgock.ShapeSync.StackMachine.TextureExecutionStatus.Submitted
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionStatus.Submitted
+  nameWithType: TextureExecutionStatus.Submitted
+- uid: zgock.ShapeSync.StackMachine.TextureExecutionStatus.WaitingForHalls
+  name: WaitingForHalls
+  href: api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.html#zgock_ShapeSync_StackMachine_TextureExecutionStatus_WaitingForHalls
+  commentId: F:zgock.ShapeSync.StackMachine.TextureExecutionStatus.WaitingForHalls
+  fullName: zgock.ShapeSync.StackMachine.TextureExecutionStatus.WaitingForHalls
+  nameWithType: TextureExecutionStatus.WaitingForHalls
 - uid: zgock.ShapeSync.StackMachine.TextureExecutor
   name: TextureExecutor
   href: api/zgock.ShapeSync.StackMachine.TextureExecutor.html

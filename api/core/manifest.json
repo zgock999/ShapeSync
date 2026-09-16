@@ -5649,6 +5649,20 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "zgock.ShapeSync.StackMachine.TextureExecutionStatus",
+      "Summary": "<p sourcefile=\"obj/api/zgock.ShapeSync.StackMachine.TextureExecutionStatus.yml\" sourcestartlinenumber=\"1\">Lifecycle status of one queued Texture execution request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/zgock.ShapeSync.StackMachine.TextureExecutor.yml",
       "output": {
         ".html": {
@@ -5785,7 +5799,7 @@
       "Uid": null,
       "IsMRef": true,
       "Title": "zgock.ShapeSync.StackMachine.TextureStackMachineHost",
-      "Summary": "<p sourcefile=\"obj/api/zgock.ShapeSync.StackMachine.TextureStackMachineHost.yml\" sourcestartlinenumber=\"1\">Scene-local owner of the fixed Texture StackMachine grid, GPU queue, and Compute programs.</p>\n"
+      "Summary": "<p sourcefile=\"obj/api/zgock.ShapeSync.StackMachine.TextureStackMachineHost.yml\" sourcestartlinenumber=\"1\">Prepared-path initialization and the Disable/Enable lifecycle (Spec15-2 §8.4, §12.5, §13.1, §13.3). The\nentry checks run in the fixed §8.4 order; the uninitialized path copies the existing kernel/probe/grid\ngeneration and adds the §13.3 standby pump, setting initialized/acceptingRequests only at the very end.\nDisable detaches every pending request into a local batch first, keeps the real GPU resources, notifies\nDestroying once per cycle, and ends through the prepared flush. Enable defers to the flush's resume rule\nwhile the ending batch is closing. The existing TryInitialize/OnDisable entrypoints stay on the old path\nuntil 06-26.</p>\n"
     },
     {
       "type": "ManagedReference",

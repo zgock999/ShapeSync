@@ -293,6 +293,12 @@ Class TextureExecutionResult
 
 
 
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_TextureExecutionResult_TryTakeSourceLease_zgock_ShapeSync_StackMachine_TextureSourceLease___remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>Spec15 borrow-reuse contract: only halls this execution newly ingested are transferred. When this execution
+ran on a borrowed <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionOptions.html#zgock_ShapeSync_StackMachine_TextureExecutionOptions_SourceLease">SourceLease</a>, no new lease is created and this method
+returns <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>; no two leases may own the same physical hall, so the caller keeps the lease
+it already held and consumers must not replace it with a returned one.</p>
+</div>
 
 
 

@@ -198,6 +198,54 @@ Class ShapeSyncShapeResolver
 
 
 
+  <a id="zgock_ShapeSync_ShapeSyncShapeResolver_TryResolve_" data-uid="zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve*"></a>
+
+  <h3 id="zgock_ShapeSync_ShapeSyncShapeResolver_TryResolve_System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_ShapeSyncShape__System_Int32_System_Collections_Generic_List_zgock_ShapeSync_ShapeSyncShape___zgock_ShapeSync_StackMachine_StackMachineDiagnostic__" data-uid="zgock.ShapeSync.ShapeSyncShapeResolver.TryResolve(System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.ShapeSyncShape},System.Int32,System.Collections.Generic.List{zgock.ShapeSync.ShapeSyncShape}@,zgock.ShapeSync.StackMachine.StackMachineDiagnostic@)">
+  TryResolve(IReadOnlyList&lt;ShapeSyncShape&gt;, int, out List&lt;ShapeSyncShape&gt;, out StackMachineDiagnostic)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Resolves tag exclusion and returns physical composition order, ignoring Outfits above the supplied priority cutoff.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool TryResolve(IReadOnlyList&lt;ShapeSyncShape&gt; requestedShapes, int outfitPriorityCutoff, out List&lt;ShapeSyncShape&gt; physicalShapes, out StackMachineDiagnostic diagnostic)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>requestedShapes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.ShapeSyncShape.html">ShapeSyncShape</a>&gt;</dt>
+    <dd><p>The current logical Shape list.</p>
+</dd>
+    <dt><code>outfitPriorityCutoff</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The inclusive Outfit priority ceiling; a negative value disables the cutoff.</p>
+</dd>
+    <dt><code>physicalShapes</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="zgock.ShapeSync.ShapeSyncShape.html">ShapeSyncShape</a>&gt;</dt>
+    <dd><p>The retained Shapes in physical composition order.</p>
+</dd>
+    <dt><code>diagnostic</code> <a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd><p>A structured reject when Director cannot resolve its own input unambiguously.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p><a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> when physical order was resolved.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 

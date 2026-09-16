@@ -252,6 +252,38 @@ Class TextureExecutionHandle
 
 
 
+  <a id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_Status_" data-uid="zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_Status" data-uid="zgock.ShapeSync.StackMachine.TextureExecutionHandle.Status">
+  Status
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the queue lifecycle status of this request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TextureExecutionStatus Status { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionStatus.html">TextureExecutionStatus</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_Succeeded_" data-uid="zgock.ShapeSync.StackMachine.TextureExecutionHandle.Succeeded*"></a>
 
   <h3 id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_Succeeded" data-uid="zgock.ShapeSync.StackMachine.TextureExecutionHandle.Succeeded">
@@ -280,6 +312,41 @@ Class TextureExecutionHandle
 
 
 
+
+
+
+
+  <a id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_WaitingDiagnostic_" data-uid="zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic*"></a>
+
+  <h3 id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_WaitingDiagnostic" data-uid="zgock.ShapeSync.StackMachine.TextureExecutionHandle.WaitingDiagnostic">
+  WaitingDiagnostic
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the waiting diagnostic while <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionHandle.html#zgock_ShapeSync_StackMachine_TextureExecutionHandle_Status">Status</a> is <a class="xref" href="zgock.ShapeSync.StackMachine.TextureExecutionStatus.html#zgock_ShapeSync_StackMachine_TextureExecutionStatus_WaitingForHalls">WaitingForHalls</a>; otherwise <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public StackMachineDiagnostic WaitingDiagnostic { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="zgock.ShapeSync.StackMachine.StackMachineDiagnostic.html">StackMachineDiagnostic</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="zgock_ShapeSync_StackMachine_TextureExecutionHandle_WaitingDiagnostic_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>The scheduler drives waiting from internal enum/numeric state; mutating the returned diagnostic never changes a decision.</p>
+</div>
 
 
 
