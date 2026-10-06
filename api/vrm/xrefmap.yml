@@ -860,6 +860,22 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics
   nameWithType: ShapeSyncVrmIntegrationAdapter.TryAttachOutfitPhysics
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics(UnityEngine.GameObject,UnityEngine.GameObject,System.String,System.String@)
+  name: TryCompareSharedRootPhysics(GameObject, GameObject, string, out string)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TryCompareSharedRootPhysics_UnityEngine_GameObject_UnityEngine_GameObject_System_String_System_String__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics(UnityEngine.GameObject,UnityEngine.GameObject,System.String,System.String@)
+  name.vb: TryCompareSharedRootPhysics(GameObject, GameObject, String, String)
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics(UnityEngine.GameObject, UnityEngine.GameObject, string, out string)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics(UnityEngine.GameObject, UnityEngine.GameObject, String, String)
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics(GameObject, GameObject, string, out string)
+  nameWithType.vb: ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics(GameObject, GameObject, String, String)
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics*
+  name: TryCompareSharedRootPhysics
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TryCompareSharedRootPhysics_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics
+  nameWithType: ShapeSyncVrmIntegrationAdapter.TryCompareSharedRootPhysics
 - uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.TrySetExpressionWeight(System.String,System.Single)
   name: TrySetExpressionWeight(string, float)
   href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmIntegrationAdapter.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmIntegrationAdapter_TrySetExpressionWeight_System_String_System_Single_
@@ -950,6 +966,22 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
   nameWithType: ShapeSyncVrmSpringBoneAttachment.RuntimeSourceCleanupRoots
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList{UnityEngine.Transform},System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.IShapeSyncOptionalVrmAttachment},System.Collections.Generic.IReadOnlyList{UnityEngine.Transform})
+  name: TransferSharedOwnership(IReadOnlyList<Transform>, IReadOnlyList<IShapeSyncOptionalVrmAttachment>, IReadOnlyList<Transform>)
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_TransferSharedOwnership_System_Collections_Generic_IReadOnlyList_UnityEngine_Transform__System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_IShapeSyncOptionalVrmAttachment__System_Collections_Generic_IReadOnlyList_UnityEngine_Transform__
+  commentId: M:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList{UnityEngine.Transform},System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.IShapeSyncOptionalVrmAttachment},System.Collections.Generic.IReadOnlyList{UnityEngine.Transform})
+  name.vb: TransferSharedOwnership(IReadOnlyList(Of Transform), IReadOnlyList(Of IShapeSyncOptionalVrmAttachment), IReadOnlyList(Of Transform))
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList<UnityEngine.Transform>, System.Collections.Generic.IReadOnlyList<zgock.ShapeSync.IShapeSyncOptionalVrmAttachment>, System.Collections.Generic.IReadOnlyList<UnityEngine.Transform>)
+  fullName.vb: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList(Of UnityEngine.Transform), System.Collections.Generic.IReadOnlyList(Of zgock.ShapeSync.IShapeSyncOptionalVrmAttachment), System.Collections.Generic.IReadOnlyList(Of UnityEngine.Transform))
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership(IReadOnlyList<Transform>, IReadOnlyList<IShapeSyncOptionalVrmAttachment>, IReadOnlyList<Transform>)
+  nameWithType.vb: ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership(IReadOnlyList(Of Transform), IReadOnlyList(Of IShapeSyncOptionalVrmAttachment), IReadOnlyList(Of Transform))
+- uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership*
+  name: TransferSharedOwnership
+  href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_TransferSharedOwnership_
+  commentId: Overload:zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership
+  isSpec: "True"
+  fullName: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership
+  nameWithType: ShapeSyncVrmSpringBoneAttachment.TransferSharedOwnership
 - uid: zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.TryCreate(System.Collections.Generic.IReadOnlyList{UniVRM10.VRM10SpringBoneColliderGroup},System.Collections.Generic.IReadOnlyList{UniVRM10.Vrm10InstanceSpringBone.Spring},System.Collections.Generic.IReadOnlyList{System.Collections.Generic.List{System.String}},UnityEngine.Transform,UniVRM10.Vrm10Instance,System.Func{UnityEngine.Transform,UnityEngine.Transform},zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment@,System.String@)
   name: TryCreate(IReadOnlyList<VRM10SpringBoneColliderGroup>, IReadOnlyList<Spring>, IReadOnlyList<List<string>>, Transform, Vrm10Instance, Func<Transform, Transform>, out ShapeSyncVrmSpringBoneAttachment, out string)
   href: api/zgock.ShapeSync.VrmIntegration.ShapeSyncVrmSpringBoneAttachment.html#zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment_TryCreate_System_Collections_Generic_IReadOnlyList_UniVRM10_VRM10SpringBoneColliderGroup__System_Collections_Generic_IReadOnlyList_UniVRM10_Vrm10InstanceSpringBone_Spring__System_Collections_Generic_IReadOnlyList_System_Collections_Generic_List_System_String___UnityEngine_Transform_UniVRM10_Vrm10Instance_System_Func_UnityEngine_Transform_UnityEngine_Transform__zgock_ShapeSync_VrmIntegration_ShapeSyncVrmSpringBoneAttachment__System_String__

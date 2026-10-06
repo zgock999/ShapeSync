@@ -22,6 +22,15 @@ references:
   fullName.vb: zgock.ShapeSync.AttachedOutfitRegistrySet.New(zgock.ShapeSync.ShapeSyncOutfit, UnityEngine.GameObject, System.Collections.Generic.List(Of UnityEngine.Transform), System.Collections.Generic.List(Of String), System.Collections.Generic.List(Of zgock.ShapeSync.OutfitSkinnedMeshBinding), System.Collections.Generic.List(Of UnityEngine.Transform), zgock.ShapeSync.IShapeSyncOptionalVrmAttachment, zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile, zgock.ShapeSync.ProfileControlledMorphBinding)
   nameWithType: AttachedOutfitRegistrySet.AttachedOutfitRegistrySet(ShapeSyncOutfit, GameObject, List<Transform>, List<string>, List<OutfitSkinnedMeshBinding>, List<Transform>, IShapeSyncOptionalVrmAttachment, ShapeSyncHumanoidBoneCorrectionProfile, ProfileControlledMorphBinding)
   nameWithType.vb: AttachedOutfitRegistrySet.New(ShapeSyncOutfit, GameObject, List(Of Transform), List(Of String), List(Of OutfitSkinnedMeshBinding), List(Of Transform), IShapeSyncOptionalVrmAttachment, ShapeSyncHumanoidBoneCorrectionProfile, ProfileControlledMorphBinding)
+- uid: zgock.ShapeSync.AttachedOutfitRegistrySet.#ctor(zgock.ShapeSync.ShapeSyncOutfit,UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Transform},System.Collections.Generic.List{System.String},System.Collections.Generic.List{zgock.ShapeSync.OutfitSkinnedMeshBinding},System.Collections.Generic.List{UnityEngine.Transform},zgock.ShapeSync.IShapeSyncOptionalVrmAttachment,zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile,zgock.ShapeSync.ProfileControlledMorphBinding,zgock.ShapeSync.ShapeSyncOutfit)
+  name: AttachedOutfitRegistrySet(ShapeSyncOutfit, GameObject, List<Transform>, List<string>, List<OutfitSkinnedMeshBinding>, List<Transform>, IShapeSyncOptionalVrmAttachment, ShapeSyncHumanoidBoneCorrectionProfile, ProfileControlledMorphBinding, ShapeSyncOutfit)
+  href: api/zgock.ShapeSync.AttachedOutfitRegistrySet.html#zgock_ShapeSync_AttachedOutfitRegistrySet__ctor_zgock_ShapeSync_ShapeSyncOutfit_UnityEngine_GameObject_System_Collections_Generic_List_UnityEngine_Transform__System_Collections_Generic_List_System_String__System_Collections_Generic_List_zgock_ShapeSync_OutfitSkinnedMeshBinding__System_Collections_Generic_List_UnityEngine_Transform__zgock_ShapeSync_IShapeSyncOptionalVrmAttachment_zgock_ShapeSync_ShapeSyncHumanoidBoneCorrectionProfile_zgock_ShapeSync_ProfileControlledMorphBinding_zgock_ShapeSync_ShapeSyncOutfit_
+  commentId: M:zgock.ShapeSync.AttachedOutfitRegistrySet.#ctor(zgock.ShapeSync.ShapeSyncOutfit,UnityEngine.GameObject,System.Collections.Generic.List{UnityEngine.Transform},System.Collections.Generic.List{System.String},System.Collections.Generic.List{zgock.ShapeSync.OutfitSkinnedMeshBinding},System.Collections.Generic.List{UnityEngine.Transform},zgock.ShapeSync.IShapeSyncOptionalVrmAttachment,zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile,zgock.ShapeSync.ProfileControlledMorphBinding,zgock.ShapeSync.ShapeSyncOutfit)
+  name.vb: New(ShapeSyncOutfit, GameObject, List(Of Transform), List(Of String), List(Of OutfitSkinnedMeshBinding), List(Of Transform), IShapeSyncOptionalVrmAttachment, ShapeSyncHumanoidBoneCorrectionProfile, ProfileControlledMorphBinding, ShapeSyncOutfit)
+  fullName: zgock.ShapeSync.AttachedOutfitRegistrySet.AttachedOutfitRegistrySet(zgock.ShapeSync.ShapeSyncOutfit, UnityEngine.GameObject, System.Collections.Generic.List<UnityEngine.Transform>, System.Collections.Generic.List<string>, System.Collections.Generic.List<zgock.ShapeSync.OutfitSkinnedMeshBinding>, System.Collections.Generic.List<UnityEngine.Transform>, zgock.ShapeSync.IShapeSyncOptionalVrmAttachment, zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile, zgock.ShapeSync.ProfileControlledMorphBinding, zgock.ShapeSync.ShapeSyncOutfit)
+  fullName.vb: zgock.ShapeSync.AttachedOutfitRegistrySet.New(zgock.ShapeSync.ShapeSyncOutfit, UnityEngine.GameObject, System.Collections.Generic.List(Of UnityEngine.Transform), System.Collections.Generic.List(Of String), System.Collections.Generic.List(Of zgock.ShapeSync.OutfitSkinnedMeshBinding), System.Collections.Generic.List(Of UnityEngine.Transform), zgock.ShapeSync.IShapeSyncOptionalVrmAttachment, zgock.ShapeSync.ShapeSyncHumanoidBoneCorrectionProfile, zgock.ShapeSync.ProfileControlledMorphBinding, zgock.ShapeSync.ShapeSyncOutfit)
+  nameWithType: AttachedOutfitRegistrySet.AttachedOutfitRegistrySet(ShapeSyncOutfit, GameObject, List<Transform>, List<string>, List<OutfitSkinnedMeshBinding>, List<Transform>, IShapeSyncOptionalVrmAttachment, ShapeSyncHumanoidBoneCorrectionProfile, ProfileControlledMorphBinding, ShapeSyncOutfit)
+  nameWithType.vb: AttachedOutfitRegistrySet.New(ShapeSyncOutfit, GameObject, List(Of Transform), List(Of String), List(Of OutfitSkinnedMeshBinding), List(Of Transform), IShapeSyncOptionalVrmAttachment, ShapeSyncHumanoidBoneCorrectionProfile, ProfileControlledMorphBinding, ShapeSyncOutfit)
 - uid: zgock.ShapeSync.AttachedOutfitRegistrySet.#ctor*
   name: AttachedOutfitRegistrySet
   href: api/zgock.ShapeSync.AttachedOutfitRegistrySet.html#zgock_ShapeSync_AttachedOutfitRegistrySet__ctor_
@@ -188,6 +197,19 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.AttachedOutfitRegistrySet.SkinnedMeshBindings
   nameWithType: AttachedOutfitRegistrySet.SkinnedMeshBindings
+- uid: zgock.ShapeSync.AttachedOutfitRegistrySet.SourceOutfit
+  name: SourceOutfit
+  href: api/zgock.ShapeSync.AttachedOutfitRegistrySet.html#zgock_ShapeSync_AttachedOutfitRegistrySet_SourceOutfit
+  commentId: P:zgock.ShapeSync.AttachedOutfitRegistrySet.SourceOutfit
+  fullName: zgock.ShapeSync.AttachedOutfitRegistrySet.SourceOutfit
+  nameWithType: AttachedOutfitRegistrySet.SourceOutfit
+- uid: zgock.ShapeSync.AttachedOutfitRegistrySet.SourceOutfit*
+  name: SourceOutfit
+  href: api/zgock.ShapeSync.AttachedOutfitRegistrySet.html#zgock_ShapeSync_AttachedOutfitRegistrySet_SourceOutfit_
+  commentId: Overload:zgock.ShapeSync.AttachedOutfitRegistrySet.SourceOutfit
+  isSpec: "True"
+  fullName: zgock.ShapeSync.AttachedOutfitRegistrySet.SourceOutfit
+  nameWithType: AttachedOutfitRegistrySet.SourceOutfit
 - uid: zgock.ShapeSync.AttachedOutfitRegistrySet.SpringBoneAttachment
   name: SpringBoneAttachment
   href: api/zgock.ShapeSync.AttachedOutfitRegistrySet.html#zgock_ShapeSync_AttachedOutfitRegistrySet_SpringBoneAttachment
@@ -2750,6 +2772,22 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmGenerateFinalize
   nameWithType: ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmGenerateFinalize
+- uid: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(System.Action{System.String,System.String,zgock.ShapeSync.Editor.ShapeSyncDatabaseTransaction.EditContext})
+  name: RegisterVrmRemoveOutfit(Action<string, string, EditContext>)
+  href: api/zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.html#zgock_ShapeSync_Editor_ShapeSyncDatabaseOptionalRegistryProvider_RegisterVrmRemoveOutfit_System_Action_System_String_System_String_zgock_ShapeSync_Editor_ShapeSyncDatabaseTransaction_EditContext__
+  commentId: M:zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(System.Action{System.String,System.String,zgock.ShapeSync.Editor.ShapeSyncDatabaseTransaction.EditContext})
+  name.vb: RegisterVrmRemoveOutfit(Action(Of String, String, EditContext))
+  fullName: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(System.Action<string, string, zgock.ShapeSync.Editor.ShapeSyncDatabaseTransaction.EditContext>)
+  fullName.vb: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(System.Action(Of String, String, zgock.ShapeSync.Editor.ShapeSyncDatabaseTransaction.EditContext))
+  nameWithType: ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(Action<string, string, ShapeSyncDatabaseTransaction.EditContext>)
+  nameWithType.vb: ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(Action(Of String, String, ShapeSyncDatabaseTransaction.EditContext))
+- uid: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit*
+  name: RegisterVrmRemoveOutfit
+  href: api/zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.html#zgock_ShapeSync_Editor_ShapeSyncDatabaseOptionalRegistryProvider_RegisterVrmRemoveOutfit_
+  commentId: Overload:zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit
+  isSpec: "True"
+  fullName: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit
+  nameWithType: ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit
 - uid: zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmValidator(System.Func{System.String,zgock.ShapeSync.ShapeSyncDatabaseDiagnostic})
   name: RegisterVrmValidator(Func<string, ShapeSyncDatabaseDiagnostic>)
   href: api/zgock.ShapeSync.Editor.ShapeSyncDatabaseOptionalRegistryProvider.html#zgock_ShapeSync_Editor_ShapeSyncDatabaseOptionalRegistryProvider_RegisterVrmValidator_System_Func_System_String_zgock_ShapeSync_ShapeSyncDatabaseDiagnostic__
@@ -3827,6 +3865,22 @@ references:
   isSpec: "True"
   fullName: zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.RuntimeSourceCleanupRoots
   nameWithType: IShapeSyncOptionalVrmAttachment.RuntimeSourceCleanupRoots
+- uid: zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList{UnityEngine.Transform},System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.IShapeSyncOptionalVrmAttachment},System.Collections.Generic.IReadOnlyList{UnityEngine.Transform})
+  name: TransferSharedOwnership(IReadOnlyList<Transform>, IReadOnlyList<IShapeSyncOptionalVrmAttachment>, IReadOnlyList<Transform>)
+  href: api/zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.html#zgock_ShapeSync_IShapeSyncOptionalVrmAttachment_TransferSharedOwnership_System_Collections_Generic_IReadOnlyList_UnityEngine_Transform__System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_IShapeSyncOptionalVrmAttachment__System_Collections_Generic_IReadOnlyList_UnityEngine_Transform__
+  commentId: M:zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList{UnityEngine.Transform},System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.IShapeSyncOptionalVrmAttachment},System.Collections.Generic.IReadOnlyList{UnityEngine.Transform})
+  name.vb: TransferSharedOwnership(IReadOnlyList(Of Transform), IReadOnlyList(Of IShapeSyncOptionalVrmAttachment), IReadOnlyList(Of Transform))
+  fullName: zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList<UnityEngine.Transform>, System.Collections.Generic.IReadOnlyList<zgock.ShapeSync.IShapeSyncOptionalVrmAttachment>, System.Collections.Generic.IReadOnlyList<UnityEngine.Transform>)
+  fullName.vb: zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList(Of UnityEngine.Transform), System.Collections.Generic.IReadOnlyList(Of zgock.ShapeSync.IShapeSyncOptionalVrmAttachment), System.Collections.Generic.IReadOnlyList(Of UnityEngine.Transform))
+  nameWithType: IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(IReadOnlyList<Transform>, IReadOnlyList<IShapeSyncOptionalVrmAttachment>, IReadOnlyList<Transform>)
+  nameWithType.vb: IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(IReadOnlyList(Of Transform), IReadOnlyList(Of IShapeSyncOptionalVrmAttachment), IReadOnlyList(Of Transform))
+- uid: zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership*
+  name: TransferSharedOwnership
+  href: api/zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.html#zgock_ShapeSync_IShapeSyncOptionalVrmAttachment_TransferSharedOwnership_
+  commentId: Overload:zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership
+  isSpec: "True"
+  fullName: zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership
+  nameWithType: IShapeSyncOptionalVrmAttachment.TransferSharedOwnership
 - uid: zgock.ShapeSync.IShapeSyncOptionalVrmIntegration
   name: IShapeSyncOptionalVrmIntegration
   href: api/zgock.ShapeSync.IShapeSyncOptionalVrmIntegration.html
@@ -3871,6 +3925,22 @@ references:
   commentId: T:zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun
   fullName: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun
   nameWithType: IShapeSyncOptionalVrmIntegrationDryRun
+- uid: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics(UnityEngine.GameObject,UnityEngine.GameObject,System.String,System.String@)
+  name: TryCompareSharedRootPhysics(GameObject, GameObject, string, out string)
+  href: api/zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.html#zgock_ShapeSync_IShapeSyncOptionalVrmIntegrationDryRun_TryCompareSharedRootPhysics_UnityEngine_GameObject_UnityEngine_GameObject_System_String_System_String__
+  commentId: M:zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics(UnityEngine.GameObject,UnityEngine.GameObject,System.String,System.String@)
+  name.vb: TryCompareSharedRootPhysics(GameObject, GameObject, String, String)
+  fullName: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics(UnityEngine.GameObject, UnityEngine.GameObject, string, out string)
+  fullName.vb: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics(UnityEngine.GameObject, UnityEngine.GameObject, String, String)
+  nameWithType: IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics(GameObject, GameObject, string, out string)
+  nameWithType.vb: IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics(GameObject, GameObject, String, String)
+- uid: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics*
+  name: TryCompareSharedRootPhysics
+  href: api/zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.html#zgock_ShapeSync_IShapeSyncOptionalVrmIntegrationDryRun_TryCompareSharedRootPhysics_
+  commentId: Overload:zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics
+  isSpec: "True"
+  fullName: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics
+  nameWithType: IShapeSyncOptionalVrmIntegrationDryRun.TryCompareSharedRootPhysics
 - uid: zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.TryValidateOutfitPhysics(zgock.ShapeSync.ShapeSyncOptionalVrmDryRunRequest,System.String@)
   name: TryValidateOutfitPhysics(ShapeSyncOptionalVrmDryRunRequest, out string)
   href: api/zgock.ShapeSync.IShapeSyncOptionalVrmIntegrationDryRun.html#zgock_ShapeSync_IShapeSyncOptionalVrmIntegrationDryRun_TryValidateOutfitPhysics_zgock_ShapeSync_ShapeSyncOptionalVrmDryRunRequest_System_String__

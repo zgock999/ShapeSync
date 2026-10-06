@@ -220,6 +220,46 @@ responsible for deciding which UniVRM components qualify.</p>
 
 
 
+  <a id="zgock_ShapeSync_IShapeSyncOptionalVrmAttachment_TransferSharedOwnership_" data-uid="zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership*"></a>
+
+  <h3 id="zgock_ShapeSync_IShapeSyncOptionalVrmAttachment_TransferSharedOwnership_System_Collections_Generic_IReadOnlyList_UnityEngine_Transform__System_Collections_Generic_IReadOnlyList_zgock_ShapeSync_IShapeSyncOptionalVrmAttachment__System_Collections_Generic_IReadOnlyList_UnityEngine_Transform__" data-uid="zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.TransferSharedOwnership(System.Collections.Generic.IReadOnlyList{UnityEngine.Transform},System.Collections.Generic.IReadOnlyList{zgock.ShapeSync.IShapeSyncOptionalVrmAttachment},System.Collections.Generic.IReadOnlyList{UnityEngine.Transform})">
+  TransferSharedOwnership(IReadOnlyList&lt;Transform&gt;, IReadOnlyList&lt;IShapeSyncOptionalVrmAttachment&gt;, IReadOnlyList&lt;Transform&gt;)
+  
+  </h3>
+
+  <div class="markdown level1 summary"><p>Moves the Spring entries that live on retained shared Extra roots to the attachments of the Outfits that keep those roots.
+Called before <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable.dispose">Dispose()</a> when the owning Outfit detaches while another Outfit still references some of its Extra roots.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void TransferSharedOwnership(IReadOnlyList&lt;Transform&gt; retainedRoots, IReadOnlyList&lt;IShapeSyncOptionalVrmAttachment&gt; heirs, IReadOnlyList&lt;Transform&gt; releasedRoots)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>retainedRoots</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<span class="xref">Transform</span>&gt;</dt>
+    <dd><p>Extra roots of the detaching Outfit that stay on the Figure.</p>
+</dd>
+    <dt><code>heirs</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="zgock.ShapeSync.IShapeSyncOptionalVrmAttachment.html">IShapeSyncOptionalVrmAttachment</a>&gt;</dt>
+    <dd><p>The attachment inheriting each retained root, index-aligned with <code class="paramref">retainedRoots</code>; an entry may be null.</p>
+</dd>
+    <dt><code>releasedRoots</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<span class="xref">Transform</span>&gt;</dt>
+    <dd><p>Extra roots of the detaching Outfit that will be destroyed.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
 
