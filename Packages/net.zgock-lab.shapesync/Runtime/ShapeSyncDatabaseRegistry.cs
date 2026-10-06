@@ -803,7 +803,7 @@ namespace zgock.ShapeSync
         internal bool TryAddShape(string shapeId, string shapeName, ShapeKind kind, int priority, IReadOnlyList<string> tags, out string diagnostic)
         {
             diagnostic = null;
-            if (!IsValidUserName(shapeId)) { diagnostic = "Shape Id must not be empty or contain whitespace."; return false; }
+            if (!IsValidUserName(shapeId)) { diagnostic = "Shape Id must not be empty or contain whitespace or '_'."; return false; }
             if (!Enum.IsDefined(typeof(ShapeKind), kind)) { diagnostic = "Shape kind is invalid."; return false; }
             if (shapes.Any(entry => entry != null && string.Equals(entry.ShapeId, shapeId, StringComparison.Ordinal)))
             { diagnostic = "Shape Id already exists: " + shapeId; return false; }
@@ -1109,7 +1109,7 @@ namespace zgock.ShapeSync
             diagnostic = null;
             if (!IsValidUserName(identity))
             {
-                diagnostic = "Outfit Id must not be empty or contain whitespace.";
+                diagnostic = "Outfit Id must not be empty or contain whitespace or '_'.";
                 return false;
             }
             if (outfits.Any(entry => entry != null && string.Equals(entry.Identity, identity, StringComparison.Ordinal)))
@@ -1247,7 +1247,7 @@ namespace zgock.ShapeSync
                 if (entry.Classification == OutfitMaterialClassification.Include)
                 {
                     if (!IsValidUserName(entry.EntryName) || !includeEntryNames.Add(entry.EntryName))
-                    { diagnostic = "Included Outfit Material Entry Names must be distinct and contain no whitespace."; return false; }
+                    { diagnostic = "Included Outfit Material Entry Names must be distinct and contain no whitespace or '_'."; return false; }
                 }
                 else if (!string.IsNullOrEmpty(entry.EntryName))
                 { diagnostic = "Excluded or Projection Materials must not define an Entry Name."; return false; }
@@ -1883,19 +1883,19 @@ namespace zgock.ShapeSync
                 diagnostic = "Figure axis requires one registered Base Figure candidate.";
                 return false;
             }
+            if (BlendShapeReservedPrefixes.IsReserved(name))
+            {
+                diagnostic = "Figure axis name uses a reserved prefix: " + name;
+                return false;
+            }
             if (!IsValidUserName(name))
             {
-                diagnostic = "Figure axis name must not be empty or contain whitespace.";
+                diagnostic = "Figure axis name must not be empty or contain whitespace or '_'.";
                 return false;
             }
             if (string.Equals(name, BaseShapeKey, StringComparison.Ordinal))
             {
                 diagnostic = "Figure axis name is reserved for the Base Shape key.";
-                return false;
-            }
-            if (BlendShapeReservedPrefixes.IsReserved(name))
-            {
-                diagnostic = "Figure axis name uses a reserved prefix: " + name;
                 return false;
             }
             if (kind != FigureAxisKind.Fbm && kind != FigureAxisKind.Pbm)
@@ -2269,7 +2269,7 @@ namespace zgock.ShapeSync
             }
             if (!IsValidUserName(logicalName))
             {
-                diagnostic = "Material Entry name must not be empty or contain whitespace.";
+                diagnostic = "Material Entry name must not be empty or contain whitespace or '_'.";
                 return false;
             }
             if (renderer == null || !renderer.transform.IsChildOf(baseEntry.Figure.transform))
@@ -2321,7 +2321,7 @@ namespace zgock.ShapeSync
             diagnostic = null;
             MaterialEntry entry = materialEntries.Find(item => item != null && item.LogicalName == currentName);
             if (entry == null) { diagnostic = "Material Entry does not exist: " + currentName; return false; }
-            if (!IsValidUserName(nextName)) { diagnostic = "Material Entry name must not be empty or contain whitespace."; return false; }
+            if (!IsValidUserName(nextName)) { diagnostic = "Material Entry name must not be empty or contain whitespace or '_'."; return false; }
             if (string.Equals(currentName, nextName, StringComparison.Ordinal)) return true;
             if (materialEntries.Exists(item => item != null && item != entry && item.LogicalName == nextName))
             { diagnostic = "Material Entry name already exists: " + nextName; return false; }
@@ -2483,7 +2483,21 @@ namespace zgock.ShapeSync
 
         internal static bool IsValidUserName(string value)
         {
-            return !string.IsNullOrWhiteSpace(value) && !value.Any(char.IsWhiteSpace);
+            return !string.IsNullOrWhiteSpace(value) && !value.Any(IsForbiddenUserNameCharacter);
+        }
+
+        internal static string ToUserNameCandidate(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return value;
+            char[] characters = value.ToCharArray();
+            for (int index = 0; index < characters.Length; index++)
+                if (IsForbiddenUserNameCharacter(characters[index])) characters[index] = '-';
+            return new string(characters);
+        }
+
+        private static bool IsForbiddenUserNameCharacter(char value)
+        {
+            return char.IsWhiteSpace(value) || value == '_';
         }
 
         /// <summary>Renames a logical Texture resource and preserves every Material Entry reference to it.</summary>

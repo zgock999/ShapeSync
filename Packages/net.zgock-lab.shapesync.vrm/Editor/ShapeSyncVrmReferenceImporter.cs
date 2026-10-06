@@ -289,6 +289,18 @@ namespace zgock.ShapeSync.VrmIntegration.Editor
             return true;
         }
 
+        internal static void RemoveOutfitReferences(string databaseAssetPath, string outfitIdentity,
+            ShapeSyncDatabaseTransaction.EditContext transaction)
+        {
+            if (!ShapeSyncVrmDatabaseRegistryRegistration.TryGetRegistry(databaseAssetPath,
+                out ShapeSyncVrmDatabaseRegistry registry, out string diagnostic))
+                throw new InvalidOperationException(diagnostic);
+            if (registry == null) return;
+            RemoveReference(registry, outfitIdentity, null, ReferenceKind.MeshOutfitPhysics,
+                databaseAssetPath, transaction);
+            EditorUtility.SetDirty(registry);
+        }
+
         private static void RemoveReference(ShapeSyncVrmDatabaseRegistry registry, string identity,
             string shapeKey, ReferenceKind kind, string databaseAssetPath,
             ShapeSyncDatabaseTransaction.EditContext transaction)

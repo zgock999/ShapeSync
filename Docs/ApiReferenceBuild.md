@@ -108,9 +108,12 @@ Then rerun the relevant metadata and build commands above.
 - Both commands must finish with `0 warning(s)` and `0 error(s)`.
 - Both generated sites must pass `Sanitize-PublicSite.ps1`; private source URLs
   must not be present in the HTML output.
-- Core TOC must contain only `zgock.ShapeSync` and `zgock.ShapeSync.Editor`.
-- VRM TOC must contain only `zgock.ShapeSync.VrmIntegration` and its `.Editor`
-  namespace.
+- Core TOC must contain only namespaces below `zgock.ShapeSync`. The generated
+  set currently includes `zgock.ShapeSync`, `.Editor`, `.Editor.Atlas`,
+  `.Materials`, `.StackMachine`, and `.StackMachine.Humanoid`. No third-party or
+  Unity namespace may appear, and the set must not change without a source change
+  that explains it.
+- VRM TOC must contain only namespaces below `zgock.ShapeSync.VrmIntegration`.
 - Confirm that every new or modified public API has an accurate English XML
   documentation comment. This is a project rule in `AGENT.md`.
 - Inherited UnityEngine and UnityEditor member lists are intentionally hidden.

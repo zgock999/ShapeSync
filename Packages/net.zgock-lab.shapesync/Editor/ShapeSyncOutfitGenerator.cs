@@ -20,6 +20,110 @@ namespace zgock.ShapeSync.Editor
     {
         private static ICollection<string> generatedPathSink;
 
+        private enum CollectionTargetMode { DirectProjection, ProjectionFit, DirectCollection }
+
+        private static CollectionTargetMode ResolveCollectionTargetMode(ShapeSyncDatabaseRegistry.OutfitEntry outfit)
+        {
+            bool hasAnyProjection = outfit.AxisFigures.Any(axis => axis != null && axis.ProjectionPrefab != null);
+            bool hasAllProjection = outfit.AxisFigures.Count > 0 && outfit.AxisFigures.All(axis => axis != null && axis.ProjectionPrefab != null);
+            if (hasAnyProjection && !hasAllProjection)
+                throw new InvalidOperationException("OutfitGenerateCollectionPartialProjection: " + outfit.Identity + ": "
+                    + string.Join(", ", outfit.AxisFigures.Where(axis => axis != null && axis.ProjectionPrefab == null)
+                        .Select(axis => axis.ShapeKey).OrderBy(key => key, StringComparer.Ordinal)));
+            if (hasAllProjection && !outfit.UseProjectionForFullCollection)
+                return outfit.CollectionEntries.Any(entry => entry != null)
+                    ? CollectionTargetMode.DirectCollection : CollectionTargetMode.DirectProjection;
+            if (hasAllProjection && outfit.UseProjectionForFullCollection) return CollectionTargetMode.ProjectionFit;
+            if (!hasAnyProjection && outfit.UseProjectionForFullCollection)
+                throw new InvalidOperationException("OutfitGenerateCollectionProjectionUnavailable: " + outfit.Identity);
+            return CollectionTargetMode.DirectCollection;
+        }
+
+        internal static string ResolveCollectionTargetModeNameForTest(ShapeSyncDatabaseRegistry.OutfitEntry outfit)
+            => ResolveCollectionTargetMode(outfit).ToString();
+
+        internal static bool TryBuildDirectReferenceDelta(Vector3[] figureVertices, Vector3[] fbmDelta,
+            BoneWeight[] weights, Matrix4x4[] skinningMatrices, Vector3[] wornPositions,
+            out Vector3[] delta, out int singularVertex)
+        {
+            delta = new Vector3[figureVertices.Length];
+            singularVertex = -1;
+            for (int i = 0; i < figureVertices.Length; i++)
+            {
+                Vector3 u = figureVertices[i] + (fbmDelta == null ? Vector3.zero : fbmDelta[i]);
+                BoneWeight weight = weights[i];
+                int[] indices = { weight.boneIndex0, weight.boneIndex1, weight.boneIndex2, weight.boneIndex3 };
+                float[] values = { weight.weight0, weight.weight1, weight.weight2, weight.weight3 };
+                Matrix4x4 a = new Matrix4x4();
+                for (int c = 0; c < 4; c++)
+                {
+                    if (values[c] == 0f) continue;
+                    Matrix4x4 matrix = skinningMatrices[indices[c]];
+                    for (int element = 0; element < 16; element++) a[element] += values[c] * matrix[element];
+                }
+                Vector3 q = a.MultiplyPoint3x4(u);
+                Matrix4x4 l = a;
+                l.m03 = l.m13 = l.m23 = 0f;
+                if (Mathf.Abs(l.determinant) < 1e-8f)
+                {
+                    delta = null;
+                    singularVertex = i;
+                    return false;
+                }
+                delta[i] = l.inverse.MultiplyVector(wornPositions[i] - q);
+            }
+            return true;
+        }
+
+        internal static bool TryBuildFigureAxisBindposes(GameObject generatedFigure, string shapeKey, int bindposeCount,
+            out Matrix4x4[] bindposes, out string diagnostic)
+        {
+            bindposes = null;
+            diagnostic = null;
+            DynamicBoneBlender dbb = generatedFigure == null ? null : generatedFigure.GetComponent<DynamicBoneBlender>();
+            if (dbb == null)
+            { diagnostic = "OutfitGenerateCollectionDirectBindposeRegistryMissing: " + shapeKey + ": DynamicBoneBlender"; return false; }
+            if (dbb.BaseRegistry == null)
+            { diagnostic = "OutfitGenerateCollectionDirectBindposeRegistryMissing: " + shapeKey + ": BaseRegistry"; return false; }
+            var basePoses = new BonePoseData[bindposeCount];
+            var poses = dbb.BaseRegistry.bonePoses;
+            if (poses != null)
+                for (int i = poses.Count - 1; i >= 0; i--)
+                {
+                    BonePoseData pose = poses[i];
+                    if (pose == null || !pose.hasBindpose || pose.bindposeIndex < 0 || pose.bindposeIndex >= bindposeCount) continue;
+                    if (basePoses[pose.bindposeIndex] != null)
+                    { diagnostic = "OutfitGenerateCollectionDirectBindposeRegistryMissing: " + shapeKey + ": duplicate bindposeIndex"; return false; }
+                    basePoses[pose.bindposeIndex] = pose;
+                }
+            if (basePoses.Any(pose => pose == null))
+            { diagnostic = "OutfitGenerateCollectionDirectBindposeRegistryMissing: " + shapeKey + ": bindposeIndex"; return false; }
+            var targetPoses = new Dictionary<string, Matrix4x4>(StringComparer.Ordinal);
+            if (!string.Equals(shapeKey, ShapeSyncDatabaseRegistry.BaseShapeKey, StringComparison.Ordinal))
+            {
+                DynamicBoneBlendTarget[] targets = dbb.Targets.Where(target => target != null
+                    && string.Equals(target.blendName, shapeKey, StringComparison.Ordinal)).ToArray();
+                if (targets.Length != 1 || targets[0].targetRegistry == null)
+                { diagnostic = "OutfitGenerateCollectionDirectBindposeRegistryMissing: " + shapeKey + ": target"; return false; }
+                var targetBonePoses = targets[0].targetRegistry.bonePoses;
+                if (targetBonePoses != null)
+                    for (int i = targetBonePoses.Count - 1; i >= 0; i--)
+                    {
+                        BonePoseData pose = targetBonePoses[i];
+                        if (pose == null || !pose.hasBindpose || pose.boneName == null || targetPoses.ContainsKey(pose.boneName)) continue;
+                        targetPoses.Add(pose.boneName, pose.bindpose);
+                    }
+            }
+            bindposes = new Matrix4x4[bindposeCount];
+            for (int i = 0; i < bindposeCount; i++)
+            {
+                Matrix4x4 m = basePoses[i].bindpose;
+                if (basePoses[i].boneName != null && targetPoses.TryGetValue(basePoses[i].boneName, out Matrix4x4 target)) m = target;
+                bindposes[i] = Matrix4x4.TRS(new Vector3(m.m03, m.m13, m.m23), m.rotation, m.lossyScale);
+            }
+            return true;
+        }
+
         internal static bool TryGenerate(ShapeSyncDatabase database, string rootPath, string bindingsPath, string outfitsPath, out string diagnostic)
             => TryGenerate(database, rootPath, bindingsPath, outfitsPath, null, out diagnostic);
 
@@ -71,6 +175,7 @@ namespace zgock.ShapeSync.Editor
                         ConfigureNormalBlender(instance, outfit, generatedNormals);
                         ConfigureExtraBoneRegistries(database, runtimeOutfit, outfit, outputPath);
                         CollectionProfiles collectionProfiles = ConfigureCollectionBoneProfiles(database, runtimeOutfit, outfit, outputPath);
+                        ConfigureCollectionSkinning(database, outfit, instance, skinningProfile, collectionProfiles);
                         if (outfit.CollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full)
                             ConfigureCollectionPcmPayload(database, runtimeOutfit, outfit, collectionProfiles, rootPath, outputPath);
                         SerializedObject serialized = new SerializedObject(runtimeOutfit);
@@ -139,6 +244,10 @@ namespace zgock.ShapeSync.Editor
             // not the source VRM authoring payload.  Remove VRM/UniHumanoid components first;
             // this also removes the source Avatar and Vrm10Instance references before the
             // prefab is serialized.
+            // Skeleton root names are importer-defined (Root, Hips, Armature, ...).
+            // Protect actual skinning references and their ancestors before removing
+            // authoring components or collider containers.
+            HashSet<Transform> protectedTransforms = CollectReferencedBoneTransforms(output);
             var colliderRoots = new HashSet<GameObject>();
             // Re-scan after each destruction pass. Some UniVRM authoring components own
             // editor-time companions, so a single mutable component array can leave a
@@ -191,7 +300,7 @@ namespace zgock.ShapeSync.Editor
             Transform preservedSkeleton = output.transform.Find("Root");
             foreach (GameObject colliderRoot in colliderRoots)
             {
-                if (colliderRoot == null || colliderRoot == output) continue;
+                if (colliderRoot == null || colliderRoot == output || protectedTransforms.Contains(colliderRoot.transform)) continue;
                 if (preservedSkeleton != null && (colliderRoot.transform == preservedSkeleton || colliderRoot.transform.IsChildOf(preservedSkeleton))) continue;
                 UnityEngine.Object.DestroyImmediate(colliderRoot);
             }
@@ -203,7 +312,7 @@ namespace zgock.ShapeSync.Editor
             for (int index = output.transform.childCount - 1; index >= 0; index--)
             {
                 Transform child = output.transform.GetChild(index);
-                if (child == null || child.GetComponentsInChildren<SkinnedMeshRenderer>(true).Length != 0) continue;
+                if (child == null || protectedTransforms.Contains(child) || child.GetComponentsInChildren<SkinnedMeshRenderer>(true).Length != 0) continue;
                 if (child.GetComponentsInChildren<Transform>(true).Length == 1)
                     UnityEngine.Object.DestroyImmediate(child.gameObject);
             }
@@ -229,19 +338,38 @@ namespace zgock.ShapeSync.Editor
                     throw new InvalidOperationException("OutfitGenerateSnapshotInvalid: Base Figure is required: " + outfit.Identity);
                 if (outfit.CollectionKind != ShapeSyncDatabaseRegistry.OutfitCollectionKind.None)
                 {
-                    foreach (ShapeSyncDatabaseRegistry.OutfitCollectionEntry collection in outfit.CollectionEntries.Where(value => value != null))
+                    bool full = outfit.CollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full;
+                    CollectionTargetMode mode = full ? ResolveCollectionTargetMode(outfit) : CollectionTargetMode.DirectCollection;
+                    string[] keys = new[] { ShapeSyncDatabaseRegistry.BaseShapeKey }.Concat(database.Registry.FigureAxes
+                        .Where(axis => axis != null && axis.Kind == ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm).Select(axis => axis.Name)
+                        .OrderBy(key => key, StringComparer.Ordinal)).ToArray();
+                    foreach (string key in keys)
                     {
-                        if (collection.CollectionPrefab == null) throw new InvalidOperationException("OutfitGenerateSnapshotInvalid: Missing Collection Prefab: " + outfit.Identity + "/" + collection.ShapeKey);
-                        ShapeSyncHumanoidBoneCorrectionProfile profile = BuildCollectionBoneProfile(ResolveFigureForShape(database.Registry, collection.ShapeKey), collection.CollectionPrefab);
+                        GameObject source;
+                        if (full && mode == CollectionTargetMode.DirectProjection)
+                            source = outfit.AxisFigures.FirstOrDefault(axis => axis != null && axis.ShapeKey == key)?.ProjectionPrefab;
+                        else
+                        {
+                            source = outfit.CollectionEntries.FirstOrDefault(entry => entry != null && entry.ShapeKey == key)?.CollectionPrefab;
+                            if (source == null) throw new InvalidOperationException("OutfitGenerateSnapshotInvalid: Missing Collection Prefab: " + outfit.Identity + "/" + key);
+                        }
+                        ShapeSyncHumanoidBoneCorrectionProfile profile = BuildCollectionBoneProfile(ResolveFigureForShape(database.Registry, key), source);
                         UnityEngine.Object.DestroyImmediate(profile);
                     }
-                    if (outfit.CollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full)
+                    if (full)
                     {
                         if (!database.Registry.TryGetSingleBaseFigure(database, out ShapeSyncDatabaseRegistry.BaseFigureEntry figureEntry, out string figureDiagnostic)
                             || figureEntry == null)
                             throw new InvalidOperationException("OutfitGenerateSnapshotInvalid: Base Figure is required: " + outfit.Identity + "; " + figureDiagnostic);
                         if (figureEntry == null || AssetDatabase.LoadAssetAtPath<GameObject>(rootPath.TrimEnd('/') + "/" + figureEntry.Name + ".prefab") == null)
                             throw new InvalidOperationException("OutfitGenerateSnapshotInvalid: Full Collection requires a generated Figure output: " + outfit.Identity);
+                        if (mode != CollectionTargetMode.ProjectionFit)
+                        {
+                            GameObject generatedFigure = AssetDatabase.LoadAssetAtPath<GameObject>(rootPath.TrimEnd('/') + "/" + figureEntry.Name + ".prefab");
+                            foreach (string key in keys)
+                                if (!TryPrepareDirectReference(database, outfit, mode, key, generatedFigure, out _, out string diagnostic))
+                                    throw new InvalidOperationException("OutfitGenerateSnapshotInvalid: " + diagnostic);
+                        }
                     }
                 }
                 foreach (ShapeSyncDatabaseRegistry.OutfitNormalEntry normal in outfit.NormalEntries.Where(value => value != null))
@@ -467,7 +595,7 @@ namespace zgock.ShapeSync.Editor
                             if (!(copy.GetTexture(property) is Texture2D texture)) continue;
                             if (!copiedTextures.TryGetValue(texture, out Texture2D textureCopy))
                             {
-                                textureCopy = UnityEngine.Object.Instantiate(texture);
+                                textureCopy = (Texture2D)ShapeSyncEditorTextureUtility.Clone(texture);
                                 textureCopy.name = output.name + "_" + entry.LogicalName + "_" + texture.name;
                                 textureCopy = Persist(textureCopy, folder + "/" + textureCopy.name + ".asset");
                                 copiedTextures.Add(texture, textureCopy);
@@ -624,23 +752,28 @@ namespace zgock.ShapeSync.Editor
             ShapeSyncDatabaseRegistry.OutfitEntry outfit, string folder)
         {
             if (outfit.CollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.None) return null;
-            ShapeSyncDatabaseRegistry.OutfitCollectionEntry baseEntry = outfit.CollectionEntries
-                .Single(entry => entry != null && entry.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey);
+            CollectionTargetMode mode = outfit.CollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full
+                ? ResolveCollectionTargetMode(outfit) : CollectionTargetMode.DirectCollection;
+            GameObject baseSource = mode == CollectionTargetMode.DirectProjection
+                ? outfit.AxisFigures.Single(axis => axis != null && axis.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey).ProjectionPrefab
+                : outfit.CollectionEntries.Single(entry => entry != null && entry.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey).CollectionPrefab;
             ShapeSyncHumanoidBoneCorrectionProfile baseProfile = BuildCollectionBoneProfile(
-                ResolveFigureForShape(database.Registry, ShapeSyncDatabaseRegistry.BaseShapeKey), baseEntry.CollectionPrefab);
+                ResolveFigureForShape(database.Registry, ShapeSyncDatabaseRegistry.BaseShapeKey), baseSource);
             baseProfile.name = outfit.Identity + "_HumanoidBoneCorrectionProfile";
             baseProfile = Persist(baseProfile, folder + "/" + baseProfile.name + ".asset");
 
-            ShapeSyncDatabaseRegistry.OutfitCollectionEntry[] fbmEntries = outfit.CollectionEntries
-                .Where(entry => entry != null && entry.ShapeKey != ShapeSyncDatabaseRegistry.BaseShapeKey)
-                .OrderBy(entry => entry.ShapeKey, StringComparer.Ordinal).ToArray();
-            var fbmProfiles = new List<ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile>(fbmEntries.Length);
-            foreach (ShapeSyncDatabaseRegistry.OutfitCollectionEntry entry in fbmEntries)
+            string[] fbmKeys = database.Registry.FigureAxes.Where(axis => axis != null && axis.Kind == ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm)
+                .Select(axis => axis.Name).OrderBy(key => key, StringComparer.Ordinal).ToArray();
+            var fbmProfiles = new List<ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile>(fbmKeys.Length);
+            foreach (string key in fbmKeys)
             {
-                ShapeSyncHumanoidBoneCorrectionProfile profile = BuildCollectionBoneProfile(ResolveFigureForShape(database.Registry, entry.ShapeKey), entry.CollectionPrefab);
-                profile.name = outfit.Identity + "_" + entry.ShapeKey + "_HumanoidBoneCorrectionProfile";
+                GameObject source = mode == CollectionTargetMode.DirectProjection
+                    ? outfit.AxisFigures.Single(axis => axis != null && axis.ShapeKey == key).ProjectionPrefab
+                    : outfit.CollectionEntries.Single(entry => entry != null && entry.ShapeKey == key).CollectionPrefab;
+                ShapeSyncHumanoidBoneCorrectionProfile profile = BuildCollectionBoneProfile(ResolveFigureForShape(database.Registry, key), source);
+                profile.name = outfit.Identity + "_" + key + "_HumanoidBoneCorrectionProfile";
                 profile = Persist(profile, folder + "/" + profile.name + ".asset");
-                fbmProfiles.Add(new ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile { blendName = entry.ShapeKey, targetProfile = profile });
+                fbmProfiles.Add(new ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile { blendName = key, targetProfile = profile });
             }
 
             SerializedObject serialized = new SerializedObject(runtimeOutfit);
@@ -657,6 +790,77 @@ namespace zgock.ShapeSync.Editor
             return new CollectionProfiles(baseProfile, fbmProfiles);
         }
 
+        private static void ConfigureCollectionSkinning(ShapeSyncDatabase database,
+            ShapeSyncDatabaseRegistry.OutfitEntry outfit, GameObject output,
+            OutfitSkinningProfile skinning, CollectionProfiles corrections)
+        {
+            if (corrections == null) return;
+            foreach (OutfitSkinningRendererProfile rendererProfile in skinning.Renderers)
+            {
+                Transform generatedTransform = string.IsNullOrEmpty(rendererProfile.rendererPath)
+                    ? output.transform : output.transform.Find(rendererProfile.rendererPath);
+                SkinnedMeshRenderer generated = generatedTransform.GetComponent<SkinnedMeshRenderer>();
+                foreach (ShapeSyncDatabaseRegistry.OutfitAxisFigureEntry axis in outfit.AxisFigures)
+                {
+                    ShapeSyncHumanoidBoneCorrectionProfile correction;
+                    if (axis.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey) correction = corrections.Base;
+                    else if (!corrections.TryGetFbm(axis.ShapeKey, out correction))
+                        throw new InvalidOperationException("OutfitGenerateCollectionFbmProfileMissing: " + axis.ShapeKey);
+                    // Axis imports may have different renderer names; use the same structural
+                    // correspondence validated by BuildMeshesAndSkinningProfile.
+                    int rendererIndex = Array.IndexOf(output.GetComponentsInChildren<SkinnedMeshRenderer>(true), generated);
+                    if (!TryResolveStructuralRenderers(output, axis.OutfitPrefab, out SkinnedMeshRenderer[] sources, out string rendererDiagnostic))
+                        throw new InvalidOperationException("OutfitGenerateCollectionRendererInvalid: " + axis.ShapeKey + "/" + rendererDiagnostic);
+                    SkinnedMeshRenderer source = sources[rendererIndex];
+                    Matrix4x4[] bindposes = BuildCollectionProjectedBindposes(
+                        ResolveFigureForShape(database.Registry, axis.ShapeKey), correction,
+                        axis.OutfitPrefab.transform, source, generated);
+                    if (axis.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey)
+                    {
+                        rendererProfile.baseBindposes = bindposes;
+                        generated.sharedMesh.bindposes = (Matrix4x4[])bindposes.Clone();
+                        EditorUtility.SetDirty(generated.sharedMesh);
+                    }
+                    else rendererProfile.fbmBindposes.Single(value => value.blendName == axis.ShapeKey).bindposes = bindposes;
+                }
+            }
+            // Runtime alignment to the uncorrected Figure bindposes would discard this bake.
+            skinning.SetUsesBcpBakedBindposesForEditor(true);
+            EditorUtility.SetDirty(skinning);
+        }
+
+        internal static Matrix4x4[] BuildCollectionProjectedBindposes(GameObject figure,
+            ShapeSyncHumanoidBoneCorrectionProfile correction, Transform sourceRoot,
+            SkinnedMeshRenderer source, SkinnedMeshRenderer generated)
+        {
+            GameObject projected = UnityEngine.Object.Instantiate(figure);
+            try
+            {
+                projected.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+                projected.transform.localScale = Vector3.one;
+                Animator animator = projected.GetComponentInChildren<Animator>(true);
+                if (animator == null || !animator.isHuman)
+                    throw new InvalidOperationException("OutfitGenerateCollectionAnimatorInvalid: Figure requires a Humanoid Animator.");
+                if (!HumanoidBoneCorrectionProfileApplicator.TryApply(animator, correction.Corrections, out string diagnostic))
+                    throw new InvalidOperationException("OutfitGenerateCollectionBcpInvalid: " + diagnostic);
+                Matrix4x4[] original = source.sharedMesh.bindposes;
+                Matrix4x4[] result = (Matrix4x4[])original.Clone();
+                Transform[] bones = source.bones;
+                for (int index = 0; index < result.Length; index++)
+                {
+                    Transform sourceBone = bones[index];
+                    if (sourceBone == null) continue;
+                    string bonePath = RelativePath(sourceRoot, sourceBone);
+                    Transform target = string.IsNullOrEmpty(bonePath) ? projected.transform : projected.transform.Find(bonePath);
+                    if (target == null) continue; // Extra bones retain their own source binding.
+                    Matrix4x4 sourceSkinning = source.worldToLocalMatrix * sourceBone.localToWorldMatrix * original[index];
+                    result[index] = target.worldToLocalMatrix * generated.localToWorldMatrix * sourceSkinning;
+                }
+                return result;
+            }
+            finally { UnityEngine.Object.DestroyImmediate(projected); }
+        }
+
         private static void ConfigureCollectionPcmPayload(ShapeSyncDatabase database, ShapeSyncOutfit runtimeOutfit,
             ShapeSyncDatabaseRegistry.OutfitEntry outfit, CollectionProfiles profiles, string rootPath, string folder)
         {
@@ -671,42 +875,52 @@ namespace zgock.ShapeSync.Editor
                 throw new InvalidOperationException("OutfitGenerateCollectionPcmRendererInvalid: Full Collection requires exactly one generated Figure SkinnedMeshRenderer.");
             SkinnedMeshRenderer sourceRenderer = figureRenderers[0];
             Mesh sourceMesh = sourceRenderer.sharedMesh;
-            ShapeSyncDatabaseRegistry.OutfitCollectionEntry baseCollection = outfit.CollectionEntries
-                .Single(entry => entry != null && entry.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey);
-            SkinnedMeshRenderer baseTarget = FindCollectionRenderer(outfit, baseCollection, ShapeSyncDatabaseRegistry.BaseShapeKey, RelativePath(generatedFigure.transform, sourceRenderer.transform));
-            if (!BlendShapeBakeUtility.TryBuildMeshDifference(sourceMesh, baseTarget.sharedMesh, out Vector3[] baseTargetDelta, out _, out _))
-                throw new InvalidOperationException("OutfitGenerateCollectionPcmTopologyInvalid: Base Collection mesh topology does not match the generated Figure.");
-            Vector3[] baseBcpDelta = BuildStaticProfileDelta(generatedFigure, sourceRenderer, sourceMesh, profiles.Base);
-            Vector3[] basePcmDelta = outfit.UseProjectionForFullCollection
-                ? BuildCollectionProjectionDelta(generatedFigure, sourceRenderer, sourceMesh, baseTarget.sharedMesh, profiles.Base, baseBcpDelta, ShapeSyncDatabaseRegistry.BaseShapeKey)
-                : Subtract(baseTargetDelta, baseBcpDelta);
-
-            ShapeSyncDatabaseRegistry.OutfitCollectionEntry[] fbmCollections = outfit.CollectionEntries
-                .Where(entry => entry != null && entry.ShapeKey != ShapeSyncDatabaseRegistry.BaseShapeKey).OrderBy(entry => entry.ShapeKey, StringComparer.Ordinal).ToArray();
-            var fbmNames = new List<string>(fbmCollections.Length);
-            var fbmPcmDeltas = new List<Vector3[]>(fbmCollections.Length);
-            foreach (ShapeSyncDatabaseRegistry.OutfitCollectionEntry collection in fbmCollections)
+            CollectionTargetMode mode = ResolveCollectionTargetMode(outfit);
+            Vector3[] basePcmDelta;
+            var fbmNames = new List<string>();
+            var fbmPcmDeltas = new List<Vector3[]>();
+            if (mode == CollectionTargetMode.ProjectionFit)
             {
-                SkinnedMeshRenderer target = FindCollectionRenderer(outfit, collection, collection.ShapeKey, RelativePath(generatedFigure.transform, sourceRenderer.transform));
-                if (!BlendShapeBakeUtility.TryBuildMeshDifference(sourceMesh, target.sharedMesh, out Vector3[] targetDelta, out _, out _))
-                    throw new InvalidOperationException("OutfitGenerateCollectionPcmTopologyInvalid: " + collection.ShapeKey);
-                int blendShapeIndex = sourceMesh.GetBlendShapeIndex(collection.ShapeKey);
-                if (blendShapeIndex < 0 || !BlendShapeBakeUtility.TryGetBlendShapeDeltaAtUnityWeight(sourceMesh, blendShapeIndex, 100f, out Vector3[] fbmDelta, out _, out _))
-                    throw new InvalidOperationException("OutfitGenerateCollectionPcmFbmMissing: " + collection.ShapeKey);
-                if (!profiles.TryGetFbm(collection.ShapeKey, out ShapeSyncHumanoidBoneCorrectionProfile profile))
-                    throw new InvalidOperationException("OutfitGenerateCollectionFbmProfileMissing: " + collection.ShapeKey);
-                Vector3[] targetBcpDelta = BuildStaticProfileDelta(generatedFigure, sourceRenderer, sourceMesh, profile);
-                fbmNames.Add(collection.ShapeKey);
-                if (outfit.UseProjectionForFullCollection)
+                ShapeSyncDatabaseRegistry.OutfitCollectionEntry baseCollection = outfit.CollectionEntries
+                    .Single(entry => entry != null && entry.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey);
+                SkinnedMeshRenderer baseTarget = FindCollectionRenderer(outfit, baseCollection, ShapeSyncDatabaseRegistry.BaseShapeKey, RelativePath(generatedFigure.transform, sourceRenderer.transform));
+                if (!BlendShapeBakeUtility.TryBuildMeshDifference(sourceMesh, baseTarget.sharedMesh, out Vector3[] baseTargetDelta, out _, out _))
+                    throw new InvalidOperationException("OutfitGenerateCollectionPcmTopologyInvalid: Base Collection mesh topology does not match the generated Figure.");
+                Vector3[] baseBcpDelta = BuildStaticProfileDelta(generatedFigure, sourceRenderer, sourceMesh, profiles.Base);
+                basePcmDelta = BuildCollectionProjectionDelta(generatedFigure, sourceRenderer, sourceMesh, baseTarget.sharedMesh, profiles.Base, baseBcpDelta, ShapeSyncDatabaseRegistry.BaseShapeKey);
+
+                ShapeSyncDatabaseRegistry.OutfitCollectionEntry[] fbmCollections = outfit.CollectionEntries
+                    .Where(entry => entry != null && entry.ShapeKey != ShapeSyncDatabaseRegistry.BaseShapeKey).OrderBy(entry => entry.ShapeKey, StringComparer.Ordinal).ToArray();
+                foreach (ShapeSyncDatabaseRegistry.OutfitCollectionEntry collection in fbmCollections)
                 {
+                    SkinnedMeshRenderer target = FindCollectionRenderer(outfit, collection, collection.ShapeKey, RelativePath(generatedFigure.transform, sourceRenderer.transform));
+                    if (!BlendShapeBakeUtility.TryBuildMeshDifference(sourceMesh, target.sharedMesh, out Vector3[] targetDelta, out _, out _))
+                        throw new InvalidOperationException("OutfitGenerateCollectionPcmTopologyInvalid: " + collection.ShapeKey);
+                    int blendShapeIndex = sourceMesh.GetBlendShapeIndex(collection.ShapeKey);
+                    if (blendShapeIndex < 0 || !BlendShapeBakeUtility.TryGetBlendShapeDeltaAtUnityWeight(sourceMesh, blendShapeIndex, 100f, out Vector3[] fbmDelta, out _, out _))
+                        throw new InvalidOperationException("OutfitGenerateCollectionPcmFbmMissing: " + collection.ShapeKey);
+                    if (!profiles.TryGetFbm(collection.ShapeKey, out ShapeSyncHumanoidBoneCorrectionProfile profile))
+                        throw new InvalidOperationException("OutfitGenerateCollectionFbmProfileMissing: " + collection.ShapeKey);
+                    Vector3[] targetBcpDelta = BuildStaticProfileDelta(generatedFigure, sourceRenderer, sourceMesh, profile);
+                    fbmNames.Add(collection.ShapeKey);
                     Vector3[] targetProjectionDelta = BuildCollectionProjectionDelta(
                         generatedFigure, sourceRenderer, sourceMesh, target.sharedMesh, profile,
                         Add(fbmDelta, targetBcpDelta), collection.ShapeKey);
                     fbmPcmDeltas.Add(Subtract(targetProjectionDelta, basePcmDelta));
                 }
-                else
+            }
+            else
+            {
+                if (!TryPrepareDirectReference(database, outfit, mode, ShapeSyncDatabaseRegistry.BaseShapeKey, generatedFigure, out DirectReference baseReference, out string diagnostic))
+                    throw new InvalidOperationException(diagnostic);
+                basePcmDelta = baseReference.Delta;
+                foreach (string key in database.Registry.FigureAxes.Where(axis => axis != null && axis.Kind == ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm)
+                    .Select(axis => axis.Name).OrderBy(key => key, StringComparer.Ordinal))
                 {
-                    fbmPcmDeltas.Add(Subtract(targetDelta, baseTargetDelta, fbmDelta, targetBcpDelta, baseBcpDelta));
+                    if (!TryPrepareDirectReference(database, outfit, mode, key, generatedFigure, out DirectReference reference, out diagnostic))
+                        throw new InvalidOperationException(diagnostic);
+                    fbmNames.Add(key);
+                    fbmPcmDeltas.Add(Subtract(reference.Delta, basePcmDelta));
                 }
             }
 
@@ -731,32 +945,125 @@ namespace zgock.ShapeSync.Editor
         private static SkinnedMeshRenderer FindCollectionRenderer(ShapeSyncDatabaseRegistry.OutfitEntry outfit,
             ShapeSyncDatabaseRegistry.OutfitCollectionEntry collection, string shapeKey, string figureRendererPath)
         {
-            bool useProjection = outfit.UseProjectionForFullCollection;
-            GameObject source = useProjection
-                ? outfit.AxisFigures.Single(axis => axis != null && axis.ShapeKey == shapeKey).ProjectionPrefab
-                : collection.CollectionPrefab;
+            GameObject source = outfit.AxisFigures.Single(axis => axis != null && axis.ShapeKey == shapeKey).ProjectionPrefab;
             if (source == null) throw new InvalidOperationException("OutfitGenerateCollectionSourceMissing: " + shapeKey);
 
-            // A Projection Prefab is an axis-specific geometry artifact. Its renderer
-            // name/path is not required to match the generated Figure renderer (for
-            // example, a shoes projection may use BasicFemaleShoes1_MergedMesh).
-            // Resolve it structurally and reject ambiguous payloads instead of parsing
-            // or guessing from names. Collection Prefabs, on the other hand, must stay
-            // aligned with the generated Figure hierarchy and retain the path contract.
-            if (useProjection)
-            {
-                SkinnedMeshRenderer[] projectionRenderers = source.GetComponentsInChildren<SkinnedMeshRenderer>(true)
-                    .Where(renderer => renderer != null && renderer.sharedMesh != null).ToArray();
-                if (projectionRenderers.Length != 1)
-                    throw new InvalidOperationException("OutfitGenerateCollectionRendererAmbiguous: " + shapeKey + "/Projection requires exactly one SkinnedMeshRenderer.");
-                return projectionRenderers[0];
-            }
+            SkinnedMeshRenderer[] projectionRenderers = source.GetComponentsInChildren<SkinnedMeshRenderer>(true)
+                .Where(renderer => renderer != null && renderer.sharedMesh != null).ToArray();
+            if (projectionRenderers.Length != 1)
+                throw new InvalidOperationException("OutfitGenerateCollectionRendererAmbiguous: " + shapeKey + "/Projection requires exactly one SkinnedMeshRenderer.");
+            return projectionRenderers[0];
+        }
 
-            Transform transform = string.IsNullOrEmpty(figureRendererPath) ? source.transform : source.transform.Find(figureRendererPath);
-            SkinnedMeshRenderer renderer = transform == null ? null : transform.GetComponent<SkinnedMeshRenderer>();
-            if (renderer == null || renderer.sharedMesh == null)
-                throw new InvalidOperationException("OutfitGenerateCollectionRendererMissing: " + shapeKey + "/" + figureRendererPath);
-            return renderer;
+        internal static bool TryResolveDirectCollectionRenderer(GameObject axisFigure, GameObject collectionPrefab,
+            out SkinnedMeshRenderer renderer, out string path)
+        {
+            renderer = null;
+            SkinnedMeshRenderer[] axisRenderers = axisFigure == null ? Array.Empty<SkinnedMeshRenderer>()
+                : axisFigure.GetComponentsInChildren<SkinnedMeshRenderer>(true)
+                    .Where(value => value != null && value.sharedMesh != null).ToArray();
+            if (axisRenderers.Length != 1)
+            { path = "<axis Figure renderer count " + axisRenderers.Length + ">"; return false; }
+            path = RelativePath(axisFigure.transform, axisRenderers[0].transform);
+            Transform target = collectionPrefab == null ? null : string.IsNullOrEmpty(path)
+                ? collectionPrefab.transform : collectionPrefab.transform.Find(path);
+            renderer = target == null ? null : target.GetComponent<SkinnedMeshRenderer>();
+            return renderer != null && renderer.sharedMesh != null;
+        }
+
+        private sealed class DirectReference
+        {
+            internal string ShapeKey;
+            internal Vector3[] Delta;
+        }
+
+        private static bool TryPrepareDirectReference(ShapeSyncDatabase database, ShapeSyncDatabaseRegistry.OutfitEntry outfit,
+            CollectionTargetMode mode, string shapeKey, GameObject generatedFigure, out DirectReference reference, out string diagnostic)
+        {
+            reference = null;
+            diagnostic = null;
+            string context = outfit.Identity + "/" + shapeKey + ": ";
+            GameObject targetRoot = mode == CollectionTargetMode.DirectProjection
+                ? outfit.AxisFigures.FirstOrDefault(axis => axis != null && axis.ShapeKey == shapeKey)?.ProjectionPrefab
+                : outfit.CollectionEntries.FirstOrDefault(entry => entry != null && entry.ShapeKey == shapeKey)?.CollectionPrefab;
+            if (targetRoot == null)
+            { diagnostic = "OutfitGenerateCollectionDirectTargetMissing: " + context + mode; return false; }
+            SkinnedMeshRenderer[] figureRenderers = generatedFigure.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+            if (figureRenderers.Length != 1 || figureRenderers[0].sharedMesh == null)
+            { diagnostic = "OutfitGenerateCollectionPcmRendererInvalid: Full Collection requires exactly one generated Figure SkinnedMeshRenderer."; return false; }
+            SkinnedMeshRenderer figureRenderer = figureRenderers[0];
+            Mesh figureMesh = figureRenderer.sharedMesh;
+            SkinnedMeshRenderer targetRenderer;
+            if (mode == CollectionTargetMode.DirectProjection)
+            {
+                SkinnedMeshRenderer[] renderers = targetRoot.GetComponentsInChildren<SkinnedMeshRenderer>(true)
+                    .Where(renderer => renderer != null && renderer.sharedMesh != null).ToArray();
+                if (renderers.Length != 1)
+                { diagnostic = "OutfitGenerateCollectionDirectRendererAmbiguous: " + context + renderers.Length; return false; }
+                targetRenderer = renderers[0];
+            }
+            else
+            {
+                if (!TryResolveDirectCollectionRenderer(ResolveFigureForShape(database.Registry, shapeKey), targetRoot, out targetRenderer, out string path))
+                { diagnostic = "OutfitGenerateCollectionDirectRendererMissing: " + context + path; return false; }
+            }
+            Mesh targetMesh = targetRenderer.sharedMesh;
+            if (targetMesh.vertexCount != figureMesh.vertexCount)
+            { diagnostic = "OutfitGenerateCollectionDirectTopologyMismatch: " + context + figureMesh.vertexCount + "/" + targetMesh.vertexCount; return false; }
+            int[] figureTriangles = figureMesh.triangles;
+            int[] targetTriangles = targetMesh.triangles;
+            for (int i = 0; i < Math.Max(figureTriangles.Length, targetTriangles.Length); i++)
+                if (i >= figureTriangles.Length || i >= targetTriangles.Length || figureTriangles[i] != targetTriangles[i])
+                {
+                    diagnostic = "OutfitGenerateCollectionDirectTopologyMismatch: " + context + "triangle index " + i + ": "
+                        + (i < figureTriangles.Length ? figureTriangles[i].ToString() : "missing") + "/"
+                        + (i < targetTriangles.Length ? targetTriangles[i].ToString() : "missing");
+                    return false;
+                }
+            Transform[] figureBones = figureRenderer.bones;
+            var correctedBones = new Transform[figureBones.Length];
+            for (int j = 0; j < figureBones.Length; j++)
+            {
+                string path = figureBones[j] == null ? "<null>" : RelativePath(generatedFigure.transform, figureBones[j]);
+                correctedBones[j] = figureBones[j] == null ? null : string.IsNullOrEmpty(path) ? targetRoot.transform : targetRoot.transform.Find(path);
+                if (correctedBones[j] == null)
+                { diagnostic = "OutfitGenerateCollectionDirectBoneMissing: " + context + path; return false; }
+            }
+            Transform[] targetBones = targetRenderer.bones;
+            for (int j = 0; j < targetBones.Length; j++)
+                if (targetBones[j] == null)
+                { diagnostic = "OutfitGenerateCollectionDirectBoneMissing: " + context + "<null> (target bones[" + j + "])"; return false; }
+            if (!TryBuildFigureAxisBindposes(generatedFigure, shapeKey, figureMesh.bindposes.Length, out Matrix4x4[] bindposes, out diagnostic))
+            { diagnostic += " (Outfit: " + outfit.Identity + ")"; return false; }
+            Vector3[] fbmDelta = null;
+            if (shapeKey != ShapeSyncDatabaseRegistry.BaseShapeKey)
+            {
+                int index = figureMesh.GetBlendShapeIndex(shapeKey);
+                if (index < 0 || !BlendShapeBakeUtility.TryGetBlendShapeDeltaAtUnityWeight(figureMesh, index, 100f, out fbmDelta, out _, out _))
+                { diagnostic = "OutfitGenerateCollectionPcmFbmMissing: " + shapeKey; return false; }
+            }
+            var matrices = new Matrix4x4[bindposes.Length];
+            for (int j = 0; j < matrices.Length; j++)
+                matrices[j] = targetRoot.transform.worldToLocalMatrix * correctedBones[j].localToWorldMatrix * bindposes[j];
+            Matrix4x4[] targetBindposes = targetMesh.bindposes;
+            var targetMatrices = new Matrix4x4[targetBindposes.Length];
+            for (int j = 0; j < targetMatrices.Length; j++)
+                targetMatrices[j] = targetRoot.transform.worldToLocalMatrix * targetBones[j].localToWorldMatrix * targetBindposes[j];
+            Vector3[] targetVertices = targetMesh.vertices;
+            BoneWeight[] targetWeights = targetMesh.boneWeights;
+            var wornPositions = new Vector3[targetVertices.Length];
+            for (int i = 0; i < wornPositions.Length; i++)
+            {
+                BoneWeight weight = targetWeights[i];
+                int[] indices = { weight.boneIndex0, weight.boneIndex1, weight.boneIndex2, weight.boneIndex3 };
+                float[] values = { weight.weight0, weight.weight1, weight.weight2, weight.weight3 };
+                for (int c = 0; c < 4; c++)
+                    if (values[c] != 0f) wornPositions[i] += values[c] * targetMatrices[indices[c]].MultiplyPoint3x4(targetVertices[i]);
+            }
+            if (!TryBuildDirectReferenceDelta(figureMesh.vertices, fbmDelta, figureMesh.boneWeights, matrices, wornPositions, out Vector3[] delta, out int singularVertex))
+            { diagnostic = "OutfitGenerateCollectionDirectSkinningSingular: " + context + singularVertex; return false; }
+            reference = new DirectReference { ShapeKey = shapeKey, Delta = delta };
+            return true;
         }
 
         private static Vector3[] BuildStaticProfileDelta(GameObject figureRoot, SkinnedMeshRenderer renderer, Mesh sourceMesh, ShapeSyncHumanoidBoneCorrectionProfile profile)
@@ -1004,11 +1311,30 @@ namespace zgock.ShapeSync.Editor
             return Mathf.Max(Mathf.Abs(value.x), Mathf.Abs(value.y), Mathf.Abs(value.z), Mathf.Abs(value.w - 1f));
         }
 
+        private static HashSet<Transform> CollectReferencedBoneTransforms(GameObject output)
+        {
+            var protectedTransforms = new HashSet<Transform>();
+            foreach (SkinnedMeshRenderer renderer in output.GetComponentsInChildren<SkinnedMeshRenderer>(true))
+            {
+                foreach (Transform bone in renderer.bones.Concat(new[] { renderer.rootBone }))
+                {
+                    if (bone == null || (bone != output.transform && !bone.IsChildOf(output.transform))) continue;
+                    for (Transform current = bone; current != null; current = current.parent)
+                    {
+                        protectedTransforms.Add(current);
+                        if (current == output.transform) break;
+                    }
+                }
+            }
+            return protectedTransforms;
+        }
+
         private static CharacterBoneRegistry BuildExtraBoneRegistry(GameObject outfitRoot, GameObject figureRoot, string blendName)
         {
             if (outfitRoot == null) throw new InvalidOperationException("OutfitGenerateExtraBoneSourceMissing: Outfit axis prefab is required.");
             CharacterBoneRegistry registry = ScriptableObject.CreateInstance<CharacterBoneRegistry>();
             registry.fbmBlendName = blendName;
+            HashSet<Transform> referencedBones = CollectReferencedBoneTransforms(outfitRoot);
             foreach (Transform transform in outfitRoot.GetComponentsInChildren<Transform>(true))
             {
                 // Mesh/material containers such as Face, Hair, and Body are not Extra Bone
@@ -1023,7 +1349,7 @@ namespace zgock.ShapeSync.Editor
                 // roots and must never become attach roots merely because they are absent from
                 // the Figure hierarchy.
                 if (string.IsNullOrEmpty(path)
-                    || (!string.Equals(path, "Root", StringComparison.Ordinal) && !path.StartsWith("Root/", StringComparison.Ordinal))
+                    || (!referencedBones.Contains(transform) && !string.Equals(path, "Root", StringComparison.Ordinal) && !path.StartsWith("Root/", StringComparison.Ordinal))
                     || figureRoot.transform.Find(path) != null) continue;
                 registry.bonePoses.Add(new BonePoseData { boneName = path, localPosition = transform.localPosition, localRotation = transform.localRotation, localScale = transform.localScale, bindposeIndex = -1, hasBindpose = false });
             }

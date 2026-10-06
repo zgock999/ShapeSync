@@ -562,6 +562,114 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
         }
 
         [Test]
+        public void MeshOutfitMaterials_DefaultEntryNamesAreUnderscoreFree()
+        {
+            string suffix = Guid.NewGuid().ToString("N");
+            string sourcePath = Root + "/Spec20ov2Source_" + suffix + ".prefab";
+            CreatePersistentSkinnedSource(sourcePath, "CoatMaterial", "Spec20ov2", "Second");
+            Assert.That(AssetDatabase.RenameAsset(Root + "/Spec20ov2Material0.mat", "Tops_01 (Instance)"), Is.Empty);
+            Assert.That(AssetDatabase.RenameAsset(Root + "/Spec20ov2Material1.mat", "Tops_02 (Instance)"), Is.Empty);
+            string databasePath = Root + "/Spec20ov2Database_" + suffix + ".prefab";
+            Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(databasePath, out _, out string createDiagnostic), Is.True, createDiagnostic);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, intermediate) =>
+            {
+                GameObject baseFigure = new GameObject("Master");
+                baseFigure.transform.SetParent(intermediate, false);
+                Assert.That(contents.Registry.TryRegisterBaseFigure(contents, "Master", baseFigure, out string baseDiagnostic), Is.True, baseDiagnostic);
+                Assert.That(contents.Registry.TryAddOutfit("Coat", "Coat", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string outfitDiagnostic), Is.True, outfitDiagnostic);
+            }, out string setupDiagnostic), Is.True, setupDiagnostic);
+            GameObject source = AssetDatabase.LoadAssetAtPath<GameObject>(sourcePath);
+            Assert.That(ShapeSyncMeshOutfitImport.TryImportBase(databasePath, "Coat", source, out string importDiagnostic), Is.True, importDiagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase database, out string openDiagnostic), Is.True, openDiagnostic);
+            ShapeSyncDatabaseWindow window = ScriptableObject.CreateInstance<ShapeSyncDatabaseWindow>();
+            try
+            {
+                Assert.That(window.TrySetDatabase(database, out string bindDiagnostic), Is.True, bindDiagnostic);
+                Assert.That(window.TrySelectOutfitChildForTest("Coat", "Materials"), Is.True);
+                Assert.That(database.Registry.Outfits.Single(o => o.Identity == "Coat").AxisFigures.Single(axis => axis.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey).SourceMaterialNames,
+                    Is.EqualTo(new[] { "Tops_01 (Instance)", "Tops_02 (Instance)" }));
+                IReadOnlyList<string> entryNames = window.OutfitMaterialClassificationDraftEntryNamesForTest;
+                Assert.That(entryNames, Is.EqualTo(new[] { "MaterialEntry-0", "MaterialEntry-1" }));
+                foreach (string entryName in entryNames)
+                    Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName(entryName), Is.True);
+                Assert.That(window.IsOutfitDetailDirtyForTest, Is.False);
+            }
+            finally { Object.DestroyImmediate(window); }
+        }
+
+        [Test]
+        public void MeshOutfitMaterials_DefaultEntryNamesSaveAfterOneClassificationChange()
+        {
+            string suffix = Guid.NewGuid().ToString("N");
+            string sourcePath = Root + "/Spec20ov2Source_" + suffix + ".prefab";
+            CreatePersistentSkinnedSource(sourcePath, "CoatMaterial", "Spec20ov2", "Second");
+            Assert.That(AssetDatabase.RenameAsset(Root + "/Spec20ov2Material0.mat", "Tops_01 (Instance)"), Is.Empty);
+            Assert.That(AssetDatabase.RenameAsset(Root + "/Spec20ov2Material1.mat", "Tops_02 (Instance)"), Is.Empty);
+            string databasePath = Root + "/Spec20ov2Database_" + suffix + ".prefab";
+            Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(databasePath, out _, out string createDiagnostic), Is.True, createDiagnostic);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, intermediate) =>
+            {
+                GameObject baseFigure = new GameObject("Master");
+                baseFigure.transform.SetParent(intermediate, false);
+                Assert.That(contents.Registry.TryRegisterBaseFigure(contents, "Master", baseFigure, out string baseDiagnostic), Is.True, baseDiagnostic);
+                Assert.That(contents.Registry.TryAddOutfit("Coat", "Coat", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string outfitDiagnostic), Is.True, outfitDiagnostic);
+            }, out string setupDiagnostic), Is.True, setupDiagnostic);
+            GameObject source = AssetDatabase.LoadAssetAtPath<GameObject>(sourcePath);
+            Assert.That(ShapeSyncMeshOutfitImport.TryImportBase(databasePath, "Coat", source, out string importDiagnostic), Is.True, importDiagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase database, out string openDiagnostic), Is.True, openDiagnostic);
+            ShapeSyncDatabaseWindow window = ScriptableObject.CreateInstance<ShapeSyncDatabaseWindow>();
+            var originalConfirm = ShapeSyncDatabaseWindow.ConfirmIrreversibleOutfitClassification;
+            ShapeSyncDatabaseWindow.ConfirmIrreversibleOutfitClassification = (_, _, _, _) => true;
+            try
+            {
+                Assert.That(window.TrySetDatabase(database, out string bindDiagnostic), Is.True, bindDiagnostic);
+                Assert.That(window.TrySelectOutfitChildForTest("Coat", "Materials"), Is.True);
+                Assert.That(window.TrySetOutfitMaterialClassificationDraftForTest("Tops_02 (Instance)", ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Exclude), Is.True);
+                Assert.That(window.IsOutfitDetailDirtyForTest, Is.True);
+                Assert.That(window.TrySaveOutfitForTest(out string diagnostic), Is.True, diagnostic);
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out database, out string reopenDiagnostic), Is.True, reopenDiagnostic);
+                var classifications = database.Registry.Outfits.Single(o => o.Identity == "Coat").MaterialClassifications;
+                Assert.That(classifications.Count, Is.EqualTo(2));
+                var included = classifications.Single(entry => entry.SourceMaterialName == "Tops_01 (Instance)");
+                Assert.That(included.Classification, Is.EqualTo(ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Include));
+                Assert.That(included.EntryName, Is.EqualTo("MaterialEntry-0"));
+                var excluded = classifications.Single(entry => entry.SourceMaterialName == "Tops_02 (Instance)");
+                Assert.That(excluded.Classification, Is.EqualTo(ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Exclude));
+                Assert.That(string.IsNullOrEmpty(excluded.EntryName), Is.True);
+            }
+            finally
+            {
+                ShapeSyncDatabaseWindow.ConfirmIrreversibleOutfitClassification = originalConfirm;
+                Object.DestroyImmediate(window);
+            }
+        }
+
+        [Test]
+        public void MaterialOutfitTextureEntry_RejectsUnderscoreName()
+        {
+            const string databasePath = Root + "/Spec20ov2MaterialOutfit.prefab";
+            Texture source = CreatePersistentTexture(Root + "/Spec20ov2MaterialOutfitSource.asset", "Spec20ov2MaterialOutfitSource");
+            Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(databasePath, out ShapeSyncDatabase database, out string createDiagnostic), Is.True, createDiagnostic);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, _) =>
+            {
+                Assert.That(contents.Registry.TryAddOutfit("Skin", "Skin", ShapeSyncDatabaseRegistry.OutfitKind.Material, out string outfitDiagnostic), Is.True, outfitDiagnostic);
+            }, out string setupDiagnostic), Is.True, setupDiagnostic);
+            ShapeSyncDatabaseWindow window = ScriptableObject.CreateInstance<ShapeSyncDatabaseWindow>();
+            try
+            {
+                Assert.That(window.TrySetDatabase(database, out string bindDiagnostic), Is.True, bindDiagnostic);
+                Assert.That(window.TrySelectOutfitForTest("Skin"), Is.True);
+
+                Assert.That(window.TryAddMaterialOutfitTextureDraftForTest("Bad_Albedo", source), Is.True);
+                Assert.That(window.TrySaveOutfitForTest(out string diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out database, out string reopenDiagnostic), Is.True, reopenDiagnostic);
+                Assert.That(database.Registry.Outfits.Single(o => o.Identity == "Skin").MaterialOutfitTextureEntries, Is.Empty);
+            }
+            finally { Object.DestroyImmediate(window); }
+        }
+
+        [Test]
         public void MaterialOutfitWindowDraft_MarksDirtyAndSavesThroughTheAuthoringTransaction()
         {
             const string databasePath = Root + "/MaterialOutfitWindow.prefab";
@@ -2835,6 +2943,53 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
         }
 
         [Test]
+        public void OutfitGenerate_CollectionBindposesPreserveMeshOnCorrectedRigWithoutChangingSources()
+        {
+            GameObject figure = CreateHumanoidGeneratorSource("BindposeFigure");
+            GameObject source = CreateHumanoidGeneratorSource("BindposeSource");
+            GameObject generated = new GameObject("BindposeOutput");
+            Mesh mesh = new Mesh();
+            var profile = ScriptableObject.CreateInstance<ShapeSyncHumanoidBoneCorrectionProfile>();
+            try
+            {
+                Transform foot = source.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.LeftFoot);
+                var correction = new ShapeSyncHumanoidBoneCorrection {
+                    bone = HumanBodyBones.Hips, localPositionDelta = Vector3.up * .03f
+                };
+                Quaternion footDelta = Quaternion.Euler(3f, 0f, 0f);
+                profile.SetCorrectionsForEditor(new List<ShapeSyncHumanoidBoneCorrection> {
+                    correction, new ShapeSyncHumanoidBoneCorrection {bone=HumanBodyBones.LeftFoot, localRotationDelta=footDelta}
+                });
+                SkinnedMeshRenderer sourceRenderer = source.AddComponent<SkinnedMeshRenderer>();
+                SkinnedMeshRenderer generatedRenderer = generated.AddComponent<SkinnedMeshRenderer>();
+                mesh.bindposes = new[] {foot.worldToLocalMatrix};
+                sourceRenderer.sharedMesh = mesh;
+                sourceRenderer.bones = new[] {foot};
+                Vector3 originalHips = figure.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Hips).localPosition;
+                Matrix4x4 originalBinding = mesh.bindposes[0];
+                Matrix4x4[] projected = ShapeSyncOutfitGenerator.BuildCollectionProjectedBindposes(
+                    figure, profile, source.transform, sourceRenderer, generatedRenderer);
+                // This sample is independently transformed by the intended corrected rig.
+                Matrix4x4 correctedFoot = Matrix4x4.Translate(correction.localPositionDelta)
+                    * foot.parent.localToWorldMatrix
+                    * Matrix4x4.TRS(foot.localPosition, footDelta * foot.localRotation, foot.localScale);
+                Vector3 point = new Vector3(-.08f, .12f, .18f);
+                Assert.That(Vector3.Distance((correctedFoot * projected[0]).MultiplyPoint3x4(point), point), Is.LessThan(.00001f));
+                Assert.That(Vector3.Distance((correctedFoot * originalBinding).MultiplyPoint3x4(point), point), Is.GreaterThan(.02f));
+                Assert.That(mesh.bindposes[0], Is.EqualTo(originalBinding));
+                Assert.That(figure.GetComponent<Animator>().GetBoneTransform(HumanBodyBones.Hips).localPosition, Is.EqualTo(originalHips));
+            }
+            finally
+            {
+                Object.DestroyImmediate(profile);
+                Object.DestroyImmediate(mesh);
+                Object.DestroyImmediate(figure);
+                Object.DestroyImmediate(source);
+                Object.DestroyImmediate(generated);
+            }
+        }
+
+        [Test]
         public void OutfitGenerate_ProjectionCollectionResolvesSingleRendererWithoutFigurePathNameMatch()
         {
             ShapeSyncDatabaseRegistry.OutfitEntry outfit = new ShapeSyncDatabaseRegistry.OutfitEntry(
@@ -3524,6 +3679,712 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
             ShapeSyncFigureImportRecord record = figure.AddComponent<ShapeSyncFigureImportRecord>();
             Assert.That(record.TryConfigure(new[] { renderer }, out string recordDiagnostic), Is.True, recordDiagnostic);
             return figure;
+        }
+
+        [Test]
+        public void BuildSelectedMesh_PreserveSourceOrderKeepsAscendingIndices()
+        {
+            Mesh source = new Mesh();
+            Mesh ascending = null;
+            Mesh legacy = null;
+            try
+            {
+                source.vertices = Enumerable.Range(0, 6).Select(i => Vector3.right * i).ToArray();
+                source.triangles = new[] { 3, 1, 2, 2, 1, 0 };
+                ascending = ShapeSyncMeshOutfitImport.BuildSelectedMesh(source, new[] { true }, true);
+                legacy = ShapeSyncMeshOutfitImport.BuildSelectedMesh(source, new[] { true });
+                Assert.That(ascending.GetTriangles(0), Is.EqualTo(new[] { 3, 1, 2, 2, 1, 0 }), "T-06-1");
+                Assert.That(legacy.GetTriangles(0), Is.EqualTo(new[] { 0, 1, 2, 2, 1, 3 }), "T-06-2");
+            }
+            finally
+            {
+                Object.DestroyImmediate(ascending);
+                Object.DestroyImmediate(legacy);
+                Object.DestroyImmediate(source);
+            }
+        }
+
+        [Test]
+        public void MixedIncludeAndProjection_ProjectionBodyKeepsSourceVertexOrder()
+        {
+            const string databasePath = Root + "/ProjectionOrderDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out _, out Dictionary<string, Vector3[]> expectedVertices, unorderedProjection: true);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase opened, out string diagnostic), Is.True, diagnostic);
+            foreach (var axis in opened.Registry.Outfits.Single().AxisFigures)
+            {
+                Vector3[] actual = axis.ProjectionPrefab.GetComponentInChildren<SkinnedMeshRenderer>(true).sharedMesh.vertices;
+                Assert.That(actual.Length, Is.EqualTo(expectedVertices[axis.ShapeKey].Length));
+                for (int i = 0; i < actual.Length; i++)
+                {
+                    Assert.That(actual[i].x, Is.EqualTo(expectedVertices[axis.ShapeKey][i].x).Within(1e-5f), "T-07-1 x " + i);
+                    Assert.That(actual[i].y, Is.EqualTo(expectedVertices[axis.ShapeKey][i].y).Within(1e-5f), "T-07-1 y " + i);
+                    Assert.That(actual[i].z, Is.EqualTo(expectedVertices[axis.ShapeKey][i].z).Within(1e-5f), "T-07-1 z " + i);
+                }
+                Assert.That(axis.OutfitPrefab.GetComponentInChildren<SkinnedMeshRenderer>(true).sharedMesh.GetTriangles(0),
+                    Is.EqualTo(new[] { 0, 1, 2 }), "T-07-2: existing Include triangle order");
+            }
+        }
+
+        [Test]
+        public void OutfitCollection_FullDirectProjectionSavesWithoutCollectionPrefabs()
+        {
+            const string databasePath = Root + "/DirectProjectionEmptyDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out _, out _);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out string diagnostic), Is.True, "T-08-1: " + diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase opened, out diagnostic), Is.True, diagnostic);
+            var outfit = opened.Registry.Outfits.Single();
+            Assert.That(outfit.CollectionKind, Is.EqualTo(ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full), "T-08-2 kind");
+            Assert.That(outfit.CollectionEntries.Count, Is.EqualTo(0), "T-08-2 entries");
+            Assert.That(outfit.UseProjectionForFullCollection, Is.False, "T-08-2 flag");
+        }
+
+        [Test]
+        public void OutfitCollection_ResaveWithSavedCopiesKeepsReferenceMeshes()
+        {
+            const string databasePath = Root + "/ResaveSavedCopiesDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out GameObject source, out _);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false, new[]
+                {
+                    new ShapeSyncMeshOutfitCollectionAuthoring.Source(ShapeSyncDatabaseRegistry.BaseShapeKey, source),
+                    new ShapeSyncMeshOutfitCollectionAuthoring.Source("Tall", source)
+                }, out string diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase opened, out diagnostic), Is.True, diagnostic);
+            var expectedVertices = opened.Registry.Outfits.Single().CollectionEntries.ToDictionary(entry => entry.ShapeKey,
+                entry => entry.SourcePrefab.GetComponentsInChildren<SkinnedMeshRenderer>(true).Single().sharedMesh.vertices);
+            ShapeSyncMeshOutfitCollectionAuthoring.Source[] savedSources = opened.Registry.Outfits.Single().CollectionEntries
+                .Select(entry => new ShapeSyncMeshOutfitCollectionAuthoring.Source(entry.ShapeKey, entry.SourcePrefab)).ToArray();
+
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Bone, false, savedSources, out diagnostic), Is.True, "T-20-1: " + diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out opened, out diagnostic), Is.True, diagnostic);
+            Assert.That(opened.Registry.Outfits.Single().CollectionKind, Is.EqualTo(ShapeSyncDatabaseRegistry.OutfitCollectionKind.Bone), "T-20-1");
+            foreach (ShapeSyncDatabaseRegistry.OutfitCollectionEntry entry in opened.Registry.Outfits.Single().CollectionEntries)
+                foreach (GameObject prefab in new[] { entry.SourcePrefab, entry.CollectionPrefab })
+                {
+                    Mesh mesh = prefab.GetComponentsInChildren<SkinnedMeshRenderer>(true).Single().sharedMesh;
+                    Assert.That(mesh, Is.Not.Null, "T-20-2: " + entry.ShapeKey);
+                    Assert.That(mesh.vertices, Is.EqualTo(expectedVertices[entry.ShapeKey]), "T-20-3: " + entry.ShapeKey);
+                }
+        }
+
+        [Test]
+        public void OutfitCollection_FullDirectProjectionKeepsSuppliedCollectionPrefabs()
+        {
+            const string databasePath = Root + "/DirectProjectionSourcesDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out GameObject source, out _);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false, new[]
+                {
+                    new ShapeSyncMeshOutfitCollectionAuthoring.Source(ShapeSyncDatabaseRegistry.BaseShapeKey, source),
+                    new ShapeSyncMeshOutfitCollectionAuthoring.Source("Tall", source)
+                }, out string diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase opened, out diagnostic), Is.True, diagnostic);
+            Assert.That(opened.Registry.Outfits.Single().CollectionEntries.Count,
+                Is.EqualTo(opened.Registry.Outfits.Single().AxisFigures.Count), "T-09-1: Base + FBM");
+        }
+
+        [Test]
+        public void OutfitCollection_PartialProjectionIsRejectedWithoutMutation()
+        {
+            const string databasePath = Root + "/PartialProjectionDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out _, out _);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, transaction) =>
+            {
+                var axis = contents.Registry.Outfits.Single().AxisFigures.Single(value => value.ShapeKey == "Tall");
+                GameObject projection = axis.ProjectionPrefab;
+                axis.ReplaceDerivedPrefabs(axis.OutfitPrefab, null);
+                Object.DestroyImmediate(projection, true);
+            }, out string fixtureDiagnostic), Is.True, "T-10 fixture: " + fixtureDiagnostic);
+            byte[] before;
+            using (var sha = System.Security.Cryptography.SHA256.Create()) before = sha.ComputeHash(File.ReadAllBytes(databasePath));
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out string diagnostic), Is.False, "T-10-1 return");
+            Assert.That(diagnostic, Does.Contain("Full Collection requires a Projection body on every axis or on none: "), "T-10-1 diagnostic");
+            using (var sha = System.Security.Cryptography.SHA256.Create())
+                Assert.That(sha.ComputeHash(File.ReadAllBytes(databasePath)), Is.EqualTo(before), "T-10-2 raw SHA-256");
+        }
+
+        [Test]
+        public void OutfitCollection_ProjectionFitAndDirectCollectionStillRequireEveryCollectionPrefab()
+        {
+            const string databasePath = Root + "/CollectionRequiredDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out _, out _);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, true,
+                Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out _), Is.False, "T-11-1");
+            const string noProjectionDatabasePath = Root + "/DirectCollectionRequiredDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(noProjectionDatabasePath, out _, out _, false);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(noProjectionDatabasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out _), Is.False, "T-11-2");
+
+            const string emptyAxesDatabasePath = Root + "/EmptyAxesCollectionDatabase.prefab";
+            Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(emptyAxesDatabasePath, out _, out string diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(emptyAxesDatabasePath, (contents, _) =>
+                contents.Registry.TryAddOutfit("Coat", "Coat", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string outfitDiagnostic),
+                out diagnostic), Is.True, diagnostic);
+            byte[] before;
+            using (var sha = System.Security.Cryptography.SHA256.Create()) before = sha.ComputeHash(File.ReadAllBytes(emptyAxesDatabasePath));
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(emptyAxesDatabasePath, "Coat",
+                ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out _), Is.False, "T-11-3 return");
+            using (var sha = System.Security.Cryptography.SHA256.Create())
+                Assert.That(sha.ComputeHash(File.ReadAllBytes(emptyAxesDatabasePath)), Is.EqualTo(before), "T-11-3 raw SHA-256");
+        }
+
+        private static void PrepareDirectProjectionCollectionFixture(string databasePath, out GameObject source,
+            out Dictionary<string, Vector3[]> expectedProjectionVertices, bool useProjection = true, bool unorderedProjection = false)
+        {
+            const string sourcePath = Root + "/DirectProjectionSource.prefab";
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(sourcePath) == null)
+            {
+                if (unorderedProjection) CreatePersistentMultiMaterialSkinnedSourceWithUnorderedProjection(sourcePath);
+                else CreatePersistentMultiMaterialSkinnedSource(sourcePath);
+            }
+            CreateDatabaseWithFbmAxis(databasePath, "Tall");
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, _) =>
+                contents.Registry.TryAddOutfit("Coat", "Coat", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string outfitDiagnostic), out string setupDiagnostic), Is.True, setupDiagnostic);
+            source = AssetDatabase.LoadAssetAtPath<GameObject>(sourcePath);
+            Assert.That(ShapeSyncMeshOutfitImport.TryImportBase(databasePath, "Coat", source, out string diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncMeshOutfitImport.TryImportAxes(databasePath, "Coat", new[]
+            {
+                new KeyValuePair<string, GameObject>("Tall", source)
+            }, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase imported, out diagnostic), Is.True, diagnostic);
+            expectedProjectionVertices = new Dictionary<string, Vector3[]>();
+            foreach (var axis in imported.Registry.Outfits.Single().AxisFigures)
+            {
+                Mesh merged = axis.MergedPrefab.GetComponentInChildren<SkinnedMeshRenderer>(true).sharedMesh;
+                Vector3[] vertices = merged.vertices;
+                expectedProjectionVertices.Add(axis.ShapeKey, merged.GetTriangles(1).Distinct().OrderBy(index => index).Select(index => vertices[index]).ToArray());
+                if (unorderedProjection)
+                {
+                    Mesh legacy = ShapeSyncMeshOutfitImport.BuildSelectedMesh(merged, new[] { false, true });
+                    try
+                    {
+                        Assert.That(legacy.vertices, Is.Not.EqualTo(expectedProjectionVertices[axis.ShapeKey]), "T-07-0: fixture must distinguish first-seen and ascending order");
+                    }
+                    finally { Object.DestroyImmediate(legacy); }
+                }
+            }
+            string[] materialNames = imported.Registry.Outfits.Single().AxisFigures.Single(axis => axis.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey).SourceMaterialNames.ToArray();
+            Assert.That(ShapeSyncMeshOutfitImport.TryApplyMaterialClassifications(databasePath, "Coat", new[]
+            {
+                new ShapeSyncDatabaseRegistry.OutfitMaterialClassificationEntry(materialNames[0], ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Include, "Included"),
+                new ShapeSyncDatabaseRegistry.OutfitMaterialClassificationEntry(materialNames[1],
+                    useProjection ? ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Projection : ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Include,
+                    useProjection ? null : "Body")
+            }, out diagnostic), Is.True, diagnostic);
+        }
+
+        [Test]
+        public void DirectReference_VertexOnlyDeformationReproducesTarget()
+        {
+            Vector3[] vertices = { Vector3.zero, Vector3.right, Vector3.up };
+            Vector3[] worn = vertices.Select(v => v + new Vector3(.001f, -.002f, .003f)).ToArray();
+            Assert.That(ShapeSyncOutfitGenerator.TryBuildDirectReferenceDelta(vertices, null,
+                Enumerable.Repeat(new BoneWeight { boneIndex0 = 0, weight0 = 1f }, vertices.Length).ToArray(),
+                new[] { Matrix4x4.identity }, worn, out Vector3[] delta, out int singular), Is.True, "T-01-1 return");
+            Assert.That(singular, Is.EqualTo(-1), "T-01-1 singularVertex");
+            for (int i = 0; i < vertices.Length; i++)
+                Assert.That(Vector3.Distance(Matrix4x4.identity.MultiplyPoint3x4(vertices[i] + delta[i]), worn[i]), Is.LessThan(1e-5f), "T-01-2");
+        }
+
+        [Test]
+        public void DirectReference_BoneOnlyDeformationGivesZeroDelta()
+        {
+            Vector3[] vertices = { Vector3.zero, Vector3.right, Vector3.up };
+            Matrix4x4 a = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, 90), Vector3.one);
+            Assert.That(ShapeSyncOutfitGenerator.TryBuildDirectReferenceDelta(vertices, null,
+                Enumerable.Repeat(new BoneWeight { boneIndex0 = 0, weight0 = 1f }, vertices.Length).ToArray(),
+                new[] { a }, vertices.Select(v => a.MultiplyPoint3x4(v)).ToArray(), out Vector3[] delta, out _), Is.True);
+            foreach (Vector3 value in delta) Assert.That(value.magnitude, Is.LessThan(1e-5f), "T-02-1");
+        }
+
+        [Test]
+        public void DirectReference_BoneAndVertexDeformationReproducesTarget()
+        {
+            Vector3[] vertices = { new Vector3(0, 1, 0) };
+            Vector3[] worn = { new Vector3(-.998f, 0, 0) };
+            Matrix4x4 a = Matrix4x4.TRS(Vector3.zero, Quaternion.Euler(0, 0, 90), Vector3.one);
+            Assert.That(ShapeSyncOutfitGenerator.TryBuildDirectReferenceDelta(vertices, null,
+                new[] { new BoneWeight { boneIndex0 = 0, weight0 = 1f } }, new[] { a }, worn, out Vector3[] delta, out _), Is.True);
+            Assert.That(delta[0].x, Is.EqualTo(0f).Within(1e-5f), "T-03-1 x");
+            Assert.That(delta[0].y, Is.EqualTo(-.002f).Within(1e-5f), "T-03-1 y");
+            Assert.That(delta[0].z, Is.EqualTo(0f).Within(1e-5f), "T-03-1 z");
+            Assert.That(Vector3.Distance(a.MultiplyPoint3x4(vertices[0] + delta[0]), worn[0]), Is.LessThan(1e-5f), "T-03-2");
+        }
+
+        [Test]
+        public void DirectReference_FbmFramesReproduceEachShapeAndInterpolateLinearly()
+        {
+            Vector3[] vertices = { new Vector3(0, 1, 0) };
+            Vector3[] fbm = { new Vector3(.01f, 0, 0) };
+            BoneWeight[] weights = { new BoneWeight { boneIndex0 = 0, weight0 = 1f } };
+            Matrix4x4 baseA = Matrix4x4.Translate(new Vector3(0, .02f, 0));
+            Matrix4x4 fbmA = Matrix4x4.Translate(new Vector3(0, .03f, 0));
+            Vector3[] baseW = { new Vector3(.001f, 1.02f, 0) };
+            Vector3[] fbmW = { new Vector3(.014f, 1.03f, 0) };
+            Assert.That(ShapeSyncOutfitGenerator.TryBuildDirectReferenceDelta(vertices, null, weights, new[] { baseA }, baseW, out Vector3[] baseDelta, out _), Is.True);
+            Assert.That(ShapeSyncOutfitGenerator.TryBuildDirectReferenceDelta(vertices, fbm, weights, new[] { fbmA }, fbmW, out Vector3[] fbmDelta, out _), Is.True);
+            Vector3 baseFrame = baseDelta[0];
+            Vector3 fbmFrame = fbmDelta[0] - baseDelta[0];
+            Assert.That(Vector3.Distance(fbmA.MultiplyPoint3x4(vertices[0] + fbm[0] + baseFrame + fbmFrame), fbmW[0]), Is.LessThan(1e-5f), "T-04-1");
+            Assert.That(Vector3.Distance(baseA.MultiplyPoint3x4(vertices[0] + baseFrame), baseW[0]), Is.LessThan(1e-5f), "T-04-2");
+            Assert.That(Vector3.Distance(baseFrame + .5f * fbmFrame, baseDelta[0] + .5f * (fbmDelta[0] - baseDelta[0])), Is.LessThan(1e-5f), "T-04-3");
+        }
+
+        [Test]
+        public void DirectReference_SingularSkinningIsRejected()
+        {
+            Assert.That(ShapeSyncOutfitGenerator.TryBuildDirectReferenceDelta(new[] { Vector3.zero, Vector3.up }, null,
+                new[] { new BoneWeight { boneIndex0 = 0, weight0 = 1f }, new BoneWeight() },
+                new[] { Matrix4x4.identity }, new[] { Vector3.zero, Vector3.up }, out Vector3[] delta, out int singular), Is.False, "T-05-1 return");
+            Assert.That(singular, Is.EqualTo(1), "T-05-1 singularVertex");
+            Assert.That(delta, Is.Null);
+        }
+
+        [Test]
+        public void OutfitGenerate_CollectionTargetModeFollowsTheTable()
+        {
+            const string databasePath = Root + "/CollectionModeDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(databasePath, out GameObject source, out _);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full,
+                false, Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out string diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase opened, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncOutfitGenerator.ResolveCollectionTargetModeNameForTest(opened.Registry.Outfits.Single()), Is.EqualTo("DirectProjection"), "T-12-1 row 3");
+            var sources = new[]
+            {
+                new ShapeSyncMeshOutfitCollectionAuthoring.Source(ShapeSyncDatabaseRegistry.BaseShapeKey, source),
+                new ShapeSyncMeshOutfitCollectionAuthoring.Source("Tall", source)
+            };
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full,
+                false, sources, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out opened, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncOutfitGenerator.ResolveCollectionTargetModeNameForTest(opened.Registry.Outfits.Single()), Is.EqualTo("DirectCollection"), "T-12-3 row 3b");
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full,
+                true, sources, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out opened, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncOutfitGenerator.ResolveCollectionTargetModeNameForTest(opened.Registry.Outfits.Single()), Is.EqualTo("ProjectionFit"), "T-12-1 row 4");
+
+            const string directDatabasePath = Root + "/DirectCollectionModeDatabase.prefab";
+            PrepareDirectProjectionCollectionFixture(directDatabasePath, out _, out _, useProjection: false);
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(directDatabasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full,
+                false, sources, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(directDatabasePath, out opened, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncOutfitGenerator.ResolveCollectionTargetModeNameForTest(opened.Registry.Outfits.Single()), Is.EqualTo("DirectCollection"), "T-12-1 row 5");
+
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full,
+                false, Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, transaction) =>
+            {
+                var axis = contents.Registry.Outfits.Single().AxisFigures.Single(value => value.ShapeKey == "Tall");
+                GameObject projection = axis.ProjectionPrefab;
+                axis.ReplaceDerivedPrefabs(axis.OutfitPrefab, null);
+                Object.DestroyImmediate(projection, true);
+            }, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out opened, out diagnostic), Is.True, diagnostic);
+            InvalidOperationException exception = Assert.Throws<InvalidOperationException>(() =>
+                ShapeSyncOutfitGenerator.ResolveCollectionTargetModeNameForTest(opened.Registry.Outfits.Single()));
+            Assert.That(exception.Message, Does.StartWith("OutfitGenerateCollectionPartialProjection"), "T-12-2");
+        }
+
+        [Test]
+        public void OutfitGenerate_FigureAxisBindposesMatchRuntimeRegistryRule()
+        {
+            GameObject figure = CreateHumanoidGeneratorSource("BindposePartsFigure");
+            Mesh mesh = new Mesh();
+            Avatar avatar = figure.GetComponent<Animator>().avatar;
+            try
+            {
+                Transform hips = figure.transform.Find("Hips");
+                Transform arm = figure.transform.Find("Hips/Spine/Chest/LeftUpperArm");
+                SkinnedMeshRenderer renderer = figure.AddComponent<SkinnedMeshRenderer>();
+                mesh.vertices = new[] { Vector3.zero, Vector3.right, Vector3.up };
+                mesh.triangles = new[] { 0, 1, 2 };
+                mesh.bindposes = new[] { hips.worldToLocalMatrix * figure.transform.localToWorldMatrix, arm.worldToLocalMatrix * figure.transform.localToWorldMatrix };
+                mesh.boneWeights = new[] { new BoneWeight { boneIndex0 = 0, weight0 = 1f }, new BoneWeight { boneIndex0 = 1, weight0 = 1f }, new BoneWeight { boneIndex0 = 1, weight0 = 1f } };
+                renderer.sharedMesh = mesh;
+                renderer.bones = new[] { hips, arm };
+                renderer.rootBone = hips;
+                var baseRegistry = ScriptableObject.CreateInstance<CharacterBoneRegistry>();
+                var tallRegistry = ScriptableObject.CreateInstance<CharacterBoneRegistry>();
+                baseRegistry.bonePoses = renderer.bones.Select((bone, index) => new BonePoseData
+                    { boneName = bone.name, bindposeIndex = index, hasBindpose = true, bindpose = mesh.bindposes[index] }).ToList();
+                tallRegistry.fbmBlendName = "Tall";
+                Matrix4x4 tallHips = Matrix4x4.Translate(new Vector3(0, -.01f, 0)) * mesh.bindposes[0];
+                tallRegistry.bonePoses = new List<BonePoseData>
+                    { new BonePoseData { boneName = hips.name, bindposeIndex = 0, hasBindpose = true, bindpose = tallHips } };
+                AssetDatabase.CreateAsset(baseRegistry, Root + "/BindposePartsBaseRegistry.asset");
+                AssetDatabase.CreateAsset(tallRegistry, Root + "/BindposePartsTallRegistry.asset");
+                figure.AddComponent<DynamicBoneBlender>().ConfigureForFigure(renderer, figure.GetComponent<Animator>(), avatar, baseRegistry,
+                    new[] { new DynamicBoneBlendTarget { blendName = "Tall", targetRegistry = tallRegistry } });
+                Assert.That(ShapeSyncOutfitGenerator.TryBuildFigureAxisBindposes(figure, ShapeSyncDatabaseRegistry.BaseShapeKey, mesh.bindposes.Length,
+                    out Matrix4x4[] baseBindings, out string diagnostic), Is.True, diagnostic);
+                Assert.That(ShapeSyncOutfitGenerator.TryBuildFigureAxisBindposes(figure, "Tall", mesh.bindposes.Length,
+                    out Matrix4x4[] tallBindings, out diagnostic), Is.True, diagnostic);
+                Matrix4x4 expectedTall = Matrix4x4.TRS(new Vector3(tallHips.m03, tallHips.m13, tallHips.m23), tallHips.rotation, tallHips.lossyScale);
+                for (int element = 0; element < 16; element++)
+                {
+                    for (int index = 0; index < baseBindings.Length; index++)
+                        Assert.That(Mathf.Abs(baseBindings[index][element] - mesh.bindposes[index][element]), Is.LessThan(1e-5f), "T-13-1");
+                    Assert.That(Mathf.Abs(tallBindings[0][element] - expectedTall[element]), Is.LessThan(1e-5f), "T-13-2");
+                    Assert.That(Mathf.Abs(tallBindings[1][element] - baseBindings[1][element]), Is.LessThan(1e-5f), "T-13-3");
+                }
+                baseRegistry.bonePoses.Add(new BonePoseData { boneName = hips.name, bindposeIndex = 0, hasBindpose = true, bindpose = mesh.bindposes[0] });
+                Assert.That(ShapeSyncOutfitGenerator.TryBuildFigureAxisBindposes(figure, ShapeSyncDatabaseRegistry.BaseShapeKey, mesh.bindposes.Length,
+                    out _, out diagnostic), Is.False, "T-13-4");
+                Assert.That(diagnostic, Does.Contain("duplicate bindposeIndex"), "T-13-4");
+            }
+            finally
+            {
+                Object.DestroyImmediate(figure);
+                Object.DestroyImmediate(mesh);
+                Object.DestroyImmediate(avatar);
+            }
+        }
+
+        [Test]
+        public void OutfitGenerate_DirectCollectionResolvesRendererFromAxisFigure()
+        {
+            GameObject axisFigure = new GameObject("Fat");
+            GameObject collection = new GameObject("FatCollection");
+            Mesh mesh = new Mesh();
+            try
+            {
+                GameObject axisMesh = new GameObject("Fat_MergedMesh");
+                axisMesh.transform.SetParent(axisFigure.transform, false);
+                axisMesh.AddComponent<SkinnedMeshRenderer>().sharedMesh = mesh;
+                GameObject targetMesh = new GameObject("Fat_MergedMesh");
+                targetMesh.transform.SetParent(collection.transform, false);
+                SkinnedMeshRenderer expected = targetMesh.AddComponent<SkinnedMeshRenderer>();
+                expected.sharedMesh = mesh;
+                Assert.That(ShapeSyncOutfitGenerator.TryResolveDirectCollectionRenderer(axisFigure, collection,
+                    out SkinnedMeshRenderer renderer, out string path), Is.True, "T-19-1");
+                Assert.That(renderer, Is.SameAs(expected), "T-19-1");
+                Assert.That(path, Is.EqualTo("Fat_MergedMesh"), "T-19-1");
+
+                GameObject secondMesh = new GameObject("SecondMesh");
+                secondMesh.transform.SetParent(axisFigure.transform, false);
+                secondMesh.AddComponent<SkinnedMeshRenderer>().sharedMesh = mesh;
+                Assert.That(ShapeSyncOutfitGenerator.TryResolveDirectCollectionRenderer(axisFigure, collection,
+                    out _, out _), Is.False, "T-19-2");
+            }
+            finally
+            {
+                Object.DestroyImmediate(axisFigure);
+                Object.DestroyImmediate(collection);
+                Object.DestroyImmediate(mesh);
+            }
+        }
+
+        [Test]
+        public void DatabaseValidator_AcceptsDirectProjectionWithoutCollectionEntriesOnly()
+        {
+            const string databasePath = Root + "/DirectValidatorDatabase.prefab";
+            const string outputPath = Root + "/DirectValidatorGenerated";
+            const string detail = "Outfit Collection declares a collection kind but no collection entries.";
+            ShapeSyncDatabase database = PrepareDirectGenerateFixture(databasePath, outputPath);
+            ShapeSyncDatabaseValidator.TryValidateForGeneration(database, out IReadOnlyList<ShapeSyncDatabaseDiagnostic> diagnostics);
+            Assert.That(diagnostics.Count(value => value.Code == ShapeSyncDatabaseDiagnosticCode.RelationMissing && value.Detail == detail),
+                Is.EqualTo(0), "T-18-1");
+
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, _) =>
+            {
+                contents.Registry.Outfits.Single(outfit => outfit.Identity == "Coat").SetCollection(
+                    ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, true, Array.Empty<ShapeSyncDatabaseRegistry.OutfitCollectionEntry>());
+            }, out string diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out database, out diagnostic), Is.True, diagnostic);
+            ShapeSyncDatabaseValidator.TryValidateForGeneration(database, out diagnostics);
+            Assert.That(diagnostics.Count(value => value.Code == ShapeSyncDatabaseDiagnosticCode.RelationMissing && value.Detail == detail),
+                Is.EqualTo(1), "T-18-2");
+        }
+
+        [Test]
+        public void OutfitGenerate_DirectProjectionPayloadReproducesWornBody()
+        {
+            const string databasePath = Root + "/DirectPayloadDatabase.prefab";
+            const string outputPath = Root + "/DirectPayloadGenerated";
+            ShapeSyncDatabase database = PrepareDirectGenerateFixture(databasePath, outputPath);
+            Assert.That(ShapeSyncOutfitGenerator.TryGenerate(database, outputPath, "Bindings", string.Empty, out string diagnostic), Is.True, diagnostic);
+            GameObject figure = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Master.prefab");
+            SkinnedMeshRenderer renderer = figure.GetComponentInChildren<SkinnedMeshRenderer>(true);
+            Mesh mesh = renderer.sharedMesh;
+            Mesh payload = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Coat.prefab").GetComponent<ShapeSyncOutfit>().ProfileControlledMorphAsset.PayloadMesh;
+            Vector3[] baseFrame = ReadDirectFrame(payload, "PCM_Coat");
+            Vector3[] tallFrame = ReadDirectFrame(payload, "PCM_Tall_Coat");
+            Vector3[] fbm = ReadDirectFrame(mesh, "Tall");
+            foreach (ShapeSyncDatabaseRegistry.OutfitAxisFigureEntry axis in database.Registry.Outfits.Single().AxisFigures)
+            {
+                Assert.That(ShapeSyncOutfitGenerator.TryBuildFigureAxisBindposes(figure, axis.ShapeKey, mesh.bindposes.Length,
+                    out Matrix4x4[] bindposes, out diagnostic), Is.True, diagnostic);
+                SkinnedMeshRenderer target = axis.ProjectionPrefab.GetComponentInChildren<SkinnedMeshRenderer>(true);
+                Vector3[] worn = SkinDirectFixture(target.sharedMesh.vertices, target.sharedMesh.boneWeights, target.bones,
+                    target.sharedMesh.bindposes, axis.ProjectionPrefab.transform);
+                Transform[] corrected = renderer.bones.Select(bone => axis.ProjectionPrefab.transform.Find(
+                    AnimationUtility.CalculateTransformPath(bone, figure.transform))).ToArray();
+                Vector3[] vertices = mesh.vertices;
+                for (int i = 0; i < vertices.Length; i++)
+                    vertices[i] += baseFrame[i] + (axis.ShapeKey == "Tall" ? fbm[i] + tallFrame[i] : Vector3.zero);
+                Vector3[] actual = SkinDirectFixture(vertices, mesh.boneWeights, corrected, bindposes, axis.ProjectionPrefab.transform);
+                for (int i = 0; i < actual.Length; i++)
+                    Assert.That(Vector3.Distance(actual[i], worn[i]), Is.LessThan(1e-5f), axis.ShapeKey == "Tall" ? "T-14-2" : "T-14-1");
+            }
+        }
+
+        [Test]
+        public void OutfitGenerate_DirectProjectionBcpComesFromProjectionBody()
+        {
+            const string databasePath = Root + "/DirectBcpDatabase.prefab";
+            const string outputPath = Root + "/DirectBcpGenerated";
+            ShapeSyncDatabase database = PrepareDirectGenerateFixture(databasePath, outputPath);
+            Assert.That(ShapeSyncOutfitGenerator.TryGenerate(database, outputPath, "Bindings", string.Empty, out string diagnostic), Is.True, diagnostic);
+            ShapeSyncOutfit outfit = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Coat.prefab").GetComponent<ShapeSyncOutfit>();
+            ShapeSyncHumanoidBoneCorrection hips = outfit.HumanoidBoneCorrectionProfile.Corrections.Single(correction => correction.bone == HumanBodyBones.Hips);
+            Assert.That(hips.localPositionDelta.x, Is.EqualTo(0f).Within(1e-5f), "T-15-1");
+            Assert.That(hips.localPositionDelta.y, Is.EqualTo(.02f).Within(1e-5f), "T-15-1");
+            Assert.That(hips.localPositionDelta.z, Is.EqualTo(0f).Within(1e-5f), "T-15-1");
+
+            // A complete Collection takes priority and supplies its unshifted rig.
+            GameObject collection = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Master.prefab");
+            Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                new[] { new ShapeSyncMeshOutfitCollectionAuthoring.Source(ShapeSyncDatabaseRegistry.BaseShapeKey, collection), new ShapeSyncMeshOutfitCollectionAuthoring.Source("Tall", collection) },
+                out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out database, out diagnostic), Is.True, diagnostic);
+            Assert.That(ShapeSyncOutfitGenerator.TryGenerate(database, outputPath, "Bindings", string.Empty, out diagnostic), Is.True, diagnostic);
+            outfit = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Coat.prefab").GetComponent<ShapeSyncOutfit>();
+            Vector3 hipsDelta = outfit.HumanoidBoneCorrectionProfile.Corrections
+                .Where(correction => correction.bone == HumanBodyBones.Hips)
+                .Select(correction => correction.localPositionDelta).DefaultIfEmpty(Vector3.zero).Single();
+            Assert.That(hipsDelta.x, Is.EqualTo(0f).Within(1e-5f), "T-15-2");
+            Assert.That(hipsDelta.y, Is.EqualTo(0f).Within(1e-5f), "T-15-2");
+            Assert.That(hipsDelta.z, Is.EqualTo(0f).Within(1e-5f), "T-15-2");
+        }
+
+        [Test]
+        public void OutfitGenerate_DirectProjectionRegenerateIsStableAndLeavesSourcesUnchanged()
+        {
+            const string databasePath = Root + "/DirectStableDatabase.prefab";
+            const string outputPath = Root + "/DirectStableGenerated";
+            ShapeSyncDatabase database = PrepareDirectGenerateFixture(databasePath, outputPath);
+            string before = ComputeRawFileSha256(databasePath);
+            string sourcePath = Root + "/DirectStableGenerated_Source.prefab";
+            string sourceBefore = ComputeRawFileSha256(sourcePath);
+            Assert.That(ShapeSyncOutfitGenerator.TryGenerate(database, outputPath, "Bindings", string.Empty, out string diagnostic), Is.True, diagnostic);
+            Mesh first = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Coat.prefab").GetComponent<ShapeSyncOutfit>().ProfileControlledMorphAsset.PayloadMesh;
+            Vector3[][] frames = Enumerable.Range(0, first.blendShapeCount).Select(index => ReadDirectFrame(first, first.GetBlendShapeName(index))).ToArray();
+            Assert.That(ShapeSyncOutfitGenerator.TryGenerate(database, outputPath, "Bindings", string.Empty, out diagnostic), Is.True, diagnostic);
+            Mesh second = AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Coat.prefab").GetComponent<ShapeSyncOutfit>().ProfileControlledMorphAsset.PayloadMesh;
+            Assert.That(second.blendShapeCount, Is.EqualTo(frames.Length), "T-17-1");
+            for (int frame = 0; frame < frames.Length; frame++)
+            {
+                Vector3[] actual = ReadDirectFrame(second, second.GetBlendShapeName(frame));
+                for (int i = 0; i < actual.Length; i++)
+                    Assert.That(Vector3.Distance(actual[i], frames[frame][i]), Is.LessThan(1e-6f), "T-17-1");
+            }
+            Assert.That(ComputeRawFileSha256(databasePath), Is.EqualTo(before), "T-17-2");
+            Assert.That(ComputeRawFileSha256(sourcePath), Is.EqualTo(sourceBefore), "Projection source Prefab remains unchanged");
+        }
+
+        [Test]
+        public void OutfitGenerate_DirectReferenceRejectsBeforeWritingOutput()
+        {
+            string[] codes = { "OutfitGenerateCollectionDirectTopologyMismatch", "OutfitGenerateCollectionDirectBoneMissing", "OutfitGenerateCollectionPartialProjection" };
+            for (int scenario = 0; scenario < codes.Length; scenario++)
+            {
+                string databasePath = Root + "/DirectReject" + scenario + "Database.prefab";
+                string outputPath = Root + "/DirectReject" + scenario + "Generated";
+                PrepareDirectGenerateFixture(databasePath, outputPath);
+                int current = scenario;
+                Assert.That(ShapeSyncDatabaseTransaction.TryEditStructure(databasePath, (contents, _) =>
+                {
+                    ShapeSyncDatabaseRegistry.OutfitAxisFigureEntry axis = contents.Registry.Outfits.Single().AxisFigures.Single(value => value.ShapeKey == "Tall");
+                    if (current == 2)
+                    {
+                        GameObject projection = axis.ProjectionPrefab;
+                        axis.ReplaceDerivedPrefabs(axis.OutfitPrefab, null);
+                        Object.DestroyImmediate(projection, true);
+                    }
+                    else
+                    {
+                        SkinnedMeshRenderer target = axis.ProjectionPrefab.GetComponentInChildren<SkinnedMeshRenderer>(true);
+                        if (current == 0) target.sharedMesh.triangles = new[] { 1, 0, 2 };
+                        else { Transform[] bones = target.bones; bones[0] = null; target.bones = bones; }
+                    }
+                }, out string diagnostic), Is.True, diagnostic);
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase database, out diagnostic), Is.True, diagnostic);
+                Assert.That(ShapeSyncOutfitGenerator.TryGenerate(database, outputPath, "Bindings", string.Empty, out diagnostic), Is.False, "T-16-1");
+                Assert.That(diagnostic, Does.StartWith("OutfitGenerateUnexpected: ").And.Contain(codes[scenario]), "T-16-1");
+                Assert.That(AssetDatabase.LoadAssetAtPath<GameObject>(outputPath + "/Coat.prefab"), Is.Null, "T-16-2");
+            }
+        }
+
+        private static string ComputeRawFileSha256(string path)
+        {
+            using (var sha = System.Security.Cryptography.SHA256.Create())
+                return Convert.ToBase64String(sha.ComputeHash(File.ReadAllBytes(path)));
+        }
+
+        private static Vector3[] ReadDirectFrame(Mesh mesh, string name)
+        {
+            int index = mesh.GetBlendShapeIndex(name);
+            Assert.That(index, Is.GreaterThanOrEqualTo(0));
+            var vertices = new Vector3[mesh.vertexCount];
+            mesh.GetBlendShapeFrameVertices(index, 0, vertices, null, null);
+            return vertices;
+        }
+
+        private static Vector3[] SkinDirectFixture(Vector3[] vertices, BoneWeight[] weights, Transform[] bones, Matrix4x4[] bindposes, Transform root)
+        {
+            var result = new Vector3[vertices.Length];
+            for (int i = 0; i < result.Length; i++)
+            {
+                BoneWeight weight = weights[i];
+                int[] indices = { weight.boneIndex0, weight.boneIndex1, weight.boneIndex2, weight.boneIndex3 };
+                float[] values = { weight.weight0, weight.weight1, weight.weight2, weight.weight3 };
+                for (int c = 0; c < 4; c++)
+                    if (values[c] != 0f)
+                        result[i] += values[c] * (root.worldToLocalMatrix * bones[indices[c]].localToWorldMatrix * bindposes[indices[c]]).MultiplyPoint3x4(vertices[i]);
+            }
+            return result;
+        }
+
+        private static ShapeSyncDatabase PrepareDirectGenerateFixture(string databasePath, string outputPath)
+        {
+            EnsureTestFolder(outputPath);
+            EnsureTestFolder(outputPath + "/Bindings");
+            GameObject figure = CreateHumanoidGeneratorSource("Master");
+            Mesh mesh = new Mesh { name = "DirectFigureMesh" };
+            try
+            {
+                Transform hips = figure.transform.Find("Hips");
+                Transform arm = figure.transform.Find("Hips/Spine/Chest/LeftUpperArm");
+                SkinnedMeshRenderer renderer = figure.AddComponent<SkinnedMeshRenderer>();
+                mesh.vertices = new[] { new Vector3(0f, 0f, 1f), new Vector3(.1f, 0f, .01f), new Vector3(.2f, 0f, .01f) };
+                mesh.triangles = new[] { 0, 1, 2 };
+                mesh.bindposes = new[] { hips.worldToLocalMatrix * figure.transform.localToWorldMatrix, arm.worldToLocalMatrix * figure.transform.localToWorldMatrix };
+                mesh.boneWeights = new[] { new BoneWeight { boneIndex0 = 0, weight0 = 1f }, new BoneWeight { boneIndex0 = 1, weight0 = 1f }, new BoneWeight { boneIndex0 = 1, weight0 = 1f } };
+                mesh.AddBlendShapeFrame("Tall", 100f, new Vector3[3], new Vector3[3], new Vector3[3]);
+                renderer.sharedMesh = mesh; renderer.bones = new[] { hips, arm }; renderer.rootBone = hips;
+                Animator animator = figure.GetComponent<Animator>();
+                AssetDatabase.CreateAsset(animator.avatar, outputPath + "/Master_Avatar.asset");
+                AssetDatabase.CreateAsset(mesh, outputPath + "/Master_Mesh.asset");
+                var baseRegistry = ScriptableObject.CreateInstance<CharacterBoneRegistry>();
+                baseRegistry.bonePoses = renderer.bones.Select((bone, j) => new BonePoseData { boneName = bone.name, bindposeIndex = j, hasBindpose = true, bindpose = mesh.bindposes[j] }).ToList();
+                var tallRegistry = ScriptableObject.CreateInstance<CharacterBoneRegistry>();
+                tallRegistry.fbmBlendName = "Tall";
+                tallRegistry.bonePoses = new List<BonePoseData> { new BonePoseData { boneName = hips.name, bindposeIndex = 0, hasBindpose = true, bindpose = Matrix4x4.Translate(new Vector3(0f, -.01f, 0f)) * mesh.bindposes[0] } };
+                AssetDatabase.CreateAsset(baseRegistry, outputPath + "/BaseRegistry.asset");
+                AssetDatabase.CreateAsset(tallRegistry, outputPath + "/TallRegistry.asset");
+                figure.AddComponent<DynamicBoneBlender>().ConfigureForFigure(renderer, animator, animator.avatar, baseRegistry,
+                    new[] { new DynamicBoneBlendTarget { blendName = "Tall", targetRegistry = tallRegistry } });
+                Assert.That(PrefabUtility.SaveAsPrefabAsset(figure, outputPath + "/Master.prefab"), Is.Not.Null);
+                AssetDatabase.CreateAsset(ScriptableObject.CreateInstance<MeshBinding>(), outputPath + "/Bindings/Master_MeshBinding.asset");
+
+                Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(databasePath, out _, out string diagnostic), Is.True, diagnostic);
+                Assert.That(ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databasePath, (contents, intermediate, transaction) =>
+                {
+                    GameObject baseFigure = CreateDirectImportedFigure(figure, intermediate, "Master", transaction);
+                    Assert.That(contents.Registry.TryRegisterBaseFigure(contents, "Master", baseFigure, out string setupDiagnostic), Is.True, setupDiagnostic);
+                    Assert.That(contents.Registry.TryAdmitFigureAxes(contents, new[] { new ShapeSyncDatabaseRegistry.FigureAxisDraft("Tall", ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm) },
+                        out ShapeSyncDatabaseRegistry.FigureAxisAdmission[] admissions, out setupDiagnostic), Is.True, setupDiagnostic);
+                    GameObject tall = CreateDirectImportedFigure(figure, intermediate, "Tall", transaction);
+                    Assert.That(contents.Registry.TryCommitFigureAxes(contents, admissions, new IReadOnlyList<ShapeSyncDatabaseRegistry.FigureAxisFigureBinding>[]
+                        { new[] { new ShapeSyncDatabaseRegistry.FigureAxisFigureBinding("Tall", tall) } }, out setupDiagnostic), Is.True, setupDiagnostic);
+                    Assert.That(contents.Registry.TryAddOutfit("Coat", "Coat", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out setupDiagnostic), Is.True, setupDiagnostic);
+                }, out diagnostic), Is.True, diagnostic);
+
+                GameObject source = Object.Instantiate(figure);
+                try
+                {
+                    Object.DestroyImmediate(source.GetComponent<DynamicBoneBlender>());
+                    SkinnedMeshRenderer sourceRenderer = source.GetComponent<SkinnedMeshRenderer>();
+                    Mesh mixed = new Mesh { name = "DirectMixedMesh", subMeshCount = 2 };
+                    Vector3[] body = mesh.vertices; body[0] += new Vector3(.001f, 0f, 0f);
+                    mixed.vertices = mesh.vertices.Concat(body).ToArray();
+                    mixed.SetTriangles(new[] { 0, 1, 2 }, 0); mixed.SetTriangles(new[] { 3, 4, 5 }, 1);
+                    mixed.bindposes = mesh.bindposes; mixed.boneWeights = mesh.boneWeights.Concat(mesh.boneWeights).ToArray();
+                    AssetDatabase.CreateAsset(mixed, outputPath + "/SourceMesh.asset");
+                    Material include = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = "DirectInclude" };
+                    Material projection = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = "DirectProjection" };
+                    AssetDatabase.CreateAsset(include, outputPath + "/Include.asset"); AssetDatabase.CreateAsset(projection, outputPath + "/Projection.asset");
+                    sourceRenderer.sharedMesh = mixed; sourceRenderer.sharedMaterials = new[] { include, projection };
+                    source.transform.Find("Hips").localPosition += Vector3.up * .02f;
+                    string sourcePath = Root + "/" + Path.GetFileName(outputPath) + "_Source.prefab";
+                    Assert.That(PrefabUtility.SaveAsPrefabAsset(source, sourcePath), Is.Not.Null);
+                    GameObject persistentSource = AssetDatabase.LoadAssetAtPath<GameObject>(sourcePath);
+                    Assert.That(ShapeSyncMeshOutfitImport.TryImportBase(databasePath, "Coat", persistentSource, out diagnostic), Is.True, diagnostic);
+                    Assert.That(ShapeSyncMeshOutfitImport.TryImportAxes(databasePath, "Coat", new[] { new KeyValuePair<string, GameObject>("Tall", persistentSource) }, out diagnostic), Is.True, diagnostic);
+                    Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase imported, out diagnostic), Is.True, diagnostic);
+                    string[] names = imported.Registry.Outfits.Single().AxisFigures.Single(axis => axis.ShapeKey == ShapeSyncDatabaseRegistry.BaseShapeKey).SourceMaterialNames.ToArray();
+                    Assert.That(ShapeSyncMeshOutfitImport.TryApplyMaterialClassifications(databasePath, "Coat", new[]
+                        { new ShapeSyncDatabaseRegistry.OutfitMaterialClassificationEntry(names[0], ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Include, "Included"),
+                          new ShapeSyncDatabaseRegistry.OutfitMaterialClassificationEntry(names[1], ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Projection, null) }, out diagnostic), Is.True, diagnostic);
+                }
+                finally { Object.DestroyImmediate(source); }
+                Assert.That(ShapeSyncMeshOutfitCollectionAuthoring.TrySave(databasePath, "Coat", ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                    Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>(), out diagnostic), Is.True, diagnostic);
+                AssetDatabase.SaveAssets();
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out ShapeSyncDatabase database, out diagnostic), Is.True, diagnostic);
+                return database;
+            }
+            finally
+            {
+                Object.DestroyImmediate(figure);
+                if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(mesh))) Object.DestroyImmediate(mesh);
+            }
+        }
+
+        private static GameObject CreateDirectImportedFigure(GameObject source, Transform intermediate, string name, ShapeSyncDatabaseTransaction.EditContext transaction)
+        {
+            GameObject figure = Object.Instantiate(source, intermediate);
+            figure.name = name;
+            Object.DestroyImmediate(figure.GetComponent<DynamicBoneBlender>());
+            SkinnedMeshRenderer renderer = figure.GetComponent<SkinnedMeshRenderer>();
+            Mesh mesh = Object.Instantiate(renderer.sharedMesh);
+            mesh.name = name + "_MergedSkinnedMesh";
+            transaction.AddSubAsset(mesh); renderer.sharedMesh = mesh;
+            Assert.That(figure.AddComponent<ShapeSyncFigureImportRecord>().TryConfigure(new[] { renderer }, out string diagnostic), Is.True, diagnostic);
+            return figure;
+        }
+
+        private static void CreatePersistentMultiMaterialSkinnedSourceWithUnorderedProjection(string path)
+        {
+            GameObject root = new GameObject("MixedSource");
+            GameObject bone = new GameObject("Bone"); bone.transform.SetParent(root.transform, false);
+            GameObject meshObject = new GameObject("Coat"); meshObject.transform.SetParent(root.transform, false);
+            SkinnedMeshRenderer renderer = meshObject.AddComponent<SkinnedMeshRenderer>();
+            Mesh mesh = new Mesh { name = "MixedMesh", subMeshCount = 2 };
+            mesh.vertices = new[] { Vector3.zero, Vector3.right, Vector3.up, Vector3.right * 2f, Vector3.right * 3f, Vector3.right * 2f + Vector3.up };
+            mesh.SetTriangles(new[] { 0, 1, 2 }, 0);
+            mesh.SetTriangles(new[] { 5, 3, 4 }, 1);
+            // Keep the top-level Extra Bone parent in the renderer bone table as an
+            // unweighted slot so topology normalization can reconstruct the parent path.
+            mesh.bindposes = new[]
+            {
+                bone.transform.worldToLocalMatrix * root.transform.localToWorldMatrix,
+                root.transform.worldToLocalMatrix * root.transform.localToWorldMatrix
+            };
+            mesh.boneWeights = Enumerable.Repeat(new BoneWeight { boneIndex0 = 0, weight0 = 1f }, 6).ToArray();
+            renderer.sharedMesh = mesh; renderer.rootBone = bone.transform; renderer.bones = new[] { bone.transform, root.transform };
+            Material keep = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = "Keep" };
+            Material discard = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = "Discard" };
+            Texture2D sharedTexture = new Texture2D(1, 1) { name = "SharedTexture" };
+            sharedTexture.SetPixel(0, 0, Color.white);
+            sharedTexture.Apply();
+            keep.SetTexture("_BaseMap", sharedTexture);
+            discard.SetTexture("_BaseMap", sharedTexture);
+            renderer.sharedMaterials = new[] { keep, discard };
+            AssetDatabase.CreateAsset(mesh, Root + "/UnorderedMixedMesh.asset");
+            AssetDatabase.CreateAsset(sharedTexture, Root + "/UnorderedSharedTexture.asset");
+            AssetDatabase.CreateAsset(keep, Root + "/UnorderedKeep.mat");
+            AssetDatabase.CreateAsset(discard, Root + "/UnorderedDiscard.mat");
+            Assert.That(PrefabUtility.SaveAsPrefabAsset(root, path), Is.Not.Null);
+            Object.DestroyImmediate(root);
         }
 
         private static void CreatePersistentMultiMaterialSkinnedSource(string path)

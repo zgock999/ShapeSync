@@ -101,11 +101,14 @@ namespace zgock.ShapeSync.Tests.PlayMode
                 "Root/Head/Hair",
                 new[] { "BasicGirl" },
                 fixture.assets);
+            ScriptableObject hair2Registry = (ScriptableObject)GetPrivateField(hair2, "baseExtraBoneRegistry");
+            object hair2Pose = ((IList)GetPublicField(hair2Registry, "bonePoses"))[0];
+            SetPublicField(hair2Pose, "localPosition", new Vector3(0f, 0.01f, 0f));
 
             Assert.That(InvokeBool(fixture.attacher, "TryAttach", hair1), Is.True);
             yield return null;
 
-            LogAssert.Expect(LogType.Warning, new Regex("Extra Bone path 'Root/Head/Hair' is already owned by an attached Outfit"));
+            LogAssert.Expect(LogType.Warning, new Regex(Regex.Escape("Extra Bone root 'Root/Head/Hair' of attached Outfit 'hair-1' cannot be shared: Base pose of 'Root/Head/Hair' differs.")));
             Assert.That(InvokeBool(fixture.attacher, "TryAttach", hair2), Is.False);
 
             Assert.That(AttachedOutfits(fixture.attacher), Has.Count.EqualTo(1));

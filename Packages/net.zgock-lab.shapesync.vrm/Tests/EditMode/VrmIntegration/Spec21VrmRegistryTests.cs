@@ -35,6 +35,41 @@ namespace zgock.ShapeSync.Tests.EditMode.VrmIntegration
         }
 
         [Test]
+        public void RemoveMeshOutfit_RemovesPhysicsReferenceAndCanReopenAndRegisterAgain()
+        {
+            Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(Root + "/Database.prefab", out ShapeSyncDatabase database,
+                out string createDiagnostic), Is.True, createDiagnostic);
+            string path = AssetDatabase.GetAssetPath(database);
+            CreateCanonicalMeshOutfit(path, "Hair");
+            CreateCanonicalMeshOutfit(path, "Keep");
+            SourceVrm source = CreateSourceVrm("RemovalSource");
+            Assert.That(ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(path, "Hair", source.Prefab,
+                out string importDiagnostic), Is.True, importDiagnostic);
+            Assert.That(ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(path, "Keep", source.Prefab,
+                out importDiagnostic), Is.True, importDiagnostic);
+            var removedAssets = LoadRegistry(path).MeshOutfitPhysicsReferences
+                .Single(row => row.OutfitIdentity == "Hair").OwnedAssets.ToArray();
+            ShapeSyncDatabaseWindow window = ScriptableObject.CreateInstance<ShapeSyncDatabaseWindow>();
+            try
+            {
+                Assert.That(window.TryOpenDatabase(database, out string openDiagnostic), Is.True, openDiagnostic);
+                Assert.That(window.TrySelectOutfitForTest("Hair"), Is.True);
+                Assert.That(window.TryRemoveSelectedOutfitForTest(out string removeDiagnostic), Is.True, removeDiagnostic);
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(path, out _, out openDiagnostic), Is.True, openDiagnostic);
+                Assert.That(LoadRegistry(path).MeshOutfitPhysicsReferences.Select(row => row.OutfitIdentity),
+                    Is.EqualTo(new[] { "Keep" }));
+                var remaining = AssetDatabase.LoadAllAssetsAtPath(path);
+                Assert.That(removedAssets.Any(asset => asset != null && remaining.Contains(asset)), Is.False);
+                CreateCanonicalMeshOutfit(path, "Hair");
+                Assert.That(ShapeSyncVrmReferenceImporter.TryImportMeshOutfitPhysicsReference(path, "Hair", source.Prefab,
+                    out importDiagnostic), Is.True, importDiagnostic);
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(path, out _, out openDiagnostic), Is.True, openDiagnostic);
+                Assert.That(LoadRegistry(path).MeshOutfitPhysicsReferences, Has.Count.EqualTo(2));
+            }
+            finally { UnityEngine.Object.DestroyImmediate(window); }
+        }
+
+        [Test]
         public void FreshDatabase_DoesNotCreateOptionalVrmRegistry()
         {
             Assert.That(ShapeSyncDatabaseAsset.TryCreateAtPath(Root + "/Database.prefab", out ShapeSyncDatabase database,

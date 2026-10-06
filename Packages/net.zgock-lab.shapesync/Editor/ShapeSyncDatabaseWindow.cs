@@ -24,6 +24,10 @@ namespace zgock.ShapeSync.Editor
     /// <summary>Provides the authoring-only shell for the ShapeSync Database editor.</summary>
     public sealed class ShapeSyncDatabaseWindow : EditorWindow
     {
+        internal const string DirectProjectionHelpText =
+            "Full Collection uses each axis's Projection body directly when no Collection Prefab is set. When Collection Prefabs are set for every axis, they are used instead of the Projection body.";
+        internal const string PartialProjectionHelpText =
+            "Full Collection requires a Projection body on every axis or on none. Re-register the Outfit so that every axis has the same Material classification.";
         internal delegate bool DatabaseCreator(string folderPath, out ShapeSyncDatabase database, out string diagnostic);
         internal delegate bool DatabaseOpener(string assetPath, out ShapeSyncDatabase database, out string diagnostic);
         internal delegate bool FigureAdmitter(GameObject candidate, out ShapeSyncFigureImportAdmission admission, out string diagnostic);
@@ -53,7 +57,7 @@ namespace zgock.ShapeSync.Editor
         internal const string PbmSaveButtonLabel = "Save to Database";
         internal static string GetNameAfterPrefabAssignment(string currentName, GameObject prefab)
         {
-            return string.IsNullOrWhiteSpace(currentName) && prefab != null ? prefab.name : currentName;
+            return string.IsNullOrWhiteSpace(currentName) && prefab != null ? ShapeSyncDatabaseRegistry.ToUserNameCandidate(prefab.name) : currentName;
         }
 
         internal readonly struct PbmDetailLayout
@@ -968,6 +972,32 @@ namespace zgock.ShapeSync.Editor
             return outfitMaterialClassificationDrafts.Any(draft => draft != null && draft.SourceMaterialName == sourceMaterialName)
                 && CanEditOutfitMaterialEntryName(outfit);
         }
+        internal IReadOnlyList<string> OutfitMaterialClassificationDraftEntryNamesForTest
+        {
+            get
+            {
+                ShapeSyncDatabaseRegistry.OutfitEntry outfit = GetSelectedOutfit();
+                if (outfit == null) return Array.Empty<string>();
+                EnsureOutfitMaterialClassificationDrafts(outfit);
+                return outfitMaterialClassificationDrafts.Select(draft => draft.EntryName).ToArray();
+            }
+        }
+        internal bool TrySetOutfitMaterialClassificationDraftForTest(string sourceMaterialName, ShapeSyncDatabaseRegistry.OutfitMaterialClassification classification)
+        {
+            ShapeSyncDatabaseRegistry.OutfitEntry outfit = GetSelectedOutfit();
+            if (outfit == null) return false;
+            EnsureOutfitMaterialClassificationDrafts(outfit);
+            OutfitMaterialClassificationDraft draft = outfitMaterialClassificationDrafts.FirstOrDefault(item => item != null && item.SourceMaterialName == sourceMaterialName);
+            if (draft == null) return false;
+            draft.Classification = classification;
+            return true;
+        }
+        internal static string FbmRedefinitionNameAfterPrefabAssignmentForTest(string originalName, string name, GameObject prefab)
+        {
+            var draft = new FbmAxisRedefinitionDraft(originalName, false) { Name = name };
+            draft.AssignSourcePrefab(prefab);
+            return draft.Name;
+        }
         internal static bool IsOutfitMaterialEntryNameEditableForTest(ShapeSyncDatabaseRegistry.OutfitEntry outfit)
             => CanEditOutfitMaterialEntryName(outfit);
 
@@ -1431,9 +1461,9 @@ namespace zgock.ShapeSync.Editor
                         string nextId = EditorGUILayout.TextField("Shape Id", shape.ShapeId);
                         if (!string.Equals(nextId, shape.ShapeId, StringComparison.Ordinal))
                         {
-                            if (string.IsNullOrWhiteSpace(nextId) || nextId.Any(char.IsWhiteSpace)
+                            if (!ShapeSyncDatabaseRegistry.IsValidUserName(nextId)
                                 || database.Registry.Shapes.Any(entry => entry != null && entry != shape && string.Equals(entry.ShapeId, nextId, StringComparison.Ordinal)))
-                                diagnostic = "Shape Id must be unique and must not be empty or contain whitespace.";
+                                diagnostic = "Shape Id must be unique and must not be empty or contain whitespace or '_'.";
                             else
                             {
                                 shape.SetShapeId(nextId);
@@ -1681,8 +1711,8 @@ namespace zgock.ShapeSync.Editor
             if (database?.Registry == null) { saveDiagnostic = EmptyDatabaseMessage; diagnostic = saveDiagnostic; return false; }
             if (pendingShapeDraft != null)
             { saveDiagnostic = "Finish or discard the current Shape draft before creating another Shape."; diagnostic = saveDiagnostic; return false; }
-            if (string.IsNullOrWhiteSpace(newShapeId) || newShapeId.Any(char.IsWhiteSpace))
-            { saveDiagnostic = "Shape Id must not be empty or contain whitespace."; diagnostic = saveDiagnostic; return false; }
+            if (!ShapeSyncDatabaseRegistry.IsValidUserName(newShapeId))
+            { saveDiagnostic = "Shape Id must not be empty or contain whitespace or '_'."; diagnostic = saveDiagnostic; return false; }
             if (database.Registry.Shapes.Any(entry => entry != null && string.Equals(entry.ShapeId, newShapeId, StringComparison.Ordinal)))
             { saveDiagnostic = "Shape Id already exists: " + newShapeId; diagnostic = saveDiagnostic; return false; }
             if (!Enum.IsDefined(typeof(ShapeSyncDatabaseRegistry.ShapeKind), kind))
@@ -1796,9 +1826,9 @@ namespace zgock.ShapeSync.Editor
             if (shape == null) { saveDiagnostic = "Select an existing Shape first."; diagnostic = saveDiagnostic; return false; }
             if (pendingShapeDraft == shape)
             {
-                if (string.IsNullOrWhiteSpace(selectedShapeId) || selectedShapeId.Any(char.IsWhiteSpace)
+                if (!ShapeSyncDatabaseRegistry.IsValidUserName(selectedShapeId)
                     || database.Registry.Shapes.Any(entry => entry != null && string.Equals(entry.ShapeId, selectedShapeId, StringComparison.Ordinal)))
-                { saveDiagnostic = "Shape Id must be unique and must not be empty or contain whitespace."; diagnostic = saveDiagnostic; return false; }
+                { saveDiagnostic = "Shape Id must be unique and must not be empty or contain whitespace or '_'."; diagnostic = saveDiagnostic; return false; }
                 IReadOnlyList<string> pendingTags = shape.Kind == ShapeSyncDatabaseRegistry.ShapeKind.Morph ? Array.Empty<string>() : selectedShapeTagsDraft;
                 if (!ShapeSyncDatabaseDirectEdit.TryEdit(database, "Add Shape",
                     (ShapeSyncDatabaseRegistry registry, out string detail) =>
@@ -2785,6 +2815,15 @@ namespace zgock.ShapeSync.Editor
                 && outfit.AxisFigures.Any(axis => axis != null && axis.ProjectionPrefab != null);
             using (new EditorGUI.DisabledScope(!canUseProjection))
                 useProjectionForFullCollection = EditorGUILayout.ToggleLeft("Use Projection for Full Collection", canUseProjection && useProjectionForFullCollection);
+            bool hasAnyProjection = outfit.AxisFigures.Any(axis => axis != null && axis.ProjectionPrefab != null);
+            bool hasAllProjection = outfit.AxisFigures.Count > 0 && outfit.AxisFigures.All(axis => axis != null && axis.ProjectionPrefab != null);
+            if (outfitCollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full)
+            {
+                if (hasAnyProjection && !hasAllProjection)
+                    EditorGUILayout.HelpBox(PartialProjectionHelpText, MessageType.Error);
+                else if (hasAllProjection && !useProjectionForFullCollection)
+                    EditorGUILayout.HelpBox(DirectProjectionHelpText, MessageType.Info);
+            }
             if (outfitCollectionKind != ShapeSyncDatabaseRegistry.OutfitCollectionKind.None)
             {
                 using (var scroll = new EditorGUILayout.ScrollViewScope(outfitCollectionScrollPosition, GUILayout.ExpandHeight(true)))
@@ -3631,6 +3670,9 @@ namespace zgock.ShapeSync.Editor
                 if (IsOutfitDetailDirty())
                 {
                     ShapeSyncMeshOutfitCollectionAuthoring.Source[] sources = outfitCollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.None
+                        || (outfitCollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full
+                            && (outfit.AxisFigures.Count > 0 && outfit.AxisFigures.All(axis => axis != null && axis.ProjectionPrefab != null))
+                            && !useProjectionForFullCollection && outfitCollectionDrafts.All(draft => draft.Prefab == null))
                         ? Array.Empty<ShapeSyncMeshOutfitCollectionAuthoring.Source>()
                         : outfitCollectionDrafts.Select(draft => new ShapeSyncMeshOutfitCollectionAuthoring.Source(draft.ShapeKey, draft.Prefab)).ToArray();
                     if (!ShapeSyncMeshOutfitCollectionAuthoring.TrySave(path, identity, outfitCollectionKind, useProjectionForFullCollection, sources, out saveDiagnostic))
@@ -3779,6 +3821,7 @@ namespace zgock.ShapeSync.Editor
                 }
                 ShapeSyncDatabaseRegistry.OutfitEntry storedOutfit = contents.Registry.Outfits
                     .Single(entry => entry != null && entry.Identity == identity);
+                ShapeSyncDatabaseOptionalRegistryProvider.RemoveVrmOutfitReferences(path, identity, transaction);
                 changed = contents.Registry.TryRemoveOutfit(identity, out registryDiagnostic);
                 if (!changed) return;
                 // Remove the registry relation before destroying its hierarchy
@@ -4823,7 +4866,7 @@ namespace zgock.ShapeSync.Editor
                 ShapeSyncDatabaseRegistry.OutfitMaterialClassificationEntry saved = outfit.MaterialClassifications.FirstOrDefault(entry => entry != null && entry.SourceMaterialName == sourceMaterialName);
                 outfitMaterialClassificationDrafts.Add(new OutfitMaterialClassificationDraft(sourceMaterialName,
                     saved?.Classification ?? ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Include,
-                    saved?.EntryName ?? sourceMaterialName));
+                    saved?.EntryName ?? ShapeSyncMaterialAdapterResolver.CreateDefaultEntryName(materialIndex)));
             }
         }
 
@@ -5223,10 +5266,10 @@ namespace zgock.ShapeSync.Editor
                 int nextDynamicOutfitItemId = FirstDynamicOutfitItemId;
                 int nextDynamicShapeItemId = FirstDynamicShapeItemId;
                 ShapeSyncTreeViewItem root = new ShapeSyncTreeViewItem { id = 0, depth = -1, displayName = "Root", children = new System.Collections.Generic.List<ShapeSyncTreeViewItem>() };
-                root.children.Add(new ShapeSyncTreeViewItem { id = 1, depth = 0, displayName = TreeLabels[(int)Section.General] });
+                root.AddChild(new ShapeSyncTreeViewItem { id = 1, depth = 0, displayName = TreeLabels[(int)Section.General] });
                 ShapeSyncTreeViewItem figure = new ShapeSyncTreeViewItem { id = 2, depth = 0, displayName = TreeLabels[(int)Section.Figure], children = new System.Collections.Generic.List<ShapeSyncTreeViewItem>() };
-                foreach (int id in GetFigureChildItemIds()) figure.children.Add(new ShapeSyncTreeViewItem { id = id, depth = 1, displayName = GetFigureChildDisplayName(id) });
-                root.children.Add(figure);
+                foreach (int id in GetFigureChildItemIds()) figure.AddChild(new ShapeSyncTreeViewItem { id = id, depth = 1, displayName = GetFigureChildDisplayName(id) });
+                root.AddChild(figure);
                 ShapeSyncTreeViewItem outfitRoot = new ShapeSyncTreeViewItem { id = OutfitsItemId, depth = 0, displayName = "Outfits", children = new List<ShapeSyncTreeViewItem>() };
                 ShapeSyncTreeViewItem meshOutfits = new ShapeSyncTreeViewItem { id = MeshOutfitsItemId, depth = 1, displayName = "Mesh Outfits", children = new List<ShapeSyncTreeViewItem>() };
                 ShapeSyncTreeViewItem materialOutfits = new ShapeSyncTreeViewItem { id = MaterialOutfitsItemId, depth = 1, displayName = "Material Outfits", children = new List<ShapeSyncTreeViewItem>() };
@@ -5250,27 +5293,27 @@ namespace zgock.ShapeSync.Editor
                             int childItemId = nextDynamicOutfitItemId++;
                             outfitIdentityByItemId.Add(childItemId, outfit.Identity);
                             outfitChildLabelByItemId.Add(childItemId, childLabels[childIndex]);
-                            meshOutfit.children.Add(new ShapeSyncTreeViewItem
+                            meshOutfit.AddChild(new ShapeSyncTreeViewItem
                             {
                                 id = childItemId,
                                 depth = 3,
                                 displayName = childLabels[childIndex]
                             });
                         }
-                        meshOutfits.children.Add(meshOutfit);
+                        meshOutfits.AddChild(meshOutfit);
                     }
                     else
                     {
                         int outfitItemId = nextDynamicOutfitItemId++;
                         outfitIdentityByItemId.Add(outfitItemId, outfit.Identity);
-                        materialOutfits.children.Add(new ShapeSyncTreeViewItem { id = outfitItemId, depth = 2, displayName = outfit.DisplayName });
+                        materialOutfits.AddChild(new ShapeSyncTreeViewItem { id = outfitItemId, depth = 2, displayName = outfit.DisplayName });
                     }
                 }
-                outfitRoot.children.Add(meshOutfits);
-                outfitRoot.children.Add(materialOutfits);
-                root.children.Add(outfitRoot);
+                outfitRoot.AddChild(meshOutfits);
+                outfitRoot.AddChild(materialOutfits);
+                root.AddChild(outfitRoot);
                 ShapeSyncTreeViewItem shapeRoot = new ShapeSyncTreeViewItem { id = ShapesItemId, depth = 0, displayName = TreeLabels[(int)Section.Shapes], children = new List<ShapeSyncTreeViewItem>() };
-                shapeRoot.children.Add(new ShapeSyncTreeViewItem { id = ShapeTagsItemId, depth = 1, displayName = "Tags" });
+                shapeRoot.AddChild(new ShapeSyncTreeViewItem { id = ShapeTagsItemId, depth = 1, displayName = "Tags" });
                 foreach (ShapeSyncDatabaseRegistry.ShapeKind kind in Enum.GetValues(typeof(ShapeSyncDatabaseRegistry.ShapeKind)))
                 {
                     ShapeSyncTreeViewItem kindRoot = new ShapeSyncTreeViewItem { id = nextDynamicShapeItemId++, depth = 1, displayName = kind + " Shapes", children = new List<ShapeSyncTreeViewItem>() };
@@ -5278,13 +5321,13 @@ namespace zgock.ShapeSync.Editor
                     {
                         int shapeItemId = nextDynamicShapeItemId++;
                         shapeIdByItemId.Add(shapeItemId, shape.ShapeId);
-                        kindRoot.children.Add(new ShapeSyncTreeViewItem { id = shapeItemId, depth = 2, displayName = shape.DisplayName });
+                        kindRoot.AddChild(new ShapeSyncTreeViewItem { id = shapeItemId, depth = 2, displayName = shape.DisplayName });
                     }
-                    shapeRoot.children.Add(kindRoot);
+                    shapeRoot.AddChild(kindRoot);
                 }
-                root.children.Add(shapeRoot);
-                root.children.Add(new ShapeSyncTreeViewItem { id = 5, depth = 0, displayName = TreeLabels[(int)Section.Textures] });
-                root.children.Add(new ShapeSyncTreeViewItem { id = 10, depth = 0, displayName = "Generation" });
+                root.AddChild(shapeRoot);
+                root.AddChild(new ShapeSyncTreeViewItem { id = 5, depth = 0, displayName = TreeLabels[(int)Section.Textures] });
+                root.AddChild(new ShapeSyncTreeViewItem { id = 10, depth = 0, displayName = "Generation" });
                 return root;
             }
             private static string GetFigureChildDisplayName(int id) => id switch

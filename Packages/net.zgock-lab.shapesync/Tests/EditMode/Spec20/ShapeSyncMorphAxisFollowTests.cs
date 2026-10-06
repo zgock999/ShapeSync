@@ -413,6 +413,77 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
             Assert.That(FindShape(database, "hair-a").Morphs, Is.Empty, "T-01-d");
         }
         [Test]
+        public void UserAuthoredNames_RejectUnderscoreOnAxisRenameAndReplacement()
+        {
+            Assert.That(ShapeSyncDatabaseAsset.TryCreate(Root, out ShapeSyncDatabase database, out string createDiagnostic), Is.True, createDiagnostic);
+            string databasePath = AssetDatabase.GetAssetPath(database);
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databasePath, (contents, intermediate, transaction) =>
+            {
+                GameObject baseFigure = new GameObject("Base"); baseFigure.transform.SetParent(intermediate, false);
+                Assert.That(contents.Registry.TryRegisterBaseFigure(contents, "Base", baseFigure, out string baseDiagnostic), Is.True, baseDiagnostic);
+                Assert.That(contents.Registry.TryAdmitFigureAxes(contents, new[] { new ShapeSyncDatabaseRegistry.FigureAxisDraft("Smile", ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm) }, out ShapeSyncDatabaseRegistry.FigureAxisAdmission[] fbmAdmissions, out string fbmAdmissionDiagnostic), Is.True, fbmAdmissionDiagnostic);
+                GameObject smile = new GameObject("Smile"); smile.transform.SetParent(intermediate, false);
+                SkinnedMeshRenderer smileRenderer = smile.AddComponent<SkinnedMeshRenderer>();
+                Mesh smileMesh = new Mesh { name = "Smile_MergedSkinnedMesh", vertices = new[] { Vector3.zero, Vector3.right, Vector3.up }, triangles = new[] { 0, 1, 2 } };
+                transaction.AddSubAsset(smileMesh); smileRenderer.sharedMesh = smileMesh;
+                ShapeSyncFigureImportRecord smileRecord = smile.AddComponent<ShapeSyncFigureImportRecord>();
+                Assert.That(smileRecord.TryConfigure(new[] { smileRenderer }, out string smileRecordDiagnostic), Is.True, smileRecordDiagnostic);
+                Assert.That(contents.Registry.TryCommitFigureAxes(contents, fbmAdmissions, new IReadOnlyList<ShapeSyncDatabaseRegistry.FigureAxisFigureBinding>[] { new[] { new ShapeSyncDatabaseRegistry.FigureAxisFigureBinding("Smile", smile) } }, out string fbmCommitDiagnostic), Is.True, fbmCommitDiagnostic);
+                Assert.That(contents.Registry.TryAdmitFigureAxes(contents, new[] { new ShapeSyncDatabaseRegistry.FigureAxisDraft("Bust", ShapeSyncDatabaseRegistry.FigureAxisKind.Pbm) }, out ShapeSyncDatabaseRegistry.FigureAxisAdmission[] pbmAdmissions, out string pbmAdmissionDiagnostic), Is.True, pbmAdmissionDiagnostic);
+                GameObject baseBust = new GameObject("Base_Bust"); baseBust.transform.SetParent(intermediate, false);
+                SkinnedMeshRenderer baseBustRenderer = baseBust.AddComponent<SkinnedMeshRenderer>();
+                Mesh baseBustMesh = new Mesh { name = "Base_Bust_MergedSkinnedMesh", vertices = new[] { Vector3.zero, Vector3.right, Vector3.up }, triangles = new[] { 0, 1, 2 } };
+                transaction.AddSubAsset(baseBustMesh); baseBustRenderer.sharedMesh = baseBustMesh;
+                ShapeSyncFigureImportRecord baseBustRecord = baseBust.AddComponent<ShapeSyncFigureImportRecord>();
+                Assert.That(baseBustRecord.TryConfigure(new[] { baseBustRenderer }, out string baseBustRecordDiagnostic), Is.True, baseBustRecordDiagnostic);
+                GameObject smileBust = new GameObject("Smile_Bust"); smileBust.transform.SetParent(intermediate, false);
+                SkinnedMeshRenderer smileBustRenderer = smileBust.AddComponent<SkinnedMeshRenderer>();
+                Mesh smileBustMesh = new Mesh { name = "Smile_Bust_MergedSkinnedMesh", vertices = new[] { Vector3.zero, Vector3.right, Vector3.up }, triangles = new[] { 0, 1, 2 } };
+                transaction.AddSubAsset(smileBustMesh); smileBustRenderer.sharedMesh = smileBustMesh;
+                ShapeSyncFigureImportRecord smileBustRecord = smileBust.AddComponent<ShapeSyncFigureImportRecord>();
+                Assert.That(smileBustRecord.TryConfigure(new[] { smileBustRenderer }, out string smileBustRecordDiagnostic), Is.True, smileBustRecordDiagnostic);
+                Assert.That(contents.Registry.TryCommitFigureAxes(contents, pbmAdmissions, new IReadOnlyList<ShapeSyncDatabaseRegistry.FigureAxisFigureBinding>[]
+                {
+                    new[]
+                    {
+                        new ShapeSyncDatabaseRegistry.FigureAxisFigureBinding(ShapeSyncDatabaseRegistry.BaseShapeKey, baseBust),
+                        new ShapeSyncDatabaseRegistry.FigureAxisFigureBinding("Smile", smileBust)
+                    }
+                }, out string pbmCommitDiagnostic), Is.True, pbmCommitDiagnostic);
+                Assert.That(contents.Registry.TryAddShape("morph-a", "Morph A", ShapeSyncDatabaseRegistry.ShapeKind.Morph, 0, Array.Empty<string>(), out string addDiagnostic), Is.True, addDiagnostic);
+                Assert.That(contents.Registry.TrySetShapeMorphs("morph-a", new[] { new MorphValue { Target = "Smile", Value = 0.5f }, new MorphValue { Target = "Bust", Value = 0.25f } }, out string morphDiagnostic), Is.True, morphDiagnostic);
+                Assert.That(contents.Registry.TryAddShape("hair-a", "Hair A", ShapeSyncDatabaseRegistry.ShapeKind.Hair, 0, Array.Empty<string>(), out string hairDiagnostic), Is.True, hairDiagnostic);
+            }, out string transactionDiagnostic), Is.True, transactionDiagnostic);
+
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databasePath, (contents, _, _) =>
+            {
+                Assert.That(contents.Registry.TryRenameFbmAxis(contents, "Smile", "Smile_Renamed", out _, out string diagnostic), Is.False, "T-11-a");
+                Assert.That(diagnostic, Does.Contain("invalid"), "T-11-a");
+            }, out transactionDiagnostic), Is.True, transactionDiagnostic);
+
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databasePath, (contents, _, _) =>
+            {
+                Assert.That(contents.Registry.TryPrepareFbmReplacement(contents, "Smile", "Smile_Next", out _, out _, out _, out string diagnostic), Is.False, "T-11-b");
+                Assert.That(diagnostic, Does.Contain("invalid"), "T-11-b");
+            }, out transactionDiagnostic), Is.True, transactionDiagnostic);
+
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databasePath, (contents, _, _) =>
+            {
+                Assert.That(contents.Registry.TryRenamePbmAxis(contents, "Bust", "Bust_Renamed", out string diagnostic), Is.False, "T-11-c");
+                Assert.That(diagnostic, Does.Contain("invalid"), "T-11-c");
+            }, out transactionDiagnostic), Is.True, transactionDiagnostic);
+
+            Assert.That(ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databasePath, (contents, _, _) =>
+            {
+                Assert.That(contents.Registry.TryPreparePbmReplacement(contents, "Bust", "Bust_Next", Array.Empty<ShapeSyncDatabaseRegistry.FigureAxisFigureBinding>(), out _, out _, out string diagnostic), Is.False, "T-11-d");
+                Assert.That(diagnostic, Does.Contain("invalid"), "T-11-d");
+            }, out transactionDiagnostic), Is.True, transactionDiagnostic);
+
+            Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out database, out string reopenDiagnostic), Is.True, reopenDiagnostic);
+            Assert.That(FindShape(database, "morph-a").Morphs.Select(v => v.Target), Is.EqualTo(new[] { "Smile", "Bust" }), "T-11-e");
+        }
+
+        [Test]
         public void MorphShapeAxes_FollowPbmRename()
         {
             Assert.That(ShapeSyncDatabaseAsset.TryCreate(Root, out ShapeSyncDatabase database, out string createDiagnostic), Is.True, createDiagnostic);

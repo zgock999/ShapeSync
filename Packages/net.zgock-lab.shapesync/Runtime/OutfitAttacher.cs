@@ -193,6 +193,8 @@ namespace zgock.ShapeSync
         {
             public string rootPath;
             public Transform anchor;
+            public bool atAttachedRoot;
+            public AttachedOutfitRegistrySet sharedWith;
         }
 
         private sealed class RendererPlan
@@ -276,8 +278,15 @@ namespace zgock.ShapeSync
                 Debug.LogWarning($"OutfitAttacher rejected outfit attach: {error ?? "runtime instance has no ShapeSyncOutfit."}", this);
                 return false;
             }
+            if (!TryValidateRendererBoneOwnership(rendererPlans, plan, CollectAttachedRootPaths(), out error))
+            {
+                DestroyForLifecycle(runtimeInstance);
+                Debug.LogWarning($"OutfitAttacher rejected outfit attach: {error}", this);
+                return false;
+            }
             bool usesStaticBcpBindposes = UsesStaticBcpBindposes(runtimeOutfit);
             List<Transform> attachedRoots = new List<Transform>();
+            List<Transform> referencedRoots = new List<Transform>();
             List<string> attachedRootPaths = new List<string>();
             List<Transform> physicsSourceRoots = new List<Transform>();
             List<OutfitSkinnedMeshBinding> bindings = new List<OutfitSkinnedMeshBinding>(rendererPlans.Count);
@@ -322,6 +331,24 @@ namespace zgock.ShapeSync
                     return false;
                 }
 
+                if (rootPlan.sharedWith != null)
+                {
+                    Transform sharedFigureRoot = FindReferencedRoot(rootPlan.sharedWith, rootPlan.rootPath);
+                    if (sharedFigureRoot == null)
+                    {
+                        RollbackAttach(runtimeInstance, attachedRoots, bindings, rendererRoots, springBoneAttachment);
+                        profileControlledMorphBinding?.Dispose();
+                        Debug.LogWarning($"OutfitAttacher rejected outfit attach because shared Extra Bone root '{rootPlan.rootPath}' is no longer on the Figure.", this);
+                        return false;
+                    }
+
+                    MapSharedHierarchy(runtimeExtraRoot, sharedFigureRoot, figureTransformByOutfitTransform);
+                    referencedRoots.Add(sharedFigureRoot);
+                    attachedRootPaths.Add(rootPlan.rootPath);
+                    physicsSourceRoots.Add(runtimeExtraRoot);
+                    continue;
+                }
+
                 if (!TryCloneExtraBoneSubtree(runtimeExtraRoot, rootPlan.anchor, figureTransformByOutfitTransform, out Transform figureExtraRoot, out error))
                 {
                     RollbackAttach(runtimeInstance, attachedRoots, bindings, rendererRoots, springBoneAttachment);
@@ -330,6 +357,7 @@ namespace zgock.ShapeSync
                     return false;
                 }
                 attachedRoots.Add(figureExtraRoot);
+                referencedRoots.Add(figureExtraRoot);
                 attachedRootPaths.Add(rootPlan.rootPath);
                 physicsSourceRoots.Add(runtimeExtraRoot);
             }
@@ -343,7 +371,9 @@ namespace zgock.ShapeSync
             }
             if (ShapeSyncOptionalVrmIntegrationRegistry.TryGet(gameObject, out IShapeSyncOptionalVrmIntegration optionalIntegration))
             {
-                Func<Transform, Transform> mapper = sourceTransform => MapOutfitTransform(runtimeInstance.transform, figureTransformByOutfitTransform, sourceTransform);
+                HashSet<string> foreignRootPaths = CollectAttachedRootPaths();
+                foreignRootPaths.ExceptWith(attachedRootPaths);
+                Func<Transform, Transform> mapper = sourceTransform => MapOutfitTransform(runtimeInstance.transform, figureTransformByOutfitTransform, foreignRootPaths, sourceTransform);
                 ShapeSyncOptionalVrmAttachRequest request = new ShapeSyncOptionalVrmAttachRequest(gameObject, figureAnimator, runtimeInstance, mapper);
                 if (!optionalIntegration.TryAttachOutfitPhysics(request, out springBoneAttachment, out error))
                 {
@@ -394,13 +424,14 @@ namespace zgock.ShapeSync
             AttachedOutfitRegistrySet attachedOutfit = new AttachedOutfitRegistrySet(
                 runtimeOutfit,
                 runtimeInstance,
-                attachedRoots,
+                referencedRoots,
                 attachedRootPaths,
                 bindings,
                 rendererRoots,
                 springBoneAttachment,
                 runtimeOutfit.HumanoidBoneCorrectionProfile,
-                profileControlledMorphBinding);
+                profileControlledMorphBinding,
+                outfitPrefab);
                 attachedOutfits.Add(attachedOutfit);
                 PushAttachedOutfitsToBlender();
             ApplyCurrentFbmState(bindings);
@@ -433,6 +464,7 @@ namespace zgock.ShapeSync
             var projectedRegistryIds = new HashSet<string>(StringComparer.Ordinal);
             var projectedRootsByRegistry = new Dictionary<string, List<string>>(StringComparer.Ordinal);
             var projectedRootPaths = new HashSet<string>(StringComparer.Ordinal);
+            var projectedRootReferenceCounts = new Dictionary<string, int>(StringComparer.Ordinal);
             var detachedRootPaths = new HashSet<string>(StringComparer.Ordinal);
             var projectedAttachedOutfits = new List<AttachedOutfitRegistrySet>();
             for (int i = 0; i < attachedOutfits.Count; i++)
@@ -446,7 +478,12 @@ namespace zgock.ShapeSync
                 for (int rootIndex = 0; attachedRoots != null && rootIndex < attachedRoots.Count; rootIndex++)
                 {
                     string root = attachedRoots[rootIndex];
-                    if (!string.IsNullOrEmpty(root)) { roots.Add(root); projectedRootPaths.Add(root); }
+                    if (!string.IsNullOrEmpty(root))
+                    {
+                        roots.Add(root);
+                        projectedRootPaths.Add(root);
+                        projectedRootReferenceCounts[root] = (projectedRootReferenceCounts.TryGetValue(root, out int count) ? count : 0) + 1;
+                    }
                 }
                 projectedRootsByRegistry[attached.RegistryId] = roots;
             }
@@ -467,7 +504,8 @@ namespace zgock.ShapeSync
                         return false;
                     }
                     if (!TryBuildAttachPlan(command.Outfit, projectedRegistryIds, projectedRootPaths, detachedRootPaths, projectedAttachedOutfits, out AttachPlan plan, out string error)
-                        || !TryBuildRendererPlans(command.Outfit, out _, out error)
+                        || !TryBuildRendererPlans(command.Outfit, out List<RendererPlan> rendererPlans, out error)
+                        || !TryValidateRendererBoneOwnership(rendererPlans, plan, projectedRootPaths, out error)
                         || !command.Outfit.TryValidateProfileControlledMorphConfiguration(out error)
                         || !TryValidateProfileControlledMorphAttach(command.Outfit, out error)
                         || !TryValidateOptionalVrmAttach(command.Outfit, out error))
@@ -479,12 +517,15 @@ namespace zgock.ShapeSync
                     for (int rootIndex = 0; rootIndex < plan.roots.Count; rootIndex++)
                     {
                         string root = plan.roots[rootIndex].rootPath;
-                        if (!string.IsNullOrEmpty(root) && !projectedRootPaths.Add(root))
+                        if (string.IsNullOrEmpty(root)) continue;
+                        if (plan.roots[rootIndex].sharedWith == null && projectedRootPaths.Contains(root))
                         {
                             result = OutfitAttacherDryRunResult.Failure(i, command, "ProjectedRootConflict", $"Extra Bone root '{root}' conflicts with an earlier projected Outfit command.");
                             return false;
                         }
-                        if (!string.IsNullOrEmpty(root)) roots.Add(root);
+                        projectedRootPaths.Add(root);
+                        projectedRootReferenceCounts[root] = (projectedRootReferenceCounts.TryGetValue(root, out int count) ? count : 0) + 1;
+                        roots.Add(root);
                     }
                     projectedRegistryIds.Add(command.RegistryId);
                     projectedRootsByRegistry[command.RegistryId] = roots;
@@ -511,7 +552,19 @@ namespace zgock.ShapeSync
                     }
                     if (projectedRootsByRegistry.TryGetValue(command.RegistryId, out List<string> roots))
                     {
-                        for (int rootIndex = 0; rootIndex < roots.Count; rootIndex++) { projectedRootPaths.Remove(roots[rootIndex]); detachedRootPaths.Add(roots[rootIndex]); }
+                        for (int rootIndex = 0; rootIndex < roots.Count; rootIndex++)
+                        {
+                            string root = roots[rootIndex];
+                            int remaining = (projectedRootReferenceCounts.TryGetValue(root, out int count) ? count : 0) - 1;
+                            if (remaining > 0)
+                            {
+                                projectedRootReferenceCounts[root] = remaining;
+                                continue;
+                            }
+                            projectedRootReferenceCounts.Remove(root);
+                            projectedRootPaths.Remove(root);
+                            detachedRootPaths.Add(root);
+                        }
                         projectedRootsByRegistry.Remove(command.RegistryId);
                     }
                     for (int outfitIndex = projectedAttachedOutfits.Count - 1; outfitIndex >= 0; outfitIndex--)
@@ -578,15 +631,39 @@ namespace zgock.ShapeSync
                 attachedOutfit.ProfileControlledMorphBinding?.Dispose();
                 attachedOutfits.RemoveAt(i);
                 PushAttachedOutfitsToBlender();
+
+                // Roots still referenced by a remaining Outfit stay on the Figure; only the rest are released.
+                var retainedRoots = new List<Transform>();
+                var heirAttachments = new List<IShapeSyncOptionalVrmAttachment>();
+                var releasedRoots = new List<Transform>();
+                IReadOnlyList<Transform> extraRoots = attachedOutfit.ExtraRoots;
+                for (int rootIndex = 0; extraRoots != null && rootIndex < extraRoots.Count; rootIndex++)
+                {
+                    Transform root = extraRoots[rootIndex];
+                    if (root == null) continue;
+                    AttachedOutfitRegistrySet heir = FindOutfitReferencingRootTransform(root);
+                    if (heir == null)
+                    {
+                        releasedRoots.Add(root);
+                        continue;
+                    }
+                    retainedRoots.Add(root);
+                    heirAttachments.Add(heir.SpringBoneAttachment);
+                }
+                if (retainedRoots.Count > 0)
+                {
+                    attachedOutfit.SpringBoneAttachment?.TransferSharedOwnership(retainedRoots, heirAttachments, releasedRoots);
+                }
+
                 // A same-frame replacement must not leave this generated graph
                 // under the Figure until Unity processes deferred destruction.
                 // Hide only the explicitly owned Extra roots before rebuilding
                 // the Figure Spring graph.
-                DetachOwnedExtraRoots(attachedOutfit.ExtraRoots);
+                DetachOwnedExtraRoots(releasedRoots);
                 // Remove this Outfit's entries and reconstruct after the old
                 // graph is no longer visible in the Figure hierarchy.
                 attachedOutfit.SpringBoneAttachment?.Dispose();
-                DestroyTransforms(attachedOutfit.ExtraRoots);
+                DestroyTransforms(releasedRoots);
                 if (attachedOutfit.RuntimeOutfitInstance != null)
                 {
                     DestroyForLifecycle(attachedOutfit.RuntimeOutfitInstance);
@@ -596,6 +673,20 @@ namespace zgock.ShapeSync
             }
 
             return false;
+        }
+
+
+        private AttachedOutfitRegistrySet FindOutfitReferencingRootTransform(Transform root)
+        {
+            for (int i = 0; i < attachedOutfits.Count; i++)
+            {
+                IReadOnlyList<Transform> roots = attachedOutfits[i]?.ExtraRoots;
+                for (int j = 0; roots != null && j < roots.Count; j++)
+                {
+                    if (roots[j] == root) return attachedOutfits[i];
+                }
+            }
+            return null;
         }
 
         /// <summary>Publishes the single successful topology-mutation boundary used by attach and detach.</summary>
@@ -743,6 +834,28 @@ namespace zgock.ShapeSync
             return true;
         }
 
+        private static bool TryValidateRendererBoneOwnership(IReadOnlyList<RendererPlan> rendererPlans, AttachPlan plan, ICollection<string> currentRootPaths, out string error)
+        {
+            error = null;
+            var ownRootPaths = new HashSet<string>(StringComparer.Ordinal);
+            for (int i = 0; i < plan.roots.Count; i++) ownRootPaths.Add(plan.roots[i].rootPath);
+            for (int planIndex = 0; planIndex < rendererPlans.Count; planIndex++)
+            {
+                RendererPlan rendererPlan = rendererPlans[planIndex];
+                for (int boneIndex = 0; boneIndex < rendererPlan.bonePaths.Length; boneIndex++)
+                {
+                    string bonePath = rendererPlan.bonePaths[boneIndex];
+                    if (bonePath == null) continue;
+                    foreach (string rootPath in currentRootPaths)
+                    {
+                        if (ownRootPaths.Contains(rootPath) || !IsPathUnderRoot(bonePath, rootPath)) continue;
+                        error = $"Renderer '{rendererPlan.rendererPath}' bone path '{bonePath}' belongs to Extra Bone root '{rootPath}' of another attached Outfit and is not declared by this Outfit.";
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
         private bool TryCreateRendererBindings(
             IReadOnlyList<RendererPlan> rendererPlans,
             List<OutfitSkinnedMeshBinding> bindings,
@@ -957,6 +1070,28 @@ namespace zgock.ShapeSync
         }
 
 
+        private static Transform FindReferencedRoot(AttachedOutfitRegistrySet outfit, string rootPath)
+        {
+            IReadOnlyList<string> paths = outfit?.ExtraRootPaths;
+            IReadOnlyList<Transform> roots = outfit?.ExtraRoots;
+            for (int i = 0; paths != null && roots != null && i < paths.Count && i < roots.Count; i++)
+            {
+                if (paths[i] == rootPath) return roots[i];
+            }
+            return null;
+        }
+
+        private static void MapSharedHierarchy(Transform source, Transform destination, IDictionary<Transform, Transform> destinationBySource)
+        {
+            destinationBySource[source] = destination;
+            for (int i = 0; i < source.childCount; i++)
+            {
+                Transform sourceChild = source.GetChild(i);
+                Transform destinationChild = destination.Find(sourceChild.name);
+                if (destinationChild != null) MapSharedHierarchy(sourceChild, destinationChild, destinationBySource);
+            }
+        }
+
         private static bool TryCloneExtraBoneSubtree(
             Transform sourceRoot,
             Transform figureAnchor,
@@ -1007,6 +1142,7 @@ namespace zgock.ShapeSync
         private Transform MapOutfitTransform(
             Transform runtimeRoot,
             IReadOnlyDictionary<Transform, Transform> figureTransformByOutfitTransform,
+            ICollection<string> foreignRootPaths,
             Transform source)
         {
             if (source == null)
@@ -1022,16 +1158,22 @@ namespace zgock.ShapeSync
             }
 
             string path = GetRelativePath(runtimeRoot, source);
-            Transform named = FindUniqueFigureTransformByName(source.gameObject.name);
+            Transform named = FindUniqueFigureTransformByName(source.gameObject.name, foreignRootPaths);
             if (named != null)
             {
                 return named;
             }
 
-            return path == null ? null : FindFigureTransform(path);
+            if (path == null)
+            {
+                return null;
+            }
+
+            Transform byPath = FindFigureTransform(path);
+            return byPath != null && IsInForeignRoot(byPath, foreignRootPaths) ? null : byPath;
         }
 
-        private Transform FindUniqueFigureTransformByName(string name)
+        private Transform FindUniqueFigureTransformByName(string name, ICollection<string> foreignRootPaths)
         {
             if (string.IsNullOrEmpty(name)) return null;
             Transform result = null;
@@ -1040,7 +1182,7 @@ namespace zgock.ShapeSync
             while (stack.Count > 0)
             {
                 Transform current = stack.Pop();
-                if (current.name == name)
+                if (current.name == name && !IsInForeignRoot(current, foreignRootPaths))
                 {
                     if (result != null) return null;
                     result = current;
@@ -1050,6 +1192,18 @@ namespace zgock.ShapeSync
             }
 
             return result;
+        }
+
+        private bool IsInForeignRoot(Transform candidate, ICollection<string> foreignRootPaths)
+        {
+            if (foreignRootPaths == null || foreignRootPaths.Count == 0) return false;
+            string path = GetRelativePath(transform, candidate);
+            if (string.IsNullOrEmpty(path)) return false;
+            foreach (string rootPath in foreignRootPaths)
+            {
+                if (IsPathUnderRoot(path, rootPath)) return true;
+            }
+            return false;
         }
 
         private static void DisposeBindings(IReadOnlyList<OutfitSkinnedMeshBinding> bindings)
@@ -1254,13 +1408,14 @@ namespace zgock.ShapeSync
                 return false;
             }
 
+            ICollection<string> currentRootPaths = projectedRootPaths ?? CollectAttachedRootPaths();
+            IReadOnlyList<AttachedOutfitRegistrySet> currentOutfits = projectedAttachedOutfits ?? attachedOutfits;
             plan = new AttachPlan();
-            HashSet<string> plannedRootPaths = new HashSet<string>();
+            HashSet<string> plannedRootPaths = new HashSet<string>(StringComparer.Ordinal);
             foreach (string basePath in basePaths)
             {
-                if (IsPathOwnedByRoots(basePath, projectedRootPaths) || !TryGetAttachRootPlan(basePath, detachedRootPaths, out AttachRootPlan rootPlan, out error))
+                if (!TryGetAttachRootPlan(basePath, currentRootPaths, detachedRootPaths, out AttachRootPlan rootPlan, out error))
                 {
-                    if (error == null) error = $"Extra Bone path '{basePath}' is already owned by an attached Outfit.";
                     return false;
                 }
 
@@ -1269,7 +1424,26 @@ namespace zgock.ShapeSync
                     continue;
                 }
 
-                if (outfitPrefab.transform.Find(rootPlan.rootPath) == null || IsRootPathOwnedByRoots(rootPlan.rootPath, projectedRootPaths))
+                if (outfitPrefab.transform.Find(rootPlan.rootPath) == null)
+                {
+                    error = $"Extra Bone root '{rootPlan.rootPath}' conflicts with the Figure or an attached Outfit.";
+                    return false;
+                }
+
+                if (rootPlan.atAttachedRoot)
+                {
+                    rootPlan.sharedWith = FindOutfitReferencingRootPath(currentOutfits, rootPlan.rootPath);
+                    if (rootPlan.sharedWith == null)
+                    {
+                        error = $"Extra Bone root '{rootPlan.rootPath}' conflicts with the Figure or an attached Outfit.";
+                        return false;
+                    }
+                    if (!TryEvaluateSharedRoot(outfitPrefab, rootPlan.sharedWith, rootPlan.rootPath, out error))
+                    {
+                        return false;
+                    }
+                }
+                else if (IsRootPathOwnedByRoots(rootPlan.rootPath, projectedRootPaths))
                 {
                     error = $"Extra Bone root '{rootPlan.rootPath}' conflicts with the Figure or an attached Outfit.";
                     return false;
@@ -1277,6 +1451,123 @@ namespace zgock.ShapeSync
 
                 plan.roots.Add(rootPlan);
             }
+            return true;
+        }
+
+        private const float SharedPoseTolerance = 1e-5f;
+
+        private static bool IsPathUnderRoot(string path, string rootPath)
+        {
+            return !string.IsNullOrEmpty(path) && !string.IsNullOrEmpty(rootPath)
+                && (path == rootPath || path.StartsWith(rootPath + "/", StringComparison.Ordinal));
+        }
+
+        private static SortedDictionary<string, BonePoseData> CollectSubtreePoses(CharacterBoneRegistry registry, string rootPath)
+        {
+            var poses = new SortedDictionary<string, BonePoseData>(StringComparer.Ordinal);
+            if (registry == null || registry.bonePoses == null) return poses;
+            for (int i = 0; i < registry.bonePoses.Count; i++)
+            {
+                BonePoseData pose = registry.bonePoses[i];
+                if (pose != null && IsPathUnderRoot(pose.boneName, rootPath) && !poses.ContainsKey(pose.boneName)) poses.Add(pose.boneName, pose);
+            }
+            return poses;
+        }
+
+        private static bool IsSameLocalPose(BonePoseData left, BonePoseData right)
+        {
+            float squaredTolerance = SharedPoseTolerance * SharedPoseTolerance;
+            if ((left.localPosition - right.localPosition).sqrMagnitude > squaredTolerance) return false;
+            if ((left.localScale - right.localScale).sqrMagnitude > squaredTolerance) return false;
+            Quaternion a = left.localRotation;
+            Quaternion b = right.localRotation;
+            if (Quaternion.Dot(a, b) < 0f) b = new Quaternion(-b.x, -b.y, -b.z, -b.w);
+            return Mathf.Abs(a.x - b.x) <= SharedPoseTolerance && Mathf.Abs(a.y - b.y) <= SharedPoseTolerance
+                && Mathf.Abs(a.z - b.z) <= SharedPoseTolerance && Mathf.Abs(a.w - b.w) <= SharedPoseTolerance;
+        }
+
+        private static CharacterBoneRegistry FindFbmExtraBoneRegistry(IReadOnlyList<ShapeSyncOutfitFbmExtraBoneRegistry> entries, string blendName)
+        {
+            for (int i = 0; entries != null && i < entries.Count; i++)
+            {
+                if (entries[i] != null && entries[i].blendName == blendName) return entries[i].extraBoneRegistry;
+            }
+            return null;
+        }
+
+        private static void AddFbmBlendNames(IReadOnlyList<ShapeSyncOutfitFbmExtraBoneRegistry> entries, SortedSet<string> blendNames)
+        {
+            for (int i = 0; entries != null && i < entries.Count; i++)
+            {
+                if (entries[i] != null && !string.IsNullOrEmpty(entries[i].blendName)) blendNames.Add(entries[i].blendName);
+            }
+        }
+
+        /// <summary>Single entry point of the Extra Bone sharing conditions. spec06-ov1 extends the conditions here.</summary>
+        private bool TryEvaluateSharedRoot(ShapeSyncOutfit candidate, AttachedOutfitRegistrySet existing, string rootPath, out string error)
+        {
+            error = null;
+            string prefix = $"Extra Bone root '{rootPath}' of attached Outfit '{existing.RegistryId}' cannot be shared: ";
+            SortedDictionary<string, BonePoseData> existingPoses = CollectSubtreePoses(existing.BaseExtraBoneRegistry, rootPath);
+            SortedDictionary<string, BonePoseData> candidatePoses = CollectSubtreePoses(candidate.BaseExtraBoneRegistry, rootPath);
+
+            // Condition 1: the same Base path set inside the subtree.
+            foreach (string path in existingPoses.Keys)
+            {
+                if (!candidatePoses.ContainsKey(path)) { error = prefix + $"path '{path}' exists only in the attached Outfit."; return false; }
+            }
+            foreach (string path in candidatePoses.Keys)
+            {
+                if (!existingPoses.ContainsKey(path)) { error = prefix + $"path '{path}' exists only in the new Outfit."; return false; }
+            }
+
+            // Condition 2: the same Base local pose for every path.
+            foreach (KeyValuePair<string, BonePoseData> pair in existingPoses)
+            {
+                if (!IsSameLocalPose(pair.Value, candidatePoses[pair.Key])) { error = prefix + $"Base pose of '{pair.Key}' differs."; return false; }
+            }
+
+            // Condition 3: every FBM (including PBM difference) registry agrees on presence and pose for every Base path.
+            var blendNames = new SortedSet<string>(StringComparer.Ordinal);
+            AddFbmBlendNames(existing.FbmExtraBoneRegistries, blendNames);
+            AddFbmBlendNames(candidate.FbmExtraBoneRegistries, blendNames);
+            foreach (string blendName in blendNames)
+            {
+                SortedDictionary<string, BonePoseData> existingFbm = CollectSubtreePoses(FindFbmExtraBoneRegistry(existing.FbmExtraBoneRegistries, blendName), rootPath);
+                SortedDictionary<string, BonePoseData> candidateFbm = CollectSubtreePoses(FindFbmExtraBoneRegistry(candidate.FbmExtraBoneRegistries, blendName), rootPath);
+                foreach (string path in existingPoses.Keys)
+                {
+                    bool inExisting = existingFbm.TryGetValue(path, out BonePoseData existingPose);
+                    bool inCandidate = candidateFbm.TryGetValue(path, out BonePoseData candidatePose);
+                    if (inExisting != inCandidate)
+                    {
+                        error = prefix + $"FBM '{blendName}' declares '{path}' only in the {(inExisting ? "attached" : "new")} Outfit.";
+                        return false;
+                    }
+                    if (inExisting && !IsSameLocalPose(existingPose, candidatePose)) { error = prefix + $"FBM '{blendName}' pose of '{path}' differs."; return false; }
+                }
+            }
+
+            // Condition 4: the same Outfit physics under the root (optional VRM integration only).
+            if (ShapeSyncOptionalVrmIntegrationRegistry.TryGet(gameObject, out IShapeSyncOptionalVrmIntegration integration))
+            {
+                if (!(integration is IShapeSyncOptionalVrmIntegrationDryRun dryRun))
+                {
+                    error = prefix + "the registered optional VRM integration cannot compare Outfit physics.";
+                    return false;
+                }
+                if (existing.SourceOutfit == null)
+                {
+                    error = prefix + "physics differs: the attached Outfit source is unavailable.";
+                    return false;
+                }
+                if (!dryRun.TryCompareSharedRootPhysics(existing.SourceOutfit.gameObject, candidate.gameObject, rootPath, out string physicsError))
+                {
+                    error = prefix + "physics differs: " + physicsError;
+                    return false;
+                }
+            }
+
             return true;
         }
 
@@ -1365,7 +1656,34 @@ namespace zgock.ShapeSync
             return true;
         }
 
-        private bool TryGetAttachRootPlan(string path, HashSet<string> detachedRootPaths, out AttachRootPlan rootPlan, out string error)
+        private HashSet<string> CollectAttachedRootPaths()
+        {
+            var paths = new HashSet<string>(StringComparer.Ordinal);
+            for (int i = 0; i < attachedOutfits.Count; i++)
+            {
+                IReadOnlyList<string> rootPaths = attachedOutfits[i]?.ExtraRootPaths;
+                for (int j = 0; rootPaths != null && j < rootPaths.Count; j++)
+                {
+                    if (!string.IsNullOrEmpty(rootPaths[j])) paths.Add(rootPaths[j]);
+                }
+            }
+            return paths;
+        }
+
+        private static AttachedOutfitRegistrySet FindOutfitReferencingRootPath(IReadOnlyList<AttachedOutfitRegistrySet> outfits, string rootPath)
+        {
+            for (int i = 0; outfits != null && i < outfits.Count; i++)
+            {
+                IReadOnlyList<string> paths = outfits[i]?.ExtraRootPaths;
+                for (int j = 0; paths != null && j < paths.Count; j++)
+                {
+                    if (paths[j] == rootPath) return outfits[i];
+                }
+            }
+            return null;
+        }
+
+        private bool TryGetAttachRootPlan(string path, ICollection<string> attachedRootPaths, HashSet<string> detachedRootPaths, out AttachRootPlan rootPlan, out string error)
         {
             rootPlan = default;
             error = null;
@@ -1380,6 +1698,13 @@ namespace zgock.ShapeSync
                 }
 
                 string currentPath = JoinPath(segments, 0, i + 1);
+                if (attachedRootPaths != null && attachedRootPaths.Contains(currentPath))
+                {
+                    rootPlan.anchor = current;
+                    rootPlan.rootPath = currentPath;
+                    rootPlan.atAttachedRoot = true;
+                    return true;
+                }
                 if (detachedRootPaths != null && detachedRootPaths.Contains(currentPath))
                 {
                     rootPlan.anchor = current;

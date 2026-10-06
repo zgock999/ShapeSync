@@ -407,6 +407,87 @@ namespace zgock.ShapeSync.VrmIntegration
             RemoveEntries(false);
         }
 
+        /// <inheritdoc />
+        public void TransferSharedOwnership(IReadOnlyList<Transform> retainedRoots, IReadOnlyList<IShapeSyncOptionalVrmAttachment> heirs, IReadOnlyList<Transform> releasedRoots)
+        {
+            if (disposed || retainedRoots == null || heirs == null || retainedRoots.Count != heirs.Count)
+            {
+                return;
+            }
+
+            for (int springIndex = springs.Count - 1; springIndex >= 0; springIndex--)
+            {
+                Vrm10InstanceSpringBone.Spring spring = springs[springIndex];
+                int heirIndex = FindHeirIndex(spring, retainedRoots, releasedRoots);
+                if (heirIndex < 0 || !(heirs[heirIndex] is ShapeSyncVrmSpringBoneAttachment heir)
+                    || heir == this || heir.disposed || heir.figureInstance != figureInstance)
+                {
+                    continue;
+                }
+
+                springs.RemoveAt(springIndex);
+                heir.springs.Add(spring);
+                for (int jointIndex = 0; jointIndex < spring.Joints.Count; jointIndex++)
+                {
+                    VRM10SpringBoneJoint joint = spring.Joints[jointIndex];
+                    ownedJoints.Remove(joint);
+                    ownedJointTransforms.Remove(joint.transform);
+                    heir.ownedJoints.Add(joint);
+                    heir.ownedJointTransforms.Add(joint.transform);
+                }
+
+                for (int groupIndex = 0; spring.ColliderGroups != null && groupIndex < spring.ColliderGroups.Count; groupIndex++)
+                {
+                    VRM10SpringBoneColliderGroup group = spring.ColliderGroups[groupIndex];
+                    if (group == null || !colliderGroups.Remove(group)) continue;
+                    heir.colliderGroups.Add(group);
+                    MoveCreatedObjectsHostingGroup(group, heir);
+                }
+            }
+        }
+
+        private static int FindHeirIndex(Vrm10InstanceSpringBone.Spring spring, IReadOnlyList<Transform> retainedRoots, IReadOnlyList<Transform> releasedRoots)
+        {
+            if (spring?.Joints == null || spring.Joints.Count == 0) return -1;
+            int heirIndex = -1;
+            for (int jointIndex = 0; jointIndex < spring.Joints.Count; jointIndex++)
+            {
+                VRM10SpringBoneJoint joint = spring.Joints[jointIndex];
+                if (joint == null || joint.transform == null) return -1;
+                for (int i = 0; releasedRoots != null && i < releasedRoots.Count; i++)
+                {
+                    if (releasedRoots[i] != null && joint.transform.IsChildOf(releasedRoots[i])) return -1;
+                }
+                for (int i = 0; heirIndex < 0 && i < retainedRoots.Count; i++)
+                {
+                    if (retainedRoots[i] != null && joint.transform.IsChildOf(retainedRoots[i])) heirIndex = i;
+                }
+            }
+            return heirIndex;
+        }
+
+        private void MoveCreatedObjectsHostingGroup(VRM10SpringBoneColliderGroup group, ShapeSyncVrmSpringBoneAttachment heir)
+        {
+            for (int i = createdObjects.Count - 1; i >= 0; i--)
+            {
+                GameObject created = createdObjects[i];
+                if (created == null || !HostsGroup(created.transform, group)) continue;
+                createdObjects.RemoveAt(i);
+                heir.createdObjects.Add(created);
+            }
+        }
+
+        private static bool HostsGroup(Transform created, VRM10SpringBoneColliderGroup group)
+        {
+            if (group.transform.IsChildOf(created)) return true;
+            for (int i = 0; group.Colliders != null && i < group.Colliders.Count; i++)
+            {
+                VRM10SpringBoneCollider collider = group.Colliders[i];
+                if (collider != null && collider.transform.IsChildOf(created)) return true;
+            }
+            return false;
+        }
+
         private void RemoveEntries(bool reconstruct)
         {
             if (disposed)

@@ -195,7 +195,7 @@ namespace zgock.ShapeSync.Editor
             }
             if (!ShapeSyncDatabaseRegistry.IsValidUserName(figureName))
             {
-                diagnostic = "ShapeSync Figure import requires a Figure Name without whitespace.";
+                diagnostic = "ShapeSync Figure import requires a Figure Name without whitespace or '_'.";
                 return false;
             }
 

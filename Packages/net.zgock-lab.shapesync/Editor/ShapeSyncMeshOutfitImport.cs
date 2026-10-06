@@ -515,7 +515,7 @@ namespace zgock.ShapeSync.Editor
                 bool[] selectedSubMeshes = Enumerable.Range(0, classifications.Count)
                     .Select(index => classifications[index] != null && classifications[index].Classification == targetClassification)
                     .ToArray();
-                meshCopy = BuildSelectedMesh(renderer.sharedMesh, selectedSubMeshes);
+                meshCopy = BuildSelectedMesh(renderer.sharedMesh, selectedSubMeshes, isProjection);
                 // Topology normalization must compare the Base artifact with the
                 // same material-selected geometry that will be persisted.  The
                 // imported Merged Prefab may contain Face/Body submeshes in
@@ -571,12 +571,31 @@ namespace zgock.ShapeSync.Editor
         }
 
         internal static Mesh BuildSelectedMesh(Mesh source, IReadOnlyList<bool> selected)
+            => BuildSelectedMesh(source, selected, false);
+
+        internal static Mesh BuildSelectedMesh(Mesh source, IReadOnlyList<bool> selected, bool preserveSourceVertexOrder)
         {
             if (source == null) throw new InvalidOperationException("Source mesh is null.");
             ShapeSyncMeshBoneWeights boneWeights = ShapeSyncMeshBoneWeights.Capture(source);
             int[] remap = Enumerable.Repeat(-1, source.vertexCount).ToArray();
             var triangles = new List<int[]>();
             int nextVertex = 0;
+            if (preserveSourceVertexOrder)
+            {
+                bool[] used = new bool[source.vertexCount];
+                for (int subMesh = 0; subMesh < source.subMeshCount; subMesh++)
+                {
+                    if (subMesh >= selected.Count || !selected[subMesh]) continue;
+                    foreach (int sourceIndex in source.GetTriangles(subMesh))
+                    {
+                        if (sourceIndex < 0 || sourceIndex >= remap.Length)
+                            throw new InvalidOperationException("Selected SubMesh contains an invalid vertex index: " + subMesh);
+                        used[sourceIndex] = true;
+                    }
+                }
+                for (int sourceIndex = 0; sourceIndex < used.Length; sourceIndex++)
+                    if (used[sourceIndex]) remap[sourceIndex] = nextVertex++;
+            }
             for (int subMesh = 0; subMesh < source.subMeshCount; subMesh++)
             {
                 if (subMesh >= selected.Count || !selected[subMesh]) continue;

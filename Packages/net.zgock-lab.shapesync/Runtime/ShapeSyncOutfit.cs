@@ -23,6 +23,14 @@ namespace zgock.ShapeSync
 
         void ReconstructOnce();
         void Rollback();
+        /// <summary>
+        /// Moves the Spring entries that live on retained shared Extra roots to the attachments of the Outfits that keep those roots.
+        /// Called before <see cref="IDisposable.Dispose"/> when the owning Outfit detaches while another Outfit still references some of its Extra roots.
+        /// </summary>
+        /// <param name="retainedRoots">Extra roots of the detaching Outfit that stay on the Figure.</param>
+        /// <param name="heirs">The attachment inheriting each retained root, index-aligned with <paramref name="retainedRoots"/>; an entry may be null.</param>
+        /// <param name="releasedRoots">Extra roots of the detaching Outfit that will be destroyed.</param>
+        void TransferSharedOwnership(IReadOnlyList<Transform> retainedRoots, IReadOnlyList<IShapeSyncOptionalVrmAttachment> heirs, IReadOnlyList<Transform> releasedRoots);
     }
 
     /// <summary>
@@ -46,6 +54,9 @@ namespace zgock.ShapeSync
         /// <summary>Checks optional VRM Outfit physics capability without constructing or attaching physics objects.</summary>
         /// <param name="request">The Figure and Outfit-source validation request.</param><param name="error">The failure reason on rejection.</param><returns><see langword="true"/> when runtime attachment may proceed.</returns>
         bool TryValidateOutfitPhysics(ShapeSyncOptionalVrmDryRunRequest request, out string error);
+        /// <summary>Compares the Outfit physics declared under one Extra root of two Outfit sources without constructing physics objects.</summary>
+        /// <param name="existingOutfitSourceRoot">The source root of the Outfit that already references the Extra root.</param><param name="candidateOutfitSourceRoot">The source root of the Outfit being attached.</param><param name="rootPath">The Outfit-relative path of the Extra root.</param><param name="error">The first difference on mismatch.</param><returns><see langword="true"/> when both sources declare the same physics under the root.</returns>
+        bool TryCompareSharedRootPhysics(GameObject existingOutfitSourceRoot, GameObject candidateOutfitSourceRoot, string rootPath, out string error);
     }
 
     /// <summary>
@@ -299,7 +310,12 @@ namespace zgock.ShapeSync
         public IReadOnlyList<ShapeSyncOutfitFbmHumanoidBoneCorrectionProfile> FbmHumanoidBoneCorrectionProfiles { get; }
         public bool UsesBcpBakedBindposes { get; }
         public ProfileControlledMorphBinding ProfileControlledMorphBinding { get; }
+        /// <summary>Gets the Outfit source that was passed to attach; used to compare Outfit physics when an Extra root is shared.</summary>
+        /// <value>The Outfit Prefab (or scene Outfit) given to <see cref="OutfitAttacher.TryAttach"/>, or the projected Outfit in a dry-run.</value>
+        public ShapeSyncOutfit SourceOutfit { get; }
 
+        /// <summary>Initializes an attached Outfit record whose physics source is the <paramref name="outfit"/> itself.</summary>
+        /// <param name="outfit">The Outfit supplying registry identity and registries.</param><param name="runtimeOutfitInstance">The retained runtime Outfit root.</param><param name="attachedExtraRoots">The Figure Extra roots referenced by this Outfit, index-aligned with <paramref name="attachedExtraRootPaths"/>.</param><param name="attachedExtraRootPaths">The Figure-relative paths of the referenced Extra roots.</param><param name="attachedSkinnedMeshBindings">The renderer bindings.</param><param name="attachedRendererRoots">The renderer roots.</param><param name="springBoneAttachment">The optional VRM physics attachment.</param><param name="humanoidBoneCorrectionProfile">The Base Humanoid Bone Correction profile.</param><param name="profileControlledMorphBinding">The optional PCM binding.</param>
         public AttachedOutfitRegistrySet(
             ShapeSyncOutfit outfit,
             GameObject runtimeOutfitInstance,
@@ -310,6 +326,24 @@ namespace zgock.ShapeSync
             IShapeSyncOptionalVrmAttachment springBoneAttachment,
             ShapeSyncHumanoidBoneCorrectionProfile humanoidBoneCorrectionProfile,
             ProfileControlledMorphBinding profileControlledMorphBinding)
+            : this(outfit, runtimeOutfitInstance, attachedExtraRoots, attachedExtraRootPaths, attachedSkinnedMeshBindings,
+                attachedRendererRoots, springBoneAttachment, humanoidBoneCorrectionProfile, profileControlledMorphBinding, outfit)
+        {
+        }
+
+        /// <summary>Initializes an attached Outfit record with an explicit physics source.</summary>
+        /// <param name="outfit">The Outfit supplying registry identity and registries.</param><param name="runtimeOutfitInstance">The retained runtime Outfit root.</param><param name="attachedExtraRoots">The Figure Extra roots referenced by this Outfit, index-aligned with <paramref name="attachedExtraRootPaths"/>.</param><param name="attachedExtraRootPaths">The Figure-relative paths of the referenced Extra roots.</param><param name="attachedSkinnedMeshBindings">The renderer bindings.</param><param name="attachedRendererRoots">The renderer roots.</param><param name="springBoneAttachment">The optional VRM physics attachment.</param><param name="humanoidBoneCorrectionProfile">The Base Humanoid Bone Correction profile.</param><param name="profileControlledMorphBinding">The optional PCM binding.</param><param name="sourceOutfit">The Outfit source passed to attach.</param>
+        public AttachedOutfitRegistrySet(
+            ShapeSyncOutfit outfit,
+            GameObject runtimeOutfitInstance,
+            List<Transform> attachedExtraRoots,
+            List<string> attachedExtraRootPaths,
+            List<OutfitSkinnedMeshBinding> attachedSkinnedMeshBindings,
+            List<Transform> attachedRendererRoots,
+            IShapeSyncOptionalVrmAttachment springBoneAttachment,
+            ShapeSyncHumanoidBoneCorrectionProfile humanoidBoneCorrectionProfile,
+            ProfileControlledMorphBinding profileControlledMorphBinding,
+            ShapeSyncOutfit sourceOutfit)
         {
             RegistryId = outfit.RegistryId;
             RegistryName = outfit.RegistryName;
@@ -325,6 +359,7 @@ namespace zgock.ShapeSync
             FbmHumanoidBoneCorrectionProfiles = outfit.FbmHumanoidBoneCorrectionProfiles;
             UsesBcpBakedBindposes = outfit.SkinningProfile != null && outfit.SkinningProfile.UsesBcpBakedBindposes;
             ProfileControlledMorphBinding = profileControlledMorphBinding;
+            SourceOutfit = sourceOutfit;
         }
 
         public bool TryGetFbmExtraBoneRegistry(string blendName, out CharacterBoneRegistry registry)

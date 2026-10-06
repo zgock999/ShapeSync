@@ -37,7 +37,7 @@ namespace zgock.ShapeSync.Editor
             foreach (Rename rename in renames)
             {
                 if (!ShapeSyncDatabaseRegistry.IsValidUserName(rename.CurrentName) || !ShapeSyncDatabaseRegistry.IsValidUserName(rename.NextName) || !currentNames.Add(rename.CurrentName) || !nextNames.Add(rename.NextName))
-                { diagnostic = "Material Entry rename names must be non-empty, whitespace-free, and unique."; return false; }
+                { diagnostic = "Material Entry rename names must be non-empty, free of whitespace and '_', and unique."; return false; }
             }
             try
             {
@@ -53,8 +53,8 @@ namespace zgock.ShapeSync.Editor
                     {
                         Rename rename = renames[index];
                         if (string.Equals(rename.CurrentName, rename.NextName, StringComparison.Ordinal)) continue;
-                        string temporary = "__ShapeSyncMaterialEntryRename_" + index;
-                        while (database.Registry.ContainsMaterialEntryName(temporary)) temporary += "_";
+                        string temporary = "ShapeSyncMaterialEntryRename-" + index;
+                        while (database.Registry.ContainsMaterialEntryName(temporary)) temporary += "-";
                         if (!database.Registry.TryRenameMaterialEntry(rename.CurrentName, temporary, out string temporaryDiagnostic)) throw new InvalidOperationException(temporaryDiagnostic);
                         temporaryNames.Add(new Rename(temporary, rename.NextName));
                     }
@@ -83,7 +83,7 @@ namespace zgock.ShapeSync.Editor
             {
                 if (!ShapeSyncDatabaseRegistry.IsValidUserName(rename.CurrentName) || !ShapeSyncDatabaseRegistry.IsValidUserName(rename.NextName)
                     || !currentNames.Add(rename.CurrentName) || !nextNames.Add(rename.NextName))
-                { diagnostic = "Material Entry rename names must be non-empty, whitespace-free, and unique."; return false; }
+                { diagnostic = "Material Entry rename names must be non-empty, free of whitespace and '_', and unique."; return false; }
             }
             var materialNames = database.Registry.MaterialEntries.Where(entry => entry != null && entry.Material != null)
                 .ToDictionary(entry => entry.Material, entry => entry.Material.name);
@@ -98,8 +98,8 @@ namespace zgock.ShapeSync.Editor
                     {
                         Rename rename = renames[index];
                         if (string.Equals(rename.CurrentName, rename.NextName, StringComparison.Ordinal)) continue;
-                        string temporary = "__ShapeSyncMaterialEntryRename_" + index;
-                        while (registry.ContainsMaterialEntryName(temporary)) temporary += "_";
+                        string temporary = "ShapeSyncMaterialEntryRename-" + index;
+                        while (registry.ContainsMaterialEntryName(temporary)) temporary += "-";
                         if (!registry.TryRenameMaterialEntry(rename.CurrentName, temporary, out string temporaryDiagnostic)) { detail = temporaryDiagnostic; return false; }
                         temporaryNames.Add(new Rename(temporary, rename.NextName));
                     }

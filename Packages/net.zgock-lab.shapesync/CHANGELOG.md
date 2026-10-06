@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.2] - 2026-10-07
+
+- Outfits whose Extra Bone roots match exactly in structure, rest pose, FBM poses, and physics share those roots instead of being rejected. Shared roots stay until their last reference detaches.
+- Database Full Collection generation reproduces the worn body: the vertex correction is built by inverse skinning under the corrected skeleton. With the projection switch off, the Collection Prefab is used when it is set.
+- User-authored Database names (Figure name, Outfit Id, Material Entry names, axis names, Shape Id) must contain neither whitespace nor '_' and are rejected at save time. Mesh Outfit Material Entry names default to MaterialEntry-<slot>.
+- Collection Outfit bindposes follow the corrected Figure rig.
+- Outfit skinning bones are preserved, non-Root skeletons are registered, and unreadable Outfit textures are cloned instead of failing.
+- Database navigation tree parent references are fixed, and saving a Collection again no longer loses its reference Meshes.
+- Removing a Database Outfit also removes the Outfit references held by an optional integration.
+
 ## [0.2.1] - 2026-09-16
 
 - Shape Director accepts an Outfit priority cutoff that hides outer Outfit layers without changing the logical Shape list.

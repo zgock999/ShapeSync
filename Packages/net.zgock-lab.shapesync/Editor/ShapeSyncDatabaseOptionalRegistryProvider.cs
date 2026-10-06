@@ -17,6 +17,7 @@ namespace zgock.ShapeSync.Editor
         private const string VrmFeatureId = "VRM";
         private static Func<string, ShapeSyncDatabaseDiagnostic> vrmValidator;
         private static VrmGenerateDelegate vrmGenerate;
+        private static Action<string, string, ShapeSyncDatabaseTransaction.EditContext> vrmRemoveOutfit;
         private static VrmGenerateFinalizeDelegate vrmGenerateFinalize;
 
         /// <summary>Core-safe Generate callback supplied by an optional integration.</summary>
@@ -36,6 +37,19 @@ namespace zgock.ShapeSync.Editor
         /// <returns><see langword="true"/> when finalization succeeds; otherwise, <see langword="false"/>.</returns>
         public delegate bool VrmGenerateFinalizeDelegate(ShapeSyncDatabase database, string rootPath,
             ICollection<string> generatedPaths, out string diagnostic);
+
+        /// <summary>Registers cleanup of optional Outfit-owned references within the Core removal transaction.</summary>
+        public static void RegisterVrmRemoveOutfit(Action<string, string, ShapeSyncDatabaseTransaction.EditContext> remove)
+        {
+            vrmRemoveOutfit = remove ?? throw new ArgumentNullException(nameof(remove));
+        }
+
+        /// <summary>Removes optional Outfit relations before their canonical owner is destroyed.</summary>
+        internal static void RemoveVrmOutfitReferences(string assetPath, string identity,
+            ShapeSyncDatabaseTransaction.EditContext transaction)
+        {
+            vrmRemoveOutfit?.Invoke(assetPath, identity, transaction);
+        }
 
         /// <summary>Registers the validator for Database-local VRM information.</summary>
         /// <param name="validator">The callback that validates a Database asset path.</param>

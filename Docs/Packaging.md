@@ -104,7 +104,7 @@ $coreUrl = "https://github.com/$packageRepository.git?path=Packages/net.zgock-la
 $companionUrl = "https://github.com/$packageRepository.git?path=Packages/net.zgock-lab.shapesync.vrm#$gitRevision"
 ```
 
-Release 0.2.1 applied values: `packageRepository = zgock999/ShapeSync`, `repositoryDirectory = ShapeSync`, `packageVersion = 0.2.1`, `gitRevision = 0.2.1`. These are the current application values,
+Release 0.2.2 applied values: `packageRepository = zgock999/ShapeSync`, `repositoryDirectory = ShapeSync`, `packageVersion = 0.2.2`, `gitRevision = 0.2.2`. These are the current application values,
 not fixed requirements of this reusable process; a later release replaces them
 at the parameter line above.
 
@@ -155,6 +155,11 @@ Record each lane's total, passed, failed, skipped, and inconclusive counts,
 the resolved package lock, and whether the final Core-only result matches the
 initial result. Known batchmode-only exceptions must be named explicitly and
 must not hide compilation, package-resolution, or inconclusive failures.
+
+Pass an absolute path to `-testResults`, and give each lane its own result file
+name. A relative path is reported as saved in the editor log while no file
+appears there, and repeated lanes in one project otherwise overwrite the same
+default result file, which destroys the earlier lane's evidence.
 
 ### 5.1 Remote clean-consumer verification
 

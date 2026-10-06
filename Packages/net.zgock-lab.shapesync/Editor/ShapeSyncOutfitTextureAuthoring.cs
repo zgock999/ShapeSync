@@ -27,20 +27,38 @@ namespace zgock.ShapeSync.Editor
             if (source is not Texture2D sourceTexture || sourceTexture.isReadable)
                 return UnityEngine.Object.Instantiate(source);
 
+            bool linear = !UnityEngine.Experimental.Rendering.GraphicsFormatUtility.IsSRGBFormat(sourceTexture.graphicsFormat);
+            bool mipmaps = sourceTexture.mipmapCount > 1;
             RenderTexture previous = RenderTexture.active;
+            bool previousSrgbWrite = GL.sRGBWrite;
             RenderTexture staging = RenderTexture.GetTemporary(sourceTexture.width, sourceTexture.height, 0,
-                RenderTextureFormat.ARGB32, RenderTextureReadWrite.Default);
+                RenderTextureFormat.ARGB32, linear ? RenderTextureReadWrite.Linear : RenderTextureReadWrite.sRGB);
+            Texture2D copy = null;
             try
             {
+                GL.sRGBWrite = !linear && QualitySettings.activeColorSpace == ColorSpace.Linear;
                 Graphics.Blit(sourceTexture, staging);
                 RenderTexture.active = staging;
-                var copy = new Texture2D(sourceTexture.width, sourceTexture.height, TextureFormat.RGBA32, false, false);
+                copy = new Texture2D(sourceTexture.width, sourceTexture.height, TextureFormat.RGBA32, mipmaps, linear);
                 copy.ReadPixels(new Rect(0, 0, sourceTexture.width, sourceTexture.height), 0, 0, false);
-                copy.Apply(false, false);
+                copy.Apply(mipmaps, false);
+                copy.name = sourceTexture.name;
+                copy.wrapModeU = sourceTexture.wrapModeU;
+                copy.wrapModeV = sourceTexture.wrapModeV;
+                copy.wrapModeW = sourceTexture.wrapModeW;
+                copy.filterMode = sourceTexture.filterMode;
+                copy.anisoLevel = sourceTexture.anisoLevel;
+                copy.mipMapBias = sourceTexture.mipMapBias;
                 return copy;
+            }
+            catch
+            {
+                if (copy != null) UnityEngine.Object.DestroyImmediate(copy);
+                throw;
             }
             finally
             {
+                GL.sRGBWrite = previousSrgbWrite;
                 RenderTexture.active = previous;
                 RenderTexture.ReleaseTemporary(staging);
             }
@@ -114,7 +132,7 @@ namespace zgock.ShapeSync.Editor
                     foreach (MaterialTextureInput input in materialInputs)
                     {
                         if (!ShapeSyncDatabaseRegistry.IsValidUserName(input.EntryName) || !nextEntryNames.Add(input.EntryName))
-                            throw new InvalidOperationException("Material Outfit Texture Entry names must be distinct and contain no whitespace.");
+                            throw new InvalidOperationException("Material Outfit Texture Entry names must be distinct and contain no whitespace or '_'.");
                         string resourceName = existingResourceNames.TryGetValue(input.EntryName, out string existingResourceName)
                             ? existingResourceName : outfitIdentity + "_" + input.EntryName;
                         nextResourceNames.Add(resourceName);

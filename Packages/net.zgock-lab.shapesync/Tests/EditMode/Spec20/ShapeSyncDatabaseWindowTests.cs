@@ -17,8 +17,10 @@ using zgock.ShapeSync.Materials;
 
 #if UNITY_6000_2_OR_NEWER
 using ShapeSyncTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<int>;
+using ShapeSyncTreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<int>;
 #else
 using ShapeSyncTreeViewState = UnityEditor.IMGUI.Controls.TreeViewState;
+using ShapeSyncTreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem;
 #endif
 
 namespace zgock.ShapeSync.Tests.EditMode.Spec20
@@ -26,6 +28,46 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
     public sealed class ShapeSyncDatabaseWindowTests
     {
         private const string Root = ShapeSyncTestAssetPaths.Spec20DatabaseWindowRoot;
+
+        [TestCase(false)]
+        [TestCase(true)]
+        public void NavigationTreeView_EveryItemHasParentChainForDragInsertion(bool vrmNavigation)
+        {
+            var registry = ScriptableObject.CreateInstance<ShapeSyncDatabaseRegistry>();
+            try
+            {
+                Assert.That(registry.TryAddOutfit("Shoes", "Shoes", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string meshDiagnostic), Is.True, meshDiagnostic);
+                Assert.That(registry.TryAddOutfit("Dye", "Dye", ShapeSyncDatabaseRegistry.OutfitKind.Material, out string materialDiagnostic), Is.True, materialDiagnostic);
+                Assert.That(registry.TryAddShape("skin", "Skin", ShapeSyncDatabaseRegistry.ShapeKind.Skin, 0, Array.Empty<string>(), out string shapeDiagnostic), Is.True, shapeDiagnostic);
+                var tree = new ShapeSyncDatabaseWindow.NavigationTreeView(
+                    new ShapeSyncTreeViewState(), _ => true, () => ShapeSyncDatabaseWindow.Section.General,
+                    () => registry.Outfits, _ => true, (_, __) => true,
+                    () => registry.Shapes, _ => true, () => vrmNavigation);
+                var root = (ShapeSyncTreeViewItem)tree.GetType()
+                    .GetProperty("rootItem", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
+                    .GetValue(tree);
+                var visited = new HashSet<int>();
+                Action<ShapeSyncTreeViewItem> check = null;
+                check = parent =>
+                {
+                    if (parent.children == null) return;
+                    foreach (var child in parent.children)
+                    {
+                        Assert.That(child.parent, Is.SameAs(parent), child.displayName);
+                        Assert.That(child.depth, Is.EqualTo(parent.depth + 1), child.displayName);
+                        Assert.That(visited.Add(child.id), Is.True, "Duplicate navigation item ID");
+                        var ancestor = child;
+                        int remaining = child.depth + 1;
+                        while (remaining-- > 0) ancestor = ancestor.parent;
+                        Assert.That(ancestor, Is.SameAs(root), child.displayName);
+                        check(child);
+                    }
+                };
+                check(root);
+                Assert.That(visited.Count, Is.GreaterThan(20));
+            }
+            finally { Object.DestroyImmediate(registry); }
+        }
 
         [Test]
         public void OutfitStep1_IdentityPersistsAndNameDraftIsSavedWithoutChangingIdentity()
@@ -1777,16 +1819,16 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
             ShapeSyncDatabaseWindow window = ScriptableObject.CreateInstance<ShapeSyncDatabaseWindow>();
             try
             {
-                Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment(null, prefab), Is.EqualTo("BasicFemale_Tall"));
-                Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment(string.Empty, prefab), Is.EqualTo("BasicFemale_Tall"));
-                Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment("  ", prefab), Is.EqualTo("BasicFemale_Tall"));
+                Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment(null, prefab), Is.EqualTo("BasicFemale-Tall"));
+                Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment(string.Empty, prefab), Is.EqualTo("BasicFemale-Tall"));
+                Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment("  ", prefab), Is.EqualTo("BasicFemale-Tall"));
                 Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment("Figure_Authored", prefab), Is.EqualTo("Figure_Authored"));
                 Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment("Fbm_Authored", prefab), Is.EqualTo("Fbm_Authored"));
                 Assert.That(ShapeSyncDatabaseWindow.GetNameAfterPrefabAssignment(string.Empty, null), Is.EqualTo(string.Empty));
 
                 window.SetFigureInputsForTest(string.Empty, null);
                 window.AssignFigurePrefabFromUiForTest(prefab);
-                Assert.That(window.FigureName, Is.EqualTo("BasicFemale_Tall"), "Figure Prefab assignment must fill an empty Figure Name.");
+                Assert.That(window.FigureName, Is.EqualTo("BasicFemale-Tall"), "Figure Prefab assignment must fill an empty Figure Name.");
                 window.SetFigureInputsForTest("Figure_Authored", null);
                 window.AssignFigurePrefabFromUiForTest(prefab);
                 Assert.That(window.FigureName, Is.EqualTo("Figure_Authored"), "Figure Prefab assignment must not overwrite an authored Figure Name.");
@@ -1794,8 +1836,10 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
                 window.SetFbmAxisDraftsForTest(new[] { string.Empty, "Fbm_Authored" }, new GameObject[] { null, null });
                 Assert.That(window.AssignFbmAxisDraftPrefabFromUiForTest(0, prefab), Is.True);
                 Assert.That(window.AssignFbmAxisDraftPrefabFromUiForTest(1, prefab), Is.True);
-                Assert.That(window.FbmAxisDraftNamesForTest, Is.EqualTo(new[] { "BasicFemale_Tall", "Fbm_Authored" }), "New FBM Prefab assignment must fill only a blank FBM Name.");
+                Assert.That(window.FbmAxisDraftNamesForTest, Is.EqualTo(new[] { "BasicFemale-Tall", "Fbm_Authored" }), "New FBM Prefab assignment must fill only a blank FBM Name.");
                 Assert.That(window.AssignFbmAxisDraftPrefabFromUiForTest(2, prefab), Is.False);
+                Assert.That(ShapeSyncDatabaseWindow.FbmRedefinitionNameAfterPrefabAssignmentForTest("Tall", string.Empty, prefab), Is.EqualTo("BasicFemale-Tall"));
+                Assert.That(ShapeSyncDatabaseWindow.FbmRedefinitionNameAfterPrefabAssignmentForTest("Tall", "TallRenamed", prefab), Is.EqualTo("TallRenamed"));
             }
             finally { Object.DestroyImmediate(window); Object.DestroyImmediate(prefab); }
         }
@@ -2570,10 +2614,144 @@ namespace zgock.ShapeSync.Tests.EditMode.Spec20
         [TestCase("FBM Name")]
         [TestCase("PBM Name")]
         [TestCase("Leading\tName")]
-        public void UserAuthoredNames_RejectWhitespace(string value)
+        [TestCase("Figure_Name")]
+        [TestCase("_Leading")]
+        [TestCase("Trailing_")]
+        [TestCase("Entry__Name")]
+        public void UserAuthoredNames_RejectWhitespaceAndUnderscore(string value)
         {
             Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName(value), Is.False);
-            Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName("Valid_Name"), Is.True);
+            Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName("Valid-Name"), Is.True);
+            Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName("MaterialEntry-0"), Is.True);
+            Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName("dress-1"), Is.True);
+        }
+
+        [TestCase("Basic_Female", "Basic-Female")]
+        [TestCase("Basic Female_Tall (1)", "Basic-Female-Tall-(1)")]
+        [TestCase("N00_007_01_Tops_01_CLOTH_01 (Instance)", "N00-007-01-Tops-01-CLOTH-01-(Instance)")]
+        [TestCase("Tab\tName", "Tab-Name")]
+        [TestCase("Plain", "Plain")]
+        [TestCase("", "")]
+        [TestCase(null, null)]
+        public void UserNameCandidate_ReplacesForbiddenCharactersWithHyphen(string input, string expected)
+        {
+            string result = ShapeSyncDatabaseRegistry.ToUserNameCandidate(input);
+            Assert.That(result, Is.EqualTo(expected));
+            if (!string.IsNullOrEmpty(expected))
+                Assert.That(ShapeSyncDatabaseRegistry.IsValidUserName(result), Is.True);
+        }
+
+        [Test]
+        public void UserAuthoredNames_RejectUnderscoreAtRegistryBoundaries()
+        {
+            ShapeSyncDatabaseRegistry registry = ScriptableObject.CreateInstance<ShapeSyncDatabaseRegistry>();
+            GameObject databaseRoot = new GameObject("Database");
+            ShapeSyncDatabase database = databaseRoot.AddComponent<ShapeSyncDatabase>();
+            GameObject intermediate = new GameObject(ShapeSyncDatabaseAsset.IntermediateContainerName);
+            intermediate.transform.SetParent(databaseRoot.transform, false);
+            GameObject invalidFigure = new GameObject("Figure Name");
+            invalidFigure.transform.SetParent(intermediate.transform, false);
+            GameObject baseFigure = new GameObject("Base");
+            baseFigure.transform.SetParent(intermediate.transform, false);
+            Material material = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+            MaterialShaderAdapter adapter = ScriptableObject.CreateInstance<UrpUnlitMaterialShaderAdapter>();
+            try
+            {
+                Assert.That(registry.TryRegisterBaseFigure(database, "Base", baseFigure, out string baseDiagnostic), Is.True, baseDiagnostic);
+                SkinnedMeshRenderer renderer = baseFigure.AddComponent<SkinnedMeshRenderer>();
+                renderer.sharedMaterial = material;
+                Assert.That(registry.TryRegisterMaterialEntry(database, "Entry", renderer, 0, material.name, material, adapter, out string registerEntryDiagnostic), Is.True, registerEntryDiagnostic);
+                Assert.That(registry.TryAddOutfit("hair-1", "Hair", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string outfitDiagnostic), Is.True, outfitDiagnostic);
+
+                // T-07 a: Outfit identity.
+                Assert.That(registry.TryAddOutfit("bad_id", "Bad", ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(registry.Outfits.Select(o => o.Identity), Is.EqualTo(new[] { "hair-1" }));
+
+                // T-07 b: Shape identity.
+                Assert.That(registry.TryAddShape("bad_shape", "Bad", ShapeSyncDatabaseRegistry.ShapeKind.Morph, 0, Array.Empty<string>(), out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(registry.Shapes, Is.Empty);
+
+                // T-07 c: Material Entry validation.
+                Assert.That(registry.TryValidateMaterialEntry(database, "Entry_Name", renderer, 0, material, out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+
+                // T-07 d: Material Entry rename.
+                Assert.That(registry.TryRenameMaterialEntry("Entry", "Entry_Name", out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(registry.ContainsMaterialEntryName("Entry"), Is.True);
+                Assert.That(registry.ContainsMaterialEntryName("Entry_Name"), Is.False);
+
+                // T-07 e: FBM axis validation.
+                Assert.That(registry.TryValidateFigureAxis(database, "Tall_Long", ShapeSyncDatabaseRegistry.FigureAxisKind.Fbm, out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+
+                // T-07 f: PBM axis validation.
+                Assert.That(registry.TryValidateFigureAxis(database, "Bust_Large", ShapeSyncDatabaseRegistry.FigureAxisKind.Pbm, out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+
+                // T-07 g: Outfit Material classification.
+                Assert.That(registry.TrySetOutfitMaterialClassifications("hair-1", new[] { new ShapeSyncDatabaseRegistry.OutfitMaterialClassificationEntry("HairMaterial", ShapeSyncDatabaseRegistry.OutfitMaterialClassification.Include, "Hair_Entry") }, out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(registry.Outfits.Single(o => o.Identity == "hair-1").MaterialClassifications, Is.Empty);
+
+                // T-07 h: Base Figure rename uses the existing invalid-name diagnostic.
+                Assert.That(registry.TryRenameBaseFigure(database, "Base", "Base_Renamed", out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("invalid"));
+                Assert.That(registry.BaseFigures.Single().Name, Is.EqualTo("Base"));
+            }
+            finally
+            {
+                Object.DestroyImmediate(adapter);
+                Object.DestroyImmediate(material);
+                Object.DestroyImmediate(registry);
+                Object.DestroyImmediate(databaseRoot);
+            }
+        }
+
+        [Test]
+        public void UserAuthoredNames_RejectUnderscoreAtWindowBoundaries()
+        {
+            Assert.That(ShapeSyncDatabaseAsset.TryCreate(Root, out ShapeSyncDatabase database, out string createDiagnostic), Is.True, createDiagnostic);
+            ShapeSyncDatabaseWindow window = ScriptableObject.CreateInstance<ShapeSyncDatabaseWindow>();
+            try
+            {
+                Assert.That(window.TrySetDatabase(database, out string bindDiagnostic), Is.True, bindDiagnostic);
+                Assert.That(window.TryAddOutfitForTest("Bad_Id", null, ShapeSyncDatabaseRegistry.OutfitKind.Mesh, out string diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(window.Database.Registry.Outfits, Is.Empty);
+                Assert.That(window.TryBeginShapeDraftForTest("bad_shape", "Bad", ShapeSyncDatabaseRegistry.ShapeKind.Morph, out diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(window.TryBeginShapeDraftForTest("good-shape", "Good", ShapeSyncDatabaseRegistry.ShapeKind.Morph, out diagnostic), Is.True, diagnostic);
+            }
+            finally { Object.DestroyImmediate(window); }
+        }
+
+        [Test]
+        public void FigureImport_RejectsUnderscoreFigureName()
+        {
+            GameObject source = CreateHumanoidSourceForFigureDetail("Spec20ov2FigureSource", out Avatar avatar);
+            try
+            {
+                SkinnedMeshRenderer renderer = source.transform.Find("Body").GetComponent<SkinnedMeshRenderer>();
+                ConfigureMergeRendererForFigureDetail(renderer, source.transform.Find("Hips"));
+                Material material = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = "Spec20ov2FigureMaterial" };
+                renderer.sharedMaterial = material;
+                AssetDatabase.CreateAsset(avatar, Root + "/Spec20ov2Avatar.asset");
+                AssetDatabase.CreateAsset(renderer.sharedMesh, Root + "/Spec20ov2Mesh.asset");
+                AssetDatabase.CreateAsset(material, Root + "/Spec20ov2Material.mat");
+                GameObject persistent = PrefabUtility.SaveAsPrefabAsset(source, Root + "/Spec20ov2FigureSource.prefab");
+                Assert.That(ShapeSyncFigureImport.TryAdmit(persistent, out ShapeSyncFigureImportAdmission admission, out string admissionDiagnostic), Is.True, admissionDiagnostic);
+                Assert.That(ShapeSyncDatabaseAsset.TryCreate(Root, out ShapeSyncDatabase database, out string createDiagnostic), Is.True, createDiagnostic);
+                string databasePath = AssetDatabase.GetAssetPath(database);
+
+                Assert.That(ShapeSyncFigureImport.TryImport(databasePath, admission, "Bad_Figure", out string diagnostic), Is.False);
+                Assert.That(diagnostic, Does.Contain("'_'"));
+                Assert.That(ShapeSyncDatabaseAsset.TryOpen(databasePath, out database, out string reopenDiagnostic), Is.True, reopenDiagnostic);
+                Assert.That(database.Registry.BaseFigures.Count, Is.EqualTo(0));
+            }
+            finally { Object.DestroyImmediate(source); }
         }
 
         [Test]

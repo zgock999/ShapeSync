@@ -34,9 +34,32 @@ namespace zgock.ShapeSync.Editor
                 if ((sources?.Count ?? 0) != 0 || useProjectionForFullCollection)
                 { diagnostic = "No Collection cannot have sources or Projection selection."; return false; }
             }
-            else if (sources == null || sources.Any(source => source.Prefab == null || string.IsNullOrWhiteSpace(source.ShapeKey)
+            bool directProjectionWithoutPrefabs = false;
+            if (kind != ShapeSyncDatabaseRegistry.OutfitCollectionKind.None)
+            {
+                if (!ShapeSyncDatabaseAsset.TryOpen(databaseAssetPath, out ShapeSyncDatabase opened, out string openDiagnostic))
+                { diagnostic = openDiagnostic; return false; }
+                ShapeSyncDatabaseRegistry.OutfitEntry openedOutfit = opened.Registry.Outfits
+                    .FirstOrDefault(entry => entry != null && string.Equals(entry.Identity, outfitIdentity, StringComparison.Ordinal));
+                if (openedOutfit != null && openedOutfit.Kind == ShapeSyncDatabaseRegistry.OutfitKind.Mesh)
+                {
+                    bool hasAnyProjection = openedOutfit.AxisFigures.Any(axis => axis != null && axis.ProjectionPrefab != null);
+                    bool hasAllProjection = openedOutfit.AxisFigures.Count > 0 && openedOutfit.AxisFigures.All(axis => axis != null && axis.ProjectionPrefab != null);
+                    if (kind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full && hasAnyProjection && !hasAllProjection)
+                    {
+                        diagnostic = "Full Collection requires a Projection body on every axis or on none: "
+                            + string.Join(", ", openedOutfit.AxisFigures.Where(axis => axis.ProjectionPrefab == null)
+                                .Select(axis => axis.ShapeKey).OrderBy(key => key, StringComparer.Ordinal));
+                        return false;
+                    }
+                    directProjectionWithoutPrefabs = kind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full
+                        && hasAllProjection && !useProjectionForFullCollection && sources != null && sources.Count == 0;
+                }
+            }
+            if (kind != ShapeSyncDatabaseRegistry.OutfitCollectionKind.None && !directProjectionWithoutPrefabs
+                && (sources == null || sources.Any(source => source.Prefab == null || string.IsNullOrWhiteSpace(source.ShapeKey)
                 || PrefabUtility.GetPrefabAssetType(source.Prefab) == PrefabAssetType.NotAPrefab
-                || string.IsNullOrWhiteSpace(AssetDatabase.GetAssetPath(source.Prefab))))
+                || string.IsNullOrWhiteSpace(AssetDatabase.GetAssetPath(source.Prefab)))))
             { diagnostic = "Collection requires a persistent Prefab for Base and every FBM."; return false; }
 
             return ShapeSyncDatabaseTransaction.TryEditStructureWithAssets(databaseAssetPath, (database, intermediate, transaction) =>
@@ -46,15 +69,16 @@ namespace zgock.ShapeSync.Editor
                 if (outfit == null || outfit.Kind != ShapeSyncDatabaseRegistry.OutfitKind.Mesh)
                     throw new InvalidOperationException("Mesh Outfit was not found: " + outfitIdentity);
 
-                RemoveOldCollections(database, outfit, databaseAssetPath, transaction);
                 if (kind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.None)
                 {
+                    RemoveOldCollections(database, outfit, databaseAssetPath, transaction);
                     if (!database.Registry.TrySetOutfitCollection(database, outfitIdentity, kind, false, Array.Empty<ShapeSyncDatabaseRegistry.OutfitCollectionEntry>(), out string clearDiagnostic))
                         throw new InvalidOperationException(clearDiagnostic);
                     return;
                 }
 
                 var entries = new List<ShapeSyncDatabaseRegistry.OutfitCollectionEntry>();
+                if (!directProjectionWithoutPrefabs)
                 foreach (Source source in sources)
                 {
                     string prefix = outfitIdentity + "_" + source.ShapeKey + "_Collection";
@@ -64,10 +88,25 @@ namespace zgock.ShapeSync.Editor
                     GameObject copy = CreateDatabaseCollectionPrefab(sourceCopy, prefix, intermediate, transaction);
                     entries.Add(new ShapeSyncDatabaseRegistry.OutfitCollectionEntry(source.ShapeKey, sourceCopy, copy));
                 }
+                RemoveOldCollections(database, outfit, databaseAssetPath, transaction);
+                if (directProjectionWithoutPrefabs)
+                {
+                    bool hasAllProjection = outfit.AxisFigures.Count > 0 && outfit.AxisFigures.All(axis => axis != null && axis.ProjectionPrefab != null);
+                    if (!hasAllProjection)
+                        throw new InvalidOperationException("Full Collection requires a Projection body on every axis or on none: "
+                            + string.Join(", ", outfit.AxisFigures.Where(axis => axis.ProjectionPrefab == null)
+                                .Select(axis => axis.ShapeKey).OrderBy(key => key, StringComparer.Ordinal)));
+                    SetDirectProjectionWithoutCollectionPrefabs(outfit);
+                    return;
+                }
                 if (!database.Registry.TrySetOutfitCollection(database, outfitIdentity, kind, useProjectionForFullCollection, entries, out string saveDiagnostic))
                     throw new InvalidOperationException(saveDiagnostic);
             }, out diagnostic);
         }
+
+        private static void SetDirectProjectionWithoutCollectionPrefabs(ShapeSyncDatabaseRegistry.OutfitEntry outfit)
+            => outfit.SetCollection(ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full, false,
+                Array.Empty<ShapeSyncDatabaseRegistry.OutfitCollectionEntry>());
 
         private static GameObject CreateDatabaseCollectionPrefab(GameObject source, string name, Transform intermediate, ShapeSyncDatabaseTransaction.EditContext transaction)
         {

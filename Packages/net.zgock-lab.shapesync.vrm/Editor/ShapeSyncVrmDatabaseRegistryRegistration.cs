@@ -23,6 +23,7 @@ namespace zgock.ShapeSync.VrmIntegration.Editor
         static ShapeSyncVrmDatabaseRegistryRegistration()
         {
             ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmValidator(ValidateDatabase);
+            ShapeSyncDatabaseOptionalRegistryProvider.RegisterVrmRemoveOutfit(ShapeSyncVrmReferenceImporter.RemoveOutfitReferences);
         }
 
         internal static bool TryGetRegistry(string assetPath, out ShapeSyncVrmDatabaseRegistry registry, out string diagnostic)

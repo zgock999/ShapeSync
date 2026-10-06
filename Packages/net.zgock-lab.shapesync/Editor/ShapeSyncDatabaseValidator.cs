@@ -334,7 +334,10 @@ namespace zgock.ShapeSync.Editor
                                 ShapeSyncDatabaseEntityKind.Outfit, ShapeSyncDatabaseRelationKind.FigureAxis,
                                 id, follow?.PbmAxisName, figure?.ShapeKey, "Outfit PBM follow Figure relation is incomplete.");
                 }
-                if (outfit.CollectionKind != ShapeSyncDatabaseRegistry.OutfitCollectionKind.None && (outfit.CollectionEntries == null || outfit.CollectionEntries.Count == 0))
+                if (outfit.CollectionKind != ShapeSyncDatabaseRegistry.OutfitCollectionKind.None && (outfit.CollectionEntries == null || outfit.CollectionEntries.Count == 0)
+                    && !(outfit.CollectionKind == ShapeSyncDatabaseRegistry.OutfitCollectionKind.Full
+                        && !outfit.UseProjectionForFullCollection
+                        && outfit.AxisFigures.Count > 0 && outfit.AxisFigures.All(axis => axis != null && axis.ProjectionPrefab != null)))
                     Add(diagnostics, ShapeSyncDatabaseDiagnosticCode.RelationMissing,
                         ShapeSyncDatabaseEntityKind.Outfit, ShapeSyncDatabaseRelationKind.FigureAxis,
                         id, id, null, "Outfit Collection declares a collection kind but no collection entries.");
